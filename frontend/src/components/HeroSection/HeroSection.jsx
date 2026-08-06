@@ -81,7 +81,7 @@ const HeroSection = () => {
           right: '0',
           top: '50%',
           transform: 'translateY(-50%)',
-          height: '590px',
+          height: '100%',
           zIndex: 1,
         }}
       >
@@ -91,7 +91,7 @@ const HeroSection = () => {
           style={{
             width: '100%',
             height: '100%',
-            objectFit: 'cover',
+            objectFit: 'contain',
             objectPosition: 'right center',
             display: 'block',
           }}
@@ -122,13 +122,18 @@ const HeroSection = () => {
           boxSizing: 'border-box',
         }}
       >
-        {/* Premium label */}
+        {/* Premium label
+            Design specs (1920px): Playfair / 700 / Bold / 36px / line-height 100% / letter-spacing 0% / bg #E38F2E
+            Converted font-size 36 → clamp(18px, 1.875vw, 36px)
+        */}
         <p style={{
-          fontSize: '11px',
+          fontFamily: "'Playfair Display', 'Playfair', serif",
           fontWeight: 700,
-          letterSpacing: '1.5px',
-          color: '#c9a24b',
-          fontStyle: 'italic',
+          fontStyle: 'normal',
+          fontSize: 'clamp(18px, 1.875vw, 36px)',
+          lineHeight: 1,
+          letterSpacing: '0',
+          color: '#E38F2E',
           margin: '0',
           textTransform: 'uppercase',
         }}>
