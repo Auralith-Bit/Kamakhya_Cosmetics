@@ -1,0 +1,34 @@
+/* frontend/src/tailwind-input.css */
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-sm: 480px;
+  --breakpoint-tab: 600px;
+  --breakpoint-nav: 860px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+
+  --color-brand-blue: #2e3192;
+  --color-brand-blue-dark: #20236f;
+  --color-brand-gold: #c9a24b;
+  --color-brand-orange: #f49b39;
+  --color-brand-divider: #e6ddc9;
+
+  --color-navy: #0a1230;
+  --color-footer-gold: #c9a876;
+  --color-royal: #273593;
+  --color-royal-dark: #1e2874;
+  --color-muted: #b7bccb;
+  --color-fog: #d9dbe6;
+
+  --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-serif: Georgia, 'Times New Roman', serif;
+}
+
+@utility heading-footer {
+  margin: 0 0 18px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--color-footer-gold);
+}

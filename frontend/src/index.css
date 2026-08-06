@@ -1,0 +1,7 @@
+/* =========================================
+   TAILWIND V4 THEME CONFIGURATION
+   ========================================= */
+
+/* Base resets */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
