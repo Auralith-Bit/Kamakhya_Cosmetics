@@ -21,7 +21,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-[1000] w-full bg-white font-sans shadow-[0_2px_10px_rgba(0,0,0,0.08)]">
+    <header className="sticky top-0 z-[1000] w-full bg-white font-sans shadow-[0px_8px_20px_0px_rgba(0,0,0,0.25)]">
       
       {/* Diagonal white panel */}
       <div className="absolute top-0 left-0 h-full w-[340px] z-[1] pointer-events-none drop-shadow-[5px_0_9px_rgba(0,0,0,0.12)] max-xl:w-[300px] max-lg:w-[270px] max-nav:hidden">

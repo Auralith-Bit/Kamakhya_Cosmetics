@@ -1,13 +1,15 @@
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
+import HeroSection from "./components/HeroSection/HeroSection";
 
 function App() {
   return (
     <>
       <Navbar />
-      <div style={{ minHeight: "80vh" }}>
-        {/* your page content will go here */}
-      </div>
+      <main>
+        <HeroSection />
+        {/* Additional sections will go here */}
+      </main>
       <Footer />
     </>
   );
