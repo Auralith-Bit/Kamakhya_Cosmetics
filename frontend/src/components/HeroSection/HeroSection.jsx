@@ -59,7 +59,7 @@ const HeroSection = () => {
         position: 'relative',
         width: '100%',
         height: 'calc(100vh - 130px)',
-        minHeight: '620px',
+        minHeight: '840px',
         maxHeight: '900px',
         background: 'linear-gradient(120deg, #f8ede0 0%, #f5e8d8 35%, #f0e0cc 100%)',
         overflow: 'hidden',
@@ -113,11 +113,12 @@ const HeroSection = () => {
           left: 'clamp(40px, 8.85vw, 170px)',
           top: 'clamp(40px, 9.26vh, 100px)',
           width: 'clamp(300px, 37.81vw, 726px)',
-          height: 'clamp(460px, 63.89vh, 690px)',
+          height: 'auto',
+          minHeight: 'clamp(460px, 63.89vh, 690px)',
           zIndex: 2,
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
+          justifyContent: 'flex-start',
           gap: 'clamp(20px, 4.58vw, 88px)',
           boxSizing: 'border-box',
         }}
@@ -140,15 +141,21 @@ const HeroSection = () => {
           Premium Beauty &amp; Home Care
         </p>
 
-        {/* Main headline */}
+        {/* Main headline
+            Design specs (1920px): Playfair / 700 / Bold / 86px / line-height 96px / letter-spacing 0% / color #2E3192
+            Converted font-size 86 → clamp(30px, 4.48vw, 86px); line-height 96/86 = 1.12
+            Reduced text by 10px → clamp(25px, 3.96vw, 76px); margin reduced by 20px
+        */}
         <h1 style={{
-          fontSize: 'clamp(24px, 2.5vw, 32px)',
-          fontWeight: 900,
-          lineHeight: 1.08,
-          color: '#1e2674',
-          letterSpacing: '-0.5px',
+          fontFamily: "'Playfair Display', 'Playfair', serif",
+          fontWeight: 700,
+          fontStyle: 'normal',
+          fontSize: 'clamp(25px, 3.96vw, 76px)',
+          lineHeight: 1.12,
+          letterSpacing: '0',
+          color: '#2E3192',
           textTransform: 'uppercase',
-          margin: '0',
+          margin: '-40px 0 -20px 0',
         }}>
           Beauty Crafted<br />With Care
         </h1>
