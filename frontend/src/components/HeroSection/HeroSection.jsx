@@ -155,20 +155,27 @@ const HeroSection = () => {
           letterSpacing: '0',
           color: '#2E3192',
           textTransform: 'uppercase',
-          margin: '-40px 0 -20px 0',
+          margin: '-40px 0',
         }}>
           Beauty Crafted<br />With Care
         </h1>
 
-        {/* Description */}
+        {/* Description
+            Design specs (1920px): Poppins / 500 / Medium / 20px / line-height 100% / letter-spacing 0% / color #333333
+            Converted font-size 20 → clamp(13px, 1.04vw, 20px)
+            Text size +1px → clamp(14px, 1.09vw, 21px); line gap +2px → line-height 1.1
+        */}
         <p style={{
-          fontSize: '14px',
-          lineHeight: 1.65,
-          color: '#555',
+          fontFamily: "'Poppins', sans-serif",
+          fontWeight: 500,
+          fontStyle: 'normal',
+          fontSize: 'clamp(14px, 1.09vw, 21px)',
+          lineHeight: 1.2,
+          letterSpacing: '0',
+          color: '#333333',
           margin: '0',
-          fontWeight: 400,
         }}>
-          Premium cosmetics and household solutions crafted with trusted ingredients and modern
+          Premium cosmetics and household solutions <br /> crafted with trusted ingredients and modern <br />
           innovation for everyday living
         </p>
 
