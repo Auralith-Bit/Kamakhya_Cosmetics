@@ -180,7 +180,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 48px;
+  margin-bottom: 18px;
   flex-wrap: wrap;
   animation: hero-fade-up 0.65s ease both;
   animation-delay: 0.35s;
@@ -202,15 +202,41 @@
 }
 
 .hero-btn--primary {
-  background: linear-gradient(135deg, #2e3192 0%, #3d42c0 100%);
+  /* Dimensions & Spacing */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 242px; /* Your exact design width */
+  min-height: 61px; /* Your exact design height */
+  padding-left: 30px;
+  padding-right: 30px;
+
+  /* Colors & Borders */
+  background: #2E3192;
+  border: 3px solid #252775;
+  border-radius: 7px;
   color: #ffffff;
-  box-shadow: 0 6px 24px rgba(46, 49, 146, 0.32);
+  opacity: 1;
+
+  /* Typography */
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(13.5px, 0.9vw, 15px);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  
+  /* Smooth Hover Transition */
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Hover State */
 .hero-btn--primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 32px rgba(46, 49, 146, 0.44);
-  background: linear-gradient(135deg, #20236f 0%, #2e3192 100%);
+  background: #252775;
+  border-color: #1c1e5a;
+  box-shadow: 0 6px 20px rgba(46, 49, 146, 0.35);
 }
 
 .hero-btn--primary:active {

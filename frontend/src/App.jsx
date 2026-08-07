@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import HeroSection from "./components/HeroSection/HeroSection";
+import AboutStory from "./components/Aboutus/AboutStory";
 
 function App() {
   return (
@@ -8,7 +9,7 @@ function App() {
       <Navbar />
       <main>
         <HeroSection />
-        {/* Additional sections will go here */}
+        <AboutStory />
       </main>
       <Footer />
     </>
