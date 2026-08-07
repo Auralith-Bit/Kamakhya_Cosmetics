@@ -23,6 +23,9 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-[1000] w-full bg-white font-sans shadow-[0px_8px_20px_0px_rgba(0,0,0,0.25)]">
       
+      {/* Centered content container (matches section width) */}
+      <div className="relative mx-auto max-w-[1320px]">
+
       {/* Diagonal white panel */}
       <div className="absolute top-0 left-0 h-full w-[340px] z-[1] pointer-events-none drop-shadow-[5px_0_9px_rgba(0,0,0,0.12)] max-xl:w-[300px] max-lg:w-[270px] max-nav:hidden">
         <div className="w-full h-full bg-white [clip-path:polygon(0_0,_100%_0,_51%_100%,_0_100%)]" />
@@ -102,6 +105,7 @@ const Navbar = () => {
             Become Distributor
           </button>
         </div>
+      </div>
       </div>
     </header>
   );

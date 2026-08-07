@@ -1,6 +1,6 @@
 import React from 'react';
 import './AboutStory.css';
-import warehouseImage from '../../assets/work.png'; // Update with your actual warehouse image asset name
+import warehouseImage from '../../assets/work.png';
 
 const AboutStory = () => {
   return (
