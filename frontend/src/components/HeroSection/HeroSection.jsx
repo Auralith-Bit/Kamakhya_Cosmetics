@@ -58,9 +58,8 @@ const HeroSection = () => {
       style={{
         position: 'relative',
         width: '100%',
-        height: 'calc(100vh - 130px)',
-        minHeight: '840px',
-        maxHeight: '900px',
+        height: 'calc((100vw - 232px) * 9 / 16)',
+        minHeight: '600px',
         background: 'linear-gradient(120deg, #f8ede0 0%, #f5e8d8 35%, #f0e0cc 100%)',
         overflow: 'hidden',
         fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
