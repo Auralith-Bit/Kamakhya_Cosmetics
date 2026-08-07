@@ -21,7 +21,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-[1000] w-full bg-white font-sans shadow-[0px_8px_20px_0px_rgba(0,0,0,0.25)]">
+    <header className="sticky top-0 z-[1000] w-full bg-white font-sans" style={{ boxShadow: '0px 8px 20px 0px #00000040' }}>
       
       {/* Centered content container (matches section width) */}
       <div className="relative mx-auto max-w-[1320px]">
