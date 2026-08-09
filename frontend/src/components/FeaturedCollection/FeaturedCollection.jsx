@@ -106,6 +106,13 @@ const FeaturedCollection = () => {
       </div>
 
       {/* ── PRODUCT CARDS GRID ── */}
+      <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
+        <defs>
+          <clipPath id="cardImageClip" clipPathUnits="objectBoundingBox">
+            <path d="M0 0 L1 0 L1 0.8158 C1 0.8256 0.9957 0.8347 0.9885 0.8402 C0.8579 0.938 0.6864 1 0.4987 1 C0.3122 1 0.1419 0.9388 0.0117 0.8423 C0.0043 0.8368 0 0.8276 0 0.8178 Z" />
+          </clipPath>
+        </defs>
+      </svg>
       <div
         className="relative z-10 mx-auto grid grid-cols-4 gap-6 max-lg:grid-cols-2 max-sm:grid-cols-1 px-12 max-lg:px-8 max-sm:px-5"
         style={{ maxWidth: '1280px' }}
@@ -113,33 +120,49 @@ const FeaturedCollection = () => {
         {PRODUCTS.map((product) => (
           <div
             key={product.id}
-            className="relative bg-white rounded-2xl overflow-hidden flex flex-col"
+            className="relative bg-white overflow-hidden flex flex-col"
             style={{
-              boxShadow: '0 4px 24px rgba(0, 0, 0, 0.06)',
+              borderRadius: '9px',
+              boxShadow: '0 8px 20px rgba(0, 0, 0, 0.22)',
             }}
           >
-            {/* Image */}
-            <div className="relative w-full" style={{ height: '260px' }}>
+            {/* Image clipped to fit inside the gold wave */}
+            <div className="relative w-full" style={{ aspectRatio: '371 / 334' }}>
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{
+                  objectPosition: 'center 40%',
+                  clipPath: 'url(#cardImageClip)',
+                }}
               />
+
+              {/* Fine gold contour at the bottom of the image */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 371 334"
+                fill="none"
+                className="absolute bottom-0 left-0 w-full pointer-events-none"
+                style={{ height: 'auto' }}
+              >
+                <path d="M0 273.15 C52.65 313.56 115.84 334 185 334 C254.65 334 318.26 313.28 371 272.48" stroke="#CCA466" strokeWidth="3" />
+              </svg>
 
               {/* FEATURED badge */}
               <span
                 className="absolute top-4 left-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full"
                 style={{
                   fontFamily: "'Poppins', sans-serif",
-                  fontSize: '11px',
+                  fontSize: '14px',
                   fontWeight: 600,
                   letterSpacing: '0.5px',
-                  background: 'rgba(255, 255, 255, 0.92)',
-                  color: '#c9a24b',
+                  background: '#fff',
+                  color: '#CCA466',
                   backdropFilter: 'blur(4px)',
                 }}
               >
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 0L14.59 8.41L23 12L14.59 15.59L12 24L9.41 15.59L1 12L9.41 8.41L12 0Z" />
                 </svg>
                 FEATURED
@@ -147,41 +170,30 @@ const FeaturedCollection = () => {
 
               {/* Wishlist heart */}
               <span
-                className="absolute top-4 right-4 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer"
+                className="absolute top-4 right-4 w-11 h-11 rounded-full flex items-center justify-center cursor-pointer"
                 style={{
-                  background: 'rgba(255, 255, 255, 0.92)',
-                  border: '1.5px solid #e6ddc9',
+                  background: '#fff',
+                  border: '2px solid #CCA466',
                   backdropFilter: 'blur(4px)',
                 }}
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c9a24b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2E3192" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                 </svg>
               </span>
             </div>
 
-            {/* Gold wave overlay */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 371 58"
-              fill="none"
-              className="relative w-full pointer-events-none"
-              style={{ height: '58px', marginTop: '-29px', zIndex: 10 }}
-            >
-              <path d="M371 1.3564C371 1.79786 370.785 2.21068 370.422 2.46156C320.58 36.885 255.806 57.6832 185 57.6832C114.669 57.6832 50.2887 37.1631 0.582546 3.15224C0.216791 2.90197 0 2.48782 0 2.04464C0 0.954461 1.22598 0.312464 2.12412 0.930381C50.7218 34.3653 114.788 54.6832 185 54.6832C255.691 54.6832 320.153 34.0877 368.869 0.24467C369.767 -0.379442 371 0.262491 371 1.3564Z" fill="#CCA466"/>
-            </svg>
-
             {/* Content */}
-            <div className="flex flex-col flex-1 px-5 pt-3 pb-6">
+            <div className="flex flex-col flex-1 px-5 pt-5 pb-7">
               {/* Product name */}
               <h3
                 className="m-0 mb-2"
                 style={{
                   fontFamily: "'Playfair Display', 'Playfair', serif",
                   fontWeight: 700,
-                  fontSize: '18px',
+                  fontSize: '20px',
                   lineHeight: 1.3,
-                  color: '#2E3192',
+                  color: '#292929',
                   textAlign: 'center',
                 }}
               >
@@ -194,10 +206,10 @@ const FeaturedCollection = () => {
                 style={{
                   fontFamily: "'Poppins', sans-serif",
                   fontWeight: 400,
-                  fontSize: '13px',
-                  lineHeight: 1.6,
-                  color: '#666680',
-                  textAlign: 'center',
+                  fontSize: '16px',
+                  lineHeight: 1.65,
+                  color: '#666',
+                  textAlign: 'left',
                   flex: 1,
                 }}
               >
@@ -205,35 +217,32 @@ const FeaturedCollection = () => {
               </p>
 
               {/* MOQ and Lead Time */}
-              <div className="flex items-center justify-center gap-6 mb-4">
+              <div className="flex items-center justify-between gap-3 mb-7 py-2.5" style={{ borderTop: '1px solid #E8D6B8', borderBottom: '1px solid #E8D6B8' }}>
                 {/* MOQ */}
                 <div className="flex items-center gap-2">
                   <div
-                    className="w-8 h-8 rounded-full flex items-center justify-center"
-                    style={{ background: '#fcfaf7', border: '1px solid #e6ddc9' }}
+                    className="w-11 h-11 rounded-full flex items-center justify-center"
+                    style={{ background: '#FCF7EF' }}
                   >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a24b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#CCA466" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
                       <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
                       <line x1="12" y1="22.08" x2="12" y2="12" />
                     </svg>
                   </div>
                   <div className="flex flex-col">
-                    <span style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 600, fontSize: '10px', color: '#E38F2E', letterSpacing: '0.5px' }}>MOQ</span>
-                    <span style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 600, fontSize: '12px', color: '#333' }}>{product.moq}</span>
+                    <span style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 400, fontSize: '15px', color: '#CCA466' }}>MOQ</span>
+                    <span style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 500, fontSize: '15px', color: '#555' }}>{product.moq}</span>
                   </div>
                 </div>
-
-                {/* Vertical divider */}
-                <div style={{ width: '1px', height: '32px', background: '#e6ddc9' }} />
 
                 {/* Lead Time */}
                 <div className="flex items-center gap-2">
                   <div
-                    className="w-8 h-8 rounded-full flex items-center justify-center"
-                    style={{ background: '#fcfaf7', border: '1px solid #e6ddc9' }}
+                    className="w-11 h-11 rounded-full flex items-center justify-center"
+                    style={{ background: '#FCF7EF' }}
                   >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a24b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#CCA466" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                       <line x1="16" y1="2" x2="16" y2="6" />
                       <line x1="8" y1="2" x2="8" y2="6" />
@@ -241,8 +250,8 @@ const FeaturedCollection = () => {
                     </svg>
                   </div>
                   <div className="flex flex-col">
-                    <span style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 600, fontSize: '10px', color: '#E38F2E', letterSpacing: '0.5px' }}>Lead Time</span>
-                    <span style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 600, fontSize: '12px', color: '#333' }}>{product.leadTime}</span>
+                    <span style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 400, fontSize: '15px', color: '#CCA466' }}>Lead Time</span>
+                    <span style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 500, fontSize: '15px', color: '#555' }}>{product.leadTime}</span>
                   </div>
                 </div>
               </div>
@@ -250,17 +259,17 @@ const FeaturedCollection = () => {
               {/* View Products button */}
               <button
                 type="button"
-                className="flex items-end justify-center gap-2.5 no-underline transition-colors"
+                className="flex items-center justify-center gap-2.5 no-underline transition-colors"
                 style={{
                   width: '100%',
-                  height: '51px',
-                  padding: '12px 20px',
+                  height: '54px',
+                  padding: '10px 20px 10px 28px',
                   borderRadius: '107px',
                   border: '2px solid #2E3192',
                   background: '#FFF',
                   fontFamily: "'Poppins', sans-serif",
-                  fontWeight: 600,
-                  fontSize: '13px',
+                  fontWeight: 500,
+                  fontSize: '17px',
                   color: '#2E3192',
                   cursor: 'pointer',
                   boxSizing: 'border-box',
@@ -271,9 +280,9 @@ const FeaturedCollection = () => {
                 View Products
                 <span
                   className="flex items-center justify-center w-8 h-8 rounded-full shrink-0"
-                  style={{ background: '#fff', border: '1.5px solid #2E3192' }}
+                  style={{ background: '#C9CBEC' }}
                 >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2E3192" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2E3192" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />
                   </svg>
