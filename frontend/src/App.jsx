@@ -3,6 +3,7 @@ import Footer from "./components/Footer/Footer";
 import HeroSection from "./components/HeroSection/HeroSection";
 import AboutStory from "./components/Aboutus/AboutStory";
 import FeaturedCollection from "./components/FeaturedCollection/FeaturedCollection";
+import StatsBar from "./components/StatsBar/StatsBar";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <HeroSection />
         <AboutStory />
         <FeaturedCollection />
+        <StatsBar />
       </main>
       <Footer />
     </>

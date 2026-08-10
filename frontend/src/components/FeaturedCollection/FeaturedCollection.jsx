@@ -47,11 +47,10 @@ const FeaturedCollection = () => {
     <section
       id="featured-collection"
       aria-label="Featured Collection"
-      className="relative w-full bg-[#fcfaf7] overflow-hidden"
-      style={{ padding: '80px 0 60px' }}
+      className="relative w-full bg-[#fcfaf7] overflow-hidden py-20 max-lg:py-16 max-sm:py-10"
     >
       {/* ── HEADER ── */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6" style={{ maxWidth: '900px', margin: '0 auto 48px' }}>
+      <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-[900px] mx-auto mb-12 max-sm:mb-8">
         <p
           className="m-0 font-semibold uppercase"
           style={{
@@ -231,6 +230,7 @@ const FeaturedCollection = () => {
 
               {/* MOQ | divider | Lead Time */}
               <div
+                className="max-sm:flex-wrap"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -267,10 +267,10 @@ const FeaturedCollection = () => {
                 </div>
 
                 {/* vertical divider */}
-                <div style={{ width: '1px', alignSelf: 'stretch', background: '#E8D6B8' }} />
+                <div className="max-sm:hidden" style={{ width: '1px', alignSelf: 'stretch', background: '#E8D6B8' }} />
 
                 {/* Lead Time */}
-                <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: '10px', paddingLeft: '16px', minWidth: 0 }}>
+                <div className="pl-4 max-sm:pl-0" style={{ flex: 1, display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
                   <div
                     style={{
                       width: '40px',

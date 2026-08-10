@@ -25,8 +25,7 @@ const Navbar = () => {
       <style>{`
         .kn-nav, .kn-nav *{box-sizing:border-box;}
         .kn-nav{position:sticky;top:0;z-index:1000;width:100%;background:#fff;
-          font-family:'Poppins','Segoe UI',sans-serif;box-shadow:0 2px 10px rgba(0,0,0,.08);
-          overflow-x:clip;}
+          font-family:'Poppins','Segoe UI',sans-serif;box-shadow:0 2px 10px rgba(0,0,0,.08);}
 
         /* diagonal white panel + logo (desktop) */
         .kn-diag{position:absolute;top:0;left:0;height:100%;width:340px;z-index:1;
