@@ -248,7 +248,7 @@ const HeroSection = () => {
                 fontFamily: "'Poppins', sans-serif",
                 fontWeight: 400,
                 fontStyle: 'normal',
-                fontSize: '18px',
+                fontSize: '16px',
                 lineHeight: 1,
                 letterSpacing: '0',
                 textAlign: 'center',
