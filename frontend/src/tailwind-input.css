@@ -21,8 +21,20 @@
   --color-muted: #b7bccb;
   --color-fog: #d9dbe6;
 
+  --color-navy-700: #252775;
+  --color-navy-800: #1c1e5a;
+  --color-hero-orange: #E38F2E;
+  --color-hero-gold: #CCA466;
+  --color-hero-cream: #FCFAF7;
+  --color-hero-ink: #333333;
+  --color-about-text: #444455;
+
   --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   --font-serif: Georgia, 'Times New Roman', serif;
+  --font-body: 'Poppins', sans-serif;
+  --font-title: 'Playfair Display', 'Playfair', serif;
+
+  --radius-full: 9999px;
 }
 
 @utility heading-footer {
