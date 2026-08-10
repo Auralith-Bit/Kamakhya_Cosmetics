@@ -19,10 +19,14 @@
   "scripts": {
     "dev": "react-scripts start",
     "start": "react-scripts start",
+    "prebuild": "npx @tailwindcss/cli -i ./src/tailwind-input.css -o ./src/tailwind-output.css",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "tailwind": "npx @tailwindcss/cli -i ./src/tailwind-input.css -o ./src/tailwind-output.css --watch"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "eslintConfig": {
     "extends": [
