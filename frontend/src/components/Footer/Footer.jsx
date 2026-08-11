@@ -1,158 +1,204 @@
-/**
- * FILE : frontend/src/components/brands/shine/ShineHero.jsx
- * ROUTE: /brands/shine — section 1 (hero banner)
- * RESPONSIVE: 5 tiers cover ALL DevTools standard devices (see mapping above);
- *             ≥1024 = exact 1920x450 frame scaled by vw/1920 (never distorts)
- */
-import React, { useEffect, useState } from "react";
-import banner from "../../assets/image 27.svg";
-import shade from "../../assets/Rectangle 4615.svg";
+import React from "react";
+import logo from "../../assets/Vector.svg";
+import goldRule from "../../assets/Vector (1) Gold.svg";
+import whiteRule from "../../assets/White Rectangle 13.svg";
 
-const serif = "'Playfair Display', Georgia, serif";
-const sans = "'Poppins', 'Segoe UI', sans-serif";
-
-const W = 1920;
-const H = 450;
-
-const HomeIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M3 10.5 12 3l9 7.5" /><path d="M5 9.5V21h14V9.5" /><path d="M9 21v-6h6v6" />
+const PinIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+    <circle cx="12" cy="10" r="3" />
   </svg>
 );
 
-const Chev = () => (
-  <svg width="9" height="14" viewBox="0 0 9 14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-    <path d="m1.5 1.5 6 5.5-6 5.5" />
+const PhoneIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.9 2.2Z" />
   </svg>
 );
 
-const ShineHero = () => {
-  const [vw, setVw] = useState(() => (typeof window !== "undefined" ? window.innerWidth : W));
-  useEffect(() => {
-    const onResize = () => setVw(window.innerWidth);
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
+const MailIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <rect x="2" y="4" width="20" height="16" rx="2" />
+    <path d="m22 6-10 7L2 6" />
+  </svg>
+);
 
-  const desktop = vw >= 1024;
-  const scale = vw / W;
+const SendIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="m22 2-7 20-4-9-9-4Z" />
+    <path d="M22 2 11 13" />
+  </svg>
+);
 
-  const layers = (
-    <>
-      <img className="sh-bg" src={banner} alt="Shine Clean & Fresh — dishwash liquid, toilet cleaner, detergent powder, hand wash, surface cleaner" />
-      <img className="sh-shade" src={shade} alt="" aria-hidden="true" />
+const FacebookIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z" />
+  </svg>
+);
 
-      <div className="sh-copy">
-        <nav className="sh-crumb" aria-label="Breadcrumb">
-          <HomeIcon />
-          <a href="/">Home</a>
-          <Chev />
-          <a href="/brands/shine">Brands</a>
-          <Chev />
-          <span>Shine</span>
-        </nav>
+const InstagramIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <rect x="2" y="2" width="20" height="20" rx="5" />
+    <circle cx="12" cy="12" r="4" />
+    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+  </svg>
+);
 
-        <p className="sh-tag">A Kamakhya Cosmetics House</p>
-        <div className="sh-rule" />
-        <h1 className="sh-title">Shine</h1>
+const TwitterIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M22 4.01c-.9.4-1.8.7-2.8.9a4 4 0 0 0-6.9 3.6A11.4 11.4 0 0 1 3.9 4.7a4 4 0 0 0 1.2 5.4c-.7 0-1.4-.2-2-.6v.1a4 4 0 0 0 3.2 4 4 4 0 0 1-1.8.1 4 4 0 0 0 3.7 2.8A8 8 0 0 1 2 18.6a11.3 11.3 0 0 0 6.1 1.8c7.3 0 11.3-6.1 11.3-11.3v-.5c.8-.6 1.5-1.3 2-2.1-.7.3-1.5.6-2.4.7.9-.5 1.6-1.3 1.9-2.2Z" />
+  </svg>
+);
 
-        <p className="sh-p">
-          Explore premium home-care and cleaning products designed for powerful
-          <br className="sh-br" />
-          performance, everyday freshness, and dependable quality.
-        </p>
-      </div>
-    </>
-  );
+const FOOTER_LINKS = {
+  Company: ["About Us", "Manufacturing & Quality", "Contact Us"],
+  Brands: ["Royal Luxury", "Shine"],
+  "Business Solutions": ["Become Distributor", "Request Quotes"],
+  Products: ["Trade catalogue", "Skincare", "Makeup", "Home care", "Saved Products"],
+};
+
+const FOOTER_LINK_GROUPS = [
+  ["Company", "Brands"],
+  ["Business Solutions", "Products"],
+];
+
+const LinkLabel = ({ label }) => {
+  if (label === "Manufacturing & Quality") {
+    return (
+      <>
+        Manufacturing &amp;<br />Quality
+      </>
+    );
+  }
+  return label;
+};
+
+const Footer = () => {
+  const year = new Date().getFullYear();
 
   return (
-    <section id="shine-hero" className="sh-hero" style={desktop ? { height: Math.round(H * scale) } : undefined}>
-      <style>{`
-        /* ===== TIER 0: <360 (Z Fold folded) ===== */
-        .sh-hero{position:relative;width:100%;background:#F6EDE3;overflow:hidden;
-          display:flex;flex-direction:column-reverse;}
-        .sh-bg{display:block;width:100%;height:200px;object-fit:cover;object-position:center right;}
-        .sh-shade{position:absolute;left:0;top:0;width:100%;height:240px;object-fit:cover;
-          pointer-events:none;z-index:1;}
-        .sh-copy{position:relative;z-index:2;padding:24px 18px;}
-        .sh-crumb{display:flex;align-items:center;flex-wrap:wrap;gap:8px;color:#2E3192;
-          font-family:${serif};font-size:14px;font-weight:700;}
-        .sh-crumb a{color:#2E3192;text-decoration:none;}
-        .sh-tag{margin-top:16px;color:#E38F2E;font-family:${sans};font-size:15px;font-weight:500;}
-        .sh-rule{width:80px;height:3px;background:#E38F2E;margin-top:10px;border-radius:2px;}
-        .sh-title{margin-top:12px;color:#2E3192;font-family:${serif};font-size:30px;font-weight:700;line-height:1.1;}
-        .sh-p{margin-top:12px;color:#5A6673;font-family:${sans};font-size:13px;line-height:22px;}
-        .sh-br{display:none;}
+    <footer className="bg-navy text-[#e9e9ee] font-sans">
+      <div className="pt-16 pl-[140px] pr-[100px] max-lg:pt-12 max-lg:px-8 max-tab:pt-10 max-tab:px-5">
 
-        /* ===== TIER 1: 360–479 (all phones) ===== */
-        @media (min-width:360px){
-          .sh-bg{height:240px;}
-          .sh-copy{padding:28px 22px;}
-          .sh-crumb{font-size:15px;}
-          .sh-tag{font-size:16px;}
-          .sh-title{font-size:34px;}
-          .sh-p{font-size:14px;line-height:24px;}
-        }
+        {/* ── TOP: brand + nav link groups ── */}
+        <div className="grid grid-cols-[1.1fr_1fr_1fr] gap-12 pb-10 max-lg:grid-cols-2 max-lg:gap-y-8 max-tab:grid-cols-1">
+          <div className="max-lg:col-span-full">
+            <div className="flex items-center gap-4 mb-4">
+              <span className="flex items-center">
+                <img src={logo} alt="Kamakhya Cosmetics Logo" className="w-[70px] h-auto block" />
+              </span>
+              <span className="flex flex-col items-center leading-[1.2]">
+                <span className="font-serif font-bold text-xl text-white tracking-[0.5px]">KAMAKHYA</span>
+                <span className="flex items-center gap-2 mt-0.5">
+                  <img src={goldRule} alt="" className="block h-[3px] w-[18px] shrink-0" />
+                  <span className="font-serif font-semibold text-[13px] text-footer-gold tracking-[3px] whitespace-nowrap">COSMETICS</span>
+                  <img src={goldRule} alt="" className="block h-[3px] w-[18px] shrink-0" />
+                </span>
+                <span className="flex items-center gap-1.5 mt-[3px]">
+                  <img src={whiteRule} alt="" className="block h-0.5 w-3.5 shrink-0" />
+                  <span className="text-[9px] tracking-[1.5px] text-fog whitespace-nowrap">
+                    BEAUTY <em className="not-italic">•</em> CARE <em className="not-italic">•</em> TRUST
+                  </span>
+                  <img src={whiteRule} alt="" className="block h-0.5 w-3.5 shrink-0" />
+                </span>
+              </span>
+            </div>
+            <p className="m-0 text-fog text-sm leading-[1.6] max-w-[260px] max-lg:max-w-full">
+              Kamakhya Cosmetics manufactures premium beauty and home-care
+              products for retailers, distributors, private-label brands and
+              institutions.
+            </p>
+          </div>
 
-        /* ===== TIER 2: 480–767 (Surface Duo single) ===== */
-        @media (min-width:480px){
-          .sh-bg{height:280px;}
-          .sh-shade{height:300px;}
-          .sh-copy{padding:32px 28px;}
-          .sh-crumb{font-size:16px;}
-          .sh-tag{font-size:18px;}
-          .sh-title{font-size:38px;}
-          .sh-p{font-size:15px;line-height:25px;}
-        }
-
-        /* ===== TIER 3: 768–1023 (iPads portrait, Surface Pro portrait) ===== */
-        @media (min-width:768px){
-          .sh-bg{height:360px;}
-          .sh-shade{height:380px;}
-          .sh-copy{padding:40px 48px;}
-          .sh-crumb{font-size:18px;}
-          .sh-tag{font-size:20px;}
-          .sh-rule{width:100px;}
-          .sh-title{font-size:44px;}
-          .sh-p{font-size:16px;line-height:27px;}
-          .sh-br{display:inline;}
-        }
-
-        /* ===== landscape phones (short height) ===== */
-        @media (max-width:1023px) and (max-height:480px){
-          .sh-bg{height:180px;}
-          .sh-shade{height:220px;}
-          .sh-copy{padding:16px 22px;}
-          .sh-tag{margin-top:10px;font-size:14px;}
-          .sh-title{font-size:28px;}
-          .sh-p{margin-top:8px;font-size:13px;line-height:20px;}
-        }
-
-        /* ===== TIER 4: ≥1024 — exact 1920x450 frame, scaled ===== */
-        @media (min-width:1024px){
-          .sh-hero{display:block;}
-          .sh-bg{position:absolute;top:0;left:0;width:1920px;height:450px;
-            object-fit:cover;object-position:center;}
-          .sh-shade{position:absolute;top:-31px;left:-210px;width:1900px;height:510px;
-            object-fit:fill;z-index:1;pointer-events:none;}
-          .sh-copy{position:absolute;left:176px;top:80px;padding:0;width:780px;z-index:2;}
-          .sh-crumb{font-size:24px;gap:10px;flex-wrap:nowrap;}
-          .sh-tag{margin-top:25px;font-size:24px;}
-          .sh-rule{width:104px;margin-top:12px;}
-          .sh-title{margin-top:20px;font-size:50px;font-weight:400;}
-          .sh-p{margin-top:22px;font-size:20px;line-height:29px;}
-        }
-      `}</style>
-
-      {desktop ? (
-        <div style={{ transform: `scale(${scale})`, transformOrigin: "top left", width: W, height: H, position: "relative" }}>
-          {layers}
+          {FOOTER_LINK_GROUPS.map((groupHeadings) => (
+            <div className="grid grid-cols-2 gap-12 max-tab:grid-cols-1" key={groupHeadings.join("-")}>
+              {groupHeadings.map((heading) => (
+                <div key={heading}>
+                  <h4 className="heading-footer">{heading}</h4>
+                  <ul className="m-0 p-0 list-none flex flex-col gap-3">
+                    {FOOTER_LINKS[heading].map((link, index) => (
+                      <li key={index}>
+                        <a href="/" className="text-fog no-underline text-sm transition-colors hover:text-footer-gold">
+                          <LinkLabel label={link} />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
-      ) : (
-        layers
-      )}
-    </section>
+
+        <hr className="m-0 border-none border-t border-white/35" />
+
+        {/* ── MIDDLE: contact / trade info / newsletter ── */}
+        <div className="grid grid-cols-[1.1fr_1fr_1fr] gap-12 py-12 max-lg:grid-cols-1 max-lg:gap-8">
+          <div>
+            <h4 className="heading-footer">Contact &amp; Registered Office</h4>
+            <p className="flex items-start gap-2.5 m-0 mb-3.5 text-fog text-sm leading-[1.5]">
+              <span className="shrink-0 text-footer-gold mt-0.5"><PinIcon /></span>
+              <span>Kamakhya Cosmetics Pvt. Ltd., manigram, Nepal</span>
+            </p>
+            <p className="flex items-start gap-2.5 m-0 mb-3.5 text-fog text-sm leading-[1.5]">
+              <span className="shrink-0 text-footer-gold mt-0.5"><PhoneIcon /></span>
+              <span>
+                +977 989XXXXXXX
+                <br />
+                +977 9700000000
+              </span>
+            </p>
+            <p className="flex items-start gap-2.5 m-0 mb-3.5 text-fog text-sm leading-[1.5]">
+              <span className="shrink-0 text-footer-gold mt-0.5"><MailIcon /></span>
+              <span>info@kamakhya.com.np</span>
+            </p>
+          </div>
+
+          <div>
+            <h4 className="heading-footer">Trade Information</h4>
+            <p className="m-0 mb-5 text-fog text-sm leading-[1.6] max-w-[300px] max-lg:max-w-full">
+              Kamakhya Cosmetics supplies premium beauty and home-care products
+              to distributors, retailers, and private-label partners. Pricing
+              is by quotation, with minimum order quantities.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="heading-footer">Trade Updates</h4>
+            <p className="m-0 mb-5 text-fog text-sm leading-[1.6] max-w-[300px] max-lg:max-w-full">
+              New product &amp; capability updates for trade partners.
+            </p>
+            <form
+              className="flex w-full max-w-[320px] overflow-hidden rounded-[4px] mb-[18px]"
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <input type="email" placeholder="Business email" required className="flex-1 border-none outline-none px-3.5 py-3 text-[13px]" />
+              <button type="submit" aria-label="Subscribe" className="flex items-center border-none bg-royal px-[18px] text-white cursor-pointer transition-colors hover:bg-royal-dark">
+                <SendIcon />
+              </button>
+            </form>
+            <div className="flex gap-3">
+              <a href="/" aria-label="Facebook" className="flex h-9 w-9 items-center justify-center rounded-full border border-footer-gold text-footer-gold no-underline transition-colors hover:bg-footer-gold hover:text-navy"><FacebookIcon /></a>
+              <a href="/" aria-label="Instagram" className="flex h-9 w-9 items-center justify-center rounded-full border border-footer-gold text-footer-gold no-underline transition-colors hover:bg-footer-gold hover:text-navy"><InstagramIcon /></a>
+              <a href="/" aria-label="Twitter" className="flex h-9 w-9 items-center justify-center rounded-full border border-footer-gold text-footer-gold no-underline transition-colors hover:bg-footer-gold hover:text-navy"><TwitterIcon /></a>
+              <a href="/" aria-label="Instagram" className="flex h-9 w-9 items-center justify-center rounded-full border border-footer-gold text-footer-gold no-underline transition-colors hover:bg-footer-gold hover:text-navy"><InstagramIcon /></a>
+            </div>
+          </div>
+        </div>
+
+        {/* ── BOTTOM: copyright + legal links ── */}
+        <div className="flex items-center justify-between border-t border-white/35 py-5 text-[13px] text-muted max-tab:flex-col max-tab:items-start max-tab:gap-3">
+          <p className="m-0">&copy; {year} Kamakhya Cosmetics Pvt. Ltd. All rights reserved.</p>
+          <div className="flex gap-6">
+            <a href="/" className="text-muted no-underline transition-colors hover:text-footer-gold">Privacy Policy</a>
+            <a href="/" className="text-muted no-underline transition-colors hover:text-footer-gold">Terms of Trade</a>
+            <a href="/" className="text-muted no-underline transition-colors hover:text-footer-gold">Accessibility</a>
+          </div>
+        </div>
+
+      </div>
+    </footer>
   );
 };
 
-export default ShineHero;
+export default Footer;
