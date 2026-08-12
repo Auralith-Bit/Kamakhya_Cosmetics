@@ -16,7 +16,7 @@ const ScrollToTop = () => {
   return null;
 };
 
-/* global shell — navbar + footer on ALL pages */
+
 const Layout = () => (
   <>
     <Navbar />
