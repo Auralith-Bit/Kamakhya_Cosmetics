@@ -7,7 +7,6 @@ import HomePage from "./pages/HomePage";
 import ShinePage from "./pages/brands/ShinePage";
 import RoyalLuxuryPage from "./pages/brands/RoyalLuxuryPage";
 
-/* jump to top on every route change */
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -15,7 +14,6 @@ const ScrollToTop = () => {
   }, [pathname]);
   return null;
 };
-
 
 const Layout = () => (
   <>
