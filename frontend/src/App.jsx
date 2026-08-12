@@ -9,18 +9,14 @@ import RoyalLuxuryPage from "./pages/brands/RoyalLuxuryPage";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
   return null;
 };
 
 const Layout = () => (
   <>
     <Navbar />
-    <main>
-      <Outlet />
-    </main>
+    <main><Outlet /></main>
     <Footer />
   </>
 );
