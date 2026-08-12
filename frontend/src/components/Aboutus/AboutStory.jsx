@@ -8,7 +8,7 @@ const AboutStory = () => {
       aria-label="About Us - Our Story"
       className="w-full bg-white py-[65px] flex items-center box-border max-sm:py-10"
     >
-      <div className="max-w-[1326px] w-full mx-auto px-12 grid grid-cols-2 items-center gap-[45px] max-lg:px-8 max-nav:grid-cols-1 max-nav:px-6 max-nav:gap-9 max-sm:px-4">
+      <div className="w-full mx-auto px-12 max-lg:px-8 max-sm:px-5 grid grid-cols-2 items-center gap-[45px] max-nav:grid-cols-1 max-nav:gap-9" style={{ maxWidth: '1280px' }}>
         
         {/* ── LEFT: Warehouse / Manufacturing Image ── */}
         <div className="relative w-[calc(100%+4px)] mx-[-2px] aspect-[3/2] rounded-[10px] overflow-hidden bg-black/20 shadow-[0_10px_30px_rgba(0,0,0,0.08)] max-nav:max-h-[380px]">

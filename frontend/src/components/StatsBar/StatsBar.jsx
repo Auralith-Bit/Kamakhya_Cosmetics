@@ -36,17 +36,17 @@ const StatsBar = () => {
   return (
     <section
       aria-label="Key Statistics"
-      className="relative py-[60px] px-8 lg:px-16 max-sm:py-10 max-sm:px-5 overflow-hidden"
+      className="relative min-h-[360px] py-[70px] px-[170px] max-lg:px-8 max-sm:px-5 max-sm:py-10 overflow-hidden flex items-center"
     >
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
         style={{ backgroundImage: `url(${statsBg})` }}
       />
-      <div className="absolute inset-0 bg-[#0a1230]/55" />
+      <div className="absolute inset-0 bg-[#151642]/15" />
       <div className="relative z-10 w-full grid grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] items-center max-lg:grid-cols-2 max-sm:grid-cols-1 gap-y-8">
         {STATS.map((stat, i) => (
           <React.Fragment key={i}>
-            <div className="flex flex-col items-center text-center gap-4">
+            <div className="flex flex-col items-center text-center" style={{ gap: '10px' }}>
               <div className="w-[68px] h-[68px] rounded-full bg-[#f5f0e8] flex items-center justify-center max-sm:w-[56px] max-sm:h-[56px]">
                 <img src={stat.icon} alt="" className="w-8 h-8 max-sm:w-6 max-sm:h-6" />
               </div>

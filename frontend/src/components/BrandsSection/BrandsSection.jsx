@@ -2,6 +2,8 @@ import React from 'react';
 import shineProduct from '../../assets/fenyl.jpg';
 import royalProduct from '../../assets/makeup.jpg';
 import kamakhyaLogo from '../../assets/Group 9.png';
+import shineBadge from '../../assets/girl.png';
+import royalBadge from '../../assets/crown.png';
 
 const shineFeatures = [
   { label: 'Powerful\nPerformance', icon: (
@@ -76,8 +78,8 @@ const BrandCard = ({ image, badge, badgeBg, badgePosition, brandName, brandNameC
 
 const BrandsSection = () => {
   return (
-    <section className="bg-[#fdfaf6] py-[70px] px-6 max-sm:py-10 max-sm:px-4 overflow-hidden">
-      <div className="max-w-[1300px] mx-auto">
+    <section className="bg-[#fdfaf6] py-[70px] max-sm:py-10 overflow-hidden">
+      <div className="mx-auto px-12 max-lg:px-8 max-sm:px-5" style={{ maxWidth: '1280px' }}>
         <div className="text-center mb-14">
           <p className="font-body text-[13px] font-semibold text-[#c9a24b] tracking-[3px] uppercase m-0">Our Brands</p>
           <h2 className="font-title text-[36px] font-semibold text-[#1a1a5c] m-0 mt-2">Two Brands, One Promise</h2>
@@ -94,7 +96,7 @@ const BrandsSection = () => {
         <div className="flex items-center justify-center gap-0 max-lg:flex-col max-lg:gap-10">
           <BrandCard
             image={shineProduct}
-            badge={shineProduct}
+            badge={shineBadge}
             badgeBg="bg-[#1a5c2a]"
             badgePosition="right-0"
             brandName="Shine"
@@ -130,7 +132,7 @@ const BrandsSection = () => {
 
           <BrandCard
             image={royalProduct}
-            badge={royalProduct}
+            badge={royalBadge}
             badgeBg="bg-[#2e3192]"
             badgePosition="left-0"
             brandName="Royal Luxury"
