@@ -289,7 +289,7 @@ const ProductSpotlight = () => {
         margin-top:0.8vw;
         color:#2E3192;
         font-family:${serif};
-        font-size:1.625vw;
+        font-size:1.6vw;
         font-weight:700;
         letter-spacing: 0.04em;
         }
