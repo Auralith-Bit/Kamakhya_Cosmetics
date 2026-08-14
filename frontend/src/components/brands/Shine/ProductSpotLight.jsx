@@ -1,12 +1,3 @@
-/**
- * FILE : frontend/src/components/brands/shine/ProductSpotlight.jsx
- * ROUTE: /brands/shine — section 4 (05 Signatures catalogue)
- * DESIGN: 1920x1235 — header y77/108/140/171; panel 170/274 1580x861;
- *   sidebar 402w; stage 534x760 @593/294; right col x1197; footer bar 62h
- * BEHAVIOR: arrows / list / dots / keyboard ← → drive one idx state;
- *   image track slides; badge, details, counter, dots sync
- * RESPONSIVE: 100% vw (designPx/19.2)
- */
 import React, { useEffect, useState } from "react";
 import vector1 from "../../../assets/Vector (1).svg";
 import img1 from "../../../assets/Rectangle 4647.svg";
@@ -80,8 +71,14 @@ const ChevL = () => (
 const ChevR = () => (
   <svg viewBox="0 0 9 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m1.5 1.5 6 5.5-6 5.5" /></svg>
 );
+/* ✔ Figma-style: thin gold ring + BOLD orange tick */
 const Check = () => (
-  <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="9" r="8" /><path d="m5.6 9.2 2.2 2.2 4.6-4.7" /></svg>
+  <svg viewBox="0 0 20 20" fill="none">
+    <circle cx="10" cy="10" r="9" stroke="#CCA466" strokeWidth="1.4" />
+    <path d="m6 10.4 2.6 2.6 5.4-5.8"
+      stroke="#E38F2E" strokeWidth="2.6"
+      strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
 );
 const Plus = () => (
   <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M9 3v12M3 9h12" /></svg>
@@ -210,7 +207,14 @@ const ProductSpotlight = () => {
         display:flex;
         flex-direction:column;
         gap:0.3125vw;
-        transition:background .25s,border-color .25s;
+        transition:background .25s, border-color .25s, box-shadow .25s, transform .25s;
+        }
+
+        .psx-item:hover:not(.active){
+          box-shadow:0 0.4167vw 0.625vw  rgba(0,0,0,0.08),   /* 0 8px 12px @8%  */
+                    0 1.0417vw 1.3021vw rgba(0,0,0,0.05);   /* 0 20px 25px @5% */
+          transform:translateY(-0.1042vw);                   /* -2px lift @1920 */
+          border-color:#ffffff;
         }
 
         .psx-item-cat{
@@ -290,7 +294,15 @@ const ProductSpotlight = () => {
         letter-spacing: 0.04em;
         }
 
-        .psx-desc{margin-top:1.0417vw;color:#666666;font-family:${sans};font-size:0.8333vw;line-height:1.4583vw;}
+        .psx-desc{
+        margin-top:1.0417vw;
+        color:#666666;
+        font-family:${sans};
+        font-size:0.9vw;
+        font-weight: 400;
+        line-height:1.4583vw;
+        }
+        
         .psx-div{height:0.0521vw;background:#D7DAE4;margin-top:1.5625vw;}
 
         .psx-notes-h{
@@ -320,7 +332,7 @@ const ProductSpotlight = () => {
         gap:0.5208vw;
         color:#666666;
         font-family:${sans};
-        font-size:0.8813vw;
+        font-size:0.95vw;
         }
 
         .psx-notes svg{width:0.9375vw;height:0.9375vw;color:#E38F2E;flex-shrink:0;}
