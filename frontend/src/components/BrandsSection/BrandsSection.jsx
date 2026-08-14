@@ -280,7 +280,7 @@ const BrandCard = ({
 /* ─── Main Section ──────────────────────────────────────────────────── */
 const BrandsSection = () => (
   <section style={{ background: '#fdfaf6', padding: '72px 0 80px', overflow: 'hidden' }}>
-    <div className="px-[100px] max-lg:px-8 max-sm:px-5">
+    <div className="px-[170px] max-lg:px-8 max-sm:px-5">
 
       {/* Section header */}
       <div style={{ textAlign: 'center', marginBottom: '52px' }}>
@@ -323,7 +323,7 @@ const BrandsSection = () => (
       </div>
 
       {/* Three-column: card | connector | card */}
-      <div className="flex items-center justify-center gap-0 max-lg:flex-col max-lg:gap-10" style={{ display: 'flex' }}>
+      <div className="flex items-center justify-start gap-0 max-lg:flex-col max-lg:gap-10" style={{ display: 'flex' }}>
 
         {/* Left card – Shine */}
         <BrandCard
