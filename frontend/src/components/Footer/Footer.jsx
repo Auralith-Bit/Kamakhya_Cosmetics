@@ -78,7 +78,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-navy text-[#e9e9ee] font-sans">
-      <div className="pt-16 pl-[140px] pr-[100px] max-lg:pt-12 max-lg:px-8 max-tab:pt-10 max-tab:px-5">
+      <div className="pt-16 px-[170px] max-lg:px-8 max-tab:px-5 max-lg:pt-12 max-tab:pt-10">
 
         {/* ── TOP: brand + nav link groups ── */}
         <div className="grid grid-cols-[1.1fr_1fr_1fr] gap-12 pb-10 max-lg:grid-cols-2 max-lg:gap-y-8 max-tab:grid-cols-1">

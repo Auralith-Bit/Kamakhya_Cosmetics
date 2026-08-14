@@ -1,5 +1,5 @@
 import React from 'react';
-import heroImage from '../../assets/shine1.png';
+import heroImage from '../../assets/hero.png';
 import badgeDiamond from '../../assets/ion_diamond-outline.png';
 import badgeCertificate from '../../assets/certificate.png';
 import badgeLeaf from '../../assets/leaf.png';
@@ -37,22 +37,22 @@ const HeroSection = () => {
     <section
       id="home"
       aria-label="Hero Banner"
-      className="relative w-full h-[calc((100vw-242px)*9/16)] min-h-[600px] bg-[linear-gradient(120deg,#f8ede0_0%,#f5e8d8_35%,#f0e0cc_100%)] overflow-hidden font-sans max-lg:h-auto max-lg:min-h-0"
+      className="relative w-full h-[calc(100vw*885/1920)] min-h-[600px] bg-[linear-gradient(120deg,#f8ede0_0%,#f5e8d8_35%,#f0e0cc_100%)] overflow-hidden font-sans max-lg:h-auto max-lg:min-h-0"
     >
       
       <div
-        className="absolute left-[242px] right-0 top-1/2 -translate-y-1/2 h-full z-[1] max-lg:left-[42%] max-lg:top-0 max-lg:bottom-0 max-lg:translate-y-0 max-lg:h-auto max-sm:left-[40%]"
+        className="absolute inset-0 top-1/2 -translate-y-1/2 h-full z-[1] max-lg:top-0 max-lg:bottom-0 max-lg:translate-y-0 max-lg:h-auto"
       >
         <img
           src={heroImage}
           alt="Kamakhya Cosmetics – Shine and Royal Luxury product collection"
-          className="w-full h-full object-contain object-right block max-lg:object-cover"
+          className="w-full h-full object-contain object-center block max-lg:object-cover"
         />
       </div>
 
       
       <div
-        className="absolute left-[clamp(40px,8.85vw,170px)] top-[clamp(40px,9.26vh,100px)] w-[clamp(300px,37.81vw,726px)] h-auto min-h-[clamp(460px,63.89vh,690px)] z-[2] flex flex-col justify-start gap-[clamp(20px,4.58vw,88px)] box-border max-lg:static max-lg:min-w-0 max-lg:w-[58%] max-lg:min-h-0 max-lg:gap-5 max-lg:px-5 max-lg:py-8 max-sm:w-[60%] max-sm:gap-4 max-sm:px-4 max-sm:py-6"
+        className="absolute left-[170px] top-[clamp(40px,9.26vh,100px)] w-[clamp(300px,37.81vw,726px)] h-auto min-h-[clamp(460px,63.89vh,690px)] z-[2] flex flex-col justify-start gap-[clamp(20px,4.58vw,88px)] box-border max-lg:static max-lg:min-w-0 max-lg:w-[58%] max-lg:min-h-0 max-lg:gap-5 max-lg:px-5 max-lg:py-8 max-sm:w-[60%] max-sm:gap-4 max-sm:px-4 max-sm:py-6"
       >
         
         <p className="font-title font-bold text-[clamp(18px,1.875vw,36px)] leading-none tracking-normal text-hero-orange m-0 uppercase">
@@ -76,7 +76,7 @@ const HeroSection = () => {
           <a
             href="#contact"
             id="hero-cta-quote"
-            className="inline-flex items-center justify-center w-[clamp(121px,12.6vw,242px)] h-full gap-[clamp(5px,0.52vw,10px)] px-[clamp(14px,1.56vw,30px)] rounded-[clamp(4px,0.36vw,7px)] text-[12px] font-bold tracking-[1.2px] no-underline uppercase bg-brand-blue border-[3px] border-navy-700 text-white box-border cursor-pointer transition-transform duration-200 hover:-translate-y-0.5 max-sm:w-full max-sm:min-h-[48px]"
+            className="inline-flex items-center justify-center w-[clamp(121px,12.6vw,242px)] h-full gap-[clamp(5px,0.52vw,10px)] px-[clamp(14px,1.56vw,30px)] rounded-[clamp(4px,0.36vw,7px)] text-[12px] font-body font-bold tracking-[1.2px] no-underline uppercase bg-brand-blue border-[3px] border-navy-700 text-white box-border cursor-pointer transition-transform duration-200 hover:-translate-y-0.5 max-sm:w-full max-sm:min-h-[48px]"
           >
             REQUEST QUOTE
             <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="inline">
@@ -88,7 +88,7 @@ const HeroSection = () => {
           <a
             href="#about"
             id="hero-cta-about"
-            className="inline-flex items-center justify-center w-[clamp(109px,11.35vw,218px)] h-full gap-[clamp(5px,0.52vw,10px)] px-[clamp(14px,1.56vw,30px)] rounded-[clamp(4px,0.36vw,7px)] text-[12px] font-bold tracking-[1.2px] no-underline uppercase bg-hero-cream border-[3px] border-hero-gold text-hero-gold box-border cursor-pointer transition-transform duration-200 hover:-translate-y-0.5 max-sm:w-full max-sm:min-h-[48px]"
+            className="inline-flex items-center justify-center w-[clamp(109px,11.35vw,218px)] h-full gap-[clamp(5px,0.52vw,10px)] px-[clamp(14px,1.56vw,30px)] rounded-[clamp(4px,0.36vw,7px)] text-[12px] font-body font-bold tracking-[1.2px] no-underline uppercase bg-hero-cream border-[3px] border-hero-gold text-hero-gold box-border cursor-pointer transition-transform duration-200 hover:-translate-y-0.5 max-sm:w-full max-sm:min-h-[48px]"
           >
             ABOUT US
             <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="inline">

@@ -113,8 +113,7 @@ const FeaturedCollection = () => {
       </svg>
 
       <div
-        className="relative z-10 mx-auto grid grid-cols-4 gap-6 max-lg:grid-cols-2 max-sm:grid-cols-1 px-12 max-lg:px-8 max-sm:px-5"
-        style={{ maxWidth: '1280px' }}
+        className="relative z-10 grid grid-cols-4 gap-6 max-lg:grid-cols-2 max-sm:grid-cols-1 px-[170px] max-lg:px-8 max-sm:px-5"
       >
         {PRODUCTS.map((product) => (
           <div
