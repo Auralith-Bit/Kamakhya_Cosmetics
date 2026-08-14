@@ -1,3 +1,12 @@
+/**
+ * FILE : frontend/src/components/brands/shine/ProductSpotlight.jsx
+ * ROUTE: /brands/shine — section 4 (05 Signatures catalogue)
+ * DESIGN: 1920x1235 — header y77/108/140/171; panel 170/274 1580x861;
+ *   sidebar 402w; stage 534x760 @593/294; right col x1197; footer bar 62h
+ * BEHAVIOR: arrows / list / dots / keyboard ← → drive one idx state;
+ *   image track slides; badge, details, counter, dots sync
+ * RESPONSIVE: 100% vw (designPx/19.2)
+ */
 import React, { useEffect, useState } from "react";
 import vector1 from "../../../assets/Vector (1).svg";
 import img1 from "../../../assets/Rectangle 4647.svg";
@@ -9,34 +18,55 @@ import img5 from "../../../assets/Rectangle 4651.svg";
 const serif = "'Playfair Display', Georgia, serif";
 const sans = "'Poppins', 'Segoe UI', sans-serif";
 
+/* desc = 3 design-matched lines, joined with <br/> at render */
 const PRODUCTS = [
   {
     num: "01", cat: "Kitchencare", badge: "KITCHENCARE", name: "Radiance Renewal Serum",
-    desc: "A lightweight brightening serum with stabilised vitamin C and botanical extracts for visibly even, luminous skin.",
+    desc: [
+      "A lightweight brightening serum with stabilised",
+      "vitamin C and botanical extracts for visibly",
+      "even, luminous skin.",
+    ],
     notes: ["Stabilised vitamin C complex", "Dermatologically tested", "Fragrance-free formulation", "Glass bottle with gold collar"],
     moq: "500 units", lead: "10–15 days", img: img1,
   },
   {
     num: "02", cat: "Haircare", badge: "SKIN CARE", name: "Soothing Aloe Gel",
-    desc: "A cooling, fragrance-free aloe gel that calms and hydrates, leaving scalp and strands refreshed without residue.",
+    desc: [
+      "A cooling, fragrance-free aloe gel that calms and",
+      "hydrates, leaving scalp and strands refreshed",
+      "without residue.",
+    ],
     notes: ["Fragrance-free formulation", "Stabilised vitamin C complex", "Dermatologically tested", "Glass bottle with gold collar"],
     moq: "500 units", lead: "10–15 days", img: img2,
   },
   {
     num: "03", cat: "Lipcare", badge: "SKIN CARE", name: "Hydrating Balance Cream",
-    desc: "A balancing daily cream that restores moisture and comfort, leaving lips and skin soft, supple and protected.",
+    desc: [
+      "A balancing daily cream that restores moisture and",
+      "comfort, leaving lips and skin soft, supple and",
+      "protected.",
+    ],
     notes: ["Stabilised vitamin C complex", "Dermatologically tested", "Fragrance-free formulation", "Glass bottle with gold collar"],
     moq: "750 units", lead: "01–10 days", img: img3,
   },
   {
     num: "04", cat: "Skincare", badge: "SKIN CARE", name: "Night Repair Elixir",
-    desc: "A lightweight brightening serum with stabilised vitamin C and botanical extracts for visibly even, luminous skin.",
+    desc: [
+      "A lightweight brightening serum with stabilised",
+      "vitamin C and botanical extracts for visibly",
+      "even, luminous skin.",
+    ],
     notes: ["Fragrance-free formulation", "Glass bottle with gold collar", "Fragrance-free formulation", "Glass bottle with gold collar"],
     moq: "500 units", lead: "10–15 days", img: img4,
   },
   {
     num: "05", cat: "Skincare", badge: "SKIN CARE", name: "Vitamin C Glow Drops",
-    desc: "Concentrated glow drops with stabilised vitamin C and botanical extracts for visibly even, luminous skin.",
+    desc: [
+      "Concentrated glow drops with stabilised vitamin C",
+      "and botanical extracts for visibly even, luminous",
+      "skin.",
+    ],
     notes: ["Dermatologically tested", "Fragrance-free formulation", "Dermatologically tested", "Fragrance-free formulation"],
     moq: "250 units", lead: "7–9 days", img: img5,
   },
@@ -98,7 +128,7 @@ const ProductSpotlight = () => {
         letter-spacing:0.18em;
         text-transform:uppercase;
         }
-        
+
         .psx-title{
         position:absolute;
         top:5.2vw;
@@ -111,7 +141,7 @@ const ProductSpotlight = () => {
         font-weight:700;
         line-height:1.2;
         }
-        
+
         .psx-vector{
         position:absolute;
         top:7.4917vw;
@@ -120,7 +150,7 @@ const ProductSpotlight = () => {
         width:9.25vw;
         height:auto;
         }
-        
+
         .psx-sub{
         position:absolute;
         top:9.2vw;
@@ -131,7 +161,7 @@ const ProductSpotlight = () => {
         font-size:1vw;
         line-height:1.4583vw;
         }
-        
+
         .psx-sub span{display:inline-block;max-width:62vw;}
 
         /* ---- panel 170/274 1580x861 ---- */
@@ -144,7 +174,7 @@ const ProductSpotlight = () => {
         .psx-side{width:20.9375vw;border-right:0.0521vw solid #D7DAE4;
           display:flex;flex-direction:column;padding:2.0833vw 1.9792vw 1.5625vw;}
         .psx-sidehead{padding-bottom:1.5625vw;border-bottom:0.0521vw solid #D7DAE4;text-align:center;}
-        
+
         .psx-dir{
         color:#E38F2E;
         font-family:${sans};
@@ -153,7 +183,7 @@ const ProductSpotlight = () => {
         font-weight:500;
         letter-spacing:0.1em;
         }
-        
+
         .psx-sig{
         margin-top:0vw;
         color:#2E3192;
@@ -161,31 +191,47 @@ const ProductSpotlight = () => {
         font-size:1.5625vw;
         font-weight:700;
         }
+
+        .psx-list{
+        margin-top:1.5625vw;
+        display:flex;
+        flex-direction:column;
+        gap:0.7292vw;
+        flex:1;
+        }
         
-        .psx-list{margin-top:1.5625vw;display:flex;flex-direction:column;gap:0.7292vw;flex:1;}
-        .psx-item{background:#FBF8F3;border:0.0521vw solid #D7DAE4;border-radius:0.4167vw;
-          padding:0.9375vw 1.0417vw;text-align:left;cursor:pointer;
-          display:flex;flex-direction:column;gap:0.3125vw;transition:background .25s,border-color .25s;}
-        
+        .psx-item{
+        background:#ffffff;
+        border:0.0521vw solid #D7DAE4;
+        border-radius:0.4167vw;
+        padding:0.9375vw 1.0417vw;
+        text-align:left;
+        cursor:pointer;
+        display:flex;
+        flex-direction:column;
+        gap:0.3125vw;
+        transition:background .25s,border-color .25s;
+        }
+
         .psx-item-cat{
         font-family:${serif};
         font-size:0.7292vw;
         color:#666666;
         letter-spacing:0.05em;
         }
-        
+
         .psx-item-name{
         font-family:${sans};
         font-size:0.8333vw;
         font-weight:500;
         color:#121212;
         }
-        
+
         .psx-item.active{
         background:#2E3192;
         border-color:#2E3192;
         }
-        
+
         .psx-item.active .psx-item-cat{color:var(--Orange-300, #E8D6BA);}
         .psx-item.active .psx-item-name{color:#fff;}
         .psx-nav{margin-top:1.25vw;display:flex;align-items:center;justify-content:space-between;}
@@ -217,7 +263,7 @@ const ProductSpotlight = () => {
 
         /* ---- right details (x1197, w342) ---- */
         .psx-right{width:32.4479vw;padding:2.0833vw 0 2.0833vw 3.6458vw;}
-        
+
         .psx-kicker{
         color:#E38F2E;
         font-family:${sans};
@@ -226,7 +272,7 @@ const ProductSpotlight = () => {
         font-weight:500;
         letter-spacing:0.1em;
         }
-        
+
         .psx-rule{
         width:2.6042vw;
         height:0.1563vw;
@@ -234,7 +280,7 @@ const ProductSpotlight = () => {
         margin-top:0.3vw;
         border-radius:0.0781vw;
         }
-        
+
         .psx-name{
         margin-top:0.8vw;
         color:#2E3192;
@@ -243,10 +289,10 @@ const ProductSpotlight = () => {
         font-weight:700;
         letter-spacing: 0.04em;
         }
-        
+
         .psx-desc{margin-top:1.0417vw;color:#666666;font-family:${sans};font-size:0.8333vw;line-height:1.4583vw;}
         .psx-div{height:0.0521vw;background:#D7DAE4;margin-top:1.5625vw;}
-        
+
         .psx-notes-h{
         margin-top:1.5625vw;
         color:#333333;
@@ -254,7 +300,7 @@ const ProductSpotlight = () => {
         font-size:0.95vw;
         font-weight:500;
         }
-        
+
         .psx-notes{
         margin-top:1.0417vw;
         display:flex;
@@ -262,7 +308,12 @@ const ProductSpotlight = () => {
         gap:0.8333vw;
         list-style:none;
         }
-        
+
+        .psx-notes li svg{
+          width:1.25vw !important;    
+          height:1.25vw !important;
+        }
+
         .psx-notes li{
         display:flex;
         align-items:center;
@@ -271,24 +322,24 @@ const ProductSpotlight = () => {
         font-family:${sans};
         font-size:0.8813vw;
         }
-        
+
         .psx-notes svg{width:0.9375vw;height:0.9375vw;color:#E38F2E;flex-shrink:0;}
-        
+
         .psx-stats{
-        margin-top:1.5625vw;
+        margin-top:1vw;
         display:flex;
         align-items:center;
         gap:1.5625vw;
         }
-        
+
         .psx-stats div{display:flex;flex-direction:column;gap:0.4167vw;}
-        
+
         .psx-stats span{
         color:#666666;
         font-family:${sans};
         font-size:0.8813vw;
         }
-        
+
         .psx-stats strong{
         font-family:${serif};
         font-size:1.217vw;
@@ -296,11 +347,11 @@ const ProductSpotlight = () => {
         font-weight:550;
         color:#121212;
         }
-        
+
         .psx-stats i{width:0.0521vw;height:2.6042vw;background:#D7DAE4;}
-        
+
         .psx-cta{
-        margin-top:1.8229vw;
+        margin-top:1vw;
         width:21.8125vw;
         height:3vw;
         background:#2E3192;
@@ -317,16 +368,21 @@ const ProductSpotlight = () => {
         cursor:pointer;
         transition:background .2s;
         }
-        
+
+        .psx-cta svg{
+          width:1.1vw !important;  /* 20px @1920 (was 16px) */
+          height:1.1vw !important;
+        }
+
         .psx-cta:hover{background:#1d2170;}
         .psx-cta svg{width:0.8333vw;height:0.8333vw;}
-        
+
         .psx-cta2{
         margin-top:0.8333vw;
         width:21.8125vw;
         height:3vw;
         background:transparent;
-        border:0.0781vw solid #2E3192;
+        border:0.1463vw solid #252775;
         color:#2E3192;
         border-radius:0.4167vw;
         display:flex;
@@ -334,13 +390,18 @@ const ProductSpotlight = () => {
         justify-content:center;
         gap:0.5208vw;
         font-family:${sans};
-        font-size:0.7292vw;
-        font-weight:600;
+        font-size:0.92vw;
+        font-weight:500;
         letter-spacing:0.1em;
         text-transform:uppercase;
         cursor:pointer;
         }
-        
+
+        .psx-cta2 svg{
+          width:1.25vw !important;    /* 24px @1920 */
+          height:0.8333vw !important; /* 16px @1920 */
+        }
+
         .psx-cta2:hover{background:#eef0fa;}
         .psx-cta2 svg{width:0.9375vw;height:0.625vw;}
 
@@ -353,7 +414,7 @@ const ProductSpotlight = () => {
         justify-content:space-between;
         padding:0 1vw;
         }
-        
+
         .psx-foot span{
         color:#666666;
         font-family:${sans};
@@ -420,7 +481,16 @@ const ProductSpotlight = () => {
             <p className="psx-kicker">Signature {p.num}</p>
             <div className="psx-rule" />
             <h3 className="psx-name">{p.name}</h3>
-            <p className="psx-desc">{p.desc}</p>
+
+            {/* 👇 description rendered as the 3 design lines */}
+            <p className="psx-desc">
+              {p.desc.map((ln, i) => (
+                <React.Fragment key={i}>
+                  {ln}
+                  {i < p.desc.length - 1 && <br />}
+                </React.Fragment>
+              ))}
+            </p>
 
             <div className="psx-div" />
             <p className="psx-notes-h">Product Notes</p>
