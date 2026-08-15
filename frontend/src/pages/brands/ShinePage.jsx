@@ -3,6 +3,7 @@ import ShineHero from "../../components/brands/Shine/ShineHero";
 import BrandPhilosophy from "../../components/brands/Shine/BrandPhilosophy";
 import ProductCategories from "../../components/brands/Shine/ProductCategories";
 import ProductSpotlight from "../../components/brands/Shine/ProductSpotLight";
+import WhyChooseShine from "../../components/brands/Shine/WhyChooseShine";
 
 const ShinePage = () => (
   <>
@@ -10,6 +11,7 @@ const ShinePage = () => (
     <BrandPhilosophy />
     <ProductCategories />
     <ProductSpotlight/>
+    <WhyChooseShine/>
 
   </>
 );
