@@ -8,7 +8,7 @@ const AboutStory = () => {
       aria-label="About Us - Our Story"
       className="w-full bg-white py-[85px] flex items-center box-border max-sm:py-10"
     >
-      <div className="w-full px-[170px] max-lg:px-8 max-sm:px-5 grid grid-cols-2 items-center gap-[70px] max-nav:grid-cols-1 max-nav:gap-9">
+      <div className="w-full px-[125px] max-lg:px-8 max-sm:px-5 grid grid-cols-2 items-center gap-[70px] max-nav:grid-cols-1 max-nav:gap-9">
         
         {/* ── LEFT: Warehouse / Manufacturing Image ── */}
         <div className="relative w-[calc(100%+20px)] mr-[-20px] aspect-[3/2.08] rounded-[10px] overflow-hidden bg-black/20 shadow-[0_10px_30px_rgba(0,0,0,0.08)] max-nav:w-full max-nav:mr-0 max-nav:max-h-[380px]">
@@ -35,7 +35,7 @@ const AboutStory = () => {
           </h2>
 
           {/* Description */}
-          <div className="flex flex-col gap-4 mb-[10px] max-w-[540px] max-nav:max-w-full text-justify">
+          <div className="flex flex-col gap-4 mb-[10px] max-nav:max-w-full text-justify">
             <p className="font-body text-[clamp(13.5px,0.95vw,15px)] leading-[1.7] text-about-text m-0 font-normal">
               Kamakhya Cosmetics was born from a simple belief—that true beauty comes from 
               the perfect harmony of science, nature and trust. We create skincare that 

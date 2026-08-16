@@ -43,7 +43,7 @@ const StatsBar = () => {
         style={{ backgroundImage: `url(${statsBg})` }}
       />
       <div className="absolute inset-0 bg-[#151642]/15" />
-      <div className="relative z-10 w-full px-[170px] max-lg:px-8 max-sm:px-5">
+      <div className="relative z-10 w-full px-[125px] max-lg:px-8 max-sm:px-5">
         <div className="grid grid-cols-[auto_auto_auto_auto_auto_auto_auto] justify-between items-center max-lg:grid-cols-2 max-sm:grid-cols-1 gap-y-8 max-lg:justify-items-center">
         {STATS.map((stat, i) => (
           <React.Fragment key={i}>

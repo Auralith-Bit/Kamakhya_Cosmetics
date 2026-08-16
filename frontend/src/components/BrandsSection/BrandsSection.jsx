@@ -280,7 +280,7 @@ const BrandCard = ({
 /* ─── Main Section ──────────────────────────────────────────────────── */
 const BrandsSection = () => (
   <section style={{ background: '#fdfaf6', padding: '72px 0 80px', overflow: 'hidden' }}>
-    <div className="px-[170px] max-lg:px-8 max-sm:px-5">
+    <div className="px-[125px] max-lg:px-8 max-sm:px-5">
 
       {/* Section header */}
       <div style={{ textAlign: 'center', marginBottom: '52px' }}>

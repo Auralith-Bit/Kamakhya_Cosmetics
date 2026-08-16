@@ -52,7 +52,7 @@ const HeroSection = () => {
 
       
       <div
-        className="absolute left-[170px] top-[clamp(40px,9.26vh,100px)] w-[clamp(300px,37.81vw,726px)] h-auto min-h-[clamp(460px,63.89vh,690px)] z-[2] flex flex-col justify-start gap-[clamp(20px,4.58vw,88px)] box-border max-lg:static max-lg:min-w-0 max-lg:w-full max-lg:min-h-0 max-lg:gap-5 max-lg:px-8 max-lg:py-8 max-sm:gap-4 max-sm:px-4 max-sm:py-6"
+        className="absolute left-[125px] top-[clamp(40px,9.26vh,100px)] w-[clamp(300px,37.81vw,726px)] h-auto min-h-[clamp(460px,63.89vh,690px)] z-[2] flex flex-col justify-start gap-[clamp(20px,4.58vw,88px)] box-border max-lg:static max-lg:min-w-0 max-lg:w-full max-lg:min-h-0 max-lg:gap-5 max-lg:px-8 max-lg:py-8 max-sm:gap-4 max-sm:px-4 max-sm:py-6"
       >
         
         <p className="font-title font-bold text-[clamp(18px,1.875vw,36px)] leading-none tracking-normal text-hero-orange m-0 uppercase">
