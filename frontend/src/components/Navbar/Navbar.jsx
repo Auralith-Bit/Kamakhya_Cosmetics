@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../../assets/Group 9.png';
-
-const MENU_ITEMS = [
-  { label: 'HOME', href: '#home', active: true },
-  { label: 'PRODUCTS', href: '#products' },
-  { label: 'OUR BRANDS', href: '#brands' },
-  { label: 'MANUFACTURING', href: '#manufacturing' },
-  { label: 'ABOUT', href: '#about' },
-  { label: 'CONTACT', href: '#contact' },
-];
+import BrandChooser from '../brands/BrandChooser';
 
 const Navbar = () => {
   const [cartCount] = useState(1);
   const [wishlistCount] = useState(1);
   const [searchValue, setSearchValue] = useState('');
+  const [brandsOpen, setBrandsOpen] = useState(false);
+  const location = useLocation();
+
+  const MENU_ITEMS = [
+    { label: 'HOME', to: '/', type: 'link' },
+    { label: 'PRODUCTS', to: '/#products', type: 'link' },
+    { label: 'OUR BRANDS', type: 'brands' },
+    { label: 'MANUFACTURING', to: '/#manufacturing', type: 'link' },
+    { label: 'ABOUT', to: '/#about', type: 'link' },
+    { label: 'CONTACT', to: '/#contact', type: 'link' },
+  ];
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -56,15 +60,18 @@ const Navbar = () => {
           padding:10px 40px 10px 280px;}
         .kn-links{display:flex;align-items:center;gap:42px;list-style:none;margin:0;
           padding:0;min-width:0;}
-        .kn-links a{position:relative;text-decoration:none;color:#1c1c1c;font-size:15px;
-          font-weight:600;letter-spacing:.4px;padding:6px 0;white-space:nowrap;transition:color .2s;}
-        .kn-links a::after{content:'';position:absolute;left:0;width:100%;height:3px;
+          
+        /* Shared link & button styles */
+        .kn-links a, .kn-brands-btn{position:relative;text-decoration:none;color:#1c1c1c;font-size:15px;
+          font-weight:600;letter-spacing:.4px;padding:6px 0;white-space:nowrap;transition:color .2s;
+          background:none;border:none;cursor:pointer;font-family:inherit;}
+        .kn-links a::after, .kn-brands-btn::after{content:'';position:absolute;left:0;width:100%;height:3px;
           bottom:-4px;border-radius:2px;background:#CCA466;transform:scaleX(0);
           transition:transform .2s;}
-        .kn-links a:hover{color:#2E3192;}
-        .kn-links a:hover::after{transform:scaleX(1);}
-        .kn-links a.active{color:#2E3192;}
-        .kn-links a.active::after{transform:scaleX(1);}
+        .kn-links a:hover, .kn-brands-btn:hover{color:#2E3192;}
+        .kn-links a:hover::after, .kn-brands-btn:hover::after{transform:scaleX(1);}
+        .kn-links a.active, .kn-brands-btn.active{color:#2E3192;}
+        .kn-links a.active::after, .kn-brands-btn.active::after{transform:scaleX(1);}
 
         .kn-actions{margin-left:auto;display:flex;align-items:center;gap:12px;flex-shrink:0;}
         .kn-vline{width:1px;height:34px;background:#e5e7eb;}
@@ -76,7 +83,7 @@ const Navbar = () => {
           border-radius:999px;background:#E38F2E;color:#fff;font-size:10px;font-weight:700;
           display:flex;align-items:center;justify-content:center;}
         .kn-cta{margin-left:8px;background:#2E3192;color:#fff;border:none;border-radius:8px;
-          padding:14px 24px;font-size:15px;font-weight:600;letter-spacing:.3px;cursor-pointer;
+          padding:14px 24px;font-size:15px;font-weight:600;letter-spacing:.3px;cursor:pointer;
           white-space:nowrap;transition:background .2s;}
         .kn-cta:hover{background:#252775;}
 
@@ -94,7 +101,7 @@ const Navbar = () => {
           .kn-topbar{padding-left:270px;gap:16px;}
           .kn-mainrow{padding-left:230px;flex-wrap:wrap;row-gap:6px;}
           .kn-links{gap:18px;}
-          .kn-links a{font-size:13px;}
+          .kn-links a, .kn-brands-btn{font-size:13px;}
           .kn-search{flex-basis:260px;}
           .kn-cta{padding:12px 18px;font-size:13px;}
         }
@@ -105,7 +112,7 @@ const Navbar = () => {
           .kn-topbar{padding-left:240px;}
           .kn-mainrow{padding-left:205px;}
           .kn-links{gap:14px;}
-          .kn-links a{font-size:12px;}
+          .kn-links a, .kn-brands-btn{font-size:12px;}
           .kn-iconbtn{width:38px;height:38px;}
         }
         @media (max-width:900px){
@@ -118,7 +125,7 @@ const Navbar = () => {
           .kn-search{order:2;width:100%;max-width:100%;flex:1 1 100%;}
           .kn-mainrow{padding:10px 16px;flex-wrap:wrap;justify-content:center;gap:12px;}
           .kn-links{order:2;width:100%;flex-wrap:wrap;justify-content:center;gap:16px;}
-          .kn-links a{font-size:13px;}
+          .kn-links a, .kn-brands-btn{font-size:13px;}
           .kn-actions{order:1;margin-left:auto;}
           .kn-vline{display:none;}
         }
@@ -126,7 +133,7 @@ const Navbar = () => {
           .kn-email span{display:none;}
           .kn-cta{padding:10px 14px;font-size:12px;}
           .kn-links{gap:12px;}
-          .kn-links a{font-size:12px;}
+          .kn-links a, .kn-brands-btn{font-size:12px;}
         }
       `}</style>
 
@@ -134,9 +141,9 @@ const Navbar = () => {
       <div className="kn-diag" aria-hidden="true"><div /></div>
 
       {/* Logo */}
-      <a href="#home" className="kn-logo">
+      <Link to="/" className="kn-logo">
         <img src={logo} alt="Kamakhya Cosmetics" />
-      </a>
+      </Link>
 
       {/* Top blue bar */}
       <div className="kn-topbar">
@@ -169,9 +176,21 @@ const Navbar = () => {
         <ul className="kn-links">
           {MENU_ITEMS.map((item) => (
             <li key={item.label}>
-              <a href={item.href} className={item.active ? 'active' : ''}>
-                {item.label}
-              </a>
+              {item.type === 'brands' ? (
+                <button 
+                  className={`kn-brands-btn ${location.pathname.startsWith('/brands') ? 'active' : ''}`} 
+                  onClick={() => setBrandsOpen(true)}
+                >
+                  {item.label}
+                </button>
+              ) : (
+                <Link 
+                  to={item.to} 
+                  className={(item.to === '/' && location.pathname === '/') || (item.to !== '/' && location.pathname === item.to) ? 'active' : ''}
+                >
+                  {item.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
@@ -200,6 +219,9 @@ const Navbar = () => {
           <button className="kn-cta">Become Distributor</button>
         </div>
       </div>
+      
+      {/* Brand Chooser Modal Portal */}
+      <BrandChooser open={brandsOpen} onClose={() => setBrandsOpen(false)} />
     </header>
   );
 };
