@@ -1,10 +1,3 @@
-/**
- * FILE : frontend/src/components/brands/shine/FormulaSpotlight.jsx
- * ROUTE: /brands/shine — section 6 (Formula Spotlight)
- * DESIGN: 1920x774 — header y77/108/140/171; 3x2 grid of cards 500x180
- *   @ x170/710/1250, y276/496; gap 40; cream cards, gold rule under titles
- * RESPONSIVE: 100% vw (designPx/19.2)
- */
 import React from "react";
 import vector1 from "../../../assets/Vector (1).svg";
 
@@ -77,6 +70,7 @@ const FormulaSpotlight = () => (
       /* ---- 3x2 card grid (500x180, gap 40) ---- */
       .fs-grid{position:absolute;left:8.8542vw;top:14.375vw;width:82.2917vw;
         display:grid;grid-template-columns:repeat(3, 26.0417vw);gap:2.0833vw;}
+
       .fs-card{
       background:#FCF9F2;
       border:0.0521vw solid #D7DAE4;
@@ -84,6 +78,16 @@ const FormulaSpotlight = () => (
       height:9.375vw;
       padding:2.0833vw 1.5625vw;
       box-shadow:0 0.4167vw 0.625vw rgba(0,0,0,0.05), 0 1.0417vw 1.3021vw rgba(0,0,0,0.04);
+      /* 👇 NEW — animate border, shadow and lift */
+      cursor:pointer;
+      transition:border-color .3s ease, box-shadow .3s ease, transform .3s ease;
+      }
+
+      /* 👇 NEW — Figma hover: gold border + deeper shadow + slight lift */
+      .fs-card:hover{
+      border-color:#CCA466;
+      box-shadow:0 0.4167vw 0.625vw rgba(0,0,0,0.08), 0 1.0417vw 1.3021vw rgba(0,0,0,0.06);
+      transform:translateY(-0.1042vw);   /* -2px @1920 */
       }
       
       .fs-card h3{
