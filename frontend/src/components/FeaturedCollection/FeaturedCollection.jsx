@@ -118,13 +118,14 @@ const FeaturedCollection = () => {
         {PRODUCTS.map((product) => (
           <div
             key={product.id}
-            className="relative bg-white overflow-hidden"
+            className="relative bg-white"
             style={{
               display: 'flex',
               flexDirection: 'column',
               borderRadius: '16px',
-              border: '1px solid rgba(204, 164, 102, 0.12)',
-              boxShadow: '0 9px 22px rgba(24, 24, 24, 0.18)',
+              border: '1px solid rgba(204, 164, 102, 0.15)',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.06)',
+              overflow: 'hidden',
             }}
           >
             {/* ── Image with curved gold bottom ── */}
@@ -150,13 +151,13 @@ const FeaturedCollection = () => {
               <span
                 className="absolute flex items-center"
                 style={{
-                  top: '16px',
-                  left: '16px',
-                  gap: '8px',
-                  padding: '7px 16px',
+                  top: '14px',
+                  left: '14px',
+                  gap: '6px',
+                  padding: '6px 14px',
                   borderRadius: '999px',
                   fontFamily: FONT_BODY,
-                  fontSize: '13px',
+                  fontSize: '12px',
                   fontWeight: 600,
                   letterSpacing: '0.8px',
                   background: '#fff',
@@ -164,7 +165,7 @@ const FeaturedCollection = () => {
                   backdropFilter: 'blur(4px)',
                 }}
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 0L14.59 8.41L23 12L14.59 15.59L12 24L9.41 15.59L1 12L9.41 8.41L12 0Z" />
                 </svg>
                 FEATURED
@@ -174,10 +175,10 @@ const FeaturedCollection = () => {
               <span
                 className="absolute rounded-full cursor-pointer"
                 style={{
-                  top: '16px',
-                  right: '16px',
-                  width: '44px',
-                  height: '44px',
+                  top: '14px',
+                  right: '14px',
+                  width: '40px',
+                  height: '40px',
                   background: '#fff',
                   border: '2px solid #CCA466',
                   backdropFilter: 'blur(4px)',
@@ -186,25 +187,25 @@ const FeaturedCollection = () => {
                   justifyContent: 'center',
                 }}
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E3192" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2E3192" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                 </svg>
               </span>
             </div>
 
             {/* ── Content ── */}
-            <div style={{ display: 'flex', flexDirection: 'column', flex: 1, padding: '20px 20px 24px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', flex: 1, padding: '18px 20px 18px', overflow: 'hidden' }}>
               {/* Product name */}
               <h3
                 className="m-0"
                 style={{
                   fontFamily: FONT_TITLE,
                   fontWeight: 700,
-                  fontSize: '22px',
+                  fontSize: '20px',
                   lineHeight: 1.2,
                   color: '#292929',
                   textAlign: 'center',
-                  marginBottom: '10px',
+                  marginBottom: '8px',
                 }}
               >
                 {product.name}
@@ -216,12 +217,16 @@ const FeaturedCollection = () => {
                 style={{
                   fontFamily: FONT_BODY,
                   fontWeight: 400,
-                  fontSize: '16px',
-                  lineHeight: 1.65,
+                  fontSize: '14px',
+                  lineHeight: 1.7,
                   color: '#666',
                   textAlign: 'left',
                   flex: 1,
-                  marginBottom: '16px',
+                  marginBottom: '14px',
+                  overflow: 'hidden',
+                  display: '-webkit-box',
+                  WebkitLineClamp: 3,
+                  WebkitBoxOrient: 'vertical',
                 }}
               >
                 {product.description}
@@ -235,16 +240,16 @@ const FeaturedCollection = () => {
                   alignItems: 'center',
                   borderTop: '1px solid #E8D6B8',
                   borderBottom: '1px solid #E8D6B8',
-                  padding: '10px 0',
-                  marginBottom: '24px',
+                  padding: '8px 0',
+                  marginBottom: '16px',
                 }}
               >
                 {/* MOQ */}
-                <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
+                <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
                   <div
                     style={{
-                      width: '40px',
-                      height: '40px',
+                      width: '36px',
+                      height: '36px',
                       borderRadius: '50%',
                       background: '#F8EEDC',
                       display: 'flex',
@@ -253,15 +258,15 @@ const FeaturedCollection = () => {
                       flexShrink: 0,
                     }}
                   >
-                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#CCA466" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#CCA466" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
                       <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
                       <line x1="12" y1="22.08" x2="12" y2="12" />
                     </svg>
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <span style={{ fontFamily: FONT_BODY, fontSize: '15px', color: '#CCA466' }}>MOQ</span>
-                    <span style={{ fontFamily: FONT_BODY, fontWeight: 500, fontSize: '15px', color: '#555' }}>{product.moq}</span>
+                    <span style={{ fontFamily: FONT_BODY, fontSize: '13px', color: '#CCA466' }}>MOQ</span>
+                    <span style={{ fontFamily: FONT_BODY, fontWeight: 500, fontSize: '13px', color: '#555' }}>{product.moq}</span>
                   </div>
                 </div>
 
@@ -269,11 +274,11 @@ const FeaturedCollection = () => {
                 <div className="max-sm:hidden" style={{ width: '1px', alignSelf: 'stretch', background: '#E8D6B8' }} />
 
                 {/* Lead Time */}
-                <div className="pl-4 max-sm:pl-0" style={{ flex: 1, display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
+                <div className="pl-4 max-sm:pl-0" style={{ flex: 1, display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
                   <div
                     style={{
-                      width: '40px',
-                      height: '40px',
+                      width: '36px',
+                      height: '36px',
                       borderRadius: '50%',
                       background: '#F8EEDC',
                       display: 'flex',
@@ -282,7 +287,7 @@ const FeaturedCollection = () => {
                       flexShrink: 0,
                     }}
                   >
-                    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#CCA466" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#CCA466" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                       <line x1="16" y1="2" x2="16" y2="6" />
                       <line x1="8" y1="2" x2="8" y2="6" />
@@ -290,8 +295,8 @@ const FeaturedCollection = () => {
                     </svg>
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <span style={{ fontFamily: FONT_BODY, fontSize: '15px', color: '#CCA466' }}>Lead Time</span>
-                    <span style={{ fontFamily: FONT_BODY, fontWeight: 500, fontSize: '15px', color: '#555' }}>{product.leadTime}</span>
+                    <span style={{ fontFamily: FONT_BODY, fontSize: '13px', color: '#CCA466' }}>Lead Time</span>
+                    <span style={{ fontFamily: FONT_BODY, fontWeight: 500, fontSize: '13px', color: '#555' }}>{product.leadTime}</span>
                   </div>
                 </div>
               </div>
@@ -303,8 +308,8 @@ const FeaturedCollection = () => {
                 style={{
                   position: 'relative',
                   width: '100%',
-                  height: '52px',
-                  padding: '0 52px',           /* reserves space so text never collides with arrow */
+                  height: '48px',
+                  padding: '0 48px',
                   borderRadius: '107px',
                   border: '2px solid #2E3192',
                   background: '#FFF',
@@ -313,25 +318,25 @@ const FeaturedCollection = () => {
                   justifyContent: 'center',
                   fontFamily: FONT_BODY,
                   fontWeight: 500,
-                  fontSize: '16px',
+                  fontSize: '15px',
                   color: '#2E3192',
                   cursor: 'pointer',
                   boxSizing: 'border-box',
+                  flexShrink: 0,
                 }}
                 onMouseEnter={e => { e.currentTarget.style.background = '#2E3192'; e.currentTarget.style.color = '#fff'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = '#FFF'; e.currentTarget.style.color = '#2E3192'; }}
               >
                 <span style={{ whiteSpace: 'nowrap' }}>View Products</span>
 
-                {/* arrow pinned right via inline styles — cannot drift to center */}
                 <span
                   style={{
                     position: 'absolute',
                     right: '10px',
                     top: '50%',
                     transform: 'translateY(-50%)',
-                    width: '34px',
-                    height: '34px',
+                    width: '32px',
+                    height: '32px',
                     borderRadius: '50%',
                     background: '#C9CBEC',
                     display: 'flex',
@@ -341,7 +346,7 @@ const FeaturedCollection = () => {
                     pointerEvents: 'none',
                   }}
                 >
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2E3192" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2E3192" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />
                   </svg>

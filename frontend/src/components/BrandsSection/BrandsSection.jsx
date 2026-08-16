@@ -116,7 +116,7 @@ const BrandCard = ({
     borderRadius: '14px',
     boxShadow: '0 4px 28px rgba(0,0,0,0.09)',
     overflow: 'hidden',
-    width: '430px',
+    width: 'min(430px, 100%)',
     flexShrink: 0,
   }}>
     {/* Image area */}
@@ -299,7 +299,7 @@ const BrandsSection = () => (
         <h2 style={{
           margin: '8px 0 0',
           fontFamily: "'Playfair Display', serif",
-          fontSize: '34px',
+          fontSize: 'clamp(26px, 3.2vw, 34px)',
           fontWeight: 700,
           color: '#1a1a5c',
           lineHeight: 1.25,
@@ -312,7 +312,7 @@ const BrandsSection = () => (
         <p style={{
           margin: '14px auto 0',
           fontFamily: 'Poppins, sans-serif',
-          fontSize: '14.5px',
+          fontSize: 'clamp(13px, 1.4vw, 14.5px)',
           color: '#666',
           lineHeight: 1.7,
           maxWidth: '580px',

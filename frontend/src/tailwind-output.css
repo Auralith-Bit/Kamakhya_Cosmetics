@@ -976,8 +976,8 @@
     .max-lg\:min-h-0 {
       min-height: 0px;
     }
-    .max-lg\:w-\[58\%\] {
-      width: 58%;
+    .max-lg\:w-full {
+      width: 100%;
     }
     .max-lg\:max-w-full {
       max-width: 100%;
@@ -1015,9 +1015,6 @@
     }
     .max-lg\:object-cover {
       object-fit: cover;
-    }
-    .max-lg\:px-5 {
-      padding-inline: calc(var(--spacing) * 5);
     }
     .max-lg\:px-8 {
       padding-inline: calc(var(--spacing) * 8);
@@ -1099,9 +1096,6 @@
     }
     .max-sm\:w-\[48px\] {
       width: 48px;
-    }
-    .max-sm\:w-\[60\%\] {
-      width: 60%;
     }
     .max-sm\:w-full {
       width: 100%;
