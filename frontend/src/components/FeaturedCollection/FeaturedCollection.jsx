@@ -114,6 +114,7 @@ const FeaturedCollection = () => {
 
       <div
         className="relative z-10 grid grid-cols-4 gap-6 max-lg:grid-cols-2 max-sm:grid-cols-1 px-[170px] max-lg:px-8 max-sm:px-5"
+        style={{ gridAutoRows: '1fr' }}
       >
         {PRODUCTS.map((product) => (
           <div
@@ -126,10 +127,11 @@ const FeaturedCollection = () => {
               border: '1px solid rgba(204, 164, 102, 0.15)',
               boxShadow: '0 4px 20px rgba(0, 0, 0, 0.06)',
               overflow: 'hidden',
+              height: '100%',
             }}
           >
             {/* ── Image with curved gold bottom ── */}
-            <div className="relative w-full" style={{ aspectRatio: '371 / 334' }}>
+            <div className="relative w-full" style={{ aspectRatio: '371 / 314' }}>
               <img
                 src={product.image}
                 alt={product.name}
@@ -141,8 +143,9 @@ const FeaturedCollection = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 371 334"
                 fill="none"
+                preserveAspectRatio="none"
                 className="absolute bottom-0 left-0 w-full pointer-events-none"
-                style={{ height: 'auto' }}
+                style={{ height: '100%' }}
               >
                 <path d="M0 273.15 C52.65 313.56 115.84 334 185 334 C254.65 334 318.26 313.28 371 272.48" stroke="#CCA466" strokeWidth="2.5" />
               </svg>
@@ -206,6 +209,11 @@ const FeaturedCollection = () => {
                   color: '#292929',
                   textAlign: 'center',
                   marginBottom: '8px',
+                  flexShrink: 0,
+                  height: '24px',
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
                 }}
               >
                 {product.name}
@@ -221,11 +229,12 @@ const FeaturedCollection = () => {
                   lineHeight: 1.7,
                   color: '#666',
                   textAlign: 'left',
-                  flex: 1,
+                  flex: '1 1 auto',
+                  minHeight: '0',
                   marginBottom: '14px',
                   overflow: 'hidden',
                   display: '-webkit-box',
-                  WebkitLineClamp: 3,
+                  WebkitLineClamp: 2,
                   WebkitBoxOrient: 'vertical',
                 }}
               >
@@ -242,6 +251,11 @@ const FeaturedCollection = () => {
                   borderBottom: '1px solid #E8D6B8',
                   padding: '8px 0',
                   marginBottom: '16px',
+                  marginTop: 'auto',
+                  flexShrink: 0,
+                  height: '54px',
+                  boxSizing: 'border-box',
+                  overflow: 'hidden',
                 }}
               >
                 {/* MOQ */}
@@ -266,7 +280,7 @@ const FeaturedCollection = () => {
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <span style={{ fontFamily: FONT_BODY, fontSize: '13px', color: '#CCA466' }}>MOQ</span>
-                    <span style={{ fontFamily: FONT_BODY, fontWeight: 500, fontSize: '13px', color: '#555' }}>{product.moq}</span>
+                    <span style={{ fontFamily: FONT_BODY, fontWeight: 500, fontSize: '13px', color: '#555', whiteSpace: 'nowrap' }}>{product.moq}</span>
                   </div>
                 </div>
 
@@ -296,7 +310,7 @@ const FeaturedCollection = () => {
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <span style={{ fontFamily: FONT_BODY, fontSize: '13px', color: '#CCA466' }}>Lead Time</span>
-                    <span style={{ fontFamily: FONT_BODY, fontWeight: 500, fontSize: '13px', color: '#555' }}>{product.leadTime}</span>
+                    <span style={{ fontFamily: FONT_BODY, fontWeight: 500, fontSize: '13px', color: '#555', whiteSpace: 'nowrap' }}>{product.leadTime}</span>
                   </div>
                 </div>
               </div>
