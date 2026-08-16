@@ -323,7 +323,7 @@ const BrandsSection = () => (
       </div>
 
       {/* Three-column: card | connector | card */}
-      <div className="flex items-center justify-start gap-0 max-lg:flex-col max-lg:gap-10" style={{ display: 'flex' }}>
+      <div className="flex items-center justify-between gap-0 max-lg:flex-col max-lg:gap-10" style={{ display: 'flex' }}>
 
         {/* Left card – Shine */}
         <BrandCard
