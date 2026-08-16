@@ -65,15 +65,33 @@ const WhyChooseShine = () => (
 
       /* ---- header ---- */
       .wc-tag{
-        position:absolute;top:3.9vw;width:100%;text-align:center;color:#E38F2E;
-        font-family:${sans};font-size:0.85vw;font-weight:700;font-style:normal;
-        letter-spacing:0.18em;text-transform:uppercase;
+      position:absolute;
+      top:3.9vw;
+      width:100%;
+      text-align:center;
+      color:#E38F2E;
+      font-family:${sans};
+      font-size:0.85vw;
+      font-weight:700;
+      font-style:normal;
+      letter-spacing:0.18em;
+      text-transform:uppercase;
       }
+
       .wc-title{
-        position:absolute;top:5.2vw;width:100%;text-align:center;color:#2E3192;
-        font-family:${serif};font-size:1.875vw;font-style:normal;font-weight:700;
-        line-height:normal;text-transform:capitalize;
+        position:absolute;
+        top:5.2vw;
+        width:100%;
+        color:#2E3192;
+        text-align:center;
+        font-family:'Playfair Display', Georgia, serif;  
+        font-size:1.6vw; 
+        font-weight:700;
+        line-height:normal;
+        letter-spacing: 0;
+        text-transform:capitalize;
       }
+
       .wc-vector{position:absolute;top:7.4917vw;left:50%;transform:translateX(-50%);width:9.25vw;height:auto;}
       .wc-sub{
         position:absolute;top:9.2vw;width:100%;text-align:center;color:#666666;
