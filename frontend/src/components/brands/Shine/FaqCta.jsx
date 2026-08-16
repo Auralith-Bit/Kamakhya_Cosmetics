@@ -1,0 +1,203 @@
+/**
+ * FILE : frontend/src/components/brands/shine/FaqCta.jsx
+ * ROUTE: /brands/shine — section 7 (FAQ + Any Question CTA)
+ * DESIGN: 1920x1038 — header y79/108/140/166; FAQ list x170 w918 @y255;
+ *   right card x1150 w600 @y255; accordion: gold border + gold toggle when open
+ * ART  : assets/emoji.svg (replaces the inline placeholder)
+ * RESPONSIVE: 100% vw (designPx/19.2)
+ */
+import React, { useState } from "react";
+import vector1 from "../../../assets/Vector (1).svg";
+import emoji from "../../../assets/emoji.svg";
+
+const serif = "'Playfair Display', Georgia, serif";
+const sans = "'Poppins', 'Segoe UI', sans-serif";
+
+const ANSWER =
+  "How Samples may be available for qualified retailers, distributors and private-label clients. Availability, sample charges and delivery costs depend on the products and destination market.";
+
+const FAQS = [
+  "How do I receive wholesale pricing?",
+  "What is the minimum order quantity for wholesale buyers?",
+  "Are there any discounts for bulk orders?",
+  "Can I return or exchange wholesale items?",
+  "How long does shipping take for wholesale orders?",
+  "Do you offer international wholesale shipping?",
+].map((q, i) => ({ num: `0${i + 1}`, q, a: ANSWER }));
+
+const Arrow = () => (
+  <svg viewBox="0 0 18 12" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M0 6h15" /><path d="m11.5 1 5 5-5 5" />
+  </svg>
+);
+
+const FaqCta = () => {
+  const [open, setOpen] = useState(null);
+
+  return (
+    <section id="shine-faq" className="fq-sec">
+      <style>{`
+        .fq-sec{position:relative;width:100%;height:54.0625vw;background:#FCF9F2;overflow:hidden;}
+
+        /* ---- header ---- */
+        .fq-tag{
+        position:absolute;
+        top:3.9vw;
+        width:100%;
+        text-align:center;
+        color:#E38F2E;
+        font-family:${sans};
+        font-size:0.8333vw;
+        font-weight:600;
+        letter-spacing:0.18em;
+        text-transform:uppercase;
+        }
+
+        .fq-title{
+        position:absolute;
+        top:5.2vw;
+        width:100%;
+        text-align:center;
+        color:#2E3192;
+        font-family:${serif};
+        font-size:1.6vw;
+        font-weight:700;
+        line-height:normal;
+        letter-spacing: 0.4;
+        text-transform:capitalize;
+        }
+
+        .fq-vector{position:absolute;top:7.2917vw;left:50%;transform:translateX(-50%);width:9.25vw;height:auto;}
+
+        .fq-sub{
+        position:absolute;
+        top:9.2vw;
+        width:100%;
+        text-align:center;
+        color:#666666;
+        font-family:${sans};
+        font-size:1vw;
+        line-height:1.4583vw;
+        }
+
+        /* ---- FAQ accordion (x170 w918 @y255) ---- */
+        .fq-list{position:absolute;left:8.8542vw;top:13.2813vw;width:47.8125vw;
+          display:flex;flex-direction:column;gap:0.9375vw;}
+        .fq-item{background:#ffffff;border:0.0521vw solid #D7DAE4;border-radius:0.4167vw;
+          transition:border-color .3s, background .3s, box-shadow .3s;}
+        .fq-item:hover{border-color:#CCA466;}
+        .fq-item.open{background:#ffffff;border-color:#CCA466;
+          box-shadow:0 0.4167vw 0.625vw rgba(0,0,0,0.08), 0 1.0417vw 1.3021vw rgba(0,0,0,0.05);}
+
+        .fq-q{display:flex;align-items:center;gap:1.0417vw;width:100%;
+          padding:0 1.3021vw 0 1.5625vw;height:3.5417vw;background:none;border:none;
+          cursor:pointer;text-align:left;}
+
+        .fq-num{color:#666666;font-family:${serif};font-size:0.9375vw;}
+        
+        .fq-qt{
+        flex:1;
+        color: var(--Blue-500, #2E3192);
+        font-family:${serif};
+        font-size:1.0417vw;
+        font-weight:600;
+        }
+        
+        .fq-tgl{flex:0 0 1.875vw;width:1.875vw;height:1.875vw;border-radius:50%;
+          background:#fff;border:0.0521vw solid #D7DAE4;color:#2E3192;
+          display:flex;align-items:center;justify-content:center;transition:all .3s;}
+        .fq-tgl svg{width:0.625vw;height:0.625vw;}
+        .fq-item.open .fq-tgl{background:#CCA466;border-color:#CCA466;color:#333333;}
+        .fq-a{overflow:hidden;max-height:0;transition:max-height .4s ease;}
+        .fq-item.open .fq-a{max-height:10.4167vw;}
+        .fq-a p{margin:0 2.0833vw 1.3021vw 3.125vw;color:#666666;
+          font-family:${sans};font-size:0.8333vw;line-height:1.4583vw;}
+
+        /* ---- right CTA card (x1150 w600 @y255) ---- */
+        .fq-card{position:absolute;left:59.8958vw;top:13.2813vw;width:31.25vw;
+          background:#ffffff;border:0.0521vw solid #D7DAE4;border-radius:0.5208vw;
+          padding:2.0833vw 2.6042vw;text-align:center;}
+
+        /* ---- illustration (emoji.svg) ---- */
+        .fq-art{width:12.5vw;margin:0 auto;}
+        .fq-art img{display:block;width:100%;height:auto;object-fit:contain;}
+
+        .fq-card h3{margin-top:1.0417vw;color:#2E3192;font-family:${serif};
+          font-size:1.4583vw;font-weight:700;}
+        .fq-card .fq-p{margin-top:0.7813vw;color:#666666;font-family:${sans};
+          font-size:0.8333vw;line-height:1.4583vw;}
+        .fq-label{margin-top:1.1vw;text-align:left;color:#333333;
+          font-family:${sans};font-size:0.8333vw;font-weight:500;}
+        .fq-input{margin-top:0.5208vw;width:100%;height:5.2083vw;background:#ffffff;
+          border:0.0521vw solid #D7DAE4;border-radius:0.4167vw;padding:0.7813vw;
+          color:#333333;font-family:${sans};font-size:0.8333vw;resize:none;outline:none;}
+        .fq-input::placeholder{color:#999999;}
+        .fq-input:focus{border-color:#2E3192;}
+
+        .fq-note{
+        margin-top:0.5208vw;
+        color:#666666;
+        font-family:${sans};
+        font-size:0.6771vw;
+        letter-spacing: 0.06em;
+        }
+
+        .fq-send{margin-top:1.0417vw;width:100%;height:2.6042vw;background:#2E3192;color:#fff;
+          border:none;border-radius:0.4167vw;display:flex;align-items:center;justify-content:center;
+          gap:0.5208vw;font-family:${sans};font-size:0.8333vw;font-weight:600;cursor:pointer;
+          transition:background .2s;}
+        .fq-send:hover{background:#1d2170;}
+        .fq-send svg{width:0.9375vw;height:0.625vw;}
+      `}</style>
+
+      <p className="fq-tag">Frequently Asked Questions</p>
+      <h2 className="fq-title">Your Cleaning Questions, Answered</h2>
+      <img className="fq-vector" src={vector1} alt="" aria-hidden="true" />
+      <p className="fq-sub">
+        Find answers to common questions about Shine products, cleaning solutions, orders,
+        <br />
+        shipping, and product care to make everyday cleaning easier.
+      </p>
+
+      <div className="fq-list">
+        {FAQS.map((f, i) => (
+          <div className={`fq-item${open === i ? " open" : ""}`} key={f.num}>
+            <button className="fq-q" onClick={() => setOpen(open === i ? null : i)}>
+              <span className="fq-num">{f.num}</span>
+              <span className="fq-qt">{f.q}</span>
+              <span className="fq-tgl">
+                {open === i ? (
+                  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M2 6h8" /></svg>
+                ) : (
+                  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M6 2v8M2 6h8" /></svg>
+                )}
+              </span>
+            </button>
+            <div className="fq-a"><p>{f.a}</p></div>
+          </div>
+        ))}
+      </div>
+
+      <div className="fq-card">
+        {/* ✅ real illustration from assets/emoji.svg */}
+        <div className="fq-art">
+          <img src={emoji} alt="Person shrugging with question and exclamation speech bubbles" />
+        </div>
+        <h3>Any Question?</h3>
+        <p className="fq-p">
+          Ask anything about products, manufacturing or
+          <br/>
+          supply — our trade team replies within one
+          <br/>
+          business day.
+        </p>
+        <p className="fq-label">Let us know</p>
+        <textarea className="fq-input" placeholder="Type your question here…" />
+        <p className="fq-note">No payment is taken here — this simply reaches our trade team.</p>
+        <button className="fq-send">Send Question <Arrow /></button>
+      </div>
+    </section>
+  );
+};
+
+export default FaqCta;
