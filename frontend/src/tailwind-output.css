@@ -304,8 +304,8 @@
   .inline-flex {
     display: inline-flex;
   }
-  .aspect-\[3\/2\.04\] {
-    aspect-ratio: 3/2.04;
+  .aspect-\[3\/2\.08\] {
+    aspect-ratio: 3/2.08;
   }
   .h-0\.5 {
     height: calc(var(--spacing) * 0.5);
@@ -837,9 +837,6 @@
   }
   .text-brand-blue {
     color: var(--color-brand-blue);
-  }
-  .text-brand-gold {
-    color: var(--color-brand-gold);
   }
   .text-fog {
     color: var(--color-fog);

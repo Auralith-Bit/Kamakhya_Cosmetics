@@ -11,7 +11,7 @@ const AboutStory = () => {
       <div className="w-full px-[170px] max-lg:px-8 max-sm:px-5 grid grid-cols-2 items-center gap-[70px] max-nav:grid-cols-1 max-nav:gap-9">
         
         {/* ── LEFT: Warehouse / Manufacturing Image ── */}
-        <div className="relative w-[calc(100%+20px)] mr-[-20px] aspect-[3/2.04] rounded-[10px] overflow-hidden bg-black/20 shadow-[0_10px_30px_rgba(0,0,0,0.08)] max-nav:w-full max-nav:mr-0 max-nav:max-h-[380px]">
+        <div className="relative w-[calc(100%+20px)] mr-[-20px] aspect-[3/2.08] rounded-[10px] overflow-hidden bg-black/20 shadow-[0_10px_30px_rgba(0,0,0,0.08)] max-nav:w-full max-nav:mr-0 max-nav:max-h-[380px]">
           <img
             src={warehouseImage}
             alt="Kamakhya Cosmetics – Manufacturing Facility"
@@ -24,14 +24,14 @@ const AboutStory = () => {
           
           {/* Label / Subheading */}
           <div className="flex flex-col gap-1.5 mb-[10px]">
-            <span className="font-body text-[13px] font-bold tracking-[2px] text-brand-gold uppercase">OUR STORY</span>
+            <span className="font-body text-[13px] font-bold tracking-[2px] text-hero-orange uppercase">OUR STORY</span>
             <span className="w-[42px] h-[2px] bg-brand-gold"></span>
           </div>
 
           {/* Heading */}
           <h2 className="font-title text-[clamp(26px,2.2vw,36px)] font-bold leading-[1.25] m-0 mb-[10px]">
             <span className="text-brand-blue block">The Story Behind </span>
-            <span className="text-brand-gold">Kamakhya Cosmetics</span>
+            <span className="text-hero-orange">Kamakhya Cosmetics</span>
           </h2>
 
           {/* Description */}
