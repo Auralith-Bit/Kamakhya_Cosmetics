@@ -1,12 +1,3 @@
-/**
- * FILE : frontend/src/components/brands/shine/FaqCta.jsx
- * ROUTE: /brands/shine — section 7 (FAQ + Any Question CTA)
- * DESIGN: 1920x1038 — header y79/108/140/166; FAQ list x170 w920 @y274;
- *   right card x1150 w600 @y274 h644; closed item 78, open item 179, gap 15;
- *   both columns share top (274) and bottom (918) so margins always match
- * ART  : assets/emoji.svg
- * RESPONSIVE: 100% vw (designPx/19.2)
- */
 import React, { useState } from "react";
 import vector1 from "../../../assets/Vector (1).svg";
 import emoji from "../../../assets/emoji.svg";
@@ -14,8 +5,16 @@ import emoji from "../../../assets/emoji.svg";
 const serif = "'Playfair Display', Georgia, serif";
 const sans = "'Poppins', 'Segoe UI', sans-serif";
 
-const ANSWER =
-  "How Samples may be available for qualified retailers, distributors and private-label clients. Availability, sample charges and delivery costs depend on the products and destination market.";
+/* 👇 3-line wrap exactly as the Figma frame */
+const ANSWER = (
+  <>
+    How Samples may be available for qualified retailers, distributors and private-label clients.
+    <br />
+    Availability, sample charges and delivery costs depend on the products and destination
+    <br />
+    market.
+  </>
+);
 
 const FAQS = [
   "How do I receive wholesale pricing?",
@@ -96,8 +95,12 @@ const FaqCta = () => {
         .fq-a{overflow:hidden;max-height:0;transition:max-height .4s ease;}
         .fq-item.open .fq-a{max-height:5.2604vw;}
         .fq-a p{
-          margin:0 2.0833vw 1.3021vw 3.125vw;color:#666666;
-          font-family:${sans};font-size:0.8333vw;line-height:1.4583vw;
+        margin:0 2.0833vw 1.3021vw 3.125vw;
+        color:#666666;
+        font-family:${sans};
+        font-size:0.85vw;
+        line-spacing: 0.5em;
+        line-height:1.25vw;  /* 24px — keeps 3 lines inside 101px */
         }
 
         /* ---- right CTA card (x1150 w600 @y274 h644) ---- */
