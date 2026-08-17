@@ -50,15 +50,15 @@ const FeaturedCollection = () => {
       className="relative w-full bg-[#fcfaf7] overflow-hidden py-20 max-lg:py-16 max-sm:py-10"
     >
       {/* ── HEADER ── */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-[900px] mx-auto mb-12 max-sm:mb-8">
+      <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-[1100px] mx-auto mb-12 max-sm:mb-8">
         <p
           className="m-0 font-semibold uppercase"
           style={{
             fontFamily: FONT_BODY,
-            fontSize: '18px',
+            fontSize: '12px',
             lineHeight: 'normal',
-            letterSpacing: '2.16px',
-            color: '#E38F2E',
+            letterSpacing: '3.5px',
+            color: '#e0912f',
             textAlign: 'center',
             alignSelf: 'stretch',
             marginBottom: '12px',
@@ -72,9 +72,9 @@ const FeaturedCollection = () => {
           style={{
             fontFamily: FONT_TITLE,
             fontWeight: 700,
-            fontSize: '20px',
-            lineHeight: 'normal',
-            color: '#2E3192',
+            fontSize: 'clamp(26px, 3.2vw, 34px)',
+            lineHeight: 1.25,
+            color: '#2e3192',
             textAlign: 'center',
             textTransform: 'capitalize',
             marginBottom: '20px',

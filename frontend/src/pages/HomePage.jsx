@@ -10,6 +10,7 @@ import StatsBar from "../components/StatsBar/StatsBar";
 import BrandsSection from "../components/BrandsSection/BrandsSection";
 import PromiseSection from "../components/PromiseSection/PromiseSection";
 import ManufacturingSection from "../components/ManufacturingSection/ManufacturingSection";
+import CategorySection from "../components/CategorySection/CategorySection";
 
 const HomePage = () => (
   <>
@@ -20,6 +21,7 @@ const HomePage = () => (
     <BrandsSection />
     <PromiseSection />
     <ManufacturingSection />
+    <CategorySection />
     <div id="manufacturing"></div>
     <div id="contact"></div>
   </>
