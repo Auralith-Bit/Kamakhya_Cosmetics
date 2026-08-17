@@ -129,15 +129,31 @@ const FeaturedCollection = () => {
               overflow: 'hidden',
               height: '100%',
             }}
+            /* ── HOVER ZOOM (as in video) ── */
+            onMouseEnter={e => {
+              const img = e.currentTarget.querySelector('img');
+              if (img) img.style.transform = 'scale(1.1)';
+            }}
+            onMouseLeave={e => {
+              const img = e.currentTarget.querySelector('img');
+              if (img) img.style.transform = 'scale(1)';
+            }}
           >
             {/* ── Image with curved gold bottom ── */}
             <div className="relative w-full" style={{ aspectRatio: '371 / 314' }}>
-              <img
-                src={product.image}
-                alt={product.name}
-                className="absolute inset-0 w-full h-full object-cover"
-                style={{ objectPosition: 'center 40%', clipPath: 'url(#cardImageClip)' }}
-              />
+              {/* Fixed curved mask – image zooms inside it */}
+              <div className="absolute inset-0" style={{ clipPath: 'url(#cardImageClip)' }}>
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  style={{
+                    objectPosition: 'center 40%',
+                    transform: 'scale(1)',
+                    transition: 'transform 0.7s ease-out',
+                  }}
+                />
+              </div>
 
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -169,7 +185,7 @@ const FeaturedCollection = () => {
                 }}
               >
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 0L14.59 8.41L23 12L14.59 15.59L12 24L9.41 15.59L1 12L9.41 8.41L12 0Z" />
+                  <path d="M12 0L14.59 8.41L23 12L14.59 15.59L12 24L9.41 15.59L9.41 8.41L12 0Z" />
                 </svg>
                 FEATURED
               </span>

@@ -8,6 +8,8 @@ import AboutStory from "../components/Aboutus/AboutStory";
 import FeaturedCollection from "../components/FeaturedCollection/FeaturedCollection";
 import StatsBar from "../components/StatsBar/StatsBar";
 import BrandsSection from "../components/BrandsSection/BrandsSection";
+import PromiseSection from "../components/PromiseSection/PromiseSection";
+import ManufacturingSection from "../components/ManufacturingSection/ManufacturingSection";
 
 const HomePage = () => (
   <>
@@ -16,6 +18,8 @@ const HomePage = () => (
     <div id="products"><FeaturedCollection /></div>
     <StatsBar />
     <BrandsSection />
+    <PromiseSection />
+    <ManufacturingSection />
     <div id="manufacturing"></div>
     <div id="contact"></div>
   </>
