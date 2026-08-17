@@ -7,6 +7,7 @@ import WhyChooseShine from "../../components/brands/Shine/WhyChooseShine";
 import FormulaSpotlight from "../../components/brands/Shine/FormulaSpotLight";
 import FaqCta from "../../components/brands/Shine/FaqCta";
 import CtaBand from "../../components/brands/Shine/CtaBand";
+import OtherBrands from "../../components/brands/Shine/OtherBrands";
 
 const ShinePage = () => (
   <>
@@ -18,6 +19,7 @@ const ShinePage = () => (
     <FormulaSpotlight/>
     <FaqCta/>
     <CtaBand/>
+    <OtherBrands/>
 
   </>
 );
