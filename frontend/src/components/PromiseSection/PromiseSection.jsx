@@ -72,7 +72,7 @@ const Feature = ({ icon, title, text }) => (
 );
 
 const PromiseSection = () => (
-  <section style={{ background: '#f5f0e4', padding: '85px 0 90px', overflow: 'hidden' }}>
+  <section style={{ background: '#f5f0e4', padding: '85px 0 90px', overflow: 'hidden', minHeight: '579px' }}>
     {/* clip shape: deep concave top + fully round bottom (as in video) */}
     <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
       <defs>
@@ -85,7 +85,7 @@ const PromiseSection = () => (
     <div className="px-[125px] max-lg:px-8 max-sm:px-5">
 
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
         <p style={{ margin: 0, fontFamily: 'Poppins, sans-serif', fontSize: '14px', fontWeight: 600, color: ORANGE, letterSpacing: '3.5px', textTransform: 'uppercase' }}>
           OUR PROMISE
         </p>
@@ -94,25 +94,33 @@ const PromiseSection = () => (
         </h2>
         <CursiveUnderline />
         <p style={{ margin: '16px auto 0', fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(16px, 1vw, 25px)', color: '#3d3d3d', lineHeight: 1.65, maxWidth: '1260px' }}>
-          Clean ingredients, expert formulations, and uncompromising quality come together to create Products that truly performs.
+          Clean ingredients, expert formulations, and uncompromising quality come together to create<br/> Products that truly performs.
         </p>
       </div>
 
-      {/* Dashed arc – inset ~4% each side, taller curve */}
-      <svg viewBox="0 0 1200 200" preserveAspectRatio="none" fill="none" aria-hidden="true"
-        style={{ display: 'block', width: '92%', margin: '0 auto', height: '200px', marginBottom: '-12px' }}>
-        <path d="M0 196 Q600 -160 1200 196" stroke="#3f3f3f" strokeWidth="1.4"
-          strokeDasharray="5 7" vectorEffect="non-scaling-stroke" />
+      {/* Dashed arc – full container width, dashes 3,3 */}
+      <svg viewBox="0 0 1670 160" preserveAspectRatio="none" fill="none" aria-hidden="true"
+        style={{ display: 'block', width: '100%', margin: '0 auto', height: '160px', marginBottom: '-12px' }}>
+        <path d="M0 156 Q835 -120 1670 156" stroke="#3f3f3f" strokeWidth="1"
+          strokeDasharray="3 3" vectorEffect="non-scaling-stroke" />
       </svg>
 
       {/* Content row */}
       <div style={{ position: 'relative' }}>
 
-        {/* Bottom bracket frame – inset 4%, stubs start at 68% */}
+        {/* Bottom bracket frame – split to avoid overlapping the center image */}
+        {/* Left bracket segment */}
         <div className="max-lg:hidden" style={{
-          position: 'absolute', left: '4%', right: '4%', top: '55%', bottom: '70px',
-          borderLeft: '1.5px solid #3f3f3f', borderRight: '1.5px solid #3f3f3f',
-          borderBottom: '1.5px solid #3f3f3f', borderRadius: '0 0 26px 26px',
+          position: 'absolute', left: '0', top: '55%', bottom: '0',
+          width: 'calc(32% - 1px)', borderLeft: '1px solid #3f3f3f',
+          borderBottom: '1px solid #3f3f3f', borderRadius: '0 0 0 26px',
+          pointerEvents: 'none', zIndex: 0,
+        }} />
+        {/* Right bracket segment */}
+        <div className="max-lg:hidden" style={{
+          position: 'absolute', right: '0', top: '55%', bottom: '0',
+          width: 'calc(32% - 1px)', borderRight: '1px solid #3f3f3f',
+          borderBottom: '1px solid #3f3f3f', borderRadius: '0 0 26px 0',
           pointerEvents: 'none', zIndex: 0,
         }} />
 
@@ -120,16 +128,16 @@ const PromiseSection = () => (
           style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '40px', position: 'relative' }}>
 
           {/* Left features */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '100px', paddingTop: '64px', zIndex: 1 }}>
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '50px', paddingTop: '30px', zIndex: 1 }}>
             <Feature icon={Icons.flask} title="Science-Backed Formulas"
               text="Advanced skincare solutions developed with cutting-edge research and clinically proven ingredients." />
             <Feature icon={Icons.personHeart} title="Personalized Beauty Solutions"
               text="Skincare that adapts to your unique needs, skin type, and personal wellness journey." />
           </div>
 
-          {/* Center shaped image – 700px, 7:10 */}
+          {/* Center shaped image – 450px, 7:10 */}
           <div style={{
-            width: 'min(700px, 86%)', aspectRatio: '7 / 10', flexShrink: 0,
+            width: 'min(450px, 75%)', aspectRatio: '7 / 10', flexShrink: 0,
             clipPath: 'url(#promiseShape)', zIndex: 2,
           }}>
             <img src={promiseImg} alt="Kamakhya Cosmetics products"
@@ -137,7 +145,7 @@ const PromiseSection = () => (
           </div>
 
           {/* Right features */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '100px', paddingTop: '64px', zIndex: 1 }}>
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '50px', paddingTop: '30px', zIndex: 1 }}>
             <Feature icon={Icons.shieldCheck} title="Quality You Can Trust"
               text="Dermatologically tested, certified and manufactured under the highest quality standards." />
             <Feature icon={Icons.leaves} title="Safe & Pure Ingredients"

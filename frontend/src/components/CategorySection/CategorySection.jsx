@@ -91,16 +91,16 @@ const CategorySection = () => {
       <div className="px-[125px] max-lg:px-8 max-sm:px-5">
 
         {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-          <p style={{ margin: 0, fontFamily: FONT_BODY, fontSize: '14px', fontWeight: 600, color: '#E38F2E', letterSpacing: '3.5px', textTransform: 'uppercase' }}>
+        <div style={{ textAlign: 'center', marginBottom: '52px' }}>
+          <p style={{ margin: 0, fontFamily: FONT_BODY, fontSize: '12px', fontWeight: 600, color: '#e0912f', letterSpacing: '3.5px', textTransform: 'uppercase' }}>
             SHOP BY CATEGORY
           </p>
-          <h2 style={{ margin: '8px 0 0', fontFamily: FONT_TITLE, fontSize: 'clamp(26px, 2.5vw, 40px)', fontWeight: 700, color: '#2E3192', lineHeight: 1.25 }}>
+          <h2 style={{ margin: '8px 0 0', fontFamily: FONT_TITLE, fontSize: 'clamp(26px, 3.2vw, 34px)', fontWeight: 700, color: '#2e3192', lineHeight: 1.25 }}>
             Curated Collections For Every Routine
           </h2>
           <CursiveUnderline />
-          <p style={{ margin: '16px auto 0', fontFamily: FONT_BODY, fontSize: 'clamp(14px, 1vw, 19px)', color: '#555', lineHeight: 1.7, maxWidth: '1200px' }}>
-            Discover premium beauty solutions organized by category, making it effortless to find<br/>
+          <p style={{ margin: '14px auto 0', fontFamily: FONT_BODY, fontSize: 'clamp(13px, 1.4vw, 14.5px)', color: '#666', lineHeight: 1.7, maxWidth: '620px' }}>
+            Discover premium beauty solutions organized by category, making it effortless to find
             products tailored to your unique skincare journey.
           </p>
         </div>
