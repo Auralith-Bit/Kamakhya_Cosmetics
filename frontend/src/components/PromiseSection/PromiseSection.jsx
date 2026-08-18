@@ -108,19 +108,21 @@ const PromiseSection = () => (
       {/* Content row */}
       <div style={{ position: 'relative' }}>
 
-        {/* Bottom bracket frame – split to avoid overlapping the center image */}
+        {/* Bottom bracket frame – side lines (57px) + bottom line with gap for image */}
         {/* Left bracket segment */}
         <div className="max-lg:hidden" style={{
-          position: 'absolute', left: '0', top: '55%', bottom: '0',
-          width: 'calc(32% - 1px)', borderLeft: '1px solid #3f3f3f',
-          borderBottom: '1px solid #3f3f3f', borderRadius: '0 0 0 26px',
+          position: 'absolute', left: '0', bottom: '20px',
+          width: 'calc(32% - 1px)', height: '57px',
+          borderLeft: '1px solid #3f3f3f', borderBottom: '1px solid #3f3f3f',
+          borderRadius: '0 0 0 26px',
           pointerEvents: 'none', zIndex: 0,
         }} />
         {/* Right bracket segment */}
         <div className="max-lg:hidden" style={{
-          position: 'absolute', right: '0', top: '55%', bottom: '0',
-          width: 'calc(32% - 1px)', borderRight: '1px solid #3f3f3f',
-          borderBottom: '1px solid #3f3f3f', borderRadius: '0 0 26px 0',
+          position: 'absolute', right: '0', bottom: '20px',
+          width: 'calc(32% - 1px)', height: '57px',
+          borderRight: '1px solid #3f3f3f', borderBottom: '1px solid #3f3f3f',
+          borderRadius: '0 0 26px 0',
           pointerEvents: 'none', zIndex: 0,
         }} />
 
