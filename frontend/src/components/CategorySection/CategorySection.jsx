@@ -110,7 +110,7 @@ const CategorySection = () => {
           ref={scrollRef}
           className="hide-scrollbar"
           style={{
-            display: 'flex', gap: '28px', overflowX: 'auto',
+            display: 'flex', gap: '28px', overflowX: 'hidden',
             scrollBehavior: 'smooth', scrollbarWidth: 'none', msOverflowStyle: 'none',
             paddingBottom: '10px',
           }}
@@ -126,7 +126,7 @@ const CategorySection = () => {
                 }}
               >
                 <div style={{ position: 'relative', aspectRatio: '1 / 1', borderRadius: '10px', overflow: 'hidden' }}>
-                  <img src={cat.image} alt={cat.name}
+                  <img src={cat.image} alt={cat.name} className="cat-image"
                     style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                   {/* hover tint + circular arrow (as in video) */}
                   <div className="cat-overlay"
@@ -160,32 +160,32 @@ const CategorySection = () => {
         </div>
 
         {/* Navigation */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '48px', marginTop: '40px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px', marginTop: '40px' }}>
           <button
             onClick={() => scrollToPage(Math.max(0, activeIndex - 1))}
             disabled={activeIndex === 0}
             style={{
-              width: '56px', height: '56px', borderRadius: '50%', border: '1.5px solid #2E3192',
+              width: '40px', height: '40px', borderRadius: '50%', border: '1.5px solid #2E3192',
               background: 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center',
               cursor: activeIndex === 0 ? 'default' : 'pointer',
               opacity: activeIndex === 0 ? 0.35 : 1, transition: 'opacity 0.2s', color: '#2E3192', flexShrink: 0,
             }}
           >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
               <path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
 
           {/* pill dots */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             {Array.from({ length: pageCount }).map((_, i) => (
               <button
                 key={i}
                 onClick={() => scrollToPage(i)}
                 style={{
-                  width: i === activeIndex ? '56px' : '24px', height: '12px', borderRadius: '6px',
+                  width: i === activeIndex ? '32px' : '10px', height: '10px', borderRadius: '5px',
                   background: i === activeIndex ? '#2E3192' : '#C9CBEC',
-                  border: i === activeIndex ? 'none' : '1px solid rgba(46,49,146,0.45)',
+                  border: 'none',
                   cursor: 'pointer', transition: 'all 0.3s', padding: 0, boxSizing: 'border-box',
                 }}
               />
@@ -196,13 +196,13 @@ const CategorySection = () => {
             onClick={() => scrollToPage(Math.min(pageCount - 1, activeIndex + 1))}
             disabled={activeIndex === pageCount - 1}
             style={{
-              width: '56px', height: '56px', borderRadius: '50%', border: '1.5px solid #2E3192',
+              width: '40px', height: '40px', borderRadius: '50%', border: '1.5px solid #2E3192',
               background: 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center',
               cursor: activeIndex === pageCount - 1 ? 'default' : 'pointer',
               opacity: activeIndex === pageCount - 1 ? 0.35 : 1, transition: 'opacity 0.2s', color: '#2E3192', flexShrink: 0,
             }}
           >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
               <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
@@ -211,12 +211,14 @@ const CategorySection = () => {
 
       <style>{`
         .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .cat-card { transition: transform .25s ease, box-shadow .25s ease; }
-        .cat-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+        .cat-card { transition: box-shadow .25s ease; }
+        .cat-card:hover { box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+        .cat-image { transition: transform .45s ease; }
+        .cat-card:hover .cat-image { transform: translateY(-8px) scale(1.08); }
         .cat-card .cat-overlay { opacity: 0; transition: opacity .3s ease; }
         .cat-card:hover .cat-overlay { opacity: 1; }
-        .cat-card .cat-arrow { transform: scale(.7); transition: transform .3s ease; }
-        .cat-card:hover .cat-arrow { transform: scale(1); }
+        .cat-card .cat-arrow { opacity: 0; transform: translateY(10px); transition: opacity .3s ease, transform .3s ease; }
+        .cat-card:hover .cat-arrow { opacity: 1; transform: translateY(0); }
       `}</style>
     </section>
   );
