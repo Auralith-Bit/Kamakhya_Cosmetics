@@ -129,28 +129,34 @@ const FeaturedCollection = () => {
               overflow: 'hidden',
               height: '100%',
             }}
-            /* ── HOVER ZOOM (as in video) ── */
+            /* ── HOVER: image zooms out (goes in), original fills area, returns on leave ── */
             onMouseEnter={e => {
-              const img = e.currentTarget.querySelector('img');
-              if (img) img.style.transform = 'scale(1.1)';
+              const img = e.currentTarget.querySelector('.card-img');
+              if (img) img.style.transform = 'scale(1)';
             }}
             onMouseLeave={e => {
-              const img = e.currentTarget.querySelector('img');
-              if (img) img.style.transform = 'scale(1)';
+              const img = e.currentTarget.querySelector('.card-img');
+              if (img) img.style.transform = 'scale(1.08)';
             }}
           >
             {/* ── Image with curved gold bottom ── */}
             <div className="relative w-full" style={{ aspectRatio: '371 / 314' }}>
-              {/* Fixed curved mask – image zooms inside it */}
-              <div className="absolute inset-0" style={{ clipPath: 'url(#cardImageClip)' }}>
+              {/* Fixed curved mask – image fills it fully at all times */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  clipPath: 'url(#cardImageClip)',
+                }}
+              >
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="card-img absolute inset-0 w-full h-full object-cover"
                   style={{
                     objectPosition: 'center 40%',
-                    transform: 'scale(1)',
+                    transform: 'scale(1.08)',
                     transition: 'transform 0.7s ease-out',
+                    transformOrigin: 'center 40%',
                   }}
                 />
               </div>
