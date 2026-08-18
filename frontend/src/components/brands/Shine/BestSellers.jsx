@@ -112,17 +112,17 @@ export default function BestSellers() {
 
         .bs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6667vw;width:82.2917vw;margin:0 auto;}
 
-        /* ✅ CARD HOVER (matches video): gentle lift + deeper shadow */
+        /* ✅ CARD HOVER (original design): shadow deepens, card does NOT move */
         .bs-card{display:flex;flex-direction:column;border-radius:0.5208vw;background:#ffffff;
           box-shadow:0 12px 30px rgba(43,46,126,0.08);
-          transition:transform .35s ease, box-shadow .35s ease;}
-        .bs-card:hover{transform:translateY(-0.3125vw);box-shadow:0 22px 44px rgba(43,46,126,0.16);}
+          transition:box-shadow .35s ease;}
+        .bs-card:hover{box-shadow:0 22px 44px rgba(43,46,126,0.16);}
 
         .bs-media{position:relative;height:17.7083vw;overflow:hidden;border-radius:0.5208vw 0.5208vw 0 0;}
         .bs-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;
           transition:transform .55s ease;}
-        /* ✅ IMAGE HOVER (matches video): smooth ~6% zoom */
-        .bs-card:hover .bs-media img{transform:scale(1.06);}
+        /* ✅ IMAGE HOVER (original design): zooms OUT, not in */
+        .bs-card:hover .bs-media img{transform:scale(0.95);}
 
         .bs-arc{position:absolute;bottom:-1px;left:0;width:100%;height:2.1875vw;display:block;}
 
@@ -149,7 +149,6 @@ export default function BestSellers() {
         .bs-meta-value{color:#333333;font-family:${sans};font-size:0.7292vw;font-weight:600;}
         .bs-div{width:1px;height:2.0313vw;background:#E4E4E4;}
 
-        /* ✅ CTA stays outlined on hover (no fill) — as shown in the video */
         .bs-cta{margin-top:0.9375vw;display:flex;align-items:center;justify-content:space-between;
           border:0.1042vw solid #2E3192;border-radius:50vw;padding:0.4688vw 0.5208vw 0.4688vw 1.1458vw;
           color:#2E3192;font-family:${sans};font-size:0.8333vw;font-weight:600;background:#ffffff;}
@@ -165,7 +164,7 @@ export default function BestSellers() {
           .bs-badge{font-size:1vw;padding:0.7vw 1.2vw;} .bs-wish{width:3.4vw;height:3.4vw;}
           .bs-arc{height:3.2vw;} .bs-meta-ico{width:2.9vw;height:2.9vw;} .bs-cta-arrow{width:2.4vw;height:2.4vw;}
           .bs-div{height:2.9vw;} .bs-squiggle{width:12vw;}
-          .bs-card:hover{transform:translateY(-4px);}
+          /* ✅ lift removed here as well */
         }
         @media (max-width:640px){
           .bs-grid{grid-template-columns:1fr;}
