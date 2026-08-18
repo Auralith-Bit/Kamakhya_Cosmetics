@@ -167,7 +167,7 @@ const FeaturedCollection = () => {
                   fill="none"
                   preserveAspectRatio="none"
                   className="absolute bottom-0 left-0 w-full pointer-events-none"
-                  style={{ height: '100%', transform: 'translateY(4px)' }}
+                  style={{ height: '100%', transform: 'translateY(4px)', overflow: 'visible' }}
                 >
                   <path d="M371 256.16 C371 259.24 369.4 262.1 366.73 263.82 C318.28 294.53 254.65 314 185 314 C115.83 314 52.64 294.78 4.34 264.48 C1.6 262.76 0 259.87 0 256.79" stroke="#CCA466" strokeWidth="2.5" fill="none" />
                 </svg>
