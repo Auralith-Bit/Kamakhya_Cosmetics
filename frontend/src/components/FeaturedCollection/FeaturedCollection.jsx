@@ -155,7 +155,7 @@ const FeaturedCollection = () => {
                   style={{
                     objectPosition: 'center 40%',
                     transform: 'scale(1.08)',
-                    transition: 'transform 0.7s ease-out',
+                    transition: 'transform 300ms ease-out',
                     transformOrigin: 'center 40%',
                   }}
                 />
