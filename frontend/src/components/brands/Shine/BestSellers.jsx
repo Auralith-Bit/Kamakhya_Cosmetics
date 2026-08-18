@@ -1,3 +1,12 @@
+/**
+ * FILE : frontend/src/components/brands/shine/BestSellers.jsx
+ * ROUTE: /brands/shine — Best Sellers (cards link to /products/:id)
+ * CARD : badge pill (sparkle + BEST SELLER) · wishlist heart (toggle) ·
+ *        image over deep gold curve (gap kept) · title · 2-line clamp desc ·
+ *        MOQ / Lead-Time meta · outlined pill CTA with arrow chip
+ * HOVER: shadow deepens only (no lift); image + curve zoom OUT together
+ * RESPONSIVE: 100% vw (designPx/19.2)
+ */
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import vector1 from "../../../assets/Vector (1).svg";
@@ -19,21 +28,21 @@ const DESC = "Nail Polish is the best things in the world and were for protectio
 /* ---------- icons ---------- */
 const Spark = () => (
   <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
-    <path d="M7 0l1.8 5.2L14 7l-5.2 1.8L7 14 5.2 8.8 0 7l5.2-1.8L7 0z" fill="#C89B4A" />
+    <path d="M7 0l1.8 5.2L14 7l-5.2 1.8L7 14 5.2 8.8 0 7l5.2-1.8L7 0z" fill="#CCA466" />
   </svg>
 );
 const Heart = ({ filled }) => (
-  <svg width="18" height="16" viewBox="0 0 18 16" fill={filled ? "#2E3192" : "none"} aria-hidden="true">
-    <path d="M9 15.2 2.1 8.3C.8 7 .8 4.9 2.1 3.6c1.3-1.3 3.4-1.3 4.7 0L9 5.8l2.2-2.2c1.3-1.3 3.4-1.3 4.7 0 1.3 1.3 1.3 3.4 0 4.7L9 15.2z" stroke="#2E3192" strokeWidth="1.6" />
+  <svg width="18" height="16" viewBox="0 0 18 16" fill={filled ? "#3436A4" : "none"} aria-hidden="true">
+    <path d="M9 15.2 2.1 8.3C.8 7 .8 4.9 2.1 3.6c1.3-1.3 3.4-1.3 4.7 0L9 5.8l2.2-2.2c1.3-1.3 3.4-1.3 4.7 0 1.3 1.3 1.3 3.4 0 4.7L9 15.2z" stroke="#3436A4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 const BoxIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C89B4A" strokeWidth="1.6" strokeLinejoin="round" aria-hidden="true">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CCA466" strokeWidth="1.6" strokeLinejoin="round" aria-hidden="true">
     <path d="M21 8l-9-5-9 5v8l9 5 9-5V8z" /><path d="M3 8l9 5 9-5" /><path d="M12 13v8" />
   </svg>
 );
 const CalIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C89B4A" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CCA466" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
     <rect x="3" y="5" width="18" height="16" rx="2" /><path d="M3 10h18M8 3v4M16 3v4" />
   </svg>
 );
@@ -47,23 +56,30 @@ const Arrow = () => (
 function BestSellerCard({ p }) {
   const [liked, setLiked] = useState(false);
   return (
-    <Link to={`/products/${p.id}`} className="bs-card group">
+    <Link to={`/products/${p.id}`} className="bs-card">
       {/* media */}
       <div className="bs-media" style={{ backgroundColor: p.tint }}>
         <span className="bs-badge"><Spark /> BEST SELLER</span>
+
+        {/* wishlist toggle: outline ↔ filled */}
         <button
           type="button"
           aria-label="Add to wishlist"
+          aria-pressed={liked}
           onClick={(e) => { e.preventDefault(); e.stopPropagation(); setLiked(!liked); }}
           className="bs-wish"
         >
           <Heart filled={liked} />
         </button>
-        <img src={p.image} alt={p.title} loading="lazy" />
-        <svg className="bs-arc" viewBox="0 0 371 42" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M0 0c96 42 275 42 371 0v42H0V0z" fill="#ffffff" />
-          <path d="M0 0c96 42 275 42 371 0" stroke="#C89B4A" strokeWidth="2" fill="none" />
-        </svg>
+
+        {/* image + gold curve share one wrapper → move together on hover */}
+        <div className="bs-zoom">
+          <img src={p.image} alt={p.title} loading="lazy" />
+          <svg className="bs-arc" viewBox="0 0 371 60" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 0C96 60 275 60 371 0L371 60L0 60Z" fill="#ffffff" />
+            <path d="M0 0C96 60 275 60 371 0" stroke="#CCA466" strokeWidth="2.5" fill="none" />
+          </svg>
+        </div>
       </div>
 
       {/* body */}
@@ -103,7 +119,7 @@ export default function BestSellers() {
   return (
     <section id="best-sellers" className="bs-sec">
       <style>{`
-        .bs-sec{position:relative;width:100%;background:#FCF9F2;padding:4.0104vw 0 5.2083vw;overflow:hidden;}
+        .bs-sec{position:relative;width:100%;padding:4.0104vw 0 5.2083vw;background:#FCF9F2;overflow:hidden;}
         .bs-head{text-align:center;max-width:78vw;margin:0 auto 3.2292vw;}
         .bs-eyebrow{color:#E38F2E;font-family:${sans};font-size:0.7292vw;font-weight:700;letter-spacing:0.35em;text-transform:uppercase;}
         .bs-title{margin-top:0.7813vw;color:#2E3192;font-family:${serif};font-size:2.0833vw;font-weight:700;line-height:1.2;}
@@ -112,25 +128,27 @@ export default function BestSellers() {
 
         .bs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6667vw;width:82.2917vw;margin:0 auto;}
 
-        /* ✅ CARD HOVER (original design): shadow deepens, card does NOT move */
+        /* card: rounded + soft shadow; hover = shadow only (no lift) */
         .bs-card{display:flex;flex-direction:column;border-radius:0.5208vw;background:#ffffff;
-          box-shadow:0 12px 30px rgba(43,46,126,0.08);
+          text-decoration:none;box-shadow:0 12px 30px rgba(43,46,126,0.08);
           transition:box-shadow .35s ease;}
         .bs-card:hover{box-shadow:0 22px 44px rgba(43,46,126,0.16);}
 
         .bs-media{position:relative;height:17.7083vw;overflow:hidden;border-radius:0.5208vw 0.5208vw 0 0;}
-        .bs-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;
-          transition:transform .55s ease;}
-        /* ✅ IMAGE HOVER (original design): zooms OUT, not in */
-        .bs-card:hover .bs-media img{transform:scale(0.95);}
 
-        .bs-arc{position:absolute;bottom:-1px;left:0;width:100%;height:2.1875vw;display:block;}
+        /* zoom wrapper: image + curve scale together (zoom OUT on hover) */
+        .bs-zoom{position:absolute;inset:0;transition:transform .55s ease;}
+        .bs-card:hover .bs-zoom{transform:scale(0.95);}
+        .bs-zoom img{position:absolute;top:0;left:0;width:100%;height:80.5%;object-fit:cover;object-position:top center;}
+        .bs-arc{position:absolute;bottom:0;left:0;width:100%;height:16.5%;display:block;}
 
         .bs-badge{position:absolute;top:0.9375vw;left:0.9375vw;z-index:2;display:inline-flex;align-items:center;gap:0.4167vw;
-          background:#ffffff;border-radius:50vw;padding:0.4688vw 0.8333vw;color:#C89B4A;
+          background:#ffffff;border-radius:50vw;padding:0.4688vw 0.8333vw;color:#CCA466;
           font-family:${sans};font-size:0.625vw;font-weight:700;letter-spacing:0.12em;}
+
         .bs-wish{position:absolute;top:0.8333vw;right:0.8333vw;z-index:2;width:2.3438vw;height:2.3438vw;border-radius:50%;
-          background:#FAF8F4;border:0.1042vw solid rgba(200,155,74,0.5);display:grid;place-items:center;cursor:pointer;transition:transform .25s;}
+          background:#FAF8F4;border:0.1042vw solid rgba(200,155,74,0.5);display:grid;place-items:center;
+          cursor:pointer;transition:transform .25s;}
         .bs-wish:hover{transform:scale(1.08);}
         .bs-wish svg{width:0.9375vw;height:0.8333vw;}
 
@@ -145,7 +163,7 @@ export default function BestSellers() {
         .bs-meta-item > span > span{display:block;}
         .bs-meta-ico{width:2.3438vw;height:2.3438vw;border-radius:50%;background:#F7F1E8;display:grid;place-items:center;flex-shrink:0;}
         .bs-meta-ico svg{width:0.9375vw;height:0.9375vw;}
-        .bs-meta-label{color:#C89B4A;font-family:${sans};font-size:0.6771vw;font-weight:600;}
+        .bs-meta-label{color:#CCA466;font-family:${sans};font-size:0.6771vw;font-weight:600;}
         .bs-meta-value{color:#333333;font-family:${sans};font-size:0.7292vw;font-weight:600;}
         .bs-div{width:1px;height:2.0313vw;background:#E4E4E4;}
 
@@ -162,9 +180,8 @@ export default function BestSellers() {
           .bs-media{height:26vw;} .bs-name{font-size:1.7vw;} .bs-desc{font-size:1.2vw;line-height:1.8vw;}
           .bs-meta-label{font-size:1vw;} .bs-meta-value{font-size:1.1vw;} .bs-cta{font-size:1.2vw;}
           .bs-badge{font-size:1vw;padding:0.7vw 1.2vw;} .bs-wish{width:3.4vw;height:3.4vw;}
-          .bs-arc{height:3.2vw;} .bs-meta-ico{width:2.9vw;height:2.9vw;} .bs-cta-arrow{width:2.4vw;height:2.4vw;}
+          .bs-meta-ico{width:2.9vw;height:2.9vw;} .bs-cta-arrow{width:2.4vw;height:2.4vw;}
           .bs-div{height:2.9vw;} .bs-squiggle{width:12vw;}
-          /* ✅ lift removed here as well */
         }
         @media (max-width:640px){
           .bs-grid{grid-template-columns:1fr;}
