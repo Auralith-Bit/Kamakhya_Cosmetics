@@ -161,16 +161,16 @@ const FeaturedCollection = () => {
                 />
               </div>
 
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 371 334"
-                fill="none"
-                preserveAspectRatio="none"
-                className="absolute bottom-0 left-0 w-full pointer-events-none"
-                style={{ height: '100%' }}
-              >
-                <path d="M0 273.15 C52.65 313.56 115.84 334 185 334 C254.65 334 318.26 313.28 371 272.48" stroke="#CCA466" strokeWidth="2.5" />
-              </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 371 314"
+                  fill="none"
+                  preserveAspectRatio="none"
+                  className="absolute bottom-0 left-0 w-full pointer-events-none"
+                  style={{ height: '100%', transform: 'translateY(4px)' }}
+                >
+                  <path d="M371 256.16 C371 259.24 369.4 262.1 366.73 263.82 C318.28 294.53 254.65 314 185 314 C115.83 314 52.64 294.78 4.34 264.48 C1.6 262.76 0 259.87 0 256.79" stroke="#CCA466" strokeWidth="2.5" fill="none" />
+                </svg>
 
               {/* FEATURED badge */}
               <span
