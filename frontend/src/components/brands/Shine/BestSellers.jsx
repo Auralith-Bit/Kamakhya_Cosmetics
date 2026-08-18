@@ -8,10 +8,10 @@ const serif = "'Playfair Display', Georgia, serif";
 const sans = "'Poppins', 'Segoe UI', sans-serif";
 
 const PRODUCTS = [
-  { id: "detergent-powder", title: "Detergent Powder", image: group56 },
-  { id: "dish-washer", title: "Dish Washer", image: intersect },
-  { id: "detergent-powder-2", title: "Detergent Powder", image: group56 },
-  { id: "dish-washer-2", title: "Dish Washer", image: intersect },
+  { id: "detergent-powder", title: "Detergent Powder", image: group56, tint: "#F5F3F6" },
+  { id: "dish-washer", title: "Dish Washer", image: intersect, tint: "#E7DED3" },
+  { id: "detergent-powder-2", title: "Detergent Powder", image: group56, tint: "#F5F3F6" },
+  { id: "dish-washer-2", title: "Dish Washer", image: intersect, tint: "#E7DED3" },
 ];
 
 const DESC = "Nail Polish is the best things in the world and were for protection. i love…";
@@ -49,7 +49,7 @@ function BestSellerCard({ p }) {
   return (
     <Link to={`/products/${p.id}`} className="bs-card">
       {/* media */}
-      <div className="bs-media">
+      <div className="bs-media" style={{ backgroundColor: p.tint }}>
         <span className="bs-badge"><Spark /> BEST SELLER</span>
         <button
           type="button"
@@ -60,14 +60,13 @@ function BestSellerCard({ p }) {
           <Heart filled={liked} />
         </button>
 
-        {/* full image, rest zoom 1.065 → hover 1 */}
+        {/* image: rest 1.065 → hover 1 (unchanged) */}
         <img className="bs-img" src={p.image} alt={p.title} loading="lazy" />
 
-        {/* ✅ LINE FIX: taller arc box shifted below the media bottom;
-             white fill now overflows past the seam (hides the image's bottom edge),
-             golden stroke stays in place and is NOT clipped */}
-        <svg className="bs-arc" viewBox="0 -8 371 72" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M0 -8C96 67 275 67 371 -8L371 72L0 72Z" fill="#ffffff" />
+        {/* ✅ ARC: nudged up ONLY enough to release the consumed sliver
+           (dip outer edge ≈0.5px above the media bottom — not "too high") */}
+        <svg className="bs-arc" viewBox="0 -8 371 94" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 -8C96 67 275 67 371 -8L371 86L0 86Z" fill="#ffffff" />
           <path d="M0 0C96 75 275 75 371 0" stroke="#CCA466" strokeWidth="2.5" fill="none" />
         </svg>
       </div>
@@ -130,10 +129,9 @@ export default function BestSellers() {
           transition:transform .8s cubic-bezier(.22,.61,.36,1);}
         .bs-card:hover .bs-img{transform:scale(1);}
 
-        /* ✅ arc box: taller + shifted down so the white fill spills below the
-           media/body seam (covering the stray line); stroke dip still lands at
-           the media bottom, fully visible */
-        .bs-arc{position:absolute;left:0;bottom:-0.4167vw;width:100%;height:3.75vw;
+        /* ✅ ARC: bottom:-1.4583vw = just enough to free the consumed portion;
+           dip still visually touches the media bottom (design look) */
+        .bs-arc{position:absolute;left:0;bottom:-1.4583vw;width:100%;height:4.9vw;
           display:block;pointer-events:none;}
 
         .bs-badge{position:absolute;top:0.9375vw;left:0.9375vw;z-index:2;display:inline-flex;align-items:center;gap:0.4167vw;
@@ -169,7 +167,8 @@ export default function BestSellers() {
         @media (max-width:1280px){
           .bs-grid{grid-template-columns:repeat(2,1fr);width:90vw;}
           .bs-eyebrow{font-size:1.2vw;} .bs-title{font-size:2.6vw;} .bs-sub{font-size:1.3vw;}
-          .bs-media{height:26vw;} .bs-arc{height:5.03vw;}
+          .bs-media{height:26vw;}
+          .bs-arc{height:7.2vw;bottom:-2.1563vw;}
           .bs-name{font-size:1.7vw;} .bs-desc{font-size:1.2vw;line-height:1.8vw;}
           .bs-meta-label{font-size:1vw;} .bs-meta-value{font-size:1.1vw;} .bs-cta{font-size:1.2vw;}
           .bs-badge{font-size:1vw;padding:0.7vw 1.2vw;} .bs-wish{width:3.4vw;height:3.4vw;}
@@ -178,7 +177,8 @@ export default function BestSellers() {
         }
         @media (max-width:640px){
           .bs-grid{grid-template-columns:1fr;}
-          .bs-media{height:70vw;} .bs-arc{height:12.58vw;}
+          .bs-media{height:70vw;}
+          .bs-arc{height:19.4vw;bottom:-5.855vw;}
           .bs-title{font-size:5vw;} .bs-sub{font-size:3vw;}
           .bs-name{font-size:4vw;} .bs-desc{font-size:3vw;line-height:4.4vw;}
           .bs-eyebrow{font-size:2.4vw;} .bs-meta-label{font-size:2.4vw;} .bs-meta-value{font-size:2.6vw;}
