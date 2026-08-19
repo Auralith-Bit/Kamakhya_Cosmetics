@@ -1,11 +1,3 @@
-/**
- * FILE : frontend/src/components/brands/shine/CtaBand.jsx
- * ROUTE: /brands/shine — section 7 (Partnership CTA band)
- * DESIGN: 1920x300 dark navy #16204D — tag y63; headline y87 (2 lines);
- *   body y183 (2 lines); gold button 230x50 @ (1260,125) #CCA466;
- *   outline button @ (1537,125) white 1.5px border
- * RESPONSIVE: 100% vw (designPx/19.2)
- */
 import React from "react";
 
 const serif = "'Playfair Display', Georgia, serif";

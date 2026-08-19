@@ -60,11 +60,10 @@ function BestSellerCard({ p }) {
           <Heart filled={liked} />
         </button>
 
-        {/* image: rest 1.065 → hover 1 (unchanged) */}
+        {/* image: rest 1.065 → hover 1 (zoom out) */}
         <img className="bs-img" src={p.image} alt={p.title} loading="lazy" />
 
-        {/* ✅ ARC: nudged up ONLY enough to release the consumed sliver
-           (dip outer edge ≈0.5px above the media bottom — not "too high") */}
+        {/* golden arc: correct rest position + small hover lift */}
         <svg className="bs-arc" viewBox="0 -8 371 94" preserveAspectRatio="none" aria-hidden="true">
           <path d="M0 -8C96 67 275 67 371 -8L371 86L0 86Z" fill="#ffffff" />
           <path d="M0 0C96 75 275 75 371 0" stroke="#CCA466" strokeWidth="2.5" fill="none" />
@@ -110,33 +109,94 @@ export default function BestSellers() {
       <style>{`
         .bs-sec{position:relative;width:100%;padding:4.0104vw 0 5.2083vw;background:#FCF9F2;overflow:hidden;}
         .bs-head{text-align:center;max-width:78vw;margin:0 auto 3.2292vw;}
-        .bs-eyebrow{color:#E38F2E;font-family:${sans};font-size:0.7292vw;font-weight:700;letter-spacing:0.35em;text-transform:uppercase;}
-        .bs-title{margin-top:0.7813vw;color:#2E3192;font-family:${serif};font-size:1.875vw;font-weight:700;line-height:normal;text-transform:capitalize;}
-        .bs-squiggle{display:block;margin:0.7813vw auto 0.9375vw;width:9.25vw;height:auto;}
-        .bs-sub{color:#666666;font-family:${sans};font-size:0.8854vw;line-height:1.4583vw;}
+
+        .bs-eyebrow{
+        color:#E38F2E;
+        font-family:${sans};
+        font-size:0.83vw;
+        font-weight:700;
+        letter-spacing:0.25em;
+        text-transform:uppercase;
+        }
+
+        .bs-title{
+        margin-top:0.5vw;
+        color:#2E3192;
+        font-family:${serif};
+        font-size:1.75vw;
+        font-weight:700;
+        line-height:normal;
+        text-transform:capitalize;
+        }
+
+        .bs-squiggle{
+        display:block;
+        margin-left: 34.5vw;
+        margin-right: 34.5vw;
+        width:9.25vw;
+        height:auto;
+        }
+
+        .bs-sub{
+        color:#666666;
+        font-family:${sans};
+        font-size:0.97vw;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+        line-height:1.4583vw;
+        }
 
         .bs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6667vw;width:82.2917vw;margin:0 auto;}
 
+        /* ✅ CARD hover: shadow deepens */
         .bs-card{display:flex;flex-direction:column;border-radius:0.5208vw;background:#ffffff;overflow:hidden;
-          text-decoration:none;box-shadow:0 12px 30px rgba(43,46,126,0.08);transition:box-shadow .35s ease;}
+          text-decoration:none;box-shadow:0 12px 30px rgba(43,46,126,0.08);
+          transition:box-shadow .35s ease;}
         .bs-card:hover{box-shadow:0 22px 44px rgba(43,46,126,0.16);}
 
         .bs-media{position:relative;display:block;height:17.7083vw;overflow:hidden;background:#ffffff;
           border-radius:0.5208vw 0.5208vw 0 0;}
 
+        /* ✅ IMAGE hover: zooms out 1.065 → 1 */
         .bs-img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;
           transform:scale(1.065);transform-origin:top center;
           transition:transform .8s cubic-bezier(.22,.61,.36,1);}
         .bs-card:hover .bs-img{transform:scale(1);}
 
-        /* ✅ ARC: bottom:-1.4583vw = just enough to free the consumed portion;
-           dip still visually touches the media bottom (design look) */
+        /* ✅ ARC: correct rest position + SMALL hover lift */
         .bs-arc{position:absolute;left:0;bottom:-1.4583vw;width:100%;height:4.9vw;
-          display:block;pointer-events:none;}
+          display:block;pointer-events:none;
+          transition:transform .8s cubic-bezier(.22,.61,.36,1);}
+        .bs-card:hover .bs-arc{transform:translateY(-0.2083vw);}
 
-        .bs-badge{position:absolute;top:0.9375vw;left:0.9375vw;z-index:2;display:inline-flex;align-items:center;gap:0.4167vw;
-          background:#ffffff;border-radius:50vw;padding:0.4688vw 0.8333vw;color:#CCA466;
-          font-family:${sans};font-size:0.625vw;font-weight:700;letter-spacing:0.12em;}
+        /* ✅ BADGE: FIXED container size — font-size can be increased
+           without the pill growing (text stays centered, clips only if extreme) */
+        .bs-badge{
+        position:absolute;
+        top:0.9375vw;
+        left:0.9375vw;
+        z-index:2;
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        gap:0.4167vw;
+        width:7.9167vw;              /* fixed width  (≈152px @1920) */
+        height:1.875vw;             /* fixed height (≈36px @1920) */
+        box-sizing:border-box;
+        padding:0;
+        background:#ffffff;
+        border-radius:50vw;
+        color:#CCA466;
+        font-family:${sans};
+        font-size:0.75vw;          /* raise freely — container won't change */
+        font-weight:500;
+        letter-spacing:0.12em;
+        line-height:1;
+        white-space:nowrap;
+        overflow:hidden;
+        }
+        .bs-badge svg{flex:0 0 auto;}
+
         .bs-wish{position:absolute;top:0.8333vw;right:0.8333vw;z-index:2;width:2.3438vw;height:2.3438vw;border-radius:50%;
           background:#FAF8F4;border:0.1042vw solid rgba(200,155,74,0.5);display:grid;place-items:center;
           cursor:pointer;transition:transform .25s;}
@@ -144,23 +204,78 @@ export default function BestSellers() {
         .bs-wish svg{width:0.9375vw;height:0.8333vw;}
 
         .bs-body{flex:1;display:flex;flex-direction:column;padding:1.1979vw 1.0417vw 1.25vw;text-align:center;}
-        .bs-name{color:#333333;font-family:${serif};font-size:1.1458vw;font-weight:700;margin-bottom:0.625vw;}
-        .bs-desc{color:#666666;font-family:${sans};font-size:0.7813vw;line-height:1.25vw;margin-bottom:0.9375vw;
-          display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+
+        .bs-name{
+        color:#333333;
+        font-family:${serif};
+        font-size:1.1458vw;
+        font-weight:500;
+        margin-top: -0.5vw;
+        margin-bottom:0.625vw;
+        }
+
+        .bs-desc{
+        color:#666666;
+        font-family:${sans};
+        font-size:0.89vw;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+        line-height:1.25vw;
+        margin-bottom:0.9375vw;
+        display:-webkit-box;
+        -webkit-line-clamp:2;
+        -webkit-box-orient:vertical;
+        overflow:hidden;
+        }
 
         .bs-meta{display:flex;align-items:center;justify-content:space-between;gap:0.625vw;
           border-top:1px solid #E8D6BA;padding:0.7292vw 0.1042vw;}
         .bs-meta-item{display:flex;align-items:center;gap:0.5208vw;text-align:left;}
         .bs-meta-item > span > span{display:block;}
-        .bs-meta-ico{width:2.3438vw;height:2.3438vw;border-radius:50%;background:#F7F1E8;display:grid;place-items:center;flex-shrink:0;}
+        
+        .bs-meta-ico{
+        width:2.3438vw;
+        height:2.3438vw;
+        border-radius:50%;
+        background:#F7F1E8;
+        display:grid;
+        place-items:center;
+        flex-shrink:0;
+        }
+        
         .bs-meta-ico svg{width:0.9375vw;height:0.9375vw;}
-        .bs-meta-label{color:#CCA466;font-family:${sans};font-size:0.6771vw;font-weight:600;}
-        .bs-meta-value{color:#333333;font-family:${sans};font-size:0.7292vw;font-weight:600;}
+        
+        .bs-meta-label{
+        color:#CCA466;
+        font-family:${sans};
+        font-size:0.79vw;
+        font-weight:500;
+        }
+        
+        .bs-meta-value{
+        color:#333333;
+        font-family:${sans};
+        font-size:0.79vw;
+        font-weight:500;
+        }
+        
         .bs-div{width:1px;height:2.0313vw;background:#E4E4E4;}
 
-        .bs-cta{margin-top:0.9375vw;display:flex;align-items:center;justify-content:space-between;
-          border:0.1042vw solid #2E3192;border-radius:50vw;padding:0.4688vw 0.5208vw 0.4688vw 1.1458vw;
-          color:#2E3192;font-family:${sans};font-size:0.8333vw;font-weight:600;background:#ffffff;}
+        .bs-cta{
+        margin-top:0.9375vw;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        border:0.1042vw solid #2E3192;
+        border-radius:50vw;
+        padding:0.4688vw 0.5208vw 0.4688vw 5.8vw;
+        color:#2E3192;
+        font-family:${sans};
+        font-size:0.89vw;
+        font-weight:500;
+        background:#ffffff;
+        }
+        
         .bs-cta-arrow{width:1.6667vw;height:1.6667vw;border-radius:50%;background:#C7C9EA;color:#2E3192;display:grid;place-items:center;}
         .bs-cta-arrow svg{width:0.8333vw;height:0.8333vw;}
 
@@ -171,7 +286,7 @@ export default function BestSellers() {
           .bs-arc{height:7.2vw;bottom:-2.1563vw;}
           .bs-name{font-size:1.7vw;} .bs-desc{font-size:1.2vw;line-height:1.8vw;}
           .bs-meta-label{font-size:1vw;} .bs-meta-value{font-size:1.1vw;} .bs-cta{font-size:1.2vw;}
-          .bs-badge{font-size:1vw;padding:0.7vw 1.2vw;} .bs-wish{width:3.4vw;height:3.4vw;}
+          .bs-badge{font-size:1vw;width:10.5vw;height:2.6vw;} .bs-wish{width:3.4vw;height:3.4vw;}
           .bs-meta-ico{width:2.9vw;height:2.9vw;} .bs-cta-arrow{width:2.4vw;height:2.4vw;}
           .bs-div{height:2.9vw;} .bs-squiggle{width:12vw;}
         }
@@ -182,7 +297,7 @@ export default function BestSellers() {
           .bs-title{font-size:5vw;} .bs-sub{font-size:3vw;}
           .bs-name{font-size:4vw;} .bs-desc{font-size:3vw;line-height:4.4vw;}
           .bs-eyebrow{font-size:2.4vw;} .bs-meta-label{font-size:2.4vw;} .bs-meta-value{font-size:2.6vw;}
-          .bs-cta{font-size:3vw;} .bs-badge{font-size:2.2vw;} .bs-wish{width:8vw;height:8vw;}
+          .bs-cta{font-size:3vw;} .bs-badge{font-size:2.2vw;width:23vw;height:5.6vw;} .bs-wish{width:8vw;height:8vw;}
           .bs-meta-ico{width:7vw;height:7vw;} .bs-cta-arrow{width:6vw;height:6vw;}
           .bs-div{height:7vw;} .bs-squiggle{width:24vw;}
         }
@@ -193,8 +308,9 @@ export default function BestSellers() {
         <h2 className="bs-title">Our Cleaning Best Sellers</h2>
         <img className="bs-squiggle" src={vector1} alt="" aria-hidden="true" />
         <p className="bs-sub">
-          Discover our best-selling home care essentials trusted by thousands for a cleaner,
-          fresher home—crafted with powerful, safe, and effective cleaning formulas.
+          Discover our best-selling home care essentials trusted by thousands for a cleaner, fresher home—
+          <br/>
+          crafted with powerful, safe, and effective cleaning formulas.
         </p>
       </header>
 
