@@ -19,8 +19,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dev": "react-scripts start",
-    "start": "react-scripts start",
+    "dev": "npm run prebuild && react-scripts start",
+    "start": "npm run prebuild && react-scripts start",
     "prebuild": "npx @tailwindcss/cli -i ./src/tailwind-input.css -o ./src/tailwind-output.css",
     "build": "react-scripts build",
     "test": "react-scripts test",
