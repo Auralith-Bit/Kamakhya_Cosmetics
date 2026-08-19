@@ -360,7 +360,7 @@ const FeaturedCollection = () => {
                   boxSizing: 'border-box',
                   flexShrink: 0,
                 }}
-                onMouseEnter={e => { e.currentTarget.style.background = '#2E3192'; e.currentTarget.style.color = '#fff'; }}
+                onMouseEnter={e => { e.currentTarget.style.background = '#EEF0FB'; e.currentTarget.style.color = '#2E3192'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = '#FFF'; e.currentTarget.style.color = '#2E3192'; }}
               >
                 <span style={{ whiteSpace: 'nowrap' }}>View Products</span>
@@ -408,7 +408,7 @@ const FeaturedCollection = () => {
             padding: '14px 32px',
             cursor: 'pointer',
           }}
-          onMouseEnter={e => { e.currentTarget.style.background = '#2E3192'; e.currentTarget.style.color = '#fff'; }}
+          onMouseEnter={e => { e.currentTarget.style.background = '#EEF0FB'; e.currentTarget.style.color = '#2E3192'; }}
           onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#2E3192'; }}
         >
           Explore Collections
