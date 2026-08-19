@@ -16,27 +16,48 @@ const PRODUCTS = [
 
 const DESC = "Nail Polish is the best things in the world and were for protection. i love…";
 
-/* ---------- icons ---------- */
+/* ---------- icons (matched to Figma originals) ---------- */
+
+/* ✅ stroked 4-point sparkle with concave arcs */
 const Spark = () => (
-  <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
-    <path d="M7 0l1.8 5.2L14 7l-5.2 1.8L7 14 5.2 8.8 0 7l5.2-1.8L7 0z" fill="#C89B4A" />
+  <svg width="13" height="13" viewBox="0 0 12.75 12.75" fill="none" aria-hidden="true">
+    <path
+      d="M6.375 0C6.375 3.521 3.521 6.375 0 6.375C3.521 6.375 6.375 9.229 6.375 12.75C6.375 9.229 9.229 6.375 12.75 6.375C9.229 6.375 6.375 3.521 6.375 0Z"
+      stroke="#CCA466" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+    />
   </svg>
 );
+
+/* ✅ Figma heart path with stroke-safe viewBox so the glyph sits exactly
+   centered in the circle (no clipping, no optical shift) */
 const Heart = ({ filled }) => (
-  <svg width="18" height="16" viewBox="0 0 18 16" fill={filled ? "#3436A4" : "none"} aria-hidden="true">
-    <path d="M9 15.2 2.1 8.3C.8 7 .8 4.9 2.1 3.6c1.3-1.3 3.4-1.3 4.7 0L9 5.8l2.2-2.2c1.3-1.3 3.4-1.3 4.7 0 1.3 1.3 1.3 3.4 0 4.7L9 15.2z" stroke="#3436A4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  <svg viewBox="-1 -1 21 18.5" fill={filled ? "#3436A4" : "none"} aria-hidden="true">
+    <path
+      d="M3.355 0.768C1.334 1.535 0 3.455 0 5.597C0 7.76 1.425 9.358 2.85 10.769L8.083 15.782C8.446 16.185 8.966 16.413 9.512 16.41C10.057 16.407 10.575 16.171 10.933 15.764L16.15 10.769C17.575 9.358 19 7.75 19 5.597C19.01 3.45 17.677 1.521 15.651 0.752C13.626 -0.016 11.331 0.537 9.889 2.14C9.788 2.247 9.647 2.91 9.5 2.91C9.353 2.91 9.212 2.247 9.112 2.14C7.665 0.547 5.376 0.001 3.355 0.768Z"
+      stroke="#3436A4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+    />
   </svg>
 );
+
+/* ✅ package cube with diagonal tick on the top face */
 const BoxIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CCA466" strokeWidth="1.6" strokeLinejoin="round" aria-hidden="true">
-    <path d="M21 8l-9-5-9 5v8l9 5 9-5V8z" /><path d="M3 8l9 5 9-5" /><path d="M12 13v8" />
+  <svg viewBox="0 0 24 24" fill="none" stroke="#CCA466" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+    <path d="m3.3 7 8.7 5 8.7-5" />
+    <path d="M12 22V12" />
+    <path d="m7.5 4.27 9 5.15" />
   </svg>
 );
+
+/* ✅ calendar with dot grid in the body */
 const CalIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CCA466" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
-    <rect x="3" y="5" width="18" height="16" rx="2" /><path d="M3 10h18M8 3v4M16 3v4" />
+  <svg viewBox="0 0 24 24" fill="none" stroke="#CCA466" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <rect x="3" y="5" width="18" height="16" rx="2" />
+    <path d="M8 3v4M16 3v4M3 10h18" />
+    <path d="M8 14h.01M12 14h.01M16 14h.01M8 17h.01M12 17h.01M16 17h.01" />
   </svg>
 );
+
 const Arrow = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <path d="M4 12h15M13 6l6 6-6 6" />
@@ -63,7 +84,7 @@ function BestSellerCard({ p }) {
         {/* image: rest 1.065 → hover 1 (zoom out) */}
         <img className="bs-img" src={p.image} alt={p.title} loading="lazy" />
 
-        {/* golden arc: correct rest position + small hover lift */}
+        {/* golden arc */}
         <svg className="bs-arc" viewBox="0 -8 371 94" preserveAspectRatio="none" aria-hidden="true">
           <path d="M0 -8C96 67 275 67 371 -8L371 86L0 86Z" fill="#ffffff" />
           <path d="M0 0C96 75 275 75 371 0" stroke="#CCA466" strokeWidth="2.5" fill="none" />
@@ -109,46 +130,13 @@ export default function BestSellers() {
       <style>{`
         .bs-sec{position:relative;width:100%;padding:4.0104vw 0 5.2083vw;background:#FCF9F2;overflow:hidden;}
         .bs-head{text-align:center;max-width:78vw;margin:0 auto 3.2292vw;}
-
-        .bs-eyebrow{
-        color:#E38F2E;
-        font-family:${sans};
-        font-size:0.83vw;
-        font-weight:700;
-        letter-spacing:0.25em;
-        text-transform:uppercase;
-        }
-
-        .bs-title{
-        margin-top:0.5vw;
-        color:#2E3192;
-        font-family:${serif};
-        font-size:1.75vw;
-        font-weight:700;
-        line-height:normal;
-        text-transform:capitalize;
-        }
-
-        .bs-squiggle{
-        display:block;
-        margin-left: 34.5vw;
-        margin-right: 34.5vw;
-        width:9.25vw;
-        height:auto;
-        }
-
-        .bs-sub{
-        color:#666666;
-        font-family:${sans};
-        font-size:0.97vw;
-        font-weight: 500;
-        letter-spacing: 0.03em;
-        line-height:1.4583vw;
-        }
+        .bs-eyebrow{color:#E38F2E;font-family:${sans};font-size:0.83vw;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;}
+        .bs-title{margin-top:0.5vw;color:#2E3192;font-family:${serif};font-size:1.75vw;font-weight:700;line-height:normal;text-transform:capitalize;}
+        .bs-squiggle{display:block;margin-left:34.5vw;margin-right:34.5vw;width:9.25vw;height:auto;}
+        .bs-sub{color:#666666;font-family:${sans};font-size:0.97vw;font-weight:500;letter-spacing:0.03em;line-height:1.4583vw;}
 
         .bs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6667vw;width:82.2917vw;margin:0 auto;}
 
-        /* ✅ CARD hover: shadow deepens */
         .bs-card{display:flex;flex-direction:column;border-radius:0.5208vw;background:#ffffff;overflow:hidden;
           text-decoration:none;box-shadow:0 12px 30px rgba(43,46,126,0.08);
           transition:box-shadow .35s ease;}
@@ -157,126 +145,52 @@ export default function BestSellers() {
         .bs-media{position:relative;display:block;height:17.7083vw;overflow:hidden;background:#ffffff;
           border-radius:0.5208vw 0.5208vw 0 0;}
 
-        /* ✅ IMAGE hover: zooms out 1.065 → 1 */
         .bs-img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;
           transform:scale(1.065);transform-origin:top center;
           transition:transform .8s cubic-bezier(.22,.61,.36,1);}
         .bs-card:hover .bs-img{transform:scale(1);}
 
-        /* ✅ ARC: correct rest position + SMALL hover lift */
         .bs-arc{position:absolute;left:0;bottom:-1.4583vw;width:100%;height:4.9vw;
           display:block;pointer-events:none;
           transition:transform .8s cubic-bezier(.22,.61,.36,1);}
         .bs-card:hover .bs-arc{transform:translateY(-0.2083vw);}
 
-        /* ✅ BADGE: FIXED container size — font-size can be increased
-           without the pill growing (text stays centered, clips only if extreme) */
-        .bs-badge{
-        position:absolute;
-        top:0.9375vw;
-        left:0.9375vw;
-        z-index:2;
-        display:inline-flex;
-        align-items:center;
-        justify-content:center;
-        gap:0.4167vw;
-        width:7.9167vw;              /* fixed width  (≈152px @1920) */
-        height:1.875vw;             /* fixed height (≈36px @1920) */
-        box-sizing:border-box;
-        padding:0;
-        background:#ffffff;
-        border-radius:50vw;
-        color:#CCA466;
-        font-family:${sans};
-        font-size:0.75vw;          /* raise freely — container won't change */
-        font-weight:500;
-        letter-spacing:0.12em;
-        line-height:1;
-        white-space:nowrap;
-        overflow:hidden;
-        }
+        .bs-badge{position:absolute;top:0.9375vw;left:0.9375vw;z-index:2;display:inline-flex;align-items:center;gap:0.4167vw;
+          background:#ffffff;border-radius:50vw;padding:0.4688vw 0.8333vw;color:#CCA466;
+          font-family:${sans};font-size:0.75vw;font-weight:500;letter-spacing:0.12em;line-height:1;
+          white-space:nowrap;overflow:hidden;}
         .bs-badge svg{flex:0 0 auto;}
 
+        /* wishlist circle — heart centered via grid; svg sized to the stroke-safe box */
         .bs-wish{position:absolute;top:0.8333vw;right:0.8333vw;z-index:2;width:2.3438vw;height:2.3438vw;border-radius:50%;
           background:#FAF8F4;border:0.1042vw solid rgba(200,155,74,0.5);display:grid;place-items:center;
-          cursor:pointer;transition:transform .25s;}
-        .bs-wish:hover{transform:scale(1.08);}
-        .bs-wish svg{width:0.9375vw;height:0.8333vw;}
+          cursor:pointer;}
+        .bs-wish svg{width:1.0938vw;height:0.9635vw;display:block;}
 
         .bs-body{flex:1;display:flex;flex-direction:column;padding:1.1979vw 1.0417vw 1.25vw;text-align:center;}
-
-        .bs-name{
-        color:#333333;
-        font-family:${serif};
-        font-size:1.1458vw;
-        font-weight:500;
-        margin-top: -0.5vw;
-        margin-bottom:0.625vw;
-        }
-
-        .bs-desc{
-        color:#666666;
-        font-family:${sans};
-        font-size:0.89vw;
-        font-weight: 400;
-        letter-spacing: 0.02em;
-        line-height:1.25vw;
-        margin-bottom:0.9375vw;
-        display:-webkit-box;
-        -webkit-line-clamp:2;
-        -webkit-box-orient:vertical;
-        overflow:hidden;
-        }
+        .bs-name{color:#333333;font-family:${serif};font-size:1.1458vw;font-weight:500;margin-top:-0.5vw;margin-bottom:0.625vw;}
+        .bs-desc{color:#666666;font-family:${sans};font-size:0.89vw;font-weight:400;letter-spacing:0.02em;line-height:1.25vw;
+          margin-bottom:0.9375vw;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
 
         .bs-meta{display:flex;align-items:center;justify-content:space-between;gap:0.625vw;
           border-top:1px solid #E8D6BA;padding:0.7292vw 0.1042vw;}
         .bs-meta-item{display:flex;align-items:center;gap:0.5208vw;text-align:left;}
         .bs-meta-item > span > span{display:block;}
-        
-        .bs-meta-ico{
-        width:2.3438vw;
-        height:2.3438vw;
-        border-radius:50%;
-        background:#F7F1E8;
-        display:grid;
-        place-items:center;
-        flex-shrink:0;
-        }
-        
-        .bs-meta-ico svg{width:0.9375vw;height:0.9375vw;}
-        
-        .bs-meta-label{
-        color:#CCA466;
-        font-family:${sans};
-        font-size:0.79vw;
-        font-weight:500;
-        }
-        
-        .bs-meta-value{
-        color:#333333;
-        font-family:${sans};
-        font-size:0.79vw;
-        font-weight:500;
-        }
-        
+        .bs-meta-ico{width:2.3438vw;height:2.3438vw;border-radius:50%;background:#F7F1E8;display:grid;place-items:center;flex-shrink:0;}
+        .bs-meta-ico svg{width:1.0417vw;height:1.0417vw;}
+        .bs-meta-label{color:#CCA466;font-family:${sans};font-size:0.79vw;font-weight:500;}
+        .bs-meta-value{color:#333333;font-family:${sans};font-size:0.79vw;font-weight:500;}
         .bs-div{width:1px;height:2.0313vw;background:#E4E4E4;}
 
-        .bs-cta{
-        margin-top:0.9375vw;
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        border:0.1042vw solid #2E3192;
-        border-radius:50vw;
-        padding:0.4688vw 0.5208vw 0.4688vw 5.8vw;
-        color:#2E3192;
-        font-family:${sans};
-        font-size:0.89vw;
-        font-weight:500;
-        background:#ffffff;
-        }
-        
-        .bs-cta-arrow{width:1.6667vw;height:1.6667vw;border-radius:50%;background:#C7C9EA;color:#2E3192;display:grid;place-items:center;}
+        .bs-cta{margin-top:0.9375vw;display:flex;align-items:center;justify-content:space-between;
+          border:0.1042vw solid #2E3192;border-radius:50vw;padding:0.4688vw 0.5208vw 0.4688vw 5.8vw;
+          color:#2E3192;font-family:${sans};font-size:0.9vw;font-weight:500;letter-spacing:0.02em;background:#ffffff;
+          transition:background .3s ease, color .3s ease, letter-spacing .35s ease;}
+        .bs-cta:hover{background:#F5F5FA;font-size:0.93vw;}
+
+        .bs-cta-arrow{width:1.6667vw;height:1.6667vw;border-radius:50%;background:#C7C9EA;color:#2E3192;
+          display:grid;place-items:center;flex-shrink:0;transition:transform .35s ease;}
+        .bs-cta:hover .bs-cta-arrow{transform:translateX(0.1563vw);}
         .bs-cta-arrow svg{width:0.8333vw;height:0.8333vw;}
 
         @media (max-width:1280px){
@@ -287,6 +201,7 @@ export default function BestSellers() {
           .bs-name{font-size:1.7vw;} .bs-desc{font-size:1.2vw;line-height:1.8vw;}
           .bs-meta-label{font-size:1vw;} .bs-meta-value{font-size:1.1vw;} .bs-cta{font-size:1.2vw;}
           .bs-badge{font-size:1vw;width:10.5vw;height:2.6vw;} .bs-wish{width:3.4vw;height:3.4vw;}
+          .bs-wish svg{width:1.5833vw;height:1.3945vw;}
           .bs-meta-ico{width:2.9vw;height:2.9vw;} .bs-cta-arrow{width:2.4vw;height:2.4vw;}
           .bs-div{height:2.9vw;} .bs-squiggle{width:12vw;}
         }
@@ -298,6 +213,7 @@ export default function BestSellers() {
           .bs-name{font-size:4vw;} .bs-desc{font-size:3vw;line-height:4.4vw;}
           .bs-eyebrow{font-size:2.4vw;} .bs-meta-label{font-size:2.4vw;} .bs-meta-value{font-size:2.6vw;}
           .bs-cta{font-size:3vw;} .bs-badge{font-size:2.2vw;width:23vw;height:5.6vw;} .bs-wish{width:8vw;height:8vw;}
+          .bs-wish svg{width:3.72vw;height:3.277vw;}
           .bs-meta-ico{width:7vw;height:7vw;} .bs-cta-arrow{width:6vw;height:6vw;}
           .bs-div{height:7vw;} .bs-squiggle{width:24vw;}
         }
