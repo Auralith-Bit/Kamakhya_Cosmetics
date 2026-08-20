@@ -212,8 +212,8 @@ const BrandCard = ({ image, badge, badgeBg, badgeSide, overlayAlign, categoryTag
           fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
           transition: 'background 0.2s, color 0.2s',
         }}
-        onMouseEnter={e => { e.currentTarget.style.background = brandColor; e.currentTarget.style.color = '#fff'; }}
-        onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = brandColor; }}
+        onMouseEnter={e => { e.currentTarget.style.background = brandColor + '1A'; e.currentTarget.style.color = brandColor; e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.10)'; }}
+        onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = brandColor; e.currentTarget.style.boxShadow = 'none'; }}
       >
         Explore Colletctions <ArrowRight />
       </button>
