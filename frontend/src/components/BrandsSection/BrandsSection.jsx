@@ -122,10 +122,16 @@ const ArrowRight = () => (
 
 /* ─── Brand Card ────────────────────────────────────────────────────── */
 const BrandCard = ({ image, badge, badgeBg, badgeSide, overlayAlign, categoryTag, brandName, brandColor, tagline, description, features }) => (
-  <div style={{
-    background: '#fbfbf9', borderRadius: '12px', boxShadow: '0 4px 28px rgba(0,0,0,0.09)',
-    overflow: 'hidden', width: 'min(470px, 100%)', flexShrink: 0,
-  }}>
+  <div
+    style={{
+      background: '#fbfbf9', borderRadius: '12px', boxShadow: '0 4px 28px rgba(0,0,0,0.09)',
+      border: '1.5px solid transparent',
+      overflow: 'hidden', width: 'min(470px, 100%)', flexShrink: 0,
+      transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
+    }}
+    onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = `0 8px 32px rgba(0,0,0,0.14)`; e.currentTarget.style.borderColor = brandColor + '60'; }}
+    onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 28px rgba(0,0,0,0.09)'; e.currentTarget.style.borderColor = 'transparent'; }}
+  >
     {/* Image area */}
     <div style={{ position: 'relative', height: '300px', overflow: 'hidden' }}>
       <img src={image} alt={brandName} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
