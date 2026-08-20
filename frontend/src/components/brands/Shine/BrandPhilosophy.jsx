@@ -11,6 +11,7 @@ const sans = "'Poppins', 'Segoe UI', sans-serif";
 const BrandPhilosophy = () => (
   <section id="shine-philosophy" className="bp-sec">
     <style>{`
+      /* ================= DESKTOP — ORIGINAL DESIGN, UNTOUCHED ================= */
       .bp-sec{position:relative;width:100%;height:46.875vw;background:#fff;overflow:hidden;}
 
       .bp-photo{
@@ -56,10 +57,7 @@ const BrandPhilosophy = () => (
         line-height:1.2;
       }
 
-      /* 👇 NEW: orange accent for the second half of the title */
-      .bp-accent{
-        color:#E38F2E;
-      }
+      .bp-accent{color:#E38F2E;}
 
       .bp-p{
         color:#333333;
@@ -90,7 +88,6 @@ const BrandPhilosophy = () => (
 
       .bp-cards img + img{margin-left:-1.25vw;}
 
-      /* buttons — all vw */
       .bp-btn{
         position:absolute;
         left:8.8542vw;
@@ -114,23 +111,68 @@ const BrandPhilosophy = () => (
       .bp-btn svg{width:0.4688vw;height:0.7292vw;flex-shrink:0;}
 
       .bp-btn2{
-      left:28.125vw;
-      width:15.5vw;
-      background:#F7F5F0;
-      border:0.1563vw solid #176B22;
-      color:#176B22;
-      font-weight:500;
-      text-transform:uppercase;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:0.5208vw;
+        left:28.125vw;
+        width:15.5vw;
+        background:#F7F5F0;
+        border:0.1563vw solid #176B22;
+        color:#176B22;
+        font-weight:500;
+        text-transform:uppercase;
       }
-      
+
       .bp-btn2:hover{background:#eef0e9;}
-      
-      /* declared AFTER .bp-btn svg so the download icon keeps its square size */
+
       .bp-btn2 svg{width:1.0417vw;height:1.0417vw;flex-shrink:0;}
+
+      /* ============ ≤1280 (tablets + phone layout-widths) — mobile-only tier ============ */
+      @media (max-width:1280px){
+        .bp-sec{height:58vw;}
+        .bp-tag{font-size:1.2vw;}
+        .bp-rule{width:3.6vw;height:0.22vw;}
+        .bp-title{font-size:2.3vw;}
+        .bp-p{font-size:1.35vw;line-height:2vw;width:46vw;}
+        .bp-cards{top:24.5vw;}
+        .bp-cards img{width:20vw;height:23.6vw;}
+        .bp-cards img + img{margin-left:-1.6vw;}
+        .bp-btn{top:51vw;height:4vw;font-size:1.2vw;width:24vw;}
+        .bp-btn svg{width:0.7vw;height:1.1vw;}
+        .bp-btn2{left:34.4vw;width:21vw;}
+        .bp-btn2 svg{width:1.5vw;height:1.5vw;}
+        .bp-play{left:72.7075vw;top:20.4vw;width:7vw;height:7vw;}
+      }
+
+      /* ============ ≤640 (real phones) — stacked, no DOM changes ============ */
+      @media (max-width:640px){
+        .bp-sec{height:auto;display:grid;grid-template-columns:1fr;
+          padding:10vw 5vw 12vw;}
+
+        .bp-copy{position:static;grid-column:1;grid-row:1;width:auto;}
+        .bp-tag{font-size:3.2vw;margin-top:0;}
+        .bp-rule{width:12vw;height:1vw;margin-top:2.5vw;}
+        .bp-title{font-size:6vw;margin-top:2.5vw;}
+        .bp-p{font-size:3.7vw;line-height:5.6vw;margin-top:3.5vw;width:100%;}
+        .bp-line{display:inline;}
+
+        /* cards: single column, full width, gap-4 */
+        .bp-cards{position:static;grid-column:1;grid-row:2;
+          flex-direction:column;gap:4vw;margin-top:7vw;}
+        .bp-cards img{width:100%;height:auto;border-radius:3vw;}
+        .bp-cards img + img{margin-left:0;}
+
+        /* buttons: stacked, full-width touch targets */
+        .bp-btn{position:static;grid-column:1;grid-row:3;width:100%;
+          height:12vw;font-size:3.6vw;border-radius:2vw;margin-top:7vw;}
+        .bp-btn svg{width:1.8vw;height:2.8vw;}
+        .bp-btn2{grid-column:1;grid-row:4;left:auto;width:100%;margin-top:4vw;}
+        .bp-btn2 svg{width:4vw;height:4vw;}
+
+        /* video last: full width + aspect ratio; play centered over it
+           (same grid cell = overlap, no wrapper needed) */
+        .bp-photo{position:static;grid-column:1;grid-row:5;width:100%;
+          height:auto;aspect-ratio:31.6042/35.25;object-fit:cover;margin-top:8vw;}
+        .bp-play{position:static;grid-column:1;grid-row:5;place-self:center;
+          width:14vw;height:14vw;z-index:2;}
+      }
     `}</style>
 
     <img className="bp-photo" src={photo} alt="Shine home-care products caring for a clean home" />
@@ -139,10 +181,7 @@ const BrandPhilosophy = () => (
     <div className="bp-copy">
       <p className="bp-tag">Our Brand Philosophy</p>
       <div className="bp-rule" />
-      
-      {/* 👇 Title split into two colors */}
       <h2 className="bp-title">Clean by Nature, <span className="bp-accent">Care in Every Touch</span></h2>
-      
       <p className="bp-p">
         <span className="bp-line">
           Shine believes a clean home creates a happy home. Our products are thoughtfully formulated
