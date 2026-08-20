@@ -281,7 +281,7 @@ const BrandsSection = () => (
             </svg>
           </div>
 
-          <p style={{ margin: '16px 0 0', fontFamily: 'Poppins, sans-serif', fontSize: '13.5px', color: '#555', lineHeight: 1.65, textAlign: 'center', maxWidth: '200px' }}>
+          <p style={{ margin: '16px 0 0', fontFamily: 'Poppins, sans-serif', fontSize: '13.5px', color: '#000', lineHeight: 1.65, textAlign: 'center', maxWidth: '200px' }}>
             Driven by our promise of{' '}
             <strong style={{ color: ORANGE, fontWeight: 700 }}>BEAUTY, CARE &amp; TRUST.</strong>{' '}
             we Create products that enhance everyday life.
