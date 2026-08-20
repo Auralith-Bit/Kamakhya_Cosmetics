@@ -78,12 +78,12 @@ const WhyRoyalLuxury = () => {
         <section className="bg-[#FCF9F2] px-4 py-[48px] sm:px-6 sm:py-[56px] lg:px-8 lg:py-[62px] overflow-hidden">
             <div className="max-w-[1600px] mx-auto">
 
-                {/* ================= HEADER ================= */}
+             {/* Top Section  */}
                 <div className="text-center max-w-225 mx-auto mb-8">
-                    <p className="text-hero-orange text-[15px] font-bold tracking-[0.14em] uppercase mb-2">
+                    <p className="text-hero-orange text-[15px] font-bold tracking-[0.14em] uppercase ">
                         WHY CHOOSE ROYAL LUXURY
                     </p>
-                    <h2 className="text-brand-blue font-serif font-bold text-[28px] sm:text-[32px] lg:text-[34px] leading-tight mb-2">
+                    <h2 className="text-brand-blue font-serif font-bold text-[28px] sm:text-[32px] lg:text-[34px] leading-tight">
                         Luxury That Complements Your Beauty
                     </h2>
                     <div className="flex justify-center mb-4">
