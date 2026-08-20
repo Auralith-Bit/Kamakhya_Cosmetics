@@ -142,11 +142,11 @@ const BrandCard = ({ image, badge, badgeBg, badgeSide, overlayAlign, categoryTag
 
       {/* Ribbon badge */}
       <div style={{
-        position: 'absolute', top: 0, [badgeSide]: 0, width: '56px', height: '92px',
+        position: 'absolute', top: 0, [badgeSide]: '15px', width: '56px', height: '80px',
         background: badgeBg, display: 'flex', alignItems: 'center', justifyContent: 'center',
-        paddingBottom: '10px', clipPath: 'polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%)',
+        paddingBottom: '0', clipPath: 'polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%)',
       }}>
-        <img src={badge} alt="" style={{ width: '32px', height: '32px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+        <img src={badge} alt="" style={{ width: '55px', height: '55px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
       </div>
 
       {/* Bottom text overlay – alignment differs per card */}
