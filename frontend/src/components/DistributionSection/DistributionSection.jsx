@@ -22,7 +22,7 @@ const DistributionSection = () => {
     <section
       id="distribution"
       aria-label="Distribution Partnership"
-      className="w-full box-border"
+      className="w-full box-border overflow-hidden"
       style={{ background: '#151642' }}
     >
       <div className="px-[125px] max-lg:px-8 max-sm:px-5 grid grid-cols-2 gap-[40px] max-lg:grid-cols-1 max-lg:gap-10 items-center" style={{ paddingTop: '70px', paddingBottom: '70px' }}>
@@ -109,6 +109,7 @@ const DistributionSection = () => {
             border: '3px solid #BC975E',
             boxShadow: '0 4px 24px rgba(0,0,0,0.15)',
           }}
+          className="max-sm:w-full max-sm:justify-self-center"
         >
           {/* Card heading */}
           <h3
@@ -131,14 +132,14 @@ const DistributionSection = () => {
               fontFamily: FONT_BODY,
               fontSize: '14px',
               lineHeight: 1.7,
-              color: '#000',
+              color: '#888',
               margin: 0,
               marginBottom: '28px',
             }}
           >
             Join Kamakhya's growing network of distributors and retailers.
             Share your territory, sales channel, and expected volume, and
-            our partnership team will guide your <br/>onboarding.
+            our partnership team will guide your onboarding.
           </p>
 
           {/* Become Distributor button */}
@@ -191,7 +192,7 @@ const DistributionSection = () => {
               fontFamily: FONT_BODY,
               fontSize: '12px',
               lineHeight: 1.6,
-              color: '#888',
+              color: '#000',
               margin: '18px 0 0',
             }}
           >

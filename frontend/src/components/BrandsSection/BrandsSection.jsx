@@ -252,7 +252,7 @@ const BrandsSection = () => (
         />
 
         {/* Center connector */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0, width: '330px' }}>
+        <div className="max-lg:hidden" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0, width: '330px' }}>
           <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
             <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: ORANGE, flexShrink: 0, zIndex: 2 }} />
             <div style={{ flex: 1, height: 0, borderTop: `2px dashed ${GOLD}` }} />

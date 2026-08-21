@@ -6,7 +6,7 @@ const AboutStory = () => {
     <section
       id="about-story"
       aria-label="About Us - Our Story"
-      className="w-full bg-white py-[85px] flex items-center box-border max-sm:py-10"
+      className="w-full bg-white py-[85px] flex items-center box-border max-sm:py-10 overflow-hidden"
     >
       <div className="w-full px-[125px] max-lg:px-8 max-sm:px-5 grid grid-cols-2 items-center gap-[70px] max-nav:grid-cols-1 max-nav:gap-9">
         

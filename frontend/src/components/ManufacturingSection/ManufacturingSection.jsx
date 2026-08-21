@@ -49,7 +49,7 @@ const ManufacturingSection = () => {
     <section
       id="manufacturing"
       aria-label="Manufacturing Standards"
-      className="w-full py-[85px] box-border max-sm:py-10"
+      className="w-full py-[85px] box-border max-sm:py-10 overflow-hidden"
       style={{ background: '#f5f6f8' }}
     >
       <div className="w-full px-[125px] max-lg:px-8 max-sm:px-5 grid grid-cols-2 items-center gap-[70px] max-lg:grid-cols-1 max-lg:gap-9">

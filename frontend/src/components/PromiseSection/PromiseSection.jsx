@@ -143,7 +143,7 @@ const PromiseSection = () => (
           </div>
 
           {/* Center shaped image */}
-          <div style={{
+          <div className="promise-img" style={{
             width: 'min(387px, 75%)', height: '499px', flexShrink: 0,
             clipPath: 'url(#promiseShape)', zIndex: 2,
             background: 'linear-gradient(to bottom, #f4a0a0 0%, #f5c89a 35%, #e8dcc8 60%, #d4e5ef 100%)',
@@ -163,6 +163,11 @@ const PromiseSection = () => (
         </div>
       </div>
     </div>
+
+    <style>{`
+      @media (max-width: 1023px) { .promise-img { height: 380px !important; } }
+      @media (max-width: 600px) { .promise-img { height: 300px !important; width: 80% !important; } }
+    `}</style>
   </section>
 );
 

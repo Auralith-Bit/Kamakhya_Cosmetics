@@ -37,7 +37,7 @@ const HeroSection = () => {
     <section
       id="home"
       aria-label="Hero Banner"
-      className="relative w-full h-[calc(100vw*885/1920)] min-h-[600px] bg-[linear-gradient(120deg,#f8ede0_0%,#f5e8d8_35%,#f0e0cc_100%)] overflow-hidden font-sans max-lg:h-auto max-lg:min-h-0"
+      className="relative w-full h-[calc(100vw*885/1920)] min-h-[600px] bg-[linear-gradient(120deg,#f8ede0_0%,#f5e8d8_35%,#f0e0cc_100%)] overflow-hidden font-sans max-lg:h-auto max-lg:min-h-[400px]"
     >
       
       <div

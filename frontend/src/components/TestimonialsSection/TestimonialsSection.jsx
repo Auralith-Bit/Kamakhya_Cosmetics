@@ -54,9 +54,9 @@ const TOTAL_PAGES = Math.ceil(TESTIMONIALS.length / CARDS_PER_PAGE);
 
 const TestimonialCard = ({ name, role, text, color }) => (
   <div
+    className="testimonial-card"
     style={{
       flexShrink: 0,
-      width: `calc((100% - ${(CARDS_PER_PAGE - 1) * GAP}px) / ${CARDS_PER_PAGE})`,
       background: '#fff',
       borderRadius: '14px',
       padding: '28px 28px 24px',
@@ -143,7 +143,7 @@ const TestimonialsSection = () => {
     <section
       id="testimonials"
       aria-label="Client Testimonials"
-      className="w-full py-[85px] box-border max-sm:py-10"
+      className="w-full py-[85px] box-border max-sm:py-10 overflow-hidden"
       style={{ background: '#f5f0e4' }}
     >
       <div className="px-[125px] max-lg:px-8 max-sm:px-5">
@@ -240,7 +240,10 @@ const TestimonialsSection = () => {
         </div>
       </div>
 
-      <style>{`.hide-scrollbar::-webkit-scrollbar { display: none; }`}</style>
+      <style>{`.hide-scrollbar::-webkit-scrollbar { display: none; }
+        .testimonial-card { width: calc((100% - 56px) / 3); }
+        @media (max-width: 1023px) { .testimonial-card { width: calc((100% - 28px) / 2); } }
+        @media (max-width: 600px) { .testimonial-card { width: 100%; } }`}</style>
     </section>
   );
 };
