@@ -157,15 +157,15 @@ const TestimonialsSection = () => {
             CLIENT TESTIMONIALS
           </p>
           <h2 style={{
-            margin: '8px 0 0', fontFamily: FONT_TITLE, fontSize: 'clamp(26px, 3.2vw, 34px)',
+            margin: '6px 0 0', fontFamily: FONT_TITLE, fontSize: 'clamp(26px, 3.2vw, 34px)',
             fontWeight: 700, color: '#2e3192', lineHeight: 1.25,
           }}>
             Trusted By Brands Worldwide
           </h2>
           <CursiveUnderline />
           <p style={{
-            margin: '16px auto 0', fontFamily: FONT_BODY, fontSize: 'clamp(13px, 1.2vw, 15px)',
-            color: '#555', lineHeight: 1.7, maxWidth: '680px',
+            margin: '12px auto 0', fontFamily: FONT_BODY, fontSize: 'clamp(13px, 1.2vw, 15px)',
+            color: '#555', lineHeight: 1.7, maxWidth: '620px',
           }}>
             Hear from businesses that rely on our expertise, premium formulations, and manufacturing
             excellence to bring exceptional beauty products to market.

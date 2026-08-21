@@ -106,7 +106,7 @@ const DistributionSection = () => {
             background: '#fff',
             borderRadius: '14px',
             padding: '40px 36px',
-            border: '1.5px solid #CCA466',
+            border: '3px solid #BC975E',
             boxShadow: '0 4px 24px rgba(0,0,0,0.15)',
           }}
         >
@@ -131,14 +131,14 @@ const DistributionSection = () => {
               fontFamily: FONT_BODY,
               fontSize: '14px',
               lineHeight: 1.7,
-              color: '#666',
+              color: '#000',
               margin: 0,
               marginBottom: '28px',
             }}
           >
             Join Kamakhya's growing network of distributors and retailers.
             Share your territory, sales channel, and expected volume, and
-            our partnership team will guide your onboarding.
+            our partnership team will guide your <br/>onboarding.
           </p>
 
           {/* Become Distributor button */}

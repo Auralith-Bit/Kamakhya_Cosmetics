@@ -90,15 +90,16 @@ const PromiseSection = () => (
 
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <p style={{ margin: 0, fontFamily: 'Poppins, sans-serif', fontSize: '14px', fontWeight: 600, color: ORANGE, letterSpacing: '3.5px', textTransform: 'uppercase' }}>
+        <p style={{ margin: 0, fontFamily: 'Poppins, sans-serif', fontSize: '12px', fontWeight: 600, color: ORANGE, letterSpacing: '3.5px', textTransform: 'uppercase' }}>
           OUR PROMISE
         </p>
-        <h2 style={{ margin: '8px 0 0', fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 1.6vw, 40px)', fontWeight: 700, color: '#2e3192', lineHeight: 1.25 }}>
+        <h2 style={{ margin: '6px 0 0', fontFamily: "'Playfair Display', serif", fontSize: 'clamp(26px, 3.2vw, 34px)', fontWeight: 700, color: '#2e3192', lineHeight: 1.25 }}>
           Beauty, Care &amp; Cleanliness
         </h2>
         <CursiveUnderline />
-        <p style={{ margin: '16px auto 0', fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(16px, 1vw, 25px)', color: '#3d3d3d', lineHeight: 1.65, maxWidth: '1260px' }}>
-          Clean ingredients, expert formulations, and uncompromising quality come together to create<br/> Products that truly performs.
+        <p style={{ margin: '12px auto 0', fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(13px, 1.4vw, 14.5px)', color: '#666', lineHeight: 1.7, maxWidth: '620px' }}>
+          Clean ingredients, expert formulations, and uncompromising quality come together to create
+          Products that truly performs.
         </p>
       </div>
 

@@ -95,11 +95,11 @@ const CategorySection = () => {
           <p style={{ margin: 0, fontFamily: FONT_BODY, fontSize: '12px', fontWeight: 600, color: '#e0912f', letterSpacing: '3.5px', textTransform: 'uppercase' }}>
             SHOP BY CATEGORY
           </p>
-          <h2 style={{ margin: '8px 0 0', fontFamily: FONT_TITLE, fontSize: 'clamp(26px, 3.2vw, 34px)', fontWeight: 700, color: '#2e3192', lineHeight: 1.25 }}>
+          <h2 style={{ margin: '6px 0 0', fontFamily: FONT_TITLE, fontSize: 'clamp(26px, 3.2vw, 34px)', fontWeight: 700, color: '#2e3192', lineHeight: 1.25 }}>
             Curated Collections For Every Routine
           </h2>
           <CursiveUnderline />
-          <p style={{ margin: '14px auto 0', fontFamily: FONT_BODY, fontSize: 'clamp(13px, 1.4vw, 14.5px)', color: '#666', lineHeight: 1.7, maxWidth: '620px' }}>
+          <p style={{ margin: '12px auto 0', fontFamily: FONT_BODY, fontSize: 'clamp(13px, 1.4vw, 14.5px)', color: '#666', lineHeight: 1.7, maxWidth: '620px' }}>
             Discover premium beauty solutions organized by category, making it effortless to find
             products tailored to your unique skincare journey.
           </p>

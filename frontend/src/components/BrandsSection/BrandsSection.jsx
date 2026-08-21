@@ -231,11 +231,11 @@ const BrandsSection = () => (
         <p style={{ margin: 0, fontFamily: 'Poppins, sans-serif', fontSize: '12px', fontWeight: 600, color: ORANGE, letterSpacing: '3.5px', textTransform: 'uppercase' }}>
           OUR BRANDS
         </p>
-        <h2 style={{ margin: '8px 0 0', fontFamily: "'Playfair Display', serif", fontSize: 'clamp(26px, 3.2vw, 34px)', fontWeight: 700, color: '#2e3192', lineHeight: 1.25 }}>
+        <h2 style={{ margin: '6px 0 0', fontFamily: "'Playfair Display', serif", fontSize: 'clamp(26px, 3.2vw, 34px)', fontWeight: 700, color: '#2e3192', lineHeight: 1.25 }}>
           Two Brands, One Promise
         </h2>
         <CursiveUnderline />
-        <p style={{ margin: '14px auto 0', fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(13px, 1.4vw, 14.5px)', color: '#666', lineHeight: 1.7, maxWidth: '620px' }}>
+        <p style={{ margin: '12px auto 0', fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(13px, 1.4vw, 14.5px)', color: '#666', lineHeight: 1.7, maxWidth: '620px' }}>
           Kamakhya Cosmetics brings you two distinctive brands crafted with premium ingredients
           and advanced care, delivering exceptional beauty every day.
         </p>
