@@ -102,122 +102,120 @@ const CategorySection = () => {
     <section
       id="shop-by-category"
       aria-label="Shop by Category"
-      className="w-full py-[85px] box-border max-sm:py-10 overflow-hidden"
+      className="w-full py-[85px] box-border max-sm:py-10"
       style={{ background: '#f5f0e4' }}
     >
-      <div className="px-[125px] max-lg:px-8 max-sm:px-5">
-        <div style={{ textAlign: 'center', marginBottom: '52px' }}>
-          <p style={{ margin: 0, fontFamily: FONT_BODY, fontSize: '12px', fontWeight: 600, color: '#e0912f', letterSpacing: '3.5px', textTransform: 'uppercase' }}>
-            SHOP BY CATEGORY
-          </p>
-          <h2 style={{ margin: '6px 0 0', fontFamily: FONT_TITLE, fontSize: 'clamp(26px, 3.2vw, 34px)', fontWeight: 700, color: '#2e3192', lineHeight: 1.25 }}>
-            Curated Collections For Every Routine
-          </h2>
-          <CursiveUnderline />
-          <p style={{ margin: '12px auto 0', fontFamily: FONT_BODY, fontSize: 'clamp(13px, 1.4vw, 14.5px)', color: '#666', lineHeight: 1.7, maxWidth: '620px' }}>
-            Discover premium beauty solutions organized by category, making it effortless to find
-            products tailored to your unique skincare journey.
-          </p>
-        </div>
+      <div className="max-sm:px-5 max-lg:px-8 px-[125px]" style={{ textAlign: 'center', marginBottom: '52px' }}>
+        <p style={{ margin: 0, fontFamily: FONT_BODY, fontSize: '12px', fontWeight: 600, color: '#e0912f', letterSpacing: '3.5px', textTransform: 'uppercase' }}>
+          SHOP BY CATEGORY
+        </p>
+        <h2 style={{ margin: '6px 0 0', fontFamily: FONT_TITLE, fontSize: 'clamp(26px, 3.2vw, 34px)', fontWeight: 700, color: '#2e3192', lineHeight: 1.25 }}>
+          Curated Collections For Every Routine
+        </h2>
+        <CursiveUnderline />
+        <p style={{ margin: '12px auto 0', fontFamily: FONT_BODY, fontSize: 'clamp(13px, 1.4vw, 14.5px)', color: '#666', lineHeight: 1.7, maxWidth: '620px' }}>
+          Discover premium beauty solutions organized by category, making it effortless to find
+          products tailored to your unique skincare journey.
+        </p>
+      </div>
 
-        <div
-          ref={scrollRef}
-          className="hide-scrollbar"
-          style={{
-            display: 'flex', gap: '28px', overflowX: 'auto',
-            scrollSnapType: 'x mandatory',
-            WebkitOverflowScrolling: 'touch',
-            scrollbarWidth: 'none', msOverflowStyle: 'none',
-            paddingBottom: '10px',
-          }}
-        >
-          {CATEGORIES.map((cat, i) => (
-            <div key={i} className="cat-item" style={{ flexShrink: 0, scrollSnapAlign: 'start' }}>
-              <div
-                className="cat-card"
-                style={{
-                  background: '#fff', borderRadius: '16px', padding: '16px',
-                  boxShadow: '0 2px 16px rgba(0,0,0,0.06)', cursor: 'pointer',
-                }}
-              >
-                <div style={{ position: 'relative', aspectRatio: '1 / 1', borderRadius: '10px', overflow: 'hidden' }}>
-                  <img src={cat.image} alt={cat.name} className="cat-image"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-                  <div className="cat-overlay"
+      <div
+        ref={scrollRef}
+        className="hide-scrollbar cat-carousel"
+        style={{
+          display: 'flex', gap: '28px', overflowX: 'auto',
+          scrollSnapType: 'x mandatory',
+          WebkitOverflowScrolling: 'touch',
+          scrollbarWidth: 'none', msOverflowStyle: 'none',
+          paddingBottom: '10px',
+        }}
+      >
+        {CATEGORIES.map((cat, i) => (
+          <div key={i} className="cat-item" style={{ flexShrink: 0, scrollSnapAlign: 'start' }}>
+            <div
+              className="cat-card"
+              style={{
+                background: '#fff', borderRadius: '16px', padding: '16px',
+                boxShadow: '0 2px 16px rgba(0,0,0,0.06)', cursor: 'pointer',
+              }}
+            >
+              <div style={{ position: 'relative', aspectRatio: '1 / 1', borderRadius: '10px', overflow: 'hidden' }}>
+                <img src={cat.image} alt={cat.name} className="cat-image"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                <div className="cat-overlay"
+                  style={{
+                    position: 'absolute', inset: 0, background: 'rgba(46,49,146,0.35)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  }}>
+                  <span className="cat-arrow"
                     style={{
-                      position: 'absolute', inset: 0, background: 'rgba(46,49,146,0.35)',
+                      width: '48px', height: '48px', borderRadius: '50%', background: '#fff',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      boxShadow: '0 4px 16px rgba(0,0,0,0.18)',
                     }}>
-                    <span className="cat-arrow"
-                      style={{
-                        width: '48px', height: '48px', borderRadius: '50%', background: '#fff',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        boxShadow: '0 4px 16px rgba(0,0,0,0.18)',
-                      }}>
-                      <svg viewBox="0 0 24 24" fill="none" stroke="#2E3192" strokeWidth="2.2" width="22" height="22">
-                        <path d="M5 12h14" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </span>
-                  </div>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#2E3192" strokeWidth="2.2" width="22" height="22">
+                      <path d="M5 12h14" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
                 </div>
               </div>
-              <p style={{
-                margin: '18px 0 0', textAlign: 'center', fontFamily: FONT_TITLE,
-                fontSize: '17px', fontWeight: 600, color: '#2E3192',
-              }}>
-                {cat.name}
-              </p>
             </div>
+            <p style={{
+              margin: '18px 0 0', textAlign: 'center', fontFamily: FONT_TITLE,
+              fontSize: '17px', fontWeight: 600, color: '#2E3192',
+            }}>
+              {cat.name}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <div className="cat-nav" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'clamp(12px, 2vw, 20px)', marginTop: '40px', padding: '0 20px' }}>
+        <button
+          onClick={() => scrollToPage(Math.max(0, activeIndex - 1))}
+          disabled={activeIndex === 0}
+          style={{
+            width: '40px', height: '40px', borderRadius: '50%', border: '1.5px solid #2E3192',
+            background: 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center',
+            cursor: activeIndex === 0 ? 'default' : 'pointer',
+            opacity: activeIndex === 0 ? 0.35 : 1, transition: 'opacity 0.2s', color: '#2E3192', flexShrink: 0,
+          }}
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
+            <path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'nowrap', overflow: 'hidden' }}>
+          {Array.from({ length: pageCount }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollToPage(i)}
+              style={{
+                width: i === activeIndex ? '32px' : '10px', height: '10px', borderRadius: '5px',
+                background: i === activeIndex ? '#2E3192' : '#C9CBEC',
+                border: 'none', flexShrink: 0,
+                cursor: 'pointer', transition: 'all 0.3s', padding: 0, boxSizing: 'border-box',
+              }}
+            />
           ))}
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px', marginTop: '40px' }}>
-          <button
-            onClick={() => scrollToPage(Math.max(0, activeIndex - 1))}
-            disabled={activeIndex === 0}
-            style={{
-              width: '40px', height: '40px', borderRadius: '50%', border: '1.5px solid #2E3192',
-              background: 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center',
-              cursor: activeIndex === 0 ? 'default' : 'pointer',
-              opacity: activeIndex === 0 ? 0.35 : 1, transition: 'opacity 0.2s', color: '#2E3192', flexShrink: 0,
-            }}
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
-              <path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            {Array.from({ length: pageCount }).map((_, i) => (
-              <button
-                key={i}
-                onClick={() => scrollToPage(i)}
-                style={{
-                  width: i === activeIndex ? '32px' : '10px', height: '10px', borderRadius: '5px',
-                  background: i === activeIndex ? '#2E3192' : '#C9CBEC',
-                  border: 'none',
-                  cursor: 'pointer', transition: 'all 0.3s', padding: 0, boxSizing: 'border-box',
-                }}
-              />
-            ))}
-          </div>
-
-          <button
-            onClick={() => scrollToPage(Math.min(pageCount - 1, activeIndex + 1))}
-            disabled={activeIndex === pageCount - 1}
-            style={{
-              width: '40px', height: '40px', borderRadius: '50%', border: '1.5px solid #2E3192',
-              background: 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center',
-              cursor: activeIndex === pageCount - 1 ? 'default' : 'pointer',
-              opacity: activeIndex === pageCount - 1 ? 0.35 : 1, transition: 'opacity 0.2s', color: '#2E3192', flexShrink: 0,
-            }}
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
-              <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-        </div>
+        <button
+          onClick={() => scrollToPage(Math.min(pageCount - 1, activeIndex + 1))}
+          disabled={activeIndex === pageCount - 1}
+          style={{
+            width: '40px', height: '40px', borderRadius: '50%', border: '1.5px solid #2E3192',
+            background: 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center',
+            cursor: activeIndex === pageCount - 1 ? 'default' : 'pointer',
+            opacity: activeIndex === pageCount - 1 ? 0.35 : 1, transition: 'opacity 0.2s', color: '#2E3192', flexShrink: 0,
+          }}
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
+            <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
       </div>
 
       <style>{`
@@ -230,9 +228,21 @@ const CategorySection = () => {
         .cat-card:hover .cat-overlay { opacity: 1; }
         .cat-card .cat-arrow { opacity: 0; transform: translateY(10px); transition: opacity .3s ease, transform .3s ease; }
         .cat-card:hover .cat-arrow { opacity: 1; transform: translateY(0); }
+
+        .cat-carousel { padding-left: 125px; padding-right: 125px; }
         .cat-item { width: calc((100% - 112px) / 5); min-width: 210px; }
-        @media (max-width: 1023px) { .cat-item { width: calc((100% - 56px) / 3); min-width: 170px; } }
-        @media (max-width: 600px) { .cat-item { width: calc(100% - 20px); min-width: 0; } }
+
+        @media (max-width: 1280px) {
+          .cat-carousel { padding-left: 32px; padding-right: 32px; }
+        }
+        @media (max-width: 1023px) {
+          .cat-carousel { padding-left: 32px; padding-right: 32px; }
+          .cat-item { width: calc((100% - 56px) / 3); min-width: 170px; }
+        }
+        @media (max-width: 600px) {
+          .cat-carousel { padding-left: 20px; padding-right: 20px; }
+          .cat-item { width: calc(100% - 0px); min-width: 0; }
+        }
       `}</style>
     </section>
   );
