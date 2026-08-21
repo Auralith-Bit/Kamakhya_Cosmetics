@@ -1,6 +1,13 @@
-import LuxVideo from "../../assets/LuxVideo.svg";
-import { Crown, Gem, Heart, Download, ArrowRight } from 'lucide-react'
+import React from 'react'
+import LuxVideo from '../../assets/LuxVideo.svg'
+import { Crown, Gem, Heart, Download, ChevronRight } from 'lucide-react'
 import { Link } from 'react-router'
+
+const CornerAccent = ({ className }) => (
+    <svg viewBox="0 0 40 40" className={className} preserveAspectRatio="none">
+        <path d="M0,0 H40 Q10,10 0,40 Z" fill="#2E3192" />
+    </svg>
+)
 const BrandPhilosophy = () => {
     const philosophyCards = [
         {
@@ -20,97 +27,78 @@ const BrandPhilosophy = () => {
         },
     ];
     return (
-        <section className="page-container section-spacing">
-            <div className="grid grid-cols-1 lg:grid-cols-5 items-center gap-12 lg:gap-14">
-
-                <div className="lg:col-span-3">
-                    <p className="text-hero-orange font-semibold tracking-wide text-sm mb-3">
-                        OUR BRAND PHILOSOPHY
-                    </p>
-
-                    <div
-                        aria-hidden="true"
-                        className="w-10 h-0.5 bg-orange-400 rounded-full mb-6"
-                    />
-
-                    <h2 className="font-serif text-2xl sm:text-3xl leading-snug max-w-xl mb-4">
-                        <span className="text-hero-orange">Royal </span>
-                        <span className="text-brand-blue">in Essence, </span>
-                        <span className="text-hero-orange">Luxury </span>
-                        <span className="text-brand-blue">in Experience</span>
-                    </h2>
-
-                    <p className="text-gray-600 text-sm sm:text-base leading-relaxed max-w-prose mb-8 sm:mb-10">
-                        Royal Luxury believes beauty is more than skincare—it is an experience of
-                        elegance, confidence, and timeless luxury. Crafted with premium ingredients
-                        and inspired by heritage, every product transforms daily self-care into a
-                        refined ritual.
-                    </p>
-
-                    {/* Cards */}
-                    <div className="grid w-full grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-10">
+        <section className='page-container py-12 sm:py-16 lg:py-20'>
+            {/* Main container  */}
+            <div className='grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center'>
+                {/* LeftContainer  */}
+                <div>
+                    <div className='flex flex-col gap-2'>
+                        <p className='text-[#E38F2E] font-bold text-xs sm:text-sm tracking-widest uppercase'>
+                            Our Brand Philosophy
+                        </p>
+                        <div className='w-10 h-0.5 bg-[#E38F2E] rounded-full'></div>
+                        <h2 className="font-playfair font-bold  leading-tight whitespace-nowrap text-[clamp(1.125rem,2.2vw,1.875rem)]">
+                            <span className="text-[#E38F2E]">Royal </span>
+                            <span className="text-[#2E3192]">in Essence, </span>
+                            <span className="text-[#E38F2E]">Luxury </span>
+                            <span className="text-[#2E3192]">in Experience</span>
+                        </h2>
+                        <p className='font-poppins text-[13px] sm:text-[14px] text-justify text-[#121212] mb-4 leading-relaxed'>
+                            Royal Luxury believes beauty is more than skincare—it is an experience of elegance, confidence, and timeless luxury. Crafted with premium ingredients and inspired by heritage, every product transforms daily self-care into a refined ritual.
+                        </p>
+                    </div>
+                    {/* Cards  */}
+                    <div className='grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-3 md:gap-6'>
                         {philosophyCards.map(({ icon: Icon, title, description }) => (
                             <div
                                 key={title}
-                                className="relative overflow-hidden bg-white border border-gray-100 rounded-md shadow-sm px-3 sm:px-4 py-5 sm:py-6 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 w-full max-w-48 mx-auto"
+                                className='relative overflow-hidden bg-white rounded-xl shadow-md transition duration-150 hover:shadow-2xl py-4 px-4 flex flex-col items-center text-center gap-2 border border-gray-300'
                             >
-                                {/* Corner */}
-                                <div
-                                    aria-hidden="true"
-                                    className="absolute top-0 left-0 h-0 w-0 border-t-[20px] border-r-[32px] border-t-brand-blue border-r-transparent sm:border-t-[26px] sm:border-r-[40px]"
-                                />
+                                {/* corner accents */}
+                                <CornerAccent className='absolute top-0 left-0 w-10 h-10 sm:w-8 sm:h-8' />
+                                <CornerAccent className='absolute bottom-0 right-0 w-1- h-10 sm:w-8 sm:h-8 rotate-180' />
 
-                                <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 rounded-full border border-orange-300 flex items-center justify-center">
-                                    <Icon
-                                        className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400"
-                                        strokeWidth={1.5}
-                                        aria-hidden="true"
-                                    />
+                                <div className='w-10 h-10 sm:w-11 sm:h-11 rounded-full border-2 border-orange-400 flex items-center justify-center shrink-0'>
+                                    <Icon className='w-5 h-5 text-[#E38F2E]' />
                                 </div>
 
-                                <h3 className="font-serif font-semibold text-brand-blue text-xs sm:text-sm mb-2 pb-2 border-b border-orange-200 inline-block">
-                                    {title}
-                                </h3>
-
-                                <p className="text-[11px] sm:text-xs text-gray-500 leading-snug mt-2">
-                                    {description}
-                                </p>
+                                <h3 className='font-playfair font-bold text-base sm:text-lg leading-tight'>{title}</h3>
+                                <div className='w-12 h-0.5 bg-[#E38F2E]'></div>
+                                <p className='font-poppins text-[11px] sm:text-[12px] text-gray-500 leading-snug'>{description}</p>
                             </div>
+
                         ))}
                     </div>
-
-                    {/* CTAs */}
-                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
-                        <Link
-                            to="/collections"
-                            className="inline-flex items-center justify-center gap-2 bg-brand-blue text-white text-sm font-medium tracking-wide px-6 sm:px-8 py-2.5 rounded cursor-pointer transition-colors hover:bg-[#24266f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E3192] focus-visible:ring-offset-2"
-                        >
+                    {/* buttons  */}
+                    <div className='mt-8 sm:mt-12 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-start gap-4 sm:gap-6 lg:gap-10'>
+                        <Link className='bg-[#252775] px-6 sm:px-8 py-2.5 rounded-lg text-white font-poppins text-[13px] sm:text-[14px] flex items-center justify-center gap-3 whitespace-nowrap transition-colors hover:bg-[#1d1f5c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#252775] focus-visible:ring-offset-2'>
                             EXPLORE OUR COLLECTIONS
-                            <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                        </Link>
+                            <ChevronRight className="w-4 h-4" aria-hidden="true" />
 
-                        <Link
-                            to="/products"
-                            className="inline-flex items-center justify-center gap-2 bg-hero-cream border-2 border-hero-gold text-gray-800 text-sm font-medium tracking-wide px-6 sm:px-8 py-2.5 rounded cursor-pointer transition-colors hover:bg-gray-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2"
-                        >
+                        </Link>
+                        <Link className='bg-[#FCFAF7] border-2 px-6 sm:px-8 py-2.5 rounded-lg text-[#E38F2E] font-poppins text-[13px] sm:text-[14px] flex items-center justify-center gap-3 whitespace-nowrap transition-colors hover:bg-orange-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E38F2E] focus-visible:ring-offset-2'>
                             DOWNLOAD CATALOG
                             <Download className="w-4 h-4" aria-hidden="true" />
+
                         </Link>
                     </div>
                 </div>
+             
+                {/* Right Container  */}
+                <div className='flex items-center justify-center w-full lg:items-stretch lg:self-stretch lg:-my-8'>
+                    <video
+                        controls
+                        playsInline
+                        className='w-full max-w-xs sm:max-w-sm lg:max-w-sm aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto lg:h-full rounded-xl object-cover shadow-md'
+                        src={LuxVideo}>
 
-                {/* Right: image */}
-                <div className="lg:col-span-2">
-                    <img
-                        src={LuxVideo}
-                        alt="Royal Luxury product showcase"
-                        className="w-full max-w-md mx-auto lg:max-w-none aspect-6/7 rounded-2xl object-cover"
-                    />
+                    </video>
                 </div>
+
+
             </div>
         </section>
     )
-
 }
 
-export default BrandPhilosophy;
+export default BrandPhilosophy

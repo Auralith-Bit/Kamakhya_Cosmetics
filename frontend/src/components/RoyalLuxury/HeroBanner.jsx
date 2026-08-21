@@ -5,7 +5,7 @@ const HeroBanner = () => {
     return (
         <div
             style={{ backgroundImage: `url(${Royal})` }}
-            className="relative overflow-hidden bg-cover bg-center"
+            className="relative overflow-hidden bg-cover bg-center py-9"
         >
             <div className="page-container py-10 sm:py-12">
                 <div className="flex items-center gap-2 text-brand-blue font-serif sm:text-xl  mb-3 ">
@@ -17,11 +17,11 @@ const HeroBanner = () => {
                     <span className="text-sm">Royal Luxury</span>
                 </div>
 
-                <p className="text-hero-orange text-xs font-semibold tracking-wide mb-2">
+                <p className="text-hero-orange text-lg font-poppins tracking-wide mb-2">
                     A Kamakhya Cosmetics House
                 </p>
-
-                <h1 className="text-3xl sm:text-4xl font-serif text-brand-blue mb-3">
+                <div className="bg-hero-orange h-0.5 w-10 rounded-full" />
+                <h1 className="text-3xl mt-4 sm:text-4xl font-playfair text-brand-blue mb-3">
                     Royal Luxury
                 </h1>
 
