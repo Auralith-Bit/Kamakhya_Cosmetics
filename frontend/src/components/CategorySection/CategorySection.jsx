@@ -105,31 +105,32 @@ const CategorySection = () => {
       className="w-full py-[85px] box-border max-sm:py-10"
       style={{ background: '#f5f0e4' }}
     >
-      <div className="max-sm:px-5 max-lg:px-8 px-[125px]" style={{ textAlign: 'center', marginBottom: '52px' }}>
-        <p style={{ margin: 0, fontFamily: FONT_BODY, fontSize: '12px', fontWeight: 600, color: '#e0912f', letterSpacing: '3.5px', textTransform: 'uppercase' }}>
-          SHOP BY CATEGORY
-        </p>
-        <h2 style={{ margin: '6px 0 0', fontFamily: FONT_TITLE, fontSize: 'clamp(26px, 3.2vw, 34px)', fontWeight: 700, color: '#2e3192', lineHeight: 1.25 }}>
-          Curated Collections For Every Routine
-        </h2>
-        <CursiveUnderline />
-        <p style={{ margin: '12px auto 0', fontFamily: FONT_BODY, fontSize: 'clamp(13px, 1.4vw, 14.5px)', color: '#666', lineHeight: 1.7, maxWidth: '620px' }}>
-          Discover premium beauty solutions organized by category, making it effortless to find
-          products tailored to your unique skincare journey.
-        </p>
-      </div>
+      <div className="px-[125px] max-lg:px-8 max-sm:px-5">
+        <div style={{ textAlign: 'center', marginBottom: '52px' }}>
+          <p style={{ margin: 0, fontFamily: FONT_BODY, fontSize: '12px', fontWeight: 600, color: '#e0912f', letterSpacing: '3.5px', textTransform: 'uppercase' }}>
+            SHOP BY CATEGORY
+          </p>
+          <h2 style={{ margin: '6px 0 0', fontFamily: FONT_TITLE, fontSize: 'clamp(26px, 3.2vw, 34px)', fontWeight: 700, color: '#2e3192', lineHeight: 1.25 }}>
+            Curated Collections For Every Routine
+          </h2>
+          <CursiveUnderline />
+          <p style={{ margin: '12px auto 0', fontFamily: FONT_BODY, fontSize: 'clamp(13px, 1.4vw, 14.5px)', color: '#666', lineHeight: 1.7, maxWidth: '620px' }}>
+            Discover premium beauty solutions organized by category, making it effortless to find
+            products tailored to your unique skincare journey.
+          </p>
+        </div>
 
-      <div
-        ref={scrollRef}
-        className="hide-scrollbar cat-carousel"
-        style={{
-          display: 'flex', gap: '28px', overflowX: 'auto',
-          scrollSnapType: 'x mandatory',
-          WebkitOverflowScrolling: 'touch',
-          scrollbarWidth: 'none', msOverflowStyle: 'none',
-          paddingBottom: '10px',
-        }}
-      >
+        <div
+          ref={scrollRef}
+          className="hide-scrollbar"
+          style={{
+            display: 'flex', gap: '28px', overflowX: 'auto',
+            scrollSnapType: 'x mandatory',
+            WebkitOverflowScrolling: 'touch',
+            scrollbarWidth: 'none', msOverflowStyle: 'none',
+            paddingBottom: '10px',
+          }}
+        >
         {CATEGORIES.map((cat, i) => (
           <div key={i} className="cat-item" style={{ flexShrink: 0, scrollSnapAlign: 'start' }}>
             <div
@@ -171,7 +172,7 @@ const CategorySection = () => {
         ))}
       </div>
 
-      <div className="cat-nav" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'clamp(12px, 2vw, 20px)', marginTop: '40px', padding: '0 20px' }}>
+      <div className="cat-nav" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px', marginTop: '40px' }}>
         <button
           onClick={() => scrollToPage(Math.max(0, activeIndex - 1))}
           disabled={activeIndex === 0}
@@ -217,6 +218,7 @@ const CategorySection = () => {
           </svg>
         </button>
       </div>
+      </div>
 
       <style>{`
         .hide-scrollbar::-webkit-scrollbar { display: none; }
@@ -228,21 +230,9 @@ const CategorySection = () => {
         .cat-card:hover .cat-overlay { opacity: 1; }
         .cat-card .cat-arrow { opacity: 0; transform: translateY(10px); transition: opacity .3s ease, transform .3s ease; }
         .cat-card:hover .cat-arrow { opacity: 1; transform: translateY(0); }
-
-        .cat-carousel { padding-left: 125px; padding-right: 125px; }
         .cat-item { width: calc((100% - 112px) / 5); min-width: 210px; }
-
-        @media (max-width: 1280px) {
-          .cat-carousel { padding-left: 32px; padding-right: 32px; }
-        }
-        @media (max-width: 1023px) {
-          .cat-carousel { padding-left: 32px; padding-right: 32px; }
-          .cat-item { width: calc((100% - 56px) / 3); min-width: 170px; }
-        }
-        @media (max-width: 600px) {
-          .cat-carousel { padding-left: 20px; padding-right: 20px; }
-          .cat-item { width: calc(100% - 0px); min-width: 0; }
-        }
+        @media (max-width: 1023px) { .cat-item { width: calc((100% - 56px) / 3); min-width: 170px; } }
+        @media (max-width: 600px) { .cat-item { width: calc(100% - 20px); min-width: 0; } }
       `}</style>
     </section>
   );
