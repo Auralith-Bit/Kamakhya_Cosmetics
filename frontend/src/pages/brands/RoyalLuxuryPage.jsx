@@ -1,7 +1,5 @@
-/**
- * FILE : frontend/src/pages/brands/RoyalLuxuryPage.jsx
- * ROUTE: /brands/royal-luxury (placeholder)
- */
+
+ 
 import React from "react";
 
 const RoyalLuxuryPage = () => (

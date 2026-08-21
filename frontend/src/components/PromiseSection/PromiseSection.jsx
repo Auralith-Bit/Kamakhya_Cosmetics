@@ -115,7 +115,7 @@ const PromiseSection = () => (
         {/* Bottom bracket frame – side lines (57px) + bottom line with gap for image */}
         {/* Left bracket segment */}
         <div className="max-lg:hidden" style={{
-          position: 'absolute', left: '0', bottom: '18px',
+          position: 'absolute', left: '0', bottom: '9px',
           width: 'calc(32% - 1px)', height: '51px',
           borderLeft: '1px solid #3f3f3f', borderBottom: '1px solid #3f3f3f',
           borderRadius: '0 0 0 26px',
@@ -123,7 +123,7 @@ const PromiseSection = () => (
         }} />
         {/* Right bracket segment */}
         <div className="max-lg:hidden" style={{
-          position: 'absolute', right: '0', bottom: '18px',
+          position: 'absolute', right: '0', bottom: '9px',
           width: 'calc(32% - 1px)', height: '51px',
           borderRight: '1px solid #3f3f3f', borderBottom: '1px solid #3f3f3f',
           borderRadius: '0 0 26px 0',
@@ -143,7 +143,7 @@ const PromiseSection = () => (
 
           {/* Center shaped image */}
           <div style={{
-            width: 'min(387px, 75%)', height: '501px', flexShrink: 0,
+            width: 'min(387px, 75%)', height: '499px', flexShrink: 0,
             clipPath: 'url(#promiseShape)', zIndex: 2,
             background: 'linear-gradient(to bottom, #f4a0a0 0%, #f5c89a 35%, #e8dcc8 60%, #d4e5ef 100%)',
             position: 'relative', overflow: 'hidden',
