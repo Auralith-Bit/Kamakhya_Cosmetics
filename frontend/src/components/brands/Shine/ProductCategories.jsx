@@ -32,8 +32,8 @@ const ChevR = () => (
 );
 
 const ProductCategories = () => {
-  const [items, setItems] = useState(CATS);   // 👈 live product array
-  const [dot, setDot] = useState(1);          // design shows pill #2 active
+  const [items, setItems] = useState(CATS);
+  const [dot, setDot] = useState(1);
 
   const next = () => { setItems(a => [...a.slice(1), a[0]]); setDot(d => (d + 1) % DOTS.length); };
   const prev = () => { setItems(a => [a[a.length - 1], ...a.slice(0, -1)]); setDot(d => (d + DOTS.length - 1) % DOTS.length); };
@@ -41,6 +41,7 @@ const ProductCategories = () => {
   return (
     <section id="shine-categories" className="pc-sec">
       <style>{`
+        /* ================= DESKTOP (>1280): ORIGINAL, UNTOUCHED ================= */
         .pc-sec{position:relative;width:100%;height:42.6563vw;background:#FCF9F2;overflow:hidden;}
 
         .pc-head{position:absolute;left:0;top:0;width:100%;text-align:center;}
@@ -53,7 +54,6 @@ const ProductCategories = () => {
         .pc-vector{position:absolute;top:7.4167vw;left:50%;transform:translateX(-50%);
           width:9.25vw;height:auto;}
 
-        /* cards — fixed Figma slots; content rotates through them */
         .pc-card{position:absolute;top:14.2708vw;width:15.1042vw;height:20.0521vw;
           background:#fff;border-radius:0.5208vw;overflow:hidden;
           box-shadow:0 0.4167vw 0.625vw rgba(0,0,0,0.08), 0 1.0417vw 1.3021vw rgba(0,0,0,0.05);
@@ -81,7 +81,6 @@ const ProductCategories = () => {
         .pc-card:hover .pc-arrow{background:#E4E4F0;}
         .pc-card:hover .pc-arrow svg{transform:rotate(-45deg);}
 
-        /* carousel controls — now wired */
         .pc-nav{position:absolute;top:36.4583vw;width:2.5vw;height:2.5vw;border-radius:50%;
           background:#F5F5FA;border:0.1042vw solid #A1A2CE;color:#2E3192;
           display:flex;align-items:center;justify-content:center;cursor:pointer;
@@ -95,6 +94,46 @@ const ProductCategories = () => {
           border:0.1042vw solid #7779B8;padding:0;cursor:pointer;transition:all .3s;}
         .pc-dot.active{width:2.6042vw;height:0.7292vw;border-radius:0.3646vw;
           background:#2E3192;border:none;}
+
+        /* ============ ≤1280: design-order header, bigger type, tight controls ============ */
+        @media (max-width:1280px){
+          .pc-sec{height:auto;display:grid;grid-template-columns:1fr auto 1fr;
+            column-gap:3vw;row-gap:5vw;padding:8vw 6vw;}
+
+          /* header: flex column so visual order = tag → title → VECTOR → text (as designed) */
+          .pc-head{position:static;grid-column:1/-1;grid-row:1;
+            display:flex;flex-direction:column;align-items:center;text-align:center;}
+          .pc-tag{position:static;order:1;font-size:clamp(12px, 1.4vw, 18px);}
+          .pc-title{position:static;order:2;font-size:clamp(26px, 3.4vw, 48px);margin-top:1.5vw;}
+          .pc-vector{position:static;order:3;transform:none;display:block;
+            width:clamp(90px, 17vw, 220px);margin:2vw auto 0;}
+          .pc-sub{position:static;order:4;font-size:clamp(13px, 1.8vw, 22px);
+            line-height:1.6;margin-top:2vw;max-width:92%;}
+          .pc-sub br{display:none;}
+
+          /* single queued card */
+          .pc-card{position:relative;top:0;left:0;grid-column:1/-1;grid-row:2;
+            justify-self:center;width:min(55vw, 480px);height:auto;}
+          .pc-c1{left:0;}
+          .pc-c2,.pc-c3,.pc-c4,.pc-c5{display:none;}
+
+          .pc-img{position:static;width:100%;height:auto;aspect-ratio:1/1;
+            border-radius:1.2vw 1.2vw 0 0;}
+          .pc-name{position:static;font-size:clamp(14px, 1.7vw, 21px);margin:2.5vw 2.5vw 1vw;}
+          .pc-count{position:static;font-size:clamp(11px, 1.25vw, 15px);margin:0 2.5vw 3.5vw;}
+          .pc-arrow{top:auto;right:2.5vw;bottom:2.5vw;
+            width:clamp(40px, 5vw, 54px);height:clamp(40px, 5vw, 54px);}
+          .pc-arrow svg{width:clamp(14px, 2vw, 22px);height:auto;}
+
+          /* controls: arrows HUG the dots (centered cluster, like the design) */
+          .pc-nav{position:static;width:clamp(40px, 6vw, 72px);height:clamp(40px, 6vw, 72px);}
+          .pc-nav svg{width:clamp(9px, 1.3vw, 16px);height:auto;}
+          .pc-nav.prev{grid-column:1;grid-row:3;justify-self:end;}
+          .pc-nav.next{grid-column:3;grid-row:3;justify-self:start;}
+          .pc-dots{position:static;grid-column:2;grid-row:3;justify-self:center;}
+          .pc-dot{width:clamp(9px, 1.2vw, 14px);height:clamp(5px, 0.8vw, 9px);}
+          .pc-dot.active{width:clamp(20px, 2.6vw, 30px);height:clamp(6px, 0.9vw, 10px);}
+        }
       `}</style>
 
       <div className="pc-head">
@@ -108,7 +147,6 @@ const ProductCategories = () => {
         <img className="pc-vector" src={vector1} alt="" aria-hidden="true" />
       </div>
 
-      {/* cards render from the live array; key forces remount → slide-in animation */}
       {items.map((c, i) => (
         <div className={`pc-card ${SLOTS[i]}`} key={c.name}>
           {c.img && <img className="pc-img" src={c.img} alt={`Shine ${c.name}`} />}

@@ -14,6 +14,7 @@ const Arrow = () => (
 const OtherBrands = () => (
   <section id="shine-other-brands" className="ob-sec">
     <style>{`
+      /* ============ DESKTOP ≥1024 — ORIGINAL CODE, VERBATIM ============ */
       .ob-sec{position:relative;width:100%;height:40.8854vw;background:#fff;overflow:hidden;}
 
       /* ---- panel 170/70.5 1580x644 ---- */
@@ -64,6 +65,42 @@ const OtherBrands = () => (
         text-decoration:none;transition:none;}
       .ob-btn:hover{background:transparent;color:#2E3192;}
       .ob-btn svg{width:0.9375vw;height:0.625vw;}
+
+      /* ============ MOBILE+TABLET ≤1023 — panel stacks: image → copy → CTA ============ */
+      @media (max-width:1023px){
+        .ob-sec{height:auto;padding:10vw 5vw;}
+
+        .ob-panel{position:static;left:auto;top:auto;width:auto;height:auto;
+          border-radius:2vw;}
+
+        /* image becomes the top banner, keeps 4:3 crop */
+        .ob-img{position:static;left:auto;top:auto;width:100%;height:auto;
+          aspect-ratio:4/3;object-fit:cover;}
+
+        .ob-right{position:static;left:auto;top:auto;width:auto;padding:6vw 5vw 7vw;}
+
+        .ob-tag{font-size:clamp(12px, 1.4vw, 18px);}
+        .ob-rule{width:clamp(36px, 7vw, 50px);height:3px;margin-top:2vw;border-radius:2px;}
+        .ob-title{margin-top:3vw;font-size:clamp(20px, 3vw, 34px);}
+        .ob-para{margin-top:3vw;font-size:clamp(12px, 1.35vw, 17px);line-height:1.6;}
+        .ob-para br{display:none;}
+
+        /* full-width touch row on small screens */
+        .ob-btn{margin-top:5vw;display:flex;justify-content:center;width:100%;
+          padding:3.5vw 4vw;border-radius:2vw;font-size:clamp(12px, 1.5vw, 17px);}
+        .ob-btn svg{width:clamp(14px, 2vw, 18px);height:clamp(9px, 1.4vw, 12px);}
+      }
+
+      /* ============ TABLET 640–1023 — same stack, larger fixed type ============ */
+      @media (min-width:640px) and (max-width:1023px){
+        .ob-sec{padding:8vw 6vw;}
+        .ob-img{aspect-ratio:16/9;}
+        .ob-right{padding:5vw 6vw 6vw;}
+        .ob-tag{font-size:13px;}
+        .ob-title{font-size:30px;}
+        .ob-para{font-size:14px;}
+        .ob-btn{font-size:15px;padding:3vw 4vw;}
+      }
     `}</style>
 
     <div className="ob-panel">

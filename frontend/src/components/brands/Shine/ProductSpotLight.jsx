@@ -9,7 +9,7 @@ import img5 from "../../../assets/Rectangle 4651.svg";
 const serif = "'Playfair Display', Georgia, serif";
 const sans = "'Poppins', 'Segoe UI', sans-serif";
 
-/* desc = 3 design-matched lines, joined with <br/> at render */
+/* ✅ notes restored EXACTLY as shown in the product-note video (4 bullets each) */
 const PRODUCTS = [
   {
     num: "01", cat: "Kitchencare", badge: "KITCHENCARE", name: "Radiance Renewal Serum",
@@ -71,7 +71,6 @@ const ChevL = () => (
 const ChevR = () => (
   <svg viewBox="0 0 9 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m1.5 1.5 6 5.5-6 5.5" /></svg>
 );
-/* ✔ Figma-style: thin gold ring + BOLD orange tick */
 const Check = () => (
   <svg viewBox="0 0 20 20" fill="none">
     <circle cx="10" cy="10" r="9" stroke="#CCA466" strokeWidth="1.4" />
@@ -109,135 +108,46 @@ const ProductSpotlight = () => {
   return (
     <section id="shine-spotlight" className="psx-sec">
       <style>{`
+        /* ================= DESKTOP (>1280): ORIGINAL, UNTOUCHED ================= */
         .psx-sec{position:relative;width:100%;height:64.3229vw;background:#fff;}
 
-        /* ---- centered header (y77/108/140/171) ---- */
-        .psx-tag{
-        position:absolute;
-        top:3.7vw;
-        width:100%;
-        text-align:center;
-        color:#E38F2E;
-        font-family:${sans};
-        font-size:0.85vw;
-        font-style: normal;
-        font-weight:700;
-        letter-spacing:0.18em;
-        text-transform:uppercase;
-        }
-
-        .psx-title{
-        position:absolute;
-        top:5.2vw;
-        width:100%;
-        text-align:center;
-        color:#2E3192;
-        font-family:${serif};
-        font-size:1.875vw;
-        font-style: normal;
-        font-weight:700;
-        line-height:1.2;
-        }
-
-        .psx-vector{
-        position:absolute;
-        top:7.4917vw;
-        left:50%;
-        transform:translateX(-50%);
-        width:9.25vw;
-        height:auto;
-        }
-
-        .psx-sub{
-        position:absolute;
-        top:9.2vw;
-        width:100%;
-        text-align:center;
-        color:#666666;
-        font-family:${sans};
-        font-size:1vw;
-        line-height:1.4583vw;
-        }
-
+        .psx-tag{position:absolute;top:3.7vw;width:100%;text-align:center;color:#E38F2E;
+          font-family:${sans};font-size:0.85vw;font-style:normal;font-weight:700;
+          letter-spacing:0.18em;text-transform:uppercase;}
+        .psx-title{position:absolute;top:5.2vw;width:100%;text-align:center;color:#2E3192;
+          font-family:${serif};font-size:1.875vw;font-style:normal;font-weight:700;line-height:1.2;}
+        .psx-vector{position:absolute;top:7.4917vw;left:50%;transform:translateX(-50%);
+          width:9.25vw;height:auto;}
+        .psx-sub{position:absolute;top:9.2vw;width:100%;text-align:center;color:#666666;
+          font-family:${sans};font-size:1vw;line-height:1.4583vw;}
         .psx-sub span{display:inline-block;max-width:62vw;}
 
-        /* ---- panel 170/274 1580x861 ---- */
         .psx-panel{position:absolute;left:8.8542vw;top:14.2708vw;width:82.2917vw;height:44.8438vw;
           background:#FCF9F2;border:0.0521vw solid #D7DAE4;border-radius:0.5208vw;
           display:flex;flex-direction:column;overflow:hidden;}
         .psx-main{flex:1;display:flex;min-height:0;}
 
-        /* ---- left directory (402w) ---- */
         .psx-side{width:20.9375vw;border-right:0.0521vw solid #D7DAE4;
           display:flex;flex-direction:column;padding:2.0833vw 1.9792vw 1.5625vw;}
         .psx-sidehead{padding-bottom:1.5625vw;border-bottom:0.0521vw solid #D7DAE4;text-align:center;}
+        .psx-dir{color:#E38F2E;font-family:${sans};font-size:0.9vw;font-style:normal;
+          font-weight:500;letter-spacing:0.1em;}
+        .psx-sig{margin-top:0vw;color:#2E3192;font-family:${serif};font-size:1.5625vw;font-weight:700;}
+        .psx-list{margin-top:1.5625vw;display:flex;flex-direction:column;gap:0.7292vw;flex:1;}
 
-        .psx-dir{
-        color:#E38F2E;
-        font-family:${sans};
-        font-size:0.9vw;
-        font-style: normal;
-        font-weight:500;
-        letter-spacing:0.1em;
-        }
-
-        .psx-sig{
-        margin-top:0vw;
-        color:#2E3192;
-        font-family:${serif};
-        font-size:1.5625vw;
-        font-weight:700;
-        }
-
-        .psx-list{
-        margin-top:1.5625vw;
-        display:flex;
-        flex-direction:column;
-        gap:0.7292vw;
-        flex:1;
-        }
-        
-        .psx-item{
-        background:#ffffff;
-        border:0.0521vw solid #D7DAE4;
-        border-radius:0.4167vw;
-        padding:0.9375vw 1.0417vw;
-        text-align:left;
-        cursor:pointer;
-        display:flex;
-        flex-direction:column;
-        gap:0.3125vw;
-        transition:background .25s, border-color .25s, box-shadow .25s, transform .25s;
-        }
-
+        .psx-item{background:#ffffff;border:0.0521vw solid #D7DAE4;border-radius:0.4167vw;
+          padding:0.9375vw 1.0417vw;text-align:left;cursor:pointer;display:flex;
+          flex-direction:column;gap:0.3125vw;
+          transition:background .25s, border-color .25s, box-shadow .25s, transform .25s;}
         .psx-item:hover:not(.active){
-          box-shadow:0 0.4167vw 0.625vw  rgba(0,0,0,0.08),   /* 0 8px 12px @8%  */
-                    0 1.0417vw 1.3021vw rgba(0,0,0,0.05);   /* 0 20px 25px @5% */
-          transform:translateY(-0.1042vw);                   /* -2px lift @1920 */
-          border-color:#ffffff;
-        }
-
-        .psx-item-cat{
-        font-family:${serif};
-        font-size:0.7292vw;
-        color:#666666;
-        letter-spacing:0.05em;
-        }
-
-        .psx-item-name{
-        font-family:${sans};
-        font-size:0.8333vw;
-        font-weight:500;
-        color:#121212;
-        }
-
-        .psx-item.active{
-        background:#2E3192;
-        border-color:#2E3192;
-        }
-
+          box-shadow:0 0.4167vw 0.625vw rgba(0,0,0,0.08), 0 1.0417vw 1.3021vw rgba(0,0,0,0.05);
+          transform:translateY(-0.1042vw);border-color:#ffffff;}
+        .psx-item-cat{font-family:${serif};font-size:0.7292vw;color:#666666;letter-spacing:0.05em;}
+        .psx-item-name{font-family:${sans};font-size:0.8333vw;font-weight:500;color:#121212;}
+        .psx-item.active{background:#2E3192;border-color:#2E3192;}
         .psx-item.active .psx-item-cat{color:var(--Orange-300, #E8D6BA);}
         .psx-item.active .psx-item-name{color:#fff;}
+
         .psx-nav{margin-top:1.25vw;display:flex;align-items:center;justify-content:space-between;}
         .psx-arrow{width:2.5vw;height:2.5vw;border-radius:50%;background:#F5F5FA;
           border:0.1042vw solid #A1A2CE;color:#2E3192;display:flex;align-items:center;
@@ -247,7 +157,6 @@ const ProductSpotlight = () => {
         .psx-count{font-family:${serif};font-size:0.8333vw;color:#7779B8;}
         .psx-count b{color:#2E3192;}
 
-        /* ---- center stage (534x760 @593/294) ---- */
         .psx-center{flex:1;display:flex;align-items:flex-start;justify-content:center;position:relative;}
         .psx-stage{position:relative;margin-top:1.0417vw;width:27.8125vw;height:39.5833vw;
           border-radius:0.5208vw;overflow:hidden;border:0.0521vw solid #D7DAE4;}
@@ -265,172 +174,124 @@ const ProductSpotlight = () => {
           border:0.1042vw solid #fff;padding:0;cursor:pointer;transition:all .3s;}
         .psx-dot.active{width:1.9792vw;background:#E38F2E;}
 
-        /* ---- right details (x1197, w342) ---- */
         .psx-right{width:32.4479vw;padding:2.0833vw 0 2.0833vw 3.6458vw;}
 
-        .psx-kicker{
-        color:#E38F2E;
-        font-family:${sans};
-        font-size:1vw;
-        font-style: normal;
-        font-weight:500;
-        letter-spacing:0.1em;
-        }
+        /* ✅ details block re-mounts per product → fades/slides like the video */
+        .psx-dyn{animation:psx-fade .5s ease;}
+        @keyframes psx-fade{from{opacity:0;transform:translateX(1.0417vw);}to{opacity:1;transform:none;}}
 
-        .psx-rule{
-        width:2.6042vw;
-        height:0.1563vw;
-        background:#CCA466;
-        margin-top:0.3vw;
-        border-radius:0.0781vw;
-        }
-
-        .psx-name{
-        margin-top:0.8vw;
-        color:#2E3192;
-        font-family:${serif};
-        font-size:1.6vw;
-        font-weight:700;
-        letter-spacing: 0.04em;
-        }
-
-        .psx-desc{
-        margin-top:1.0417vw;
-        color:#666666;
-        font-family:${sans};
-        font-size:0.9vw;
-        font-weight: 400;
-        line-height:1.4583vw;
-        }
-        
+        .psx-kicker{color:#E38F2E;font-family:${sans};font-size:1vw;font-style:normal;
+          font-weight:500;letter-spacing:0.1em;}
+        .psx-rule{width:2.6042vw;height:0.1563vw;background:#CCA466;margin-top:0.3vw;border-radius:0.0781vw;}
+        .psx-name{margin-top:0.8vw;color:#2E3192;font-family:${serif};font-size:1.6vw;
+          font-weight:700;letter-spacing:0.04em;}
+        .psx-desc{margin-top:1.0417vw;color:#666666;font-family:${sans};font-size:0.9vw;
+          font-weight:400;line-height:1.4583vw;}
         .psx-div{height:0.0521vw;background:#D7DAE4;margin-top:1.5625vw;}
-
-        .psx-notes-h{
-        margin-top:1.5625vw;
-        color:#333333;
-        font-family:${sans};
-        font-size:0.95vw;
-        font-weight:500;
-        }
-
-        .psx-notes{
-        margin-top:1.0417vw;
-        display:flex;
-        flex-direction:column;
-        gap:0.8333vw;
-        list-style:none;
-        }
-
-        .psx-notes li svg{
-          width:1.25vw !important;    
-          height:1.25vw !important;
-        }
-
-        .psx-notes li{
-        display:flex;
-        align-items:center;
-        gap:0.5208vw;
-        color:#666666;
-        font-family:${sans};
-        font-size:0.95vw;
-        }
-
+        .psx-notes-h{margin-top:1.5625vw;color:#333333;font-family:${sans};font-size:0.95vw;font-weight:500;}
+        .psx-notes{margin-top:1.0417vw;display:flex;flex-direction:column;gap:0.8333vw;list-style:none;}
+        .psx-notes li svg{width:1.25vw !important;height:1.25vw !important;}
+        .psx-notes li{display:flex;align-items:center;gap:0.5208vw;color:#666666;
+          font-family:${sans};font-size:0.95vw;}
         .psx-notes svg{width:0.9375vw;height:0.9375vw;color:#E38F2E;flex-shrink:0;}
-
-        .psx-stats{
-        margin-top:1vw;
-        display:flex;
-        align-items:center;
-        gap:1.5625vw;
-        }
-
+        .psx-stats{margin-top:1vw;display:flex;align-items:center;gap:1.5625vw;}
         .psx-stats div{display:flex;flex-direction:column;gap:0.4167vw;}
-
-        .psx-stats span{
-        color:#666666;
-        font-family:${sans};
-        font-size:0.8813vw;
-        }
-
-        .psx-stats strong{
-        font-family:${serif};
-        font-size:1.217vw;
-        font-style: normal;
-        font-weight:550;
-        color:#121212;
-        }
-
+        .psx-stats span{color:#666666;font-family:${sans};font-size:0.8813vw;}
+        .psx-stats strong{font-family:${serif};font-size:1.217vw;font-style:normal;
+          font-weight:550;color:#121212;}
         .psx-stats i{width:0.0521vw;height:2.6042vw;background:#D7DAE4;}
-
-        .psx-cta{
-        margin-top:1vw;
-        width:21.8125vw;
-        height:3vw;
-        background:#2E3192;
-        color:#fff;
-        border:none;
-        border-radius:0.4167vw;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        gap:0.5208vw;
-        font-family:${sans};
-        font-size:0.92vw;
-        font-weight:500;
-        cursor:pointer;
-        transition:background .2s;
-        }
-
-        .psx-cta svg{
-          width:1.1vw !important;  /* 20px @1920 (was 16px) */
-          height:1.1vw !important;
-        }
-
+        .psx-cta{margin-top:1vw;width:21.8125vw;height:3vw;background:#2E3192;color:#fff;
+          border:none;border-radius:0.4167vw;display:flex;align-items:center;
+          justify-content:center;gap:0.5208vw;font-family:${sans};font-size:0.92vw;
+          font-weight:500;cursor:pointer;transition:background .2s;}
+        .psx-cta svg{width:1.1vw !important;height:1.1vw !important;}
         .psx-cta:hover{background:#1d2170;}
-        .psx-cta svg{width:0.8333vw;height:0.8333vw;}
-
-        .psx-cta2{
-        margin-top:0.8333vw;
-        width:21.8125vw;
-        height:3vw;
-        background:transparent;
-        border:0.1463vw solid #252775;
-        color:#2E3192;
-        border-radius:0.4167vw;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        gap:0.5208vw;
-        font-family:${sans};
-        font-size:0.92vw;
-        font-weight:500;
-        letter-spacing:0.1em;
-        text-transform:uppercase;
-        cursor:pointer;
-        }
-
-        .psx-cta2 svg{
-          width:1.25vw !important;    /* 24px @1920 */
-          height:0.8333vw !important; /* 16px @1920 */
-        }
-
+        .psx-cta2{margin-top:0.8333vw;width:21.8125vw;height:3vw;background:transparent;
+          border:0.1463vw solid #252775;color:#2E3192;border-radius:0.4167vw;display:flex;
+          align-items:center;justify-content:center;gap:0.5208vw;font-family:${sans};
+          font-size:0.92vw;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;
+          cursor:pointer;}
+        .psx-cta2 svg{width:1.25vw !important;height:0.8333vw !important;}
         .psx-cta2:hover{background:#eef0fa;}
-        .psx-cta2 svg{width:0.9375vw;height:0.625vw;}
 
-        /* ---- footer bar (62h) ---- */
-        .psx-foot{
-        border-top:0.0521vw solid #D7DAE4;
-        height:3.2292vw;
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        padding:0 1vw;
-        }
+        .psx-foot{border-top:0.0521vw solid #D7DAE4;height:3.2292vw;display:flex;
+          align-items:center;justify-content:space-between;padding:0 1vw;}
+        .psx-foot span{color:#666666;font-family:${sans};font-size:0.86vw;}
 
-        .psx-foot span{
-        color:#666666;
-        font-family:${sans};
-        font-size:0.86vw;
+        /* ============ ≤1280: stacked flow — tabs → image → arrows → details ============ */
+        @media (max-width:1280px){
+          .psx-sec{height:auto;padding:9vw 5vw 10vw;}
+
+          .psx-tag{position:static;font-size:clamp(12px,1.4vw,18px);}
+          .psx-title{position:static;font-size:clamp(24px,3.4vw,44px);margin-top:1.5vw;}
+          .psx-vector{position:static;transform:none;display:block;
+            width:clamp(80px,12vw,160px);margin:2vw auto 0;}
+          .psx-sub{position:static;font-size:clamp(13px,1.8vw,20px);line-height:1.6;margin-top:2vw;}
+          .psx-sub span{max-width:92%;}
+          .psx-sub br{display:none;}
+
+          .psx-panel{position:static;width:auto;height:auto;margin-top:7vw;border-radius:2vw;}
+          .psx-main{flex-direction:column;}
+
+          .psx-side{display:contents;}
+
+          .psx-sidehead{order:1;padding:5vw 4vw 3vw;
+            border-bottom:0.0521vw solid #D7DAE4;}
+          .psx-dir{font-size:clamp(11px,1.3vw,16px);}
+          .psx-sig{font-size:clamp(18px,2.4vw,30px);}
+
+          .psx-list{order:2;flex:none;flex-direction:row;overflow-x:auto;gap:2vw;
+            margin-top:0;padding:4vw 4vw 2vw;scroll-snap-type:x mandatory;
+            scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+          .psx-list::-webkit-scrollbar{display:none;}
+          .psx-item{flex:0 0 auto;scroll-snap-align:start;padding:2.2vw 3.5vw;
+            border-radius:2vw;gap:1vw;}
+          .psx-item-cat{font-size:clamp(10px,1.2vw,14px);}
+          .psx-item-name{font-size:clamp(12px,1.4vw,16px);white-space:nowrap;}
+
+          .psx-center{order:3;}
+          .psx-stage{width:min(70vw,440px);height:auto;aspect-ratio:1/1;margin-top:5vw;}
+          .psx-badge{top:3vw;left:3vw;padding:1.4vw 2.6vw;border-radius:3vw;
+            font-size:clamp(9px,1.1vw,13px);}
+          .psx-badge svg{width:2.6vw;height:2.6vw;}
+          .psx-dots{bottom:2.5vw;gap:1.4vw;}
+          .psx-dot{width:2.6vw;height:2.6vw;border-radius:1.3vw;}
+          .psx-dot.active{width:5.5vw;}
+
+          .psx-nav{order:4;display:flex;align-items:center;justify-content:center;
+            gap:10vw;margin-top:5vw;}
+          .psx-arrow{width:clamp(40px,6vw,56px);height:clamp(40px,6vw,56px);}
+          .psx-arrow svg{width:clamp(9px,1.3vw,15px);height:auto;}
+          .psx-count{font-size:clamp(12px,1.5vw,18px);}
+
+          .psx-right{order:5;width:auto;padding:6vw 5vw 5vw 4vw;}
+          .psx-kicker{font-size:clamp(12px,1.4vw,17px);}
+          .psx-rule{width:clamp(40px,6vw,70px);height:1vw;margin-top:1.5vw;}
+          .psx-name{font-size:clamp(20px,3vw,36px);margin-top:2vw;}
+          .psx-desc{font-size:clamp(13px,1.7vw,19px);line-height:1.6;margin-top:3vw;}
+          .psx-desc br{display:none;}
+          .psx-div{height:1px;margin-top:5vw;}
+          .psx-notes-h{font-size:clamp(13px,1.6vw,18px);margin-top:5vw;}
+          .psx-notes{margin-top:3vw;gap:3vw;padding-right:2vw;}
+          .psx-notes li{font-size:clamp(12px,1.5vw,17px);gap:2vw;
+            overflow-wrap:break-word;}
+          .psx-notes li svg{width:4.2vw !important;height:4.2vw !important;flex-shrink:0;}
+          .psx-stats{margin-top:4vw;gap:6vw;}
+          .psx-stats div{gap:1.5vw;}
+          .psx-stats span{font-size:clamp(11px,1.4vw,16px);}
+          .psx-stats strong{font-size:clamp(15px,2vw,24px);}
+          .psx-stats i{width:1px;height:9vw;}
+
+          .psx-cta{width:100%;height:12vw;margin-top:6vw;border-radius:2vw;
+            font-size:clamp(13px,1.6vw,18px);}
+          .psx-cta svg{width:4.2vw !important;height:4.2vw !important;}
+          .psx-cta2{width:100%;height:12vw;margin-top:3vw;margin-bottom:2vw;
+            border-radius:2vw;font-size:clamp(13px,1.6vw,18px);}
+          .psx-cta2 svg{width:4.6vw !important;height:3vw !important;}
+
+          .psx-foot{height:auto;padding:3.5vw 4vw;flex-direction:column;gap:1.5vw;
+            justify-content:center;text-align:center;}
+          .psx-foot span{font-size:clamp(11px,1.3vw,15px);}
         }
       `}</style>
 
@@ -490,31 +351,33 @@ const ProductSpotlight = () => {
 
           {/* right details */}
           <div className="psx-right">
-            <p className="psx-kicker">Signature {p.num}</p>
-            <div className="psx-rule" />
-            <h3 className="psx-name">{p.name}</h3>
+            {/* ✅ keyed wrapper → notes/name/desc re-animate on every switch, like the video */}
+            <div className="psx-dyn" key={p.num}>
+              <p className="psx-kicker">Signature {p.num}</p>
+              <div className="psx-rule" />
+              <h3 className="psx-name">{p.name}</h3>
 
-            {/* 👇 description rendered as the 3 design lines */}
-            <p className="psx-desc">
-              {p.desc.map((ln, i) => (
-                <React.Fragment key={i}>
-                  {ln}
-                  {i < p.desc.length - 1 && <br />}
-                </React.Fragment>
-              ))}
-            </p>
+              <p className="psx-desc">
+                {p.desc.map((ln, i) => (
+                  <React.Fragment key={i}>
+                    <span>{ln} </span>
+                    {i < p.desc.length - 1 && <br />}
+                  </React.Fragment>
+                ))}
+              </p>
 
-            <div className="psx-div" />
-            <p className="psx-notes-h">Product Notes</p>
-            <ul className="psx-notes">
-              {p.notes.map((n, i) => (<li key={i}><Check />{n}</li>))}
-            </ul>
+              <div className="psx-div" />
+              <p className="psx-notes-h">Product Notes</p>
+              <ul className="psx-notes">
+                {p.notes.map((n, i) => (<li key={i}><Check />{n}</li>))}
+              </ul>
 
-            <div className="psx-div" />
-            <div className="psx-stats">
-              <div><span>Minimum order quantity</span><strong>{p.moq}</strong></div>
-              <i />
-              <div><span>Lead Time</span><strong>{p.lead}</strong></div>
+              <div className="psx-div" />
+              <div className="psx-stats">
+                <div><span>Minimum order quantity</span><strong>{p.moq}</strong></div>
+                <i />
+                <div><span>Lead Time</span><strong>{p.lead}</strong></div>
+              </div>
             </div>
 
             <button className="psx-cta"><Plus /> Become Distributor</button>

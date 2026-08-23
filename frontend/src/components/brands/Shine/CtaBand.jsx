@@ -23,6 +23,7 @@ const Arrow = () => (
 const CtaBand = () => (
   <section id="shine-cta" className="cb-sec">
     <style>{`
+      /* ============ DESKTOP ≥1024 — ORIGINAL CODE, VERBATIM ============ */
       .cb-sec{
       position:relative;
       width:100%;
@@ -120,6 +121,37 @@ const CtaBand = () => (
 
       
       .cb-line:hover{background:rgba(255,255,255,0.08);}
+
+      /* ============ MOBILE+TABLET ≤1023 — stacked copy + row buttons ============ */
+      @media (max-width:1023px){
+        .cb-sec{height:auto;display:grid;grid-template-columns:1fr;padding:10vw 5vw;}
+
+        .cb-tag{position:static;font-size:clamp(12px, 1.4vw, 18px);}
+        .cb-title{position:static;left:auto;top:auto;width:auto;
+          font-size:clamp(20px, 2.6vw, 34px);line-height:1.25;margin-top:2vw;}
+        .cb-title br{display:none;}
+        .cb-body{position:static;left:auto;top:auto;width:auto;
+          font-size:clamp(12px, 1.35vw, 17px);line-height:1.6;margin-top:3vw;}
+        .cb-body br{display:none;}
+
+        /* full-width touch rows on phones */
+        .cb-gold{position:static;left:auto;top:auto;width:100%;height:12vw;
+          margin-top:7vw;border-radius:2vw;font-size:clamp(12px, 1.5vw, 17px);}
+        .cb-gold svg{width:clamp(14px, 2vw, 18px);height:clamp(9px, 1.4vw, 12px);}
+        .cb-line{position:static;left:auto;top:auto;width:100%;height:12vw;
+          margin-top:3vw;border-radius:2vw;font-size:clamp(12px, 1.5vw, 17px);}
+      }
+
+      /* ============ TABLET 640–1023 — buttons side-by-side, larger type ============ */
+      @media (min-width:640px) and (max-width:1023px){
+        .cb-sec{grid-template-columns:1fr 1fr;gap:0 3vw;padding:8vw 6vw;}
+        .cb-tag,.cb-title,.cb-body{grid-column:1/-1;}
+        .cb-tag{font-size:13px;}
+        .cb-title{font-size:30px;}
+        .cb-body{font-size:14px;}
+        .cb-gold{grid-column:1;height:52px;margin-top:6vw;}
+        .cb-line{grid-column:2;height:52px;margin-top:6vw;}
+      }
     `}</style>
 
     <p className="cb-tag">{DATA.tag}</p>

@@ -61,6 +61,7 @@ const RIGHT = [
 const WhyChooseShine = () => (
   <section id="shine-why" className="wc-sec">
     <style>{`
+      /* ============ DESKTOP ≥1024 — ORIGINAL CODE, VERBATIM ============ */
       .wc-sec{position:relative;width:100%;height:56.7188vw;background:#FCF9F2;overflow:hidden;}
 
       /* ---- header ---- */
@@ -124,6 +125,68 @@ const WhyChooseShine = () => (
 
       .wc-card h3{color:#2E3192;font-family:${serif};font-size:1.0417vw;font-weight:700;margin-bottom:0.4167vw;}
       .wc-card p{color:#666666;font-family:${sans};font-size:0.7813vw;line-height:1.1979vw;}
+
+      /* desktop-invisible additions */
+      .wc-media{display:contents;}
+      .wc-ring-m{display:none;}
+
+      /* ============ MOBILE+TABLET ≤1023 — one template per ROW ============ */
+      @media (max-width:1023px){
+        .wc-sec{height:auto;display:grid;grid-template-columns:1fr;padding:10vw 5vw;}
+
+        /* cards = horizontal rows: icon left, text right; text wraps naturally */
+        .wc-card{position:static;width:auto;height:auto;margin-top:3vw;
+          padding:3.5vw 4vw;gap:3.5vw;border-radius:2vw;align-items:center;text-align:left;}
+        .wc-card p br{display:none;}   /* ✅ no forced breaks — copy flows responsively */
+        .wc-l1,.wc-l2,.wc-l3,.wc-r1,.wc-r2,.wc-r3{left:auto;top:auto;}
+
+        .wc-tag{order:1;position:static;font-size:clamp(12px, 1.4vw, 18px);}
+        .wc-title{order:2;position:static;font-size:clamp(20px, 2.3vw, 32px);margin-top:2vw;}
+        .wc-vector{order:3;position:static;transform:none;display:block;
+          width:clamp(70px, 12vw, 120px);margin:2.5vw auto 0;}
+        .wc-sub{order:4;position:static;font-size:clamp(12px, 1.35vw, 17px);
+          line-height:clamp(18px, 2vw, 26px);margin-top:2.5vw;}
+
+        .wc-wires{display:none;}
+
+        .wc-l1{order:5;margin-top:6vw;}
+        .wc-l2{order:6;}
+        .wc-l3{order:7;}
+
+        .wc-media{order:8;display:block;position:relative;
+          width:min(75vw,760px);margin:7vw auto 3vw;}
+        .wc-media .wc-img{position:relative;left:auto;top:auto;z-index:2;
+          width:100%;height:auto;margin:0;}
+        .wc-ring-m{display:block;position:absolute;left:50%;top:50%;
+          width:96%;height:96%;transform:translate(-50%,-50%);
+          z-index:1;pointer-events:none;}
+        .wc-ring-m svg{width:100%;height:100%;display:block;}
+
+        .wc-r1{order:9;margin-top:4vw;}
+        .wc-r2{order:10;}
+        .wc-r3{order:11;}
+
+        .wc-ico{flex:0 0 clamp(40px, 6vw, 64px);
+          width:clamp(40px, 6vw, 64px);height:clamp(40px, 6vw, 64px);}
+        .wc-ico svg{width:clamp(18px, 2.8vw, 30px);height:clamp(18px, 2.8vw, 30px);}
+
+        .wc-card h3{font-size:clamp(14px, 1.7vw, 21px);margin-bottom:1vw;}
+        .wc-card p{font-size:clamp(11px, 1.25vw, 15px);
+          line-height:clamp(16px, 1.8vw, 22px);}
+      }
+
+      /* ============ TABLET 640–1023 — same rows, larger type/bottle ============ */
+      @media (min-width:640px) and (max-width:1023px){
+        .wc-sec{padding:8vw 6vw;}
+        .wc-tag{font-size:13px;}
+        .wc-title{font-size:28px;}
+        .wc-sub{font-size:14px;line-height:1.6;}
+        .wc-media{width:min(60vw,520px);}
+        .wc-ico{flex:0 0 56px;width:56px;height:56px;}
+        .wc-ico svg{width:26px;height:26px;}
+        .wc-card h3{font-size:16px;}
+        .wc-card p{font-size:13px;line-height:1.5;}
+      }
     `}</style>
 
     <p className="wc-tag">Why Choose Shine</p>
@@ -135,7 +198,7 @@ const WhyChooseShine = () => (
       fresh, and hygienic every day.
     </p>
 
-    {/* ring + 45° elbow connectors + node dots — elbows end exactly on the ring */}
+    {/* ring + 45° elbow connectors + node dots — desktop only */}
     <svg className="wc-wires" viewBox="0 0 1920 1089" preserveAspectRatio="none" fill="none">
       <defs>
         <linearGradient id="wc-fade" x1="0" y1="0" x2="0" y2="1">
@@ -147,20 +210,16 @@ const WhyChooseShine = () => (
         </mask>
       </defs>
 
-      {/* green ring Ø630 @ (960,605), fades behind the flowers */}
       <circle cx="960" cy="605" r="315" stroke="#176B22" strokeWidth="3" mask="url(#wc-ringmask)" />
 
-      {/* left connectors — horizontal at card mid-height, 45° elbow to ring node */}
       <path d="M552 405.5 H668.5 L696 433"  stroke="#176B22" strokeWidth="3" />
       <path d="M552 604.5 H645"             stroke="#176B22" strokeWidth="3" />
       <path d="M552 803.5 H669.5 L696 777"  stroke="#176B22" strokeWidth="3" />
 
-      {/* right connectors (mirrored) */}
       <path d="M1368 405.5 H1251.5 L1224 433" stroke="#176B22" strokeWidth="3" />
       <path d="M1368 604.5 H1275"             stroke="#176B22" strokeWidth="3" />
       <path d="M1368 803.5 H1251.5 L1224 777" stroke="#176B22" strokeWidth="3" />
 
-      {/* node dots — centered on the ring points */}
       <circle cx="696"  cy="433"   r="8" fill="#176B22" />
       <circle cx="645"  cy="604.5" r="8" fill="#176B22" />
       <circle cx="696"  cy="777"   r="8" fill="#176B22" />
@@ -169,7 +228,23 @@ const WhyChooseShine = () => (
       <circle cx="1224" cy="777"   r="8" fill="#176B22" />
     </svg>
 
-    <img className="wc-img" src={centerImg} alt="Shine multi-surface cleaner — clean & fresh" />
+    <span className="wc-media">
+      <img className="wc-img" src={centerImg} alt="Shine multi-surface cleaner — clean & fresh" />
+      <span className="wc-ring-m" aria-hidden="true">
+        <svg viewBox="0 0 630 630" fill="none">
+          <defs>
+            <linearGradient id="wc-fade-m" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0.55" stopColor="#fff" />
+              <stop offset="0.95" stopColor="#fff" stopOpacity="0" />
+            </linearGradient>
+            <mask id="wc-ringmask-m">
+              <rect x="0" y="0" width="630" height="630" fill="url(#wc-fade-m)" />
+            </mask>
+          </defs>
+          <circle cx="315" cy="315" r="312" stroke="#176B22" strokeWidth="4" mask="url(#wc-ringmask-m)" />
+        </svg>
+      </span>
+    </span>
 
     {LEFT.map(({ cls, Icon, title, lines }) => (
       <div className={`wc-card ${cls}`} key={title}>

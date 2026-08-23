@@ -18,7 +18,6 @@ const DESC = "Nail Polish is the best things in the world and were for protectio
 
 /* ---------- icons (matched to Figma originals) ---------- */
 
-/* ✅ stroked 4-point sparkle with concave arcs */
 const Spark = () => (
   <svg width="13" height="13" viewBox="0 0 12.75 12.75" fill="none" aria-hidden="true">
     <path
@@ -28,8 +27,6 @@ const Spark = () => (
   </svg>
 );
 
-/* ✅ Figma heart path with stroke-safe viewBox so the glyph sits exactly
-   centered in the circle (no clipping, no optical shift) */
 const Heart = ({ filled }) => (
   <svg viewBox="-1 -1 21 18.5" fill={filled ? "#3436A4" : "none"} aria-hidden="true">
     <path
@@ -39,7 +36,6 @@ const Heart = ({ filled }) => (
   </svg>
 );
 
-/* ✅ package cube with diagonal tick on the top face */
 const BoxIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="#CCA466" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
@@ -49,7 +45,6 @@ const BoxIcon = () => (
   </svg>
 );
 
-/* ✅ calendar with dot grid in the body */
 const CalIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="#CCA466" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <rect x="3" y="5" width="18" height="16" rx="2" />
@@ -128,6 +123,7 @@ export default function BestSellers() {
   return (
     <section id="shine-best-sellers" className="bs-sec">
       <style>{`
+        /* ============ DESKTOP ≥1024 — ORIGINAL CODE, VERBATIM ============ */
         .bs-sec{position:relative;width:100%;padding:4.0104vw 0 5.2083vw;background:#FCF9F2;overflow:hidden;}
         .bs-head{text-align:center;max-width:78vw;margin:0 auto 3.2292vw;}
         .bs-eyebrow{color:#E38F2E;font-family:${sans};font-size:0.83vw;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;}
@@ -161,7 +157,6 @@ export default function BestSellers() {
           white-space:nowrap;overflow:hidden;}
         .bs-badge svg{flex:0 0 auto;}
 
-        /* wishlist circle — heart centered via grid; svg sized to the stroke-safe box */
         .bs-wish{position:absolute;top:0.8333vw;right:0.8333vw;z-index:2;width:2.3438vw;height:2.3438vw;border-radius:50%;
           background:#FAF8F4;border:0.1042vw solid rgba(200,155,74,0.5);display:grid;place-items:center;
           cursor:pointer;}
@@ -193,9 +188,14 @@ export default function BestSellers() {
         .bs-cta:hover .bs-cta-arrow{transform:translateX(0.1563vw);}
         .bs-cta-arrow svg{width:0.8333vw;height:0.8333vw;}
 
-        @media (max-width:1280px){
+        /* ============ TABLET 640–1023 — 2-up grid, scaled type ============ */
+        @media (max-width:1023px){
           .bs-grid{grid-template-columns:repeat(2,1fr);width:90vw;}
-          .bs-eyebrow{font-size:1.2vw;} .bs-title{font-size:2.6vw;} .bs-sub{font-size:1.3vw;}
+          .bs-eyebrow{font-size:1.2vw;} .bs-title{font-size:2.6vw;}
+          /* ✅ font AND line-height scale together — no collapsed lines */
+          .bs-sub{font-size:1.3vw;line-height:2vw;}
+          .bs-sub br{display:none;}
+          .bs-squiggle{width:12vw;margin:0 auto;}
           .bs-media{height:26vw;}
           .bs-arc{height:7.2vw;bottom:-2.1563vw;}
           .bs-name{font-size:1.7vw;} .bs-desc{font-size:1.2vw;line-height:1.8vw;}
@@ -203,13 +203,16 @@ export default function BestSellers() {
           .bs-badge{font-size:1vw;width:10.5vw;height:2.6vw;} .bs-wish{width:3.4vw;height:3.4vw;}
           .bs-wish svg{width:1.5833vw;height:1.3945vw;}
           .bs-meta-ico{width:2.9vw;height:2.9vw;} .bs-cta-arrow{width:2.4vw;height:2.4vw;}
-          .bs-div{height:2.9vw;} .bs-squiggle{width:12vw;}
+          .bs-div{height:2.9vw;}
         }
-        @media (max-width:640px){
+
+        /* ============ MOBILE <640 — one card per row ============ */
+        @media (max-width:639px){
           .bs-grid{grid-template-columns:1fr;}
           .bs-media{height:70vw;}
           .bs-arc{height:19.4vw;bottom:-5.855vw;}
-          .bs-title{font-size:5vw;} .bs-sub{font-size:3vw;}
+          .bs-title{font-size:5vw;}
+          .bs-sub{font-size:3vw;line-height:4.6vw;}
           .bs-name{font-size:4vw;} .bs-desc{font-size:3vw;line-height:4.4vw;}
           .bs-eyebrow{font-size:2.4vw;} .bs-meta-label{font-size:2.4vw;} .bs-meta-value{font-size:2.6vw;}
           .bs-cta{font-size:3vw;} .bs-badge{font-size:2.2vw;width:23vw;height:5.6vw;} .bs-wish{width:8vw;height:8vw;}

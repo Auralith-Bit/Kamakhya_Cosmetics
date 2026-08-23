@@ -17,6 +17,7 @@ const CARDS = [
 const FormulaSpotlight = () => (
   <section id="shine-formula" className="fs-sec">
     <style>{`
+      /* ============ DESKTOP ≥1024 — ORIGINAL CODE, VERBATIM ============ */
       .fs-sec{position:relative;width:100%;height:40.3125vw;background:#fff;overflow:hidden;}
 
       /* ---- header ---- */
@@ -78,12 +79,10 @@ const FormulaSpotlight = () => (
       height:9.375vw;
       padding:2.0833vw 1.5625vw;
       box-shadow:0 0.4167vw 0.625vw rgba(0,0,0,0.05), 0 1.0417vw 1.3021vw rgba(0,0,0,0.04);
-      /* 👇 NEW — animate border, shadow and lift */
       cursor:pointer;
       transition:border-color .3s ease, box-shadow .3s ease, transform .3s ease;
       }
 
-      /* 👇 NEW — Figma hover: gold border + deeper shadow + slight lift */
       .fs-card:hover{
       border-color:#CCA466;
       box-shadow:0 0.4167vw 0.625vw rgba(0,0,0,0.08), 0 1.0417vw 1.3021vw rgba(0,0,0,0.06);
@@ -102,6 +101,42 @@ const FormulaSpotlight = () => (
       .fs-rule{width:2.6042vw;height:0.1563vw;background:#CCA466;margin-top:0.625vw;border-radius:0.0781vw;}
       .fs-card p{margin-top:0.8333vw;color:#666666;font-family:${sans};
         font-size:0.8333vw;line-height:1.4063vw;}
+
+      /* ============ MOBILE+TABLET ≤1023 — ONE CARD PER ROW, no columns ============ */
+      @media (max-width:1023px){
+        .fs-sec{height:auto;padding:10vw 5vw;}
+
+        .fs-tag{position:static;font-size:clamp(12px, 1.4vw, 18px);}
+        .fs-title{position:static;font-size:clamp(20px, 2.3vw, 32px);margin-top:2vw;}
+        .fs-vector{position:static;transform:none;display:block;
+          width:clamp(70px, 12vw, 120px);margin:2.5vw auto 0;}
+        .fs-sub{position:static;font-size:clamp(12px, 1.35vw, 17px);
+          line-height:clamp(18px, 2vw, 26px);margin-top:2.5vw;}
+        .fs-sub br{display:none;}
+
+        /* single column = each template on its own full-width row */
+        .fs-grid{position:static;left:auto;top:auto;width:auto;
+          grid-template-columns:1fr;gap:4vw;margin-top:8vw;}
+
+        .fs-card{height:auto;padding:5vw;border-radius:2vw;}
+        .fs-card h3{font-size:clamp(14px, 1.7vw, 21px);}
+        .fs-rule{width:clamp(36px, 7vw, 50px);height:3px;margin-top:2vw;border-radius:2px;}
+        .fs-card p{margin-top:2.5vw;font-size:clamp(11px, 1.25vw, 15px);
+          line-height:clamp(16px, 1.8vw, 22px);}
+        .fs-card p br{display:none;}
+      }
+
+      /* ============ TABLET 640–1023 — same rows, larger type only ============ */
+      @media (min-width:640px) and (max-width:1023px){
+        .fs-sec{padding:8vw 6vw;}
+        .fs-tag{font-size:13px;}
+        .fs-title{font-size:28px;}
+        .fs-sub{font-size:14px;line-height:1.6;}
+        .fs-card{padding:5vw 4vw;}
+        .fs-card h3{font-size:16px;}
+        .fs-rule{width:44px;}
+        .fs-card p{font-size:13px;line-height:1.5;}
+      }
     `}</style>
 
     <p className="fs-tag">Formula Spotlight</p>
