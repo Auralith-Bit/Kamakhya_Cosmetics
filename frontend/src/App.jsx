@@ -6,6 +6,8 @@ import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/HomePage";
 import ShinePage from "./pages/brands/ShinePage";
 import RoyalLuxuryPage from "./pages/brands/RoyalLuxuryPage";
+import AboutPage from "./pages/AboutPage";
+import CheckoutPage from "./pages/CheckoutPage";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -30,6 +32,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/brands/shine" element={<ShinePage />} />
           <Route path="/brands/royal-luxury" element={<RoyalLuxuryPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/cart" element={<CheckoutPage />} />
           <Route path="*" element={<HomePage />} />
         </Route>
       </Routes>

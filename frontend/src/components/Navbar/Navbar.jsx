@@ -16,7 +16,7 @@ const Navbar = () => {
     { label: 'PRODUCTS', to: '/#products', type: 'link' },
     { label: 'OUR BRANDS', type: 'brands' },
     { label: 'MANUFACTURING', to: '/#manufacturing', type: 'link' },
-    { label: 'ABOUT', to: '/#about', type: 'link' },
+    { label: 'ABOUT', to: '/about', type: 'link' },
     { label: 'CONTACT', to: '/#contact', type: 'link' },
   ];
 

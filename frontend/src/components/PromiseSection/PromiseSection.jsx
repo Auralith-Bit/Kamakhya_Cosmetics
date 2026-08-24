@@ -54,7 +54,7 @@ const CursiveUnderline = () => (
 );
 
 const Feature = ({ icon, title, text }) => (
-  <div style={{ textAlign: 'center', maxWidth: '315px' }}>
+  <div className="promise-feature" style={{ textAlign: 'center', maxWidth: '315px', width: '100%' }}>
     <div style={{
       width: '56px', height: '56px', margin: '0 auto', borderRadius: '50%',
       border: `1.5px solid ${ICON}`, color: ICON,
@@ -69,15 +69,14 @@ const Feature = ({ icon, title, text }) => (
       {title}
     </h4>
     <div style={{ width: '45px', height: '2px', background: GOLD, margin: '11px auto 13px' }} />
-      <p style={{ margin: 0, fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(14px, 0.63vw, 15px)', color: TEXT, lineHeight: 1.6 }}>
+    <p style={{ margin: 0, fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(13px, 1.4vw, 15px)', color: TEXT, lineHeight: 1.6 }}>
       {text}
     </p>
   </div>
 );
 
 const PromiseSection = () => (
-  <section style={{ background: '#f5f0e4', padding: '85px 0 90px', overflow: 'hidden', minHeight: '521px' }}>
-    {/* clip shape: deep concave top + fully round bottom (as in video) */}
+  <section style={{ background: '#f5f0e4', padding: '85px 0 90px', overflow: 'hidden' }}>
     <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
       <defs>
         <clipPath id="promiseShape" clipPathUnits="objectBoundingBox">
@@ -103,8 +102,9 @@ const PromiseSection = () => (
         </p>
       </div>
 
-      {/* Dashed arc – full container width, dashes 3,3 */}
+      {/* Dashed arc */}
       <svg viewBox="0 0 1670 160" preserveAspectRatio="none" fill="none" aria-hidden="true"
+        className="promise-arc"
         style={{ display: 'block', width: '100%', margin: '0 auto', height: '160px', marginBottom: '-12px' }}>
         <path d="M0 156 Q835 -120 1670 156" stroke="#3f3f3f" strokeWidth="1"
           strokeDasharray="3 3" vectorEffect="non-scaling-stroke" />
@@ -113,8 +113,7 @@ const PromiseSection = () => (
       {/* Content row */}
       <div style={{ position: 'relative' }}>
 
-        {/* Bottom bracket frame – side lines (57px) + bottom line with gap for image */}
-        {/* Left bracket segment */}
+        {/* Bracket frame – desktop only */}
         <div className="max-lg:hidden" style={{
           position: 'absolute', left: '0', bottom: '9px',
           width: 'calc(32% - 1px)', height: '51px',
@@ -122,7 +121,6 @@ const PromiseSection = () => (
           borderRadius: '0 0 0 26px',
           pointerEvents: 'none', zIndex: 0,
         }} />
-        {/* Right bracket segment */}
         <div className="max-lg:hidden" style={{
           position: 'absolute', right: '0', bottom: '9px',
           width: 'calc(32% - 1px)', height: '51px',
@@ -131,11 +129,11 @@ const PromiseSection = () => (
           pointerEvents: 'none', zIndex: 0,
         }} />
 
-        <div className="max-lg:flex-col max-lg:items-center max-lg:gap-16"
+        <div className="max-lg:flex-col max-lg:items-center max-lg:gap-12"
           style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '36px', position: 'relative' }}>
 
           {/* Left features */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '45px', paddingTop: '27px', zIndex: 1 }}>
+          <div className="promise-feats" style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '45px', paddingTop: '27px', zIndex: 1 }}>
             <Feature icon={Icons.flask} title="Science-Backed Formulas"
               text="Advanced skincare solutions developed with cutting-edge research and clinically proven ingredients." />
             <Feature icon={Icons.personHeart} title="Personalized Beauty Solutions"
@@ -144,7 +142,7 @@ const PromiseSection = () => (
 
           {/* Center shaped image */}
           <div className="promise-img" style={{
-            width: 'min(387px, 75%)', height: '499px', flexShrink: 0,
+            width: 'min(387px, 75%)', flexShrink: 0,
             clipPath: 'url(#promiseShape)', zIndex: 2,
             background: 'linear-gradient(to bottom, #f4a0a0 0%, #f5c89a 35%, #e8dcc8 60%, #d4e5ef 100%)',
             position: 'relative', overflow: 'hidden',
@@ -154,7 +152,7 @@ const PromiseSection = () => (
           </div>
 
           {/* Right features */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '45px', paddingTop: '27px', zIndex: 1 }}>
+          <div className="promise-feats" style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '45px', paddingTop: '27px', zIndex: 1 }}>
             <Feature icon={Icons.shieldCheck} title="Quality You Can Trust"
               text="Dermatologically tested, certified and manufactured under the highest quality standards." />
             <Feature icon={Icons.leaves} title="Safe & Pure Ingredients"
@@ -165,8 +163,20 @@ const PromiseSection = () => (
     </div>
 
     <style>{`
-      @media (max-width: 1023px) { .promise-img { height: 380px !important; } }
-      @media (max-width: 600px) { .promise-img { height: 300px !important; width: 80% !important; } }
+      .promise-img { height: 499px; }
+      .promise-feature { max-width: 315px; }
+
+      @media (max-width: 1023px) {
+        .promise-img { height: 380px; width: 80% !important; }
+        .promise-feats { gap: 32px !important; }
+        .promise-arc { height: 100px !important; }
+      }
+      @media (max-width: 600px) {
+        .promise-img { height: 300px; width: 85% !important; }
+        .promise-feats { gap: 24px !important; padding-top: 16px !important; }
+        .promise-arc { height: 60px !important; }
+        .promise-feature { max-width: 100%; }
+      }
     `}</style>
   </section>
 );
