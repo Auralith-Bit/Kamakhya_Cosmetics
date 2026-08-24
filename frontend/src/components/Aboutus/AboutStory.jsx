@@ -6,7 +6,7 @@ const AboutStory = () => {
     <section
       id="about-story"
       aria-label="About Us - Our Story"
-      className="w-full bg-white py-[85px] flex items-center box-border max-sm:py-10"
+      className="w-full bg-white py-[85px] flex items-center box-border max-sm:py-10 overflow-hidden"
     >
       <div className="w-full px-[125px] max-lg:px-8 max-sm:px-5 grid grid-cols-2 items-center gap-[70px] max-nav:grid-cols-1 max-nav:gap-9">
         
@@ -35,7 +35,7 @@ const AboutStory = () => {
           </h2>
 
           {/* Description */}
-          <div className="flex flex-col gap-4 mb-[10px] max-nav:max-w-full text-justify">
+          <div className="flex flex-col gap-4 mb-0 max-nav:max-w-full text-justify">
             <p className="font-body text-[clamp(13.5px,0.95vw,15px)] leading-[1.7] text-about-text m-0 font-normal">
               Kamakhya Cosmetics was born from a simple belief—that true beauty comes from 
               the perfect harmony of science, nature and trust. We create skincare that 
@@ -50,7 +50,7 @@ const AboutStory = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="flex items-center mt-auto">
+          <div className="flex items-center mt-[10px]">
             <a
               href="#story-details"
               className="inline-flex items-center justify-center gap-2 w-[200px] h-[48px] bg-brand-blue border-[3px] border-navy-700 rounded-[7px] text-white font-body text-[12px] font-bold tracking-[1px] no-underline uppercase cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:bg-navy-700 hover:border-navy-800 hover:shadow-[0_6px_20px_rgba(46,49,146,0.3)] active:translate-y-0"

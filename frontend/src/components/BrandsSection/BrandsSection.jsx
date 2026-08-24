@@ -86,12 +86,16 @@ const royalFeatures = [
 
 /* ─── Looped cursive flourish (like video) ─────────────────────────── */
 const CursiveUnderline = () => (
-  <svg viewBox="0 0 160 26" width="130" height="22" fill="none" aria-hidden="true"
-    style={{ display: 'block', margin: '6px auto 0' }}>
-    <path d="M8 16c10-10 24-11 28-5 3 5-3 9-8 7-6-2-2-10 8-11 12-1 20 3 34 3 18 0 34-4 48-7"
-      stroke={GOLD} strokeWidth="1.6" strokeLinecap="round"/>
-    <path d="M62 19c8-7 18-8 22-3 3 4-2 8-6 6-5-2-1-8 7-8 10 0 18 2 30 1 12-1 22-4 30-7"
-      stroke={GOLD} strokeWidth="1.4" strokeLinecap="round" opacity="0.6"/>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="172"
+    height="24"
+    viewBox="0 0 172 24"
+    fill="none"
+    aria-hidden="true"
+    style={{ display: 'block', margin: '8px auto 0' }}
+  >
+    <path fillRule="evenodd" clipRule="evenodd" d="M45.8439 14.1335C38.4543 16.3024 29.9227 18.4608 21.7152 18.9997C14.7002 19.4597 7.92427 18.7452 2.37809 15.7053C1.59628 15.2773 0.61724 15.5716 0.194429 16.3637C-0.229027 17.1551 0.0622971 18.1463 0.844111 18.575C6.89431 21.8902 14.2716 22.7574 21.9234 22.255C30.2784 21.7069 38.9641 19.5341 46.5019 17.3339C47.3765 19.1276 49.1877 20.7999 52.3781 22.0337C57.2785 23.9292 63.9693 23.9057 71.0179 22.8376C81.2408 21.2892 92.2377 17.5969 99.3082 14.9733C99.5982 14.8662 100.03 14.696 100.559 14.4715C100.72 14.8317 100.9 15.1866 101.1 15.5351C102.834 18.5717 105.902 21.027 109.028 21.9039C128.853 27.4643 151.992 20.8019 170.832 15.3797C171.682 15.1338 172.179 14.2308 171.94 13.3649C171.695 12.4991 170.806 11.996 169.949 12.242C151.638 17.5127 129.156 24.1628 109.885 18.7596C107.513 18.0941 105.206 16.2071 103.891 13.9025C103.743 13.6455 103.614 13.3825 103.491 13.1157C106.089 11.8127 109.144 9.99615 110.787 8.05176C112.476 6.05844 112.895 3.9307 111.425 1.92106C110.162 0.203083 108.248 0.0569249 106.256 0.94756C104.11 1.90149 101.899 4.13163 101.184 5.17821C99.8431 7.13304 99.4178 9.25362 99.6627 11.3213C99.0311 11.5915 98.518 11.7924 98.2016 11.9099C91.2858 14.4754 80.5369 18.0967 70.5409 19.6111C64.1092 20.5859 57.9997 20.7157 53.5279 18.9867C51.6208 18.2487 50.3607 17.3875 49.6768 16.3879C51.0265 15.9794 52.3278 15.5775 53.5711 15.1938C56.03 14.435 61.1495 13.179 64.8072 10.9403C67.716 9.16033 69.6882 6.73897 69.5735 3.70364C69.5149 2.14421 68.6234 1.10348 67.2048 0.520167C65.085 -0.350894 61.4189 0.0705989 60.0538 0.364215C55.9133 1.25289 50.3871 4.93159 47.6531 9.0768C46.5619 10.7308 45.9128 12.4612 45.8439 14.1335ZM49.245 13.1143C50.4148 12.7581 51.5454 12.4083 52.6314 12.073C54.9266 11.3644 59.7244 10.2388 63.1398 8.1483C64.9483 7.04169 66.425 5.71587 66.3534 3.82825C66.3476 3.68144 66.2039 3.63969 66.0769 3.57966C65.8803 3.48766 65.6554 3.42436 65.4156 3.37477C63.7933 3.03939 61.6142 3.36366 60.7222 3.55549C57.2481 4.30127 52.6269 7.41035 50.333 10.8887C49.8483 11.6234 49.4622 12.3718 49.245 13.1143ZM102.847 9.81932C104.361 9.03047 105.947 8.07653 107.197 7.03844C107.861 6.48709 108.422 5.92011 108.776 5.33157C109.073 4.84482 109.189 4.34629 108.834 3.86476C108.693 3.66967 108.48 3.66578 108.261 3.70232C108.029 3.74147 107.79 3.82497 107.552 3.93262C105.979 4.63339 104.355 6.27047 103.833 7.03844C103.221 7.92907 102.918 8.87127 102.847 9.81932Z" fill="#CCA466" />
   </svg>
 );
 
@@ -118,10 +122,16 @@ const ArrowRight = () => (
 
 /* ─── Brand Card ────────────────────────────────────────────────────── */
 const BrandCard = ({ image, badge, badgeBg, badgeSide, overlayAlign, categoryTag, brandName, brandColor, tagline, description, features }) => (
-  <div style={{
-    background: '#fbfbf9', borderRadius: '12px', boxShadow: '0 4px 28px rgba(0,0,0,0.09)',
-    overflow: 'hidden', width: 'min(470px, 100%)', flexShrink: 0,
-  }}>
+  <div
+    style={{
+      background: '#fbfbf9', borderRadius: '12px', boxShadow: '0 4px 28px rgba(0,0,0,0.09)',
+      border: '1.5px solid transparent',
+      overflow: 'hidden', width: 'min(470px, 100%)', flexShrink: 0,
+      transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
+    }}
+    onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = `0 8px 32px rgba(0,0,0,0.14)`; e.currentTarget.style.borderColor = brandColor + '60'; }}
+    onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 28px rgba(0,0,0,0.09)'; e.currentTarget.style.borderColor = 'transparent'; }}
+  >
     {/* Image area */}
     <div style={{ position: 'relative', height: '300px', overflow: 'hidden' }}>
       <img src={image} alt={brandName} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
@@ -132,11 +142,11 @@ const BrandCard = ({ image, badge, badgeBg, badgeSide, overlayAlign, categoryTag
 
       {/* Ribbon badge */}
       <div style={{
-        position: 'absolute', top: 0, [badgeSide]: 0, width: '56px', height: '92px',
+        position: 'absolute', top: 0, [badgeSide]: '15px', width: '56px', height: '80px',
         background: badgeBg, display: 'flex', alignItems: 'center', justifyContent: 'center',
-        paddingBottom: '10px', clipPath: 'polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%)',
+        paddingBottom: '0', clipPath: 'polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%)',
       }}>
-        <img src={badge} alt="" style={{ width: '32px', height: '32px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+        <img src={badge} alt="" style={{ width: '55px', height: '55px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
       </div>
 
       {/* Bottom text overlay – alignment differs per card */}
@@ -202,8 +212,8 @@ const BrandCard = ({ image, badge, badgeBg, badgeSide, overlayAlign, categoryTag
           fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
           transition: 'background 0.2s, color 0.2s',
         }}
-        onMouseEnter={e => { e.currentTarget.style.background = brandColor; e.currentTarget.style.color = '#fff'; }}
-        onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = brandColor; }}
+        onMouseEnter={e => { e.currentTarget.style.background = brandColor + '1A'; e.currentTarget.style.color = brandColor; e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.10)'; }}
+        onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = brandColor; e.currentTarget.style.boxShadow = 'none'; }}
       >
         Explore Colletctions <ArrowRight />
       </button>
@@ -221,11 +231,11 @@ const BrandsSection = () => (
         <p style={{ margin: 0, fontFamily: 'Poppins, sans-serif', fontSize: '12px', fontWeight: 600, color: ORANGE, letterSpacing: '3.5px', textTransform: 'uppercase' }}>
           OUR BRANDS
         </p>
-        <h2 style={{ margin: '8px 0 0', fontFamily: "'Playfair Display', serif", fontSize: 'clamp(26px, 3.2vw, 34px)', fontWeight: 700, color: '#2e3192', lineHeight: 1.25 }}>
+        <h2 style={{ margin: '6px 0 0', fontFamily: "'Playfair Display', serif", fontSize: 'clamp(26px, 3.2vw, 34px)', fontWeight: 700, color: '#2e3192', lineHeight: 1.25 }}>
           Two Brands, One Promise
         </h2>
         <CursiveUnderline />
-        <p style={{ margin: '14px auto 0', fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(13px, 1.4vw, 14.5px)', color: '#666', lineHeight: 1.7, maxWidth: '620px' }}>
+        <p style={{ margin: '12px auto 0', fontFamily: 'Poppins, sans-serif', fontSize: 'clamp(13px, 1.4vw, 14.5px)', color: '#666', lineHeight: 1.7, maxWidth: '620px' }}>
           Kamakhya Cosmetics brings you two distinctive brands crafted with premium ingredients
           and advanced care, delivering exceptional beauty every day.
         </p>
@@ -242,7 +252,7 @@ const BrandsSection = () => (
         />
 
         {/* Center connector */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0, width: '330px' }}>
+        <div className="max-lg:hidden" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0, width: '330px' }}>
           <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
             <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: ORANGE, flexShrink: 0, zIndex: 2 }} />
             <div style={{ flex: 1, height: 0, borderTop: `2px dashed ${GOLD}` }} />
@@ -271,7 +281,7 @@ const BrandsSection = () => (
             </svg>
           </div>
 
-          <p style={{ margin: '16px 0 0', fontFamily: 'Poppins, sans-serif', fontSize: '13.5px', color: '#555', lineHeight: 1.65, textAlign: 'center', maxWidth: '200px' }}>
+          <p style={{ margin: '16px 0 0', fontFamily: 'Poppins, sans-serif', fontSize: '13.5px', color: '#000', lineHeight: 1.65, textAlign: 'center', maxWidth: '200px' }}>
             Driven by our promise of{' '}
             <strong style={{ color: ORANGE, fontWeight: 700 }}>BEAUTY, CARE &amp; TRUST.</strong>{' '}
             we Create products that enhance everyday life.

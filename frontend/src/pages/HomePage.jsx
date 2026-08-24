@@ -1,7 +1,4 @@
-/**
- * FILE : frontend/src/pages/HomePage.jsx
- * ROUTE: /  (Home-only sections)
- */
+
 import React from "react";
 import HeroSection from "../components/HeroSection/HeroSection";
 import AboutStory from "../components/Aboutus/AboutStory";
@@ -10,6 +7,9 @@ import StatsBar from "../components/StatsBar/StatsBar";
 import BrandsSection from "../components/BrandsSection/BrandsSection";
 import PromiseSection from "../components/PromiseSection/PromiseSection";
 import ManufacturingSection from "../components/ManufacturingSection/ManufacturingSection";
+import CategorySection from "../components/CategorySection/CategorySection";
+import DistributionSection from "../components/DistributionSection/DistributionSection";
+import TestimonialsSection from "../components/TestimonialsSection/TestimonialsSection";
 
 const HomePage = () => (
   <>
@@ -20,6 +20,9 @@ const HomePage = () => (
     <BrandsSection />
     <PromiseSection />
     <ManufacturingSection />
+    <CategorySection />
+    <DistributionSection />
+    <TestimonialsSection />
     <div id="manufacturing"></div>
     <div id="contact"></div>
   </>

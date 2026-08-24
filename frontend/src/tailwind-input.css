@@ -44,3 +44,20 @@
   font-size: 18px;
   color: var(--color-footer-gold);
 }
+
+.order-summary-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.order-summary-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.order-summary-scroll::-webkit-scrollbar-thumb {
+  background: #CCA466;
+  border-radius: 20px;
+}
+
+.order-summary-scroll::-webkit-scrollbar-thumb:hover {
+  background: #b8944f;
+}

@@ -18,7 +18,7 @@ const ScrollToTop = () => {
 const Layout = () => (
   <>
     <Navbar />
-    <main><Outlet /></main>
+    <main className="w-full"><Outlet /></main>
     <Footer />
   </>
 );
@@ -35,6 +35,7 @@ function App() {
           <Route path="/distributor" element={<Distributor />} />
           <Route path="/bulk-quote" element={<BulkQuote/>}/>
           <Route path="*" element={<HomePage />} />
+          <Route path="/contact" element={<ContactUs />} />
         </Route>
       </Routes>
     </BrowserRouter>

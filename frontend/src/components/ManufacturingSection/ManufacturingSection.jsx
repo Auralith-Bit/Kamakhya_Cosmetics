@@ -49,7 +49,7 @@ const ManufacturingSection = () => {
     <section
       id="manufacturing"
       aria-label="Manufacturing Standards"
-      className="w-full py-[85px] box-border max-sm:py-10"
+      className="w-full py-[85px] box-border max-sm:py-10 overflow-hidden"
       style={{ background: '#f5f6f8' }}
     >
       <div className="w-full px-[125px] max-lg:px-8 max-sm:px-5 grid grid-cols-2 items-center gap-[70px] max-lg:grid-cols-1 max-lg:gap-9">
@@ -163,7 +163,7 @@ const ManufacturingSection = () => {
         <div
           className="relative w-full"
           style={{
-            aspectRatio: '1.7 / 1',
+            aspectRatio: '1.48 / 1',
             borderRadius: '12px',
             overflow: 'hidden',
             boxShadow: '0 8px 30px rgba(0,0,0,0.12)',
@@ -184,9 +184,9 @@ const ManufacturingSection = () => {
             <div
               className="flex items-center justify-center cursor-pointer"
               style={{
-                width: '90px',
-                height: '80px',
-                borderRadius: '14px',
+                width: '65px',
+                height: '55px',
+                borderRadius: '12px',
                 background: 'rgba(255,255,255,0.96)',
                 backdropFilter: 'blur(4px)',
                 boxShadow: '0 4px 20px rgba(0,0,0,0.18)',
