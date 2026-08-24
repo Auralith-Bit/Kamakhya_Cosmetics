@@ -4,8 +4,10 @@ import { BrowserRouter, Routes, Route, Outlet, useLocation } from "react-router-
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/HomePage";
+import Distributor from "./pages/Distributor";
 import ShinePage from "./pages/brands/ShinePage";
 import RoyalLuxuryPage from "./pages/brands/RoyalLuxuryPage";
+import BulkQuote from "./pages/BulkQuote";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -30,6 +32,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/brands/shine" element={<ShinePage />} />
           <Route path="/brands/royal-luxury" element={<RoyalLuxuryPage />} />
+          <Route path="/distributor" element={<Distributor />} />
+          <Route path="/bulk-quote" element={<BulkQuote/>}/>
           <Route path="*" element={<HomePage />} />
         </Route>
       </Routes>

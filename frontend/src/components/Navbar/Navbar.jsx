@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/Group 9.png';
 import BrandChooser from '../brands/BrandChooser';
 
@@ -9,6 +9,7 @@ const Navbar = () => {
   const [searchValue, setSearchValue] = useState('');
   const [brandsOpen, setBrandsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const MENU_ITEMS = [
     { label: 'HOME', to: '/', type: 'link' },
@@ -216,7 +217,7 @@ const Navbar = () => {
 
           <span className="kn-vline" />
 
-          <button className="kn-cta">Become Distributor</button>
+          <button className="kn-cta" onClick={() => navigate('/distributor')}>Become Distributor</button>
         </div>
       </div>
       
