@@ -8,6 +8,7 @@ import Distributor from "./pages/Distributor";
 import ShinePage from "./pages/brands/ShinePage";
 import RoyalLuxuryPage from "./pages/brands/RoyalLuxuryPage";
 import BulkQuote from "./pages/BulkQuote";
+import ContactUs from "./pages/ContactUs";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
