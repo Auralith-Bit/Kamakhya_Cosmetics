@@ -31,7 +31,7 @@ const Navbar = () => {
     <header className="kn-nav">
       <style>{`
         .kn-nav, .kn-nav *{box-sizing:border-box;}
-        .kn-nav{position:sticky;top:0;z-index:1000;width:100%;background:#fff;
+        .kn-nav{position:fixed;top:0;left:0;z-index:1000;width:100%;background:#fff;
           font-family:'Poppins','Segoe UI',sans-serif;box-shadow:0 2px 10px rgba(0,0,0,.08);}
 
         /* ── DESKTOP: diagonal white panel + logo ── */

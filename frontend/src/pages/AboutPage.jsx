@@ -5,6 +5,7 @@ import MissionVision from "../components/about/MissionVision";
 import StatsBar from "../components/StatsBar/StatsBar";
 import OurValues from "../components/about/OurValues";
 import OurTeam from "../components/about/OurTeam";
+import WhyChooseUs from "../components/about/WhyChooseUs";
 
 
 const AboutPage = () => (
@@ -15,6 +16,7 @@ const AboutPage = () => (
     <StatsBar />
     <OurValues />
     <OurTeam />
+    <WhyChooseUs />
   </>
 );
 

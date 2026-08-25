@@ -349,6 +349,9 @@
   .mt-\[10px\] {
     margin-top: 10px;
   }
+  .mt-\[12px\] {
+    margin-top: 12px;
+  }
   .mt-auto {
     margin-top: auto;
   }
@@ -379,8 +382,17 @@
   .mb-12 {
     margin-bottom: calc(var(--spacing) * 12);
   }
+  .mb-\[6px\] {
+    margin-bottom: 6px;
+  }
+  .mb-\[8px\] {
+    margin-bottom: 8px;
+  }
   .mb-\[10px\] {
     margin-bottom: 10px;
+  }
+  .mb-\[14px\] {
+    margin-bottom: 14px;
   }
   .mb-\[18px\] {
     margin-bottom: 18px;
@@ -523,6 +535,9 @@
   .w-\[32px\] {
     width: 32px;
   }
+  .w-\[40px\] {
+    width: 40px;
+  }
   .w-\[41px\] {
     width: 41px;
   }
@@ -589,6 +604,9 @@
   .max-w-\[700px\] {
     max-width: 700px;
   }
+  .max-w-\[943px\] {
+    max-width: 943px;
+  }
   .max-w-\[1100px\] {
     max-width: 1100px;
   }
@@ -634,6 +652,9 @@
   }
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -709,6 +730,9 @@
   }
   .gap-\[20px\] {
     gap: 20px;
+  }
+  .gap-\[24px\] {
+    gap: 24px;
   }
   .gap-\[40px\] {
     gap: 40px;
@@ -881,6 +905,9 @@
   .bg-hero-cream {
     background-color: var(--color-hero-cream);
   }
+  .bg-hero-orange {
+    background-color: var(--color-hero-orange);
+  }
   .bg-navy {
     background-color: var(--color-navy);
   }
@@ -979,6 +1006,9 @@
   .p-0 {
     padding: 0px;
   }
+  .p-\[30px\] {
+    padding: 30px;
+  }
   .p-\[40px\] {
     padding: 40px;
   }
@@ -1056,6 +1086,9 @@
   }
   .pt-\[30px\] {
     padding-top: 30px;
+  }
+  .pt-\[130px\] {
+    padding-top: 130px;
   }
   .pr-1 {
     padding-right: var(--spacing);
@@ -1140,11 +1173,20 @@
   .text-\[clamp\(13\.5px\,0\.95vw\,15px\)\] {
     font-size: clamp(13.5px, 0.95vw, 15px);
   }
+  .text-\[clamp\(13px\,0\.95vw\,15px\)\] {
+    font-size: clamp(13px, 0.95vw, 15px);
+  }
+  .text-\[clamp\(14px\,1\.1vw\,16px\)\] {
+    font-size: clamp(14px, 1.1vw, 16px);
+  }
   .text-\[clamp\(14px\,1\.1vw\,17px\)\] {
     font-size: clamp(14px, 1.1vw, 17px);
   }
   .text-\[clamp\(14px\,1\.09vw\,21px\)\] {
     font-size: clamp(14px, 1.09vw, 21px);
+  }
+  .text-\[clamp\(17px\,1\.3vw\,20px\)\] {
+    font-size: clamp(17px, 1.3vw, 20px);
   }
   .text-\[clamp\(18px\,1\.875vw\,36px\)\] {
     font-size: clamp(18px, 1.875vw, 36px);
@@ -1157,6 +1199,9 @@
   }
   .text-\[clamp\(26px\,3vw\,36px\)\] {
     font-size: clamp(26px, 3vw, 36px);
+  }
+  .text-\[clamp\(28px\,3\.2vw\,36px\)\] {
+    font-size: clamp(28px, 3.2vw, 36px);
   }
   .text-\[clamp\(28px\,3\.5vw\,40px\)\] {
     font-size: clamp(28px, 3.5vw, 40px);
@@ -1265,6 +1310,9 @@
   }
   .text-\[\#6B7280\] {
     color: #6B7280;
+  }
+  .text-\[\#666\] {
+    color: #666;
   }
   .text-\[\#151642\] {
     color: #151642;
@@ -1475,6 +1523,11 @@
   }
   .active\:scale-\[0\.98\]:active {
     scale: 0.98;
+  }
+  @media (width < 1280px) {
+    .max-xl\:grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
   @media (width < 1024px) {
     .max-lg\:static {
