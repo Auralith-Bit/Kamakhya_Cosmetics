@@ -17,7 +17,7 @@ const Navbar = () => {
     { label: 'OUR BRANDS', type: 'brands' },
     { label: 'MANUFACTURING', to: '/#manufacturing', type: 'link' },
     { label: 'ABOUT', to: '/about', type: 'link' },
-    { label: 'CONTACT', to: '/#contact', type: 'link' },
+    { label: 'CONTACT', to: '/contact', type: 'link' },
   ];
 
   const handleSearch = (e) => {
