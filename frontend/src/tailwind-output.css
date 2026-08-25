@@ -27,7 +27,6 @@
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
     --tracking-normal: 0em;
-    --tracking-wide: 0.025em;
     --leading-tight: 1.25;
     --leading-snug: 1.375;
     --leading-normal: 1.5;
@@ -323,6 +322,9 @@
   .mt-0\.5 {
     margin-top: calc(var(--spacing) * 0.5);
   }
+  .mt-1 {
+    margin-top: var(--spacing);
+  }
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
@@ -608,9 +610,6 @@
   .shrink-0 {
     flex-shrink: 0;
   }
-  .grow {
-    flex-grow: 1;
-  }
   .-translate-y-1\/2 {
     --tw-translate-y: calc(calc(1 / 2 * 100%) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
@@ -855,6 +854,9 @@
   .bg-\[\#FCF9F2\] {
     background-color: #FCF9F2;
   }
+  .bg-\[\#FCFAF7\] {
+    background-color: #FCFAF7;
+  }
   .bg-\[\#f0e6d6\] {
     background-color: #f0e6d6;
   }
@@ -983,9 +985,6 @@
   .px-0 {
     padding-inline: 0px;
   }
-  .px-3 {
-    padding-inline: calc(var(--spacing) * 3);
-  }
   .px-3\.5 {
     padding-inline: calc(var(--spacing) * 3.5);
   }
@@ -1012,9 +1011,6 @@
   }
   .px-\[clamp\(14px\,1\.56vw\,30px\)\] {
     padding-inline: clamp(14px, 1.56vw, 30px);
-  }
-  .py-1 {
-    padding-block: var(--spacing);
   }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
@@ -1108,9 +1104,6 @@
   .text-\[9px\] {
     font-size: 9px;
   }
-  .text-\[11px\] {
-    font-size: 11px;
-  }
   .text-\[12px\] {
     font-size: 12px;
   }
@@ -1141,8 +1134,14 @@
   .text-\[30px\] {
     font-size: 30px;
   }
+  .text-\[clamp\(11px\,0\.85vw\,13px\)\] {
+    font-size: clamp(11px, 0.85vw, 13px);
+  }
   .text-\[clamp\(13\.5px\,0\.95vw\,15px\)\] {
     font-size: clamp(13.5px, 0.95vw, 15px);
+  }
+  .text-\[clamp\(14px\,1\.1vw\,17px\)\] {
+    font-size: clamp(14px, 1.1vw, 17px);
   }
   .text-\[clamp\(14px\,1\.09vw\,21px\)\] {
     font-size: clamp(14px, 1.09vw, 21px);
@@ -1258,10 +1257,6 @@
     --tw-tracking: var(--tracking-normal);
     letter-spacing: var(--tracking-normal);
   }
-  .tracking-wide {
-    --tw-tracking: var(--tracking-wide);
-    letter-spacing: var(--tracking-wide);
-  }
   .whitespace-nowrap {
     white-space: nowrap;
   }
@@ -1270,6 +1265,9 @@
   }
   .text-\[\#6B7280\] {
     color: #6B7280;
+  }
+  .text-\[\#151642\] {
+    color: #151642;
   }
   .text-\[\#E38F2E\] {
     color: #E38F2E;
@@ -1339,9 +1337,6 @@
   }
   .uppercase {
     text-transform: uppercase;
-  }
-  .italic {
-    font-style: italic;
   }
   .not-italic {
     font-style: normal;
