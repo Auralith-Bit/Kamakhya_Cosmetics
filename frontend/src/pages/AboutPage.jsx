@@ -6,6 +6,7 @@ import StatsBar from "../components/StatsBar/StatsBar";
 import OurValues from "../components/about/OurValues";
 import OurTeam from "../components/about/OurTeam";
 import WhyChooseUs from "../components/about/WhyChooseUs";
+import PartnershipCTA from "../components/about/PartnershipCTA";
 
 
 const AboutPage = () => (
@@ -17,6 +18,7 @@ const AboutPage = () => (
     <OurValues />
     <OurTeam />
     <WhyChooseUs />
+    <PartnershipCTA />
   </>
 );
 

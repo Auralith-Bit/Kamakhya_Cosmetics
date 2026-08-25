@@ -22,7 +22,7 @@ const AboutHero = () => {
       style={{
         position: 'relative',
         width: '100%',
-        minHeight: 'clamp(180px, 28vw, 400px)',
+        minHeight: '23.4375vw',
         overflow: 'hidden',
         backgroundColor: '#f5e6d3',
       }}
@@ -57,18 +57,17 @@ const AboutHero = () => {
         }}
       />
 
-      {/* Content overlay */}
+{/* Content overlay */}
       <div
         style={{
           position: 'relative',
           zIndex: 2,
           display: 'flex',
           alignItems: 'center',
-          minHeight: 'clamp(180px, 28vw, 400px)',
-          maxWidth: '1440px',
-          margin: '0 auto',
-          padding: '0 clamp(20px, 8.68vw, 125px)',
+          minHeight: '23.4375vw',
+          width: '100%',
           boxSizing: 'border-box',
+          padding: '0 clamp(20px, 8.68vw, 125px)',
         }}
       >
         {/* Left Text Panel */}

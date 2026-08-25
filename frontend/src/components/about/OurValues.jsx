@@ -155,17 +155,17 @@ const OurValues = () => {
       <div className="w-full px-[125px] max-lg:px-8 max-sm:px-5">
         {/* Header */}
         <div className="text-center mb-[60px]">
-          <p className="m-0 font-body text-[14px] font-bold tracking-[2px] uppercase text-hero-orange mb-3">
+          <p className="m-0 font-body text-[16px] font-semibold tracking-[2.88px] uppercase text-hero-orange">
             Our Values
           </p>
 
-          <h2 className="m-0 font-title text-[clamp(26px,3vw,36px)] font-bold leading-[1.3] text-brand-blue mb-2">
+          <h2 className="m-0 mt-[11px] font-title text-[30px] font-bold leading-[1.2] text-brand-blue">
             The Principle That Guides Us
           </h2>
 
-          <GoldenWave />
+          <GoldenWave className="mt-[10px]" />
 
-          <p className="mt-4 mx-auto max-w-[700px] font-body text-[clamp(13.5px,0.95vw,15px)] leading-[1.8] text-[#6B7280]">
+          <p className="mt-[19px] mx-auto max-w-[943px] font-body text-[19px] leading-[28px] text-[#666]">
             Quality is at the heart of everything we do. We uphold high
             standards of safety, innovation, integrity, and excellence to
             create products our customers can trust.

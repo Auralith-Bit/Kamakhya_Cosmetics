@@ -28,14 +28,14 @@ const MissionVision = () => {
       <div className="max-w-[1200px] mx-auto">
         {/* Header */}
         <div className="text-center mb-[50px]">
-          <p className="m-0 font-body text-[14px] font-bold tracking-[2px] uppercase text-hero-orange mb-3">
+          <p className="m-0 font-body text-[16px] font-semibold tracking-[2.88px] uppercase text-hero-orange">
             What drives us
           </p>
-          <h2 className="m-0 font-title text-[clamp(26px,3vw,36px)] font-bold leading-[1.3] text-brand-blue mb-2">
+          <h2 className="m-0 mt-[11px] font-title text-[30px] font-bold leading-[1.2] text-brand-blue">
             The Core Purpose And Future Aspirations Of Our Company
           </h2>
-          <GoldenWave />
-          <p className="mt-4 mx-auto max-w-[700px] font-body text-[clamp(13.5px,0.95vw,15px)] leading-[1.8] text-[#6B7280]">
+          <GoldenWave className="mt-[10px]" />
+          <p className="mt-[19px] mx-auto max-w-[943px] font-body text-[19px] leading-[28px] text-[#666]">
             Our purpose shapes what we do today, while our vision inspires us to build a better, more
             innovative future for our customers, communities, and the world around us.
           </p>
@@ -44,7 +44,7 @@ const MissionVision = () => {
         {/* Cards */}
         <div className="flex justify-center gap-[60px] max-lg:flex-col max-lg:items-center">
           {/* Mission Card */}
-          <div className="relative rounded-[16px] overflow-hidden bg-gradient-to-br from-[#8B1A1A] to-[#4A0E0E] p-[40px] w-[666px] h-[366px] flex flex-col max-sm:w-full max-sm:h-auto">
+          <div className="relative rounded-[16px] overflow-hidden bg-gradient-to-br from-[#8B1A1A] to-[#4A0E0E] p-[40px] w-[666px] h-[316px] flex flex-col max-sm:w-full max-sm:h-auto">
             <div className="absolute top-[-30px] right-[-30px] w-[150px] h-[150px] rounded-full bg-white/[0.04]" />
             <div className="absolute bottom-[-40px] left-[-20px] w-[120px] h-[120px] rounded-full bg-white/[0.05]" />
 
@@ -65,9 +65,9 @@ const MissionVision = () => {
                 innovation, and genuine care for our customers.
               </p>
 
-              <div className="flex justify-end gap-3">
+              <div className="flex justify-end gap-5">
                 {['Quality', 'Innovation', 'Trust'].map((tag) => (
-                  <span key={tag} className="px-5 py-2 rounded-full border border-white/30 text-white text-[13px] font-medium font-body">
+                  <span key={tag} className="px-6 py-2.5 rounded-full border border-white/30 text-white text-sm font-semibold font-body">
                     {tag}
                   </span>
                 ))}
@@ -76,7 +76,7 @@ const MissionVision = () => {
           </div>
 
           {/* Vision Card */}
-          <div className="relative rounded-[16px] overflow-hidden bg-gradient-to-br from-[#1a1a4e] to-[#0d0d3a] p-[40px] w-[666px] h-[366px] flex flex-col max-sm:w-full max-sm:h-auto">
+          <div className="relative rounded-[16px] overflow-hidden bg-gradient-to-br from-[#1a1a4e] to-[#0d0d3a] p-[40px] w-[666px] h-[316px] flex flex-col max-sm:w-full max-sm:h-auto">
             <div className="absolute top-[-20px] right-[-40px] w-[160px] h-[160px] rounded-full bg-white/[0.04]" />
             <div className="absolute bottom-[-30px] left-[-30px] w-[130px] h-[130px] rounded-full bg-white/[0.05]" />
 
@@ -97,9 +97,9 @@ const MissionVision = () => {
                 that enrich everyday life.
               </p>
 
-              <div className="flex justify-end gap-3">
+              <div className="flex justify-end gap-5">
                 {['Trusted', 'Innovative', 'Responsible'].map((tag) => (
-                  <span key={tag} className="px-5 py-2 rounded-full border border-white/30 text-white text-[13px] font-medium font-body">
+                  <span key={tag} className="px-6 py-2.5 rounded-full border border-white/30 text-white text-sm font-semibold font-body">
                     {tag}
                   </span>
                 ))}

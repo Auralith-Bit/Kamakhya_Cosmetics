@@ -322,9 +322,6 @@
   .mt-0\.5 {
     margin-top: calc(var(--spacing) * 0.5);
   }
-  .mt-1 {
-    margin-top: var(--spacing);
-  }
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
@@ -349,8 +346,11 @@
   .mt-\[10px\] {
     margin-top: 10px;
   }
-  .mt-\[12px\] {
-    margin-top: 12px;
+  .mt-\[11px\] {
+    margin-top: 11px;
+  }
+  .mt-\[19px\] {
+    margin-top: 19px;
   }
   .mt-auto {
     margin-top: auto;
@@ -382,9 +382,6 @@
   .mb-12 {
     margin-bottom: calc(var(--spacing) * 12);
   }
-  .mb-\[6px\] {
-    margin-bottom: 6px;
-  }
   .mb-\[8px\] {
     margin-bottom: 8px;
   }
@@ -393,6 +390,9 @@
   }
   .mb-\[14px\] {
     margin-bottom: 14px;
+  }
+  .mb-\[16px\] {
+    margin-bottom: 16px;
   }
   .mb-\[18px\] {
     margin-bottom: 18px;
@@ -484,8 +484,8 @@
   .h-\[200px\] {
     height: 200px;
   }
-  .h-\[366px\] {
-    height: 366px;
+  .h-\[316px\] {
+    height: 316px;
   }
   .h-\[calc\(100vw\*885\/1920\)\] {
     height: calc(100vw * 885 / 1920);
@@ -600,6 +600,9 @@
   }
   .max-w-\[320px\] {
     max-width: 320px;
+  }
+  .max-w-\[620px\] {
+    max-width: 620px;
   }
   .max-w-\[700px\] {
     max-width: 700px;
@@ -728,6 +731,9 @@
   .gap-\[14px\] {
     gap: 14px;
   }
+  .gap-\[16px\] {
+    gap: 16px;
+  }
   .gap-\[20px\] {
     gap: 20px;
   }
@@ -775,6 +781,9 @@
   }
   .rounded-\[7px\] {
     border-radius: 7px;
+  }
+  .rounded-\[8px\] {
+    border-radius: 8px;
   }
   .rounded-\[10px\] {
     border-radius: 10px;
@@ -851,6 +860,9 @@
   .border-navy-700 {
     border-color: var(--color-navy-700);
   }
+  .border-white {
+    border-color: var(--color-white);
+  }
   .border-white\/30 {
     border-color: color-mix(in srgb, #fff 30%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -866,8 +878,14 @@
   .bg-\[\#2E3192\] {
     background-color: #2E3192;
   }
+  .bg-\[\#151642\] {
+    background-color: #151642;
+  }
   .bg-\[\#151642\]\/15 {
     background-color: color-mix(in oklab, #151642 15%, transparent);
+  }
+  .bg-\[\#CCA466\] {
+    background-color: #CCA466;
   }
   .bg-\[\#F7F0E7\] {
     background-color: #F7F0E7;
@@ -877,9 +895,6 @@
   }
   .bg-\[\#FCF9F2\] {
     background-color: #FCF9F2;
-  }
-  .bg-\[\#FCFAF7\] {
-    background-color: #FCFAF7;
   }
   .bg-\[\#f0e6d6\] {
     background-color: #f0e6d6;
@@ -1033,6 +1048,9 @@
   .px-\[25px\] {
     padding-inline: 25px;
   }
+  .px-\[28px\] {
+    padding-inline: 28px;
+  }
   .px-\[40px\] {
     padding-inline: 40px;
   }
@@ -1042,8 +1060,8 @@
   .px-\[clamp\(14px\,1\.56vw\,30px\)\] {
     padding-inline: clamp(14px, 1.56vw, 30px);
   }
-  .py-2 {
-    padding-block: calc(var(--spacing) * 2);
+  .py-2\.5 {
+    padding-block: calc(var(--spacing) * 2.5);
   }
   .py-3 {
     padding-block: calc(var(--spacing) * 3);
@@ -1060,6 +1078,9 @@
   .py-20 {
     padding-block: calc(var(--spacing) * 20);
   }
+  .py-\[14px\] {
+    padding-block: 14px;
+  }
   .py-\[20px\] {
     padding-block: 20px;
   }
@@ -1071,6 +1092,9 @@
   }
   .py-\[60px\] {
     padding-block: 60px;
+  }
+  .py-\[70px\] {
+    padding-block: 70px;
   }
   .py-\[85px\] {
     padding-block: 85px;
@@ -1155,6 +1179,12 @@
   .text-\[17px\] {
     font-size: 17px;
   }
+  .text-\[18px\] {
+    font-size: 18px;
+  }
+  .text-\[19px\] {
+    font-size: 19px;
+  }
   .text-\[20px\] {
     font-size: 20px;
   }
@@ -1167,9 +1197,6 @@
   .text-\[30px\] {
     font-size: 30px;
   }
-  .text-\[clamp\(11px\,0\.85vw\,13px\)\] {
-    font-size: clamp(11px, 0.85vw, 13px);
-  }
   .text-\[clamp\(13\.5px\,0\.95vw\,15px\)\] {
     font-size: clamp(13.5px, 0.95vw, 15px);
   }
@@ -1178,9 +1205,6 @@
   }
   .text-\[clamp\(14px\,1\.1vw\,16px\)\] {
     font-size: clamp(14px, 1.1vw, 16px);
-  }
-  .text-\[clamp\(14px\,1\.1vw\,17px\)\] {
-    font-size: clamp(14px, 1.1vw, 17px);
   }
   .text-\[clamp\(14px\,1\.09vw\,21px\)\] {
     font-size: clamp(14px, 1.09vw, 21px);
@@ -1197,14 +1221,11 @@
   .text-\[clamp\(26px\,2\.2vw\,36px\)\] {
     font-size: clamp(26px, 2.2vw, 36px);
   }
-  .text-\[clamp\(26px\,3vw\,36px\)\] {
-    font-size: clamp(26px, 3vw, 36px);
-  }
-  .text-\[clamp\(28px\,3\.2vw\,36px\)\] {
-    font-size: clamp(28px, 3.2vw, 36px);
-  }
   .text-\[clamp\(28px\,3\.5vw\,40px\)\] {
     font-size: clamp(28px, 3.5vw, 40px);
+  }
+  .text-\[clamp\(28px\,3vw\,36px\)\] {
+    font-size: clamp(28px, 3vw, 36px);
   }
   .leading-\[1\.2\] {
     --tw-leading: 1.2;
@@ -1237,6 +1258,10 @@
   .leading-\[1\.25\] {
     --tw-leading: 1.25;
     line-height: 1.25;
+  }
+  .leading-\[28px\] {
+    --tw-leading: 28px;
+    line-height: 28px;
   }
   .leading-none {
     --tw-leading: 1;
@@ -1290,6 +1315,10 @@
     --tw-tracking: 1px;
     letter-spacing: 1px;
   }
+  .tracking-\[2\.88px\] {
+    --tw-tracking: 2.88px;
+    letter-spacing: 2.88px;
+  }
   .tracking-\[2px\] {
     --tw-tracking: 2px;
     letter-spacing: 2px;
@@ -1316,6 +1345,9 @@
   }
   .text-\[\#151642\] {
     color: #151642;
+  }
+  .text-\[\#CCA466\] {
+    color: #CCA466;
   }
   .text-\[\#E38F2E\] {
     color: #E38F2E;
@@ -1385,6 +1417,9 @@
   }
   .uppercase {
     text-transform: uppercase;
+  }
+  .italic {
+    font-style: italic;
   }
   .not-italic {
     font-style: normal;
@@ -1472,6 +1507,9 @@
     .hover\:bg-\[\#252775\]:hover {
       background-color: #252775;
     }
+    .hover\:bg-\[\#b8924e\]:hover {
+      background-color: #b8924e;
+    }
     .hover\:bg-footer-gold:hover {
       background-color: var(--color-footer-gold);
     }
@@ -1486,6 +1524,12 @@
     }
     .hover\:bg-royal-dark:hover {
       background-color: var(--color-royal-dark);
+    }
+    .hover\:bg-white:hover {
+      background-color: var(--color-white);
+    }
+    .hover\:text-\[\#151642\]:hover {
+      color: #151642;
     }
     .hover\:text-brand-blue:hover {
       color: var(--color-brand-blue);
@@ -1585,8 +1629,14 @@
     .max-lg\:flex-col {
       flex-direction: column;
     }
+    .max-lg\:flex-wrap {
+      flex-wrap: wrap;
+    }
     .max-lg\:items-center {
       align-items: center;
+    }
+    .max-lg\:justify-center {
+      justify-content: center;
     }
     .max-lg\:justify-items-center {
       justify-items: center;
@@ -1626,6 +1676,9 @@
     }
     .max-lg\:pt-12 {
       padding-top: calc(var(--spacing) * 12);
+    }
+    .max-lg\:text-center {
+      text-align: center;
     }
     .max-lg\:text-\[clamp\(28px\,8vw\,44px\)\] {
       font-size: clamp(28px, 8vw, 44px);

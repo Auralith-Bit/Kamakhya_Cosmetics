@@ -40,14 +40,14 @@ const WhyChooseUs = () => {
       <div className="w-full px-[125px] max-lg:px-8 max-sm:px-5">
         {/* Header */}
         <div className="text-center mb-[50px]">
-          <p className="m-0 font-body text-[14px] font-bold tracking-[2px] uppercase text-hero-orange mb-[6px]">
+          <p className="m-0 font-body text-[16px] font-semibold tracking-[2.88px] uppercase text-hero-orange">
             Why Choose Us
           </p>
-          <h2 className="m-0 font-title text-[clamp(28px,3.2vw,36px)] font-bold leading-[1.3] text-brand-blue mb-[8px]">
+          <h2 className="m-0 mt-[11px] font-title text-[30px] font-bold leading-[1.2] text-brand-blue">
             Quality You Can Feel. Trust You Can See.
           </h2>
-          <GoldenWave />
-          <p className="mt-[12px] mx-auto max-w-[943px] font-body text-[clamp(14px,1.1vw,16px)] leading-[1.7] text-[#666]">
+          <GoldenWave className="mt-[10px]" />
+          <p className="mt-[19px] mx-auto max-w-[943px] font-body text-[19px] leading-[28px] text-[#666]">
             We combine thoughtful formulation, responsible manufacturing, and rigorous quality
             standards to create beauty and home-care products designed for everyday life.
           </p>
