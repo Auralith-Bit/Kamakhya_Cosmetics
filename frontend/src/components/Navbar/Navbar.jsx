@@ -1,8 +1,82 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { createPortal } from 'react-dom';
 import logo from '../../assets/Group 9.png';
-import BrandChooser from '../brands/BrandChooser';
 
+/* ============ dropdown rendered via portal (escapes all overflow clipping) ============ */
+const BrandsDropdown = ({ open, onClose, anchors }) => {
+  const navigate = useNavigate();
+  const ref = useRef(null);
+  const [pos, setPos] = useState({ top: 0, left: 150, width: 300 });
+
+  /* position under the visible trigger */
+  useLayoutEffect(() => {
+    if (!open) return;
+    const anchor = (anchors || []).map(a => a.current).find(el => el && el.getBoundingClientRect().width > 0);
+    if (!anchor) return;
+    const r = anchor.getBoundingClientRect();
+    const width = window.innerWidth <= 640 ? Math.min(320, window.innerWidth - 24) : 300;
+    let left = r.left + r.width / 2;
+    left = Math.max(width / 2 + 8, Math.min(window.innerWidth - width / 2 - 8, left));
+    setPos({ top: r.bottom + 10, left, width });
+  }, [open, anchors]);
+
+  /* close on outside click / Escape */
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e) => {
+      const inPanel = ref.current && ref.current.contains(e.target);
+      const inAnchor = (anchors || []).some(a => a.current && a.current.contains(e.target));
+      if (!inPanel && !inAnchor) onClose();
+    };
+    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('mousedown', onDown);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('mousedown', onDown);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [open, onClose, anchors]);
+
+  if (!open) return null;
+
+  const pick = (path) => { onClose(); navigate(path); };
+
+  return createPortal(
+    <div className="bc-drop" ref={ref} style={{ top: pos.top, left: pos.left, width: pos.width }} role="menu" aria-label="Choose a brand">
+      <button className="bc-item bc-shine" role="menuitem" onClick={() => pick('/brands/shine')}>
+        <span className="bc-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 2l2.2 5.6L20 10l-5.8 2.4L12 18l-2.2-5.6L4 10l5.8-2.4Z" />
+            <path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9Z" />
+          </svg>
+        </span>
+        <span className="bc-txt">
+          <span className="bc-name">Shine</span>
+          <span className="bc-sub">Clean &amp; Fresh — Home Care</span>
+        </span>
+      </button>
+
+      <div className="bc-sep" />
+
+      <button className="bc-item bc-royal" role="menuitem" onClick={() => pick('/brands/royal-luxury')}>
+        <span className="bc-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M3 8l4 4 5-6 5 6 4-4v9H3Z" />
+            <path d="M3 17h18" />
+          </svg>
+        </span>
+        <span className="bc-txt">
+          <span className="bc-name">Royal Luxury</span>
+          <span className="bc-sub">Premium Cosmetics &amp; Skincare</span>
+        </span>
+      </button>
+    </div>,
+    document.body
+  );
+};
+
+/* ================= navbar ================= */
 const Navbar = () => {
   const [cartCount] = useState(1);
   const [wishlistCount] = useState(1);
@@ -10,6 +84,8 @@ const Navbar = () => {
   const [brandsOpen, setBrandsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const desktopBrandsRef = useRef(null);
+  const mobileBrandsRef = useRef(null);
 
   const MENU_ITEMS = [
     { label: 'HOME', to: '/', type: 'link' },
@@ -67,7 +143,7 @@ const Navbar = () => {
         /* ── shared link & button styles ── */
         .kn-links a, .kn-brands-btn{position:relative;text-decoration:none;color:#1c1c1c;font-size:15px;
           font-weight:600;letter-spacing:.4px;padding:6px 0;white-space:nowrap;transition:color .2s;
-          background:none;border:none;cursor:pointer;font-family:inherit;}
+          background:none;border:none;cursor:pointer;font-family:inherit;display:flex;align-items:center;}
         .kn-links a::after, .kn-brands-btn::after{content:'';position:absolute;left:0;width:100%;height:3px;
           bottom:-4px;border-radius:2px;background:#CCA466;transform:scaleX(0);
           transition:transform .2s;}
@@ -75,6 +151,25 @@ const Navbar = () => {
         .kn-links a:hover::after, .kn-brands-btn:hover::after{transform:scaleX(1);}
         .kn-links a.active, .kn-brands-btn.active{color:#2E3192;}
         .kn-links a.active::after, .kn-brands-btn.active::after{transform:scaleX(1);}
+
+        /* ── dropdown panel (fixed, portaled to body) ── */
+        .bc-drop{position:fixed;transform:translateX(-50%);background:#fff;border:1px solid #E6E6EE;
+          border-radius:10px;box-shadow:0 14px 34px rgba(0,0,0,.12);padding:6px;z-index:4000;
+          animation:bcIn .18s ease;text-align:left;font-family:'Poppins','Segoe UI',sans-serif;}
+        @keyframes bcIn{from{opacity:0;transform:translate(-50%,-6px);}to{opacity:1;transform:translate(-50%,0);}}
+        .bc-item{display:flex;align-items:center;gap:12px;width:100%;padding:10px 12px;border:0;
+          border-radius:8px;background:transparent;cursor:pointer;text-align:left;
+          font-family:inherit;transition:background .15s;}
+        .bc-item:hover{background:#F6F7FB;}
+        .bc-ico{width:38px;height:38px;border-radius:9px;display:grid;place-items:center;flex-shrink:0;}
+        .bc-shine .bc-ico{background:#F4F9EC;color:#3E7A1E;}
+        .bc-royal .bc-ico{background:#FBF7EF;color:#8A6425;}
+        .bc-txt{display:flex;flex-direction:column;gap:2px;}
+        .bc-name{font-family:'Playfair Display',Georgia,serif;font-size:15px;font-weight:700;}
+        .bc-shine .bc-name{color:#3E7A1E;}
+        .bc-royal .bc-name{color:#8A6425;}
+        .bc-sub{font-size:11.5px;color:#666;}
+        .bc-sep{height:1px;background:#EEEFF4;margin:4px 8px;}
 
         .kn-actions{margin-left:auto;display:flex;align-items:center;gap:12px;flex-shrink:0;}
         .kn-vline{width:1px;height:34px;background:#e5e7eb;}
@@ -117,11 +212,12 @@ const Navbar = () => {
         .kn-mobile-links li{border-bottom:1px solid #f0f0f0;}
         .kn-mobile-links li:last-child{border-bottom:none;}
         .kn-mobile-links a, .kn-mobile-links .kn-brands-btn{
-          display:block;padding:13px 0;color:#1c1c1c;font-size:15px;font-weight:600;
+          display:flex;padding:13px 0;color:#1c1c1c;font-size:15px;font-weight:600;
           letter-spacing:.4px;text-decoration:none;background:none;border:none;cursor:pointer;
           font-family:inherit;text-align:left;width:100%;transition:color .2s;}
         .kn-mobile-links a:hover, .kn-mobile-links .kn-brands-btn:hover{color:#2E3192;}
         .kn-mobile-links a.active{color:#2E3192;}
+
         .kn-mobile-cta{display:block;width:100%;padding:14px;border:none;border-radius:8px;
           background:#2E3192;color:#fff;font-family:inherit;font-size:15px;font-weight:600;
           letter-spacing:.3px;cursor:pointer;text-align:center;margin-top:16px;transition:background .2s;}
@@ -238,8 +334,11 @@ const Navbar = () => {
             <li key={item.label}>
               {item.type === 'brands' ? (
                 <button
-                  className={`kn-brands-btn ${location.pathname.startsWith('/brands') ? 'active' : ''}`}
-                  onClick={() => setBrandsOpen(true)}
+                  ref={desktopBrandsRef}
+                  className={`kn-brands-btn ${location.pathname.startsWith('/brands') || brandsOpen ? 'active' : ''}`}
+                  onClick={() => setBrandsOpen((v) => !v)}
+                  aria-haspopup="true"
+                  aria-expanded={brandsOpen}
                 >
                   {item.label}
                 </button>
@@ -340,8 +439,11 @@ const Navbar = () => {
               <li key={item.label}>
                 {item.type === 'brands' ? (
                   <button
-                    className={`kn-brands-btn ${location.pathname.startsWith('/brands') ? 'active' : ''}`}
-                    onClick={() => { setBrandsOpen(true); closeMobile(); }}
+                    ref={mobileBrandsRef}
+                    className={`kn-brands-btn ${location.pathname.startsWith('/brands') || brandsOpen ? 'active' : ''}`}
+                    onClick={() => setBrandsOpen((v) => !v)}
+                    aria-haspopup="true"
+                    aria-expanded={brandsOpen}
                   >
                     {item.label}
                   </button>
@@ -362,8 +464,12 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Brand Chooser Modal Portal */}
-      <BrandChooser open={brandsOpen} onClose={() => setBrandsOpen(false)} />
+      {/* ── dropdown portaled to <body> — cannot be clipped by any wrapper ── */}
+      <BrandsDropdown
+        open={brandsOpen}
+        onClose={() => setBrandsOpen(false)}
+        anchors={[desktopBrandsRef, mobileBrandsRef]}
+      />
     </header>
   );
 };

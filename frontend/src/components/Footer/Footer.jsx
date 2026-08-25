@@ -12,7 +12,7 @@ const PinIcon = () => (
 
 const PhoneIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.9 2.2Z" />
+    <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6 2 2 0 0 1 1.9 2.2Z" />
   </svg>
 );
 
@@ -78,6 +78,13 @@ const Footer = () => {
 
   return (
     <footer className="bg-navy text-[#e9e9ee] font-sans">
+      {/* ✅ guaranteed field colors (independent of Tailwind placeholder variant) */}
+      <style>{`
+        .fu-email{background:#ffffff;color:#1c1c1c;}
+        .fu-email::placeholder{color:#8b90a0;opacity:1;}
+        .fu-email:focus{outline:none;}
+      `}</style>
+
       <div className="pt-16 px-[125px] max-lg:px-8 max-tab:px-5 max-lg:pt-12 max-tab:pt-10">
 
         {/* ── TOP: brand + nav link groups ── */}
@@ -172,7 +179,13 @@ const Footer = () => {
               className="flex w-full max-w-[320px] overflow-hidden rounded-[4px] mb-[18px]"
               onSubmit={(e) => e.preventDefault()}
             >
-              <input type="email" placeholder="Business email" required className="flex-1 border-none outline-none px-3.5 py-3 text-[13px]" />
+              {/* ✅ white container + visible grey placeholder / dark typed text */}
+              <input
+                type="email"
+                placeholder="Business email"
+                required
+                className="fu-email flex-1 border-none outline-none px-3.5 py-3 text-[13px]"
+              />
               <button type="submit" aria-label="Subscribe" className="flex items-center border-none bg-royal px-[18px] text-white cursor-pointer transition-colors hover:bg-royal-dark">
                 <SendIcon />
               </button>
