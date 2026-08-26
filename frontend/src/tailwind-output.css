@@ -448,6 +448,9 @@
   .mt-\[3px\] {
     margin-top: 3px;
   }
+  .mt-\[5px\] {
+    margin-top: 5px;
+  }
   .mt-\[10px\] {
     margin-top: 10px;
   }
@@ -573,9 +576,6 @@
   }
   .aspect-\[3\/2\.08\] {
     aspect-ratio: 3/2.08;
-  }
-  .aspect-\[3\/3\.4\] {
-    aspect-ratio: 3/3.4;
   }
   .aspect-\[3\/4\] {
     aspect-ratio: 3/4;
@@ -2532,17 +2532,11 @@
     }
   }
   @media (width < 860px) {
-    .max-nav\:mx-auto {
-      margin-inline: auto;
-    }
     .max-nav\:mr-0 {
       margin-right: 0px;
     }
     .max-nav\:max-h-\[380px\] {
       max-height: 380px;
-    }
-    .max-nav\:max-h-\[480px\] {
-      max-height: 480px;
     }
     .max-nav\:w-full {
       width: 100%;
