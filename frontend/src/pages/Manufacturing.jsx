@@ -21,7 +21,6 @@ export default function Manufacturing() {
         <CertificationsSection />
         <CTABanner />
       </main>
-      <Footer />
     </div>
   );
 }
