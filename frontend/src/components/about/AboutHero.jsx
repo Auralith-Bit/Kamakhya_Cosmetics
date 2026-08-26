@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import aboutHeroBg from '../../assets/abouthero.png';
 
 const HomeIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M3 10.5 12 3l9 7.5" /><path d="M5 9.5V21h14V9.5" /><path d="M9 21v-6h6v6" />
   </svg>
 );
 
 const Chev = () => (
-  <svg width="7" height="11" viewBox="0 0 9 14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="11" height="17" viewBox="0 0 9 14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
     <path d="m1.5 1.5 6 5.5-6 5.5" />
   </svg>
 );
@@ -57,7 +57,7 @@ const AboutHero = () => {
         }}
       />
 
-{/* Content overlay */}
+      {/* Content overlay */}
       <div
         style={{
           position: 'relative',
@@ -67,7 +67,7 @@ const AboutHero = () => {
           minHeight: '23.4375vw',
           width: '100%',
           boxSizing: 'border-box',
-          padding: '0 clamp(20px, 8.68vw, 125px)',
+          padding: '0 clamp(20px, 8.68vw, 170px)',
         }}
       >
         {/* Left Text Panel */}
@@ -75,7 +75,6 @@ const AboutHero = () => {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: 'clamp(6px, 0.9vw, 14px)',
             maxWidth: 'clamp(260px, 38vw, 540px)',
             padding: 'clamp(20px, 4vw, 56px) 0',
           }}
@@ -86,11 +85,13 @@ const AboutHero = () => {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '6px',
-              fontFamily: "'Poppins', sans-serif",
-              fontSize: 'clamp(11px, 0.85vw, 14px)',
+              gap: 'clamp(8px, 0.6vw, 12px)',
+              fontFamily: "'Playfair Display', 'Playfair', serif",
+              fontSize: 'clamp(20px, 1.5vw, 28px)',
               fontWeight: 700,
               color: '#2e3192',
+              lineHeight: 1,
+              marginBottom: 'clamp(16px, 1.93vw, 37px)',
             }}
           >
             <HomeIcon />
@@ -127,7 +128,8 @@ const AboutHero = () => {
               height: '2.5px',
               borderRadius: '2px',
               background: '#E38F2E',
-              marginTop: '-4px',
+              marginTop: 'clamp(8px, 0.75vw, 14px)',
+              marginBottom: 'clamp(8px, 0.75vw, 14px)',
             }}
           />
 
@@ -150,12 +152,13 @@ const AboutHero = () => {
           <p
             style={{
               margin: 0,
+              marginTop: 'clamp(8px, 0.75vw, 14px)',
               fontFamily: "'Poppins', sans-serif",
               fontWeight: 400,
               fontSize: 'clamp(11.5px, 0.88vw, 14px)',
               lineHeight: 1.75,
-              color: '#5a5a6e',
-              maxWidth: '400px',
+              color: '#70768A',
+              maxWidth: '550px',
             }}
           >
             Discover Kamakhya Cosmetics — where beauty, care, and trust come together
