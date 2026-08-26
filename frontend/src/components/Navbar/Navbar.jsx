@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { createPortal } from 'react-dom';
-=======
-import React, { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
->>>>>>> Frontend/RoyalLuxury
 import logo from '../../assets/Group 9.png';
 
 /* ============ dropdown rendered via portal (escapes all overflow clipping) ============ */
@@ -89,12 +84,8 @@ const Navbar = () => {
   const [brandsOpen, setBrandsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
-<<<<<<< HEAD
   const desktopBrandsRef = useRef(null);
   const mobileBrandsRef = useRef(null);
-=======
-  const navigate = useNavigate();
->>>>>>> Frontend/RoyalLuxury
 
   const MENU_ITEMS = [
     { label: 'HOME', to: '/', type: 'link' },
@@ -384,7 +375,7 @@ const Navbar = () => {
 
           <span className="kn-vline" />
 
-          <button className="kn-cta" onClick={() => navigate('/distributor')}>Become Distributor</button>
+          <button className="kn-cta">Become Distributor</button>
         </div>
       </div>
 
@@ -469,7 +460,9 @@ const Navbar = () => {
             ))}
           </ul>
 
-          <button className="kn-mobile-cta" onClick={closeMobile}>Become Distributor</button>
+          <Link
+          to={"/distributor"}
+           className="kn-mobile-cta" onClick={closeMobile}>Become Distributor</Link>
         </div>
       </div>
 

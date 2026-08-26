@@ -128,7 +128,7 @@ const Faq = () => {
                                 className="w-full resize-none rounded-xl border border-gray-200 px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2E2887] focus:border-transparent mb-3 mt-1"
                             />
                             <p className='text-xs text-center  text-[#666666] '>No payment is taken here — this simply reaches our trade team.</p>
-                            <button type="submit" className="bg-brand-blue hover:bg-[#241f6e] text-white text-sm py-4 rounded-lg w-full flex items-center justify-center gap-2 mt-6">
+                            <button type="submit" className="bg-[#252775] text-white text-sm py-4 rounded-lg w-full flex items-center justify-center gap-2 mt-6">
                                 Send Question <ArrowRight size={16} strokeWidth={2} />
                             </button>
                         </form>

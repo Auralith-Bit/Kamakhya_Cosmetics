@@ -1,18 +1,14 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Outlet, useLocation } from "react-router-dom";
-
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/HomePage";
 import Distributor from "./pages/Distributor";
 import ShinePage from "./pages/brands/ShinePage";
+import BulkQuote from "./pages/BulkQuote"
 import RoyalLuxuryPage from "./pages/brands/RoyalLuxuryPage";
-<<<<<<< HEAD
 import AboutPage from "./pages/AboutPage";
 import CheckoutPage from "./pages/CheckoutPage";
-=======
-import BulkQuote from "./pages/BulkQuote";
->>>>>>> Frontend/RoyalLuxury
 import ContactUs from "./pages/ContactUs";
 
 const ScrollToTop = () => {
@@ -37,6 +33,8 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/brands/shine" element={<ShinePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/brands/royal-luxury" element={<RoyalLuxuryPage />} />
           <Route path="/distributor" element={<Distributor />} />
           <Route path="/bulk-quote" element={<BulkQuote/>}/>
