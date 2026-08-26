@@ -1,5 +1,6 @@
 import React from 'react';
 
+// chck for git
 const TargetIcon = () => (
   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="10" />
@@ -31,10 +32,10 @@ const MissionVision = () => {
           <p className="m-0 font-body text-[16px] font-semibold tracking-[2.88px] uppercase text-hero-orange">
             What drives us
           </p>
-          <h2 className="m-0 mt-[11px] font-title text-[30px] font-bold leading-[1.2] text-brand-blue">
+          <h2 className="m-0 mt-[5px] font-title text-[30px] font-bold leading-[1.2] text-brand-blue">
             The Core Purpose And Future Aspirations Of Our Company
           </h2>
-          <GoldenWave className="mt-[10px]" />
+          <GoldenWave className="mt-[5px]" />
           <p className="mt-[19px] mx-auto max-w-[943px] font-body text-[19px] leading-[28px] text-[#666]">
             Our purpose shapes what we do today, while our vision inspires us to build a better, more
             innovative future for our customers, communities, and the world around us.

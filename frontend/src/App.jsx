@@ -16,7 +16,7 @@ import RoyalLuxuryPage from "./pages/brands/RoyalLuxuryPage";
 import AboutPage from "./pages/AboutPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import ContactUs from "./pages/ContactUs";
-import Manufature from "./pages/Manufacturing";
+
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -44,6 +44,7 @@ function App() {
           ``
           <Route path="/" element={<HomePage />} />
           <Route path="/brands/shine" element={<ShinePage />} />
+          <Route path="/products" element={<ProductPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/brands/royal-luxury" element={<RoyalLuxuryPage />} />

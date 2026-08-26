@@ -466,7 +466,9 @@ const Navbar = () => {
 
           <span className="kn-vline" />
 
-          <button className="kn-cta">Become Distributor</button>
+          <Link to="/distributor" className="kn-cta">
+            Become Distributor
+          </Link>
         </div>
       </div>
 
