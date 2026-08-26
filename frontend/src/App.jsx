@@ -30,7 +30,7 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-        <Route element={<Layout />}>
+        <Route element={<Layout />}>``
           <Route path="/" element={<HomePage />} />
           <Route path="/brands/shine" element={<ShinePage />} />
           <Route path="/about" element={<AboutPage />} />
