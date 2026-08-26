@@ -1,26 +1,36 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Routes, Route, Outlet, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Outlet,
+  useLocation,
+} from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/HomePage";
 import Distributor from "./pages/Distributor";
 import ShinePage from "./pages/brands/ShinePage";
-import BulkQuote from "./pages/BulkQuote"
+import BulkQuote from "./pages/BulkQuote";
 import RoyalLuxuryPage from "./pages/brands/RoyalLuxuryPage";
 import AboutPage from "./pages/AboutPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import ContactUs from "./pages/ContactUs";
-
+import Manufature from "./pages/Manufacturing";
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return null;
 };
 
 const Layout = () => (
   <>
     <Navbar />
-    <main className="w-full pt-[130px]"><Outlet /></main>
+    <main className="w-full pt-[130px]">
+      <Outlet />
+    </main>
     <Footer />
   </>
 );
@@ -30,15 +40,17 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-        <Route element={<Layout />}>``
+        <Route element={<Layout />}>
+          ``
           <Route path="/" element={<HomePage />} />
           <Route path="/brands/shine" element={<ShinePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/brands/royal-luxury" element={<RoyalLuxuryPage />} />
           <Route path="/distributor" element={<Distributor />} />
-          <Route path="/bulk-quote" element={<BulkQuote/>}/>
+          <Route path="/bulk-quote" element={<BulkQuote />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/manufacture" element={<Manufature />} />
           <Route path="*" element={<HomePage />} />
         </Route>
       </Routes>

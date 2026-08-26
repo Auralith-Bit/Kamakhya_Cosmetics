@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { createPortal } from 'react-dom';
-import logo from '../../assets/Group 9.png';
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { createPortal } from "react-dom";
+import logo from "../../assets/Group 9.png";
 
 /* ============ dropdown rendered via portal (escapes all overflow clipping) ============ */
 const BrandsDropdown = ({ open, onClose, anchors }) => {
@@ -12,12 +12,18 @@ const BrandsDropdown = ({ open, onClose, anchors }) => {
   /* position under the visible trigger */
   useLayoutEffect(() => {
     if (!open) return;
-    const anchor = (anchors || []).map(a => a.current).find(el => el && el.getBoundingClientRect().width > 0);
+    const anchor = (anchors || [])
+      .map((a) => a.current)
+      .find((el) => el && el.getBoundingClientRect().width > 0);
     if (!anchor) return;
     const r = anchor.getBoundingClientRect();
-    const width = window.innerWidth <= 640 ? Math.min(320, window.innerWidth - 24) : 300;
+    const width =
+      window.innerWidth <= 640 ? Math.min(320, window.innerWidth - 24) : 300;
     let left = r.left + r.width / 2;
-    left = Math.max(width / 2 + 8, Math.min(window.innerWidth - width / 2 - 8, left));
+    left = Math.max(
+      width / 2 + 8,
+      Math.min(window.innerWidth - width / 2 - 8, left),
+    );
     setPos({ top: r.bottom + 10, left, width });
   }, [open, anchors]);
 
@@ -26,27 +32,53 @@ const BrandsDropdown = ({ open, onClose, anchors }) => {
     if (!open) return;
     const onDown = (e) => {
       const inPanel = ref.current && ref.current.contains(e.target);
-      const inAnchor = (anchors || []).some(a => a.current && a.current.contains(e.target));
+      const inAnchor = (anchors || []).some(
+        (a) => a.current && a.current.contains(e.target),
+      );
       if (!inPanel && !inAnchor) onClose();
     };
-    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
-    document.addEventListener('mousedown', onDown);
-    document.addEventListener('keydown', onKey);
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
     return () => {
-      document.removeEventListener('mousedown', onDown);
-      document.removeEventListener('keydown', onKey);
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
     };
   }, [open, onClose, anchors]);
 
   if (!open) return null;
 
-  const pick = (path) => { onClose(); navigate(path); };
+  const pick = (path) => {
+    onClose();
+    navigate(path);
+  };
 
   return createPortal(
-    <div className="bc-drop" ref={ref} style={{ top: pos.top, left: pos.left, width: pos.width }} role="menu" aria-label="Choose a brand">
-      <button className="bc-item bc-shine" role="menuitem" onClick={() => pick('/brands/shine')}>
+    <div
+      className="bc-drop"
+      ref={ref}
+      style={{ top: pos.top, left: pos.left, width: pos.width }}
+      role="menu"
+      aria-label="Choose a brand"
+    >
+      <button
+        className="bc-item bc-shine"
+        role="menuitem"
+        onClick={() => pick("/brands/shine")}
+      >
         <span className="bc-ico">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <path d="M12 2l2.2 5.6L20 10l-5.8 2.4L12 18l-2.2-5.6L4 10l5.8-2.4Z" />
             <path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9Z" />
           </svg>
@@ -59,9 +91,22 @@ const BrandsDropdown = ({ open, onClose, anchors }) => {
 
       <div className="bc-sep" />
 
-      <button className="bc-item bc-royal" role="menuitem" onClick={() => pick('/brands/royal-luxury')}>
+      <button
+        className="bc-item bc-royal"
+        role="menuitem"
+        onClick={() => pick("/brands/royal-luxury")}
+      >
         <span className="bc-ico">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <path d="M3 8l4 4 5-6 5 6 4-4v9H3Z" />
             <path d="M3 17h18" />
           </svg>
@@ -72,7 +117,7 @@ const BrandsDropdown = ({ open, onClose, anchors }) => {
         </span>
       </button>
     </div>,
-    document.body
+    document.body,
   );
 };
 
@@ -80,7 +125,7 @@ const BrandsDropdown = ({ open, onClose, anchors }) => {
 const Navbar = () => {
   const [cartCount] = useState(1);
   const [wishlistCount] = useState(1);
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState("");
   const [brandsOpen, setBrandsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
@@ -88,17 +133,17 @@ const Navbar = () => {
   const mobileBrandsRef = useRef(null);
 
   const MENU_ITEMS = [
-    { label: 'HOME', to: '/', type: 'link' },
-    { label: 'PRODUCTS', to: '/#products', type: 'link' },
-    { label: 'OUR BRANDS', type: 'brands' },
-    { label: 'MANUFACTURING', to: '/#manufacturing', type: 'link' },
-    { label: 'ABOUT', to: '/about', type: 'link' },
-    { label: 'CONTACT', to: '/contact', type: 'link' },
+    { label: "HOME", to: "/", type: "link" },
+    { label: "PRODUCTS", to: "/#products", type: "link" },
+    { label: "OUR BRANDS", type: "brands" },
+    { label: "MANUFACTURING", to: "/manufacture", type: "link" },
+    { label: "ABOUT", to: "/about", type: "link" },
+    { label: "CONTACT", to: "/contact", type: "link" },
   ];
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log('Search:', searchValue);
+    console.log("Search:", searchValue);
   };
 
   const closeMobile = () => setMobileOpen(false);
@@ -294,7 +339,9 @@ const Navbar = () => {
       `}</style>
 
       {/* ── DESKTOP: diagonal white panel ── */}
-      <div className="kn-diag" aria-hidden="true"><div /></div>
+      <div className="kn-diag" aria-hidden="true">
+        <div />
+      </div>
 
       {/* ── DESKTOP: Logo ── */}
       <Link to="/" className="kn-logo">
@@ -304,7 +351,16 @@ const Navbar = () => {
       {/* ── DESKTOP: Top blue bar ── */}
       <div className="kn-topbar">
         <a href="mailto:info@kamakhyacosmetics.com.np" className="kn-email">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <rect x="2" y="4" width="20" height="16" rx="2" />
             <path d="m22 6-10 7L2 6" />
           </svg>
@@ -319,7 +375,15 @@ const Navbar = () => {
             onChange={(e) => setSearchValue(e.target.value)}
           />
           <button type="submit" aria-label="Search">
-            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            <svg
+              viewBox="0 0 24 24"
+              width="17"
+              height="17"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            >
               <circle cx="11" cy="11" r="7" />
               <path d="m21 21-4.35-4.35" />
             </svg>
@@ -332,10 +396,10 @@ const Navbar = () => {
         <ul className="kn-links">
           {MENU_ITEMS.map((item) => (
             <li key={item.label}>
-              {item.type === 'brands' ? (
+              {item.type === "brands" ? (
                 <button
                   ref={desktopBrandsRef}
-                  className={`kn-brands-btn ${location.pathname.startsWith('/brands') || brandsOpen ? 'active' : ''}`}
+                  className={`kn-brands-btn ${location.pathname.startsWith("/brands") || brandsOpen ? "active" : ""}`}
                   onClick={() => setBrandsOpen((v) => !v)}
                   aria-haspopup="true"
                   aria-expanded={brandsOpen}
@@ -345,7 +409,12 @@ const Navbar = () => {
               ) : (
                 <Link
                   to={item.to}
-                  className={(item.to === '/' && location.pathname === '/') || (item.to !== '/' && location.pathname === item.to) ? 'active' : ''}
+                  className={
+                    (item.to === "/" && location.pathname === "/") ||
+                    (item.to !== "/" && location.pathname === item.to)
+                      ? "active"
+                      : ""
+                  }
                 >
                   {item.label}
                 </Link>
@@ -358,14 +427,36 @@ const Navbar = () => {
           <span className="kn-vline" />
 
           <button className="kn-iconbtn" title="Wishlist" aria-label="Wishlist">
-            <svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              viewBox="0 0 24 24"
+              width="23"
+              height="23"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
             </svg>
             <span className="kn-badge">{wishlistCount}</span>
           </button>
 
-          <button className="kn-iconbtn" title="Cart" aria-label="Shopping cart">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <button
+            className="kn-iconbtn"
+            title="Cart"
+            aria-label="Shopping cart"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
               <line x1="3" y1="6" x2="21" y2="6" />
               <path d="M16 10a4 4 0 0 1-8 0" />
@@ -382,23 +473,47 @@ const Navbar = () => {
       {/* ── MOBILE: compact top bar with logo, hamburger, actions ── */}
       <div className="kn-mobile-topbar">
         <button
-          className={`kn-hamburger ${mobileOpen ? 'open' : ''}`}
+          className={`kn-hamburger ${mobileOpen ? "open" : ""}`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle navigation menu"
           aria-expanded={mobileOpen}
         >
-          <span /><span /><span />
+          <span />
+          <span />
+          <span />
         </button>
 
         <div className="kn-actions-mobile">
           <button className="kn-iconbtn" title="Wishlist" aria-label="Wishlist">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
             </svg>
             <span className="kn-badge">{wishlistCount}</span>
           </button>
-          <button className="kn-iconbtn" title="Cart" aria-label="Shopping cart">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <button
+            className="kn-iconbtn"
+            title="Cart"
+            aria-label="Shopping cart"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
               <line x1="3" y1="6" x2="21" y2="6" />
               <path d="M16 10a4 4 0 0 1-8 0" />
@@ -409,7 +524,7 @@ const Navbar = () => {
       </div>
 
       {/* ── MOBILE: slide-down menu ── */}
-      <div className={`kn-mobile-menu ${mobileOpen ? 'open' : ''}`}>
+      <div className={`kn-mobile-menu ${mobileOpen ? "open" : ""}`}>
         <div className="kn-mobile-inner">
           <form onSubmit={handleSearch} className="kn-m-search">
             <input
@@ -419,15 +534,35 @@ const Navbar = () => {
               onChange={(e) => setSearchValue(e.target.value)}
             />
             <button type="submit" aria-label="Search">
-              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              <svg
+                viewBox="0 0 24 24"
+                width="17"
+                height="17"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
                 <circle cx="11" cy="11" r="7" />
                 <path d="m21 21-4.35-4.35" />
               </svg>
             </button>
           </form>
 
-          <a href="mailto:info@kamakhyacosmetics.com.np" className="kn-mobile-email">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <a
+            href="mailto:info@kamakhyacosmetics.com.np"
+            className="kn-mobile-email"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <rect x="2" y="4" width="20" height="16" rx="2" />
               <path d="m22 6-10 7L2 6" />
             </svg>
@@ -437,10 +572,10 @@ const Navbar = () => {
           <ul className="kn-mobile-links">
             {MENU_ITEMS.map((item) => (
               <li key={item.label}>
-                {item.type === 'brands' ? (
+                {item.type === "brands" ? (
                   <button
                     ref={mobileBrandsRef}
-                    className={`kn-brands-btn ${location.pathname.startsWith('/brands') || brandsOpen ? 'active' : ''}`}
+                    className={`kn-brands-btn ${location.pathname.startsWith("/brands") || brandsOpen ? "active" : ""}`}
                     onClick={() => setBrandsOpen((v) => !v)}
                     aria-haspopup="true"
                     aria-expanded={brandsOpen}
@@ -451,7 +586,12 @@ const Navbar = () => {
                   <Link
                     to={item.to}
                     onClick={closeMobile}
-                    className={(item.to === '/' && location.pathname === '/') || (item.to !== '/' && location.pathname === item.to) ? 'active' : ''}
+                    className={
+                      (item.to === "/" && location.pathname === "/") ||
+                      (item.to !== "/" && location.pathname === item.to)
+                        ? "active"
+                        : ""
+                    }
                   >
                     {item.label}
                   </Link>
@@ -461,8 +601,12 @@ const Navbar = () => {
           </ul>
 
           <Link
-          to={"/distributor"}
-           className="kn-mobile-cta" onClick={closeMobile}>Become Distributor</Link>
+            to={"/distributor"}
+            className="kn-mobile-cta"
+            onClick={closeMobile}
+          >
+            Become Distributor
+          </Link>
         </div>
       </div>
 
