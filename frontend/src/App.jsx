@@ -38,8 +38,8 @@ function App() {
           <Route path="/brands/royal-luxury" element={<RoyalLuxuryPage />} />
           <Route path="/distributor" element={<Distributor />} />
           <Route path="/bulk-quote" element={<BulkQuote/>}/>
-          <Route path="*" element={<HomePage />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="*" element={<HomePage />} />
         </Route>
       </Routes>
     </BrowserRouter>
