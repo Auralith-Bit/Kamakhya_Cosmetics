@@ -121,10 +121,10 @@ const AboutHero = () => {
             We Believe in Beauty
           </p>
 
-          {/* Orange underline accent */}
+{/* Orange underline accent */}
           <div
             style={{
-              width: 'clamp(32px, 2.6vw, 50px)',
+              width: 'clamp(55px, 2.6vw, 74px)',
               height: '2.5px',
               borderRadius: '2px',
               background: '#E38F2E',

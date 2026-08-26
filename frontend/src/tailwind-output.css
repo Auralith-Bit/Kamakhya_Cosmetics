@@ -529,6 +529,9 @@
   .mb-\[60px\] {
     margin-bottom: 60px;
   }
+  .mb-\[clamp\(8px\,0\.75vw\,14px\)\] {
+    margin-bottom: clamp(8px, 0.75vw, 14px);
+  }
   .mb-auto {
     margin-bottom: auto;
   }
@@ -570,6 +573,9 @@
   }
   .aspect-\[3\/2\.08\] {
     aspect-ratio: 3/2.08;
+  }
+  .aspect-\[3\/3\.4\] {
+    aspect-ratio: 3/3.4;
   }
   .aspect-\[3\/4\] {
     aspect-ratio: 3/4;
@@ -1769,6 +1775,9 @@
   .text-\[clamp\(14px\,1\.09vw\,21px\)\] {
     font-size: clamp(14px, 1.09vw, 21px);
   }
+  .text-\[clamp\(14px\,1vw\,16px\)\] {
+    font-size: clamp(14px, 1vw, 16px);
+  }
   .text-\[clamp\(17px\,1\.3vw\,20px\)\] {
     font-size: clamp(17px, 1.3vw, 20px);
   }
@@ -1780,6 +1789,9 @@
   }
   .text-\[clamp\(26px\,2\.2vw\,36px\)\] {
     font-size: clamp(26px, 2.2vw, 36px);
+  }
+  .text-\[clamp\(26px\,2\.5vw\,38px\)\] {
+    font-size: clamp(26px, 2.5vw, 38px);
   }
   .text-\[clamp\(28px\,3\.5vw\,40px\)\] {
     font-size: clamp(28px, 3.5vw, 40px);
@@ -1878,6 +1890,10 @@
   .tracking-\[0\.14em\] {
     --tw-tracking: 0.14em;
     letter-spacing: 0.14em;
+  }
+  .tracking-\[0\.18em\] {
+    --tw-tracking: 0.18em;
+    letter-spacing: 0.18em;
   }
   .tracking-\[1\.2px\] {
     --tw-tracking: 1.2px;
@@ -2516,11 +2532,17 @@
     }
   }
   @media (width < 860px) {
+    .max-nav\:mx-auto {
+      margin-inline: auto;
+    }
     .max-nav\:mr-0 {
       margin-right: 0px;
     }
     .max-nav\:max-h-\[380px\] {
       max-height: 380px;
+    }
+    .max-nav\:max-h-\[480px\] {
+      max-height: 480px;
     }
     .max-nav\:w-full {
       width: 100%;
