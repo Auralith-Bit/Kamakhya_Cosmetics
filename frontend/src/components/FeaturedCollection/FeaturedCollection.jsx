@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import nailPolish1 from '../../assets/nailpolish.jpg';
 import lipstick from '../../assets/lipstick.jpg';
 import oil from '../../assets/oil.jpg';
@@ -12,6 +13,8 @@ const PRODUCTS = [
     image: nailPolish1,
     moq: '500 pcs',
     leadTime: '7-10 days',
+    brand: 'Royal Luxury',
+    category: 'Face Care',
   },
   {
     id: 'nail-polish-lancome',
@@ -20,6 +23,8 @@ const PRODUCTS = [
     image: lipstick,
     moq: '500 pcs',
     leadTime: '10-15 days',
+    brand: 'Royal Luxury',
+    category: 'Face Care',
   },
   {
     id: 'detergent-powder',
@@ -28,6 +33,8 @@ const PRODUCTS = [
     image: oil,
     moq: '500 pcs',
     leadTime: '7-10 days',
+    brand: 'Shine',
+    category: 'Laundry',
   },
   {
     id: 'dish-washer',
@@ -36,6 +43,8 @@ const PRODUCTS = [
     image: wash,
     moq: '500 pcs',
     leadTime: '7-10 days',
+    brand: 'Shine',
+    category: 'Kitchen & Dishwashing',
   },
 ];
 
@@ -338,8 +347,8 @@ const FeaturedCollection = () => {
               </div>
 
               {/* View Products button */}
-              <button
-                type="button"
+              <Link
+                to={`/products?brand=${encodeURIComponent(product.brand)}&category=${encodeURIComponent(product.category)}`}
                 className="no-underline transition-colors"
                 style={{
                   position: 'relative',
@@ -359,6 +368,7 @@ const FeaturedCollection = () => {
                   cursor: 'pointer',
                   boxSizing: 'border-box',
                   flexShrink: 0,
+                  textDecoration: 'none',
                 }}
                 onMouseEnter={e => { e.currentTarget.style.background = '#EEF0FB'; e.currentTarget.style.color = '#2E3192'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = '#FFF'; e.currentTarget.style.color = '#2E3192'; }}
@@ -387,7 +397,7 @@ const FeaturedCollection = () => {
                     <polyline points="12 5 19 12 12 19" />
                   </svg>
                 </span>
-              </button>
+              </Link>
             </div>
           </div>
         ))}

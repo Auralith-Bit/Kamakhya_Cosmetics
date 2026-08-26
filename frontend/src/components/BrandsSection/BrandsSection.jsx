@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import shineProduct from '../../assets/fenyl.jpg';
 import royalProduct from '../../assets/makeup.jpg';
 import kamakhyaLogo from '../../assets/Group 9.png';
@@ -121,7 +122,7 @@ const ArrowRight = () => (
 );
 
 /* ─── Brand Card ────────────────────────────────────────────────────── */
-const BrandCard = ({ image, badge, badgeBg, badgeSide, overlayAlign, categoryTag, brandName, brandColor, tagline, description, features }) => (
+const BrandCard = ({ image, badge, badgeBg, badgeSide, overlayAlign, categoryTag, brandName, brandColor, tagline, description, features, to }) => (
   <div
     style={{
       background: '#fbfbf9', borderRadius: '12px', boxShadow: '0 4px 28px rgba(0,0,0,0.09)',
@@ -205,18 +206,19 @@ const BrandCard = ({ image, badge, badgeBg, badgeSide, overlayAlign, categoryTag
       </div>
 
       {/* CTA */}
-      <button
+      <Link
+        to={to}
         style={{
           width: '100%', padding: '12px 0', borderRadius: '8px', border: `1.5px solid ${brandColor}`,
           background: 'transparent', color: brandColor, fontFamily: 'Poppins, sans-serif', fontSize: '13.5px',
           fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
-          transition: 'background 0.2s, color 0.2s',
+          transition: 'background 0.2s, color 0.2s', textDecoration: 'none',
         }}
         onMouseEnter={e => { e.currentTarget.style.background = brandColor + '1A'; e.currentTarget.style.color = brandColor; e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.10)'; }}
         onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = brandColor; e.currentTarget.style.boxShadow = 'none'; }}
       >
         Explore Colletctions <ArrowRight />
-      </button>
+      </Link>
     </div>
   </div>
 );
@@ -249,6 +251,7 @@ const BrandsSection = () => (
           categoryTag="Everyday home care" brandName="Shine" brandColor="#1e7e34" tagline="Fresh & Clean"
           description="Daily care and household essentials designed for freshness, hygiene, and lasting performance."
           features={shineFeatures}
+          to="/brands/shine"
         />
 
         {/* Center connector */}
@@ -293,6 +296,7 @@ const BrandsSection = () => (
           categoryTag="Premium Beauty care" brandName="Royal Luxury" brandColor="#2e3192" tagline="A Pure Expereicne"
           description="Daily care and household essentials designed for freshness, hygiene, and lasting performance."
           features={royalFeatures}
+          to="/brands/royal-luxury"
         />
       </div>
     </div>

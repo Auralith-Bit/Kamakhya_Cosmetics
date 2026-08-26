@@ -379,7 +379,7 @@ const Application = () => {
                 "A dedicated sales contact for the Kamakhya account",
               ].map((item) => (
                 <li key={item} className="flex gap-2.5 text-[15px] text-slate-600 leading-snug">
-                  <span className="mt-2 w-1 h-1 rounded-full bg-slate-400 flex-shrink-0" />
+                  <span className="mt-2 w-1 h-1 rounded-full bg-slate-400 shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}

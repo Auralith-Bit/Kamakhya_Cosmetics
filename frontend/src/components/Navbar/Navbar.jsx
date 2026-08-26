@@ -89,7 +89,7 @@ const Navbar = () => {
 
   const MENU_ITEMS = [
     { label: 'HOME', to: '/', type: 'link' },
-    { label: 'PRODUCTS', to: '/#products', type: 'link' },
+    { label: 'PRODUCTS', to: '/products', type: 'link' },
     { label: 'OUR BRANDS', type: 'brands' },
     { label: 'MANUFACTURING', to: '/#manufacturing', type: 'link' },
     { label: 'ABOUT', to: '/about', type: 'link' },
@@ -375,7 +375,7 @@ const Navbar = () => {
 
           <span className="kn-vline" />
 
-          <button className="kn-cta">Become Distributor</button>
+          <Link to="/distributor" className="kn-cta">Become Distributor</Link>
         </div>
       </div>
 
