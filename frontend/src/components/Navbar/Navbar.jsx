@@ -134,7 +134,7 @@ const Navbar = () => {
 
   const MENU_ITEMS = [
     { label: "HOME", to: "/", type: "link" },
-    { label: "PRODUCTS", to: "/#products", type: "link" },
+    { label: "PRODUCTS", to: "/products", type: "link" },
     { label: "OUR BRANDS", type: "brands" },
     { label: "MANUFACTURING", to: "/manufacture", type: "link" },
     { label: "ABOUT", to: "/about", type: "link" },
