@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import b1 from '../../assets/b1.png';
 import b2 from '../../assets/b2.png';
 
@@ -47,7 +47,7 @@ const OurTeam = () => (
       /* ============ DESKTOP ≥1024 ============ */
       .ot-sec{width:100%;background:#F7F3EC;padding:4.7vw 0 5.5vw;overflow:hidden;}
 
-      .ot-head{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 6px;max-width:1100px;margin:0 auto 12px;}
+      .ot-head{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 6px;max-width:1100px;margin:0 auto 8px;}
       .ot-tag{color:#e0912f;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;
         letter-spacing:3.5px;text-transform:uppercase;line-height:normal;}
       .ot-title{margin-top:6px;color:#2e3192;font-family:'Playfair Display',serif;
