@@ -52,7 +52,7 @@ const CERTS = [
 const CertificationsSection = () => {
   return (
     <section
-      className="px-4 py-12 sm:px-8 sm:py-16 lg:px-8 lg:py-20 xl:px-16"
+      className="bg-white px-4 py-12 sm:px-8 sm:py-16 lg:px-8 lg:py-20 xl:px-16"
       aria-labelledby="cert-heading"
     >
       <div className="mx-auto flex max-w-[1280px] flex-col items-center gap-10 lg:gap-[50px]">
@@ -84,14 +84,14 @@ const CertificationsSection = () => {
         </div>
 
         {/* Certification Cards */}
-        <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+        <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-5">
           {CERTS.map((cert) => (
             <div
               key={cert.code}
               className="flex flex-col items-center rounded-[10px] border border-[#d7dae4] bg-[#fcf9f2] py-5 shadow-[0px_20px_50px_-12px_rgba(0,0,0,0.05),0px_8px_24px_-6px_rgba(0,0,0,0.08)] transition-shadow hover:shadow-[0px_20px_50px_-8px_rgba(46,49,146,0.12)]"
             >
               {/* Certificate Logo */}
-              <div className="h-[110px] w-[110px] lg:h-[130px] lg:w-[130px]">
+              <div className="h-[110px] w-[110px] md:h-[100px] md:w-[100px] lg:h-[110px] lg:w-[110px] xl:h-[130px] xl:w-[130px]">
                 <img
                   src={cert.img}
                   alt={cert.code}
@@ -102,18 +102,18 @@ const CertificationsSection = () => {
               {/* Card Text */}
               <div className="flex w-full flex-col items-center gap-4 px-3 pb-4 pt-3">
                 <div className="flex flex-col items-center gap-1 text-center">
-                  <p className="whitespace-nowrap font-['Poppins'] text-[15px] font-bold leading-[28px] text-[#2e3192] lg:text-[17px]">
+                  <p className="whitespace-nowrap font-['Poppins'] text-[15px] font-bold leading-[28px] text-[#2e3192] md:text-[13px] lg:text-[14px] xl:text-[17px]">
                     {cert.code}
                   </p>
 
                   <p
-                    className="font-['Playfair_Display'] text-[16px] font-bold text-[#e38f2e] lg:text-[18px]"
+                    className="font-['Playfair_Display'] text-[16px] font-bold text-[#e38f2e] md:text-[14px] lg:text-[15px] xl:text-[18px]"
                     style={{ fontVariationSettings: '"opsz" 12, "wdth" 100' }}
                   >
                     {cert.title}
                   </p>
 
-                  <p className="font-['Poppins'] text-[13px] leading-snug text-[#333] lg:text-[15px]">
+                  <p className="font-['Poppins'] text-[13px] leading-snug text-[#333] md:text-[11px] lg:text-[12px] xl:text-[15px]">
                     {cert.desc}
                   </p>
                 </div>
@@ -122,7 +122,7 @@ const CertificationsSection = () => {
                 <img
                   src={cert.badgeIcon}
                   alt=""
-                  className="h-9 w-9 lg:h-10 lg:w-10"
+                  className="h-9 w-9 md:h-7 md:w-7 lg:h-8 lg:w-8 xl:h-10 xl:w-10"
                 />
               </div>
             </div>

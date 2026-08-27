@@ -1,9 +1,9 @@
 import {
   imgImage36,
   imgHomeIcon,
-  imgChevron,
   imgUnderline,
 } from "../../assets/figmaAssets";
+import { ChevronRight } from "lucide-react";
 
 export default function HeroBanner() {
   return (
@@ -43,10 +43,9 @@ export default function HeroBanner() {
             </li>
 
             <li>
-              <img
-                src={imgChevron}
-                alt=""
-                className="h-[14px] w-[9px] -rotate-90 lg:h-[18px] lg:w-[11px]"
+              <ChevronRight
+                className="h-[14px] w-[14px] text-[#2e3192] lg:h-[18px] lg:w-[18px]"
+                aria-hidden="true"
               />
             </li>
 
