@@ -1,62 +1,110 @@
 import { imgQuoteIcon } from "../../assets/figmaAssets";
 import { useNavigate } from "react-router-dom";
+import { contentMax, fluid, pagePadX, s } from "./figmaScale";
 
 const CTABanner = () => {
   const navigate = useNavigate();
   return (
     <section
-      className="relative overflow-hidden px-4 py-12 sm:px-8 sm:py-16 lg:px-8 lg:py-20 xl:px-16"
+      className="relative overflow-hidden"
+      style={{
+        paddingLeft: pagePadX,
+        paddingRight: pagePadX,
+        paddingTop: fluid(57, 32),
+        paddingBottom: fluid(57, 32),
+      }}
       aria-label="Call to action"
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-[#0a1230]" />
+      <div className="absolute inset-0 bg-[#0A1230]" />
 
       <div
         className="absolute inset-0 border-y border-white/15 bg-white/5"
         aria-hidden="true"
       />
 
-      {/* Content */}
-      <div className="relative mx-auto flex max-w-[1280px] flex-col items-start justify-between gap-8 lg:flex-row lg:items-center lg:gap-[60px]">
-        {/* Text */}
-        <div className="flex max-w-full flex-col gap-4 lg:max-w-[640px] lg:gap-5">
-          <div className="flex flex-col gap-1 lg:gap-[5px]">
-            <p className="font-['Poppins'] text-[14px] font-medium text-[#cca466] lg:text-[18px]">
+      <div
+        className="relative mx-auto flex w-full flex-col items-start justify-between lg:flex-row lg:items-center"
+        style={{
+          minHeight: fluid(300, 180),
+          maxWidth: contentMax,
+          gap: fluid(231, 24),
+        }}
+      >
+        <div
+          className="flex w-full flex-col"
+          style={{ maxWidth: s(859), gap: fluid(20, 12) }}
+        >
+          <div
+            className="flex flex-col"
+            style={{ maxWidth: s(651), gap: s(5) }}
+          >
+            <p
+              className="font-['Poppins'] font-medium text-[#cca466]"
+              style={{ fontSize: fluid(18, 14) }}
+            >
               Ready to source from Kamakhya?
             </p>
 
             <h2
-              className="font-['Playfair_Display'] text-[26px] font-medium leading-[1.2] text-white lg:text-[34px]"
-              style={{ fontVariationSettings: '"opsz" 12, "wdth" 100' }}
+              className="font-['Playfair_Display'] font-medium text-white"
+              style={{
+                fontSize: fluid(38, 24),
+                lineHeight: fluid(40, 30),
+                fontVariationSettings: '"opsz" 12, "wdth" 100',
+              }}
             >
               Start a reliable beauty and home-care partnership.
             </h2>
           </div>
 
-          <p className="font-['Poppins'] text-[15px] text-[#d9d9d9] lg:text-[18px]">
+          <p
+            className="font-['Poppins'] font-normal text-[#d9d9d9]"
+            style={{ fontSize: fluid(18, 14) }}
+          >
             Tell us what you need, your target quantity and delivery market. Our
             trade team will prepare the appropriate next step.
           </p>
         </div>
 
-        {/* Buttons */}
-        <div className="flex w-full flex-col items-stretch gap-4 sm:w-auto sm:flex-row sm:items-center lg:shrink-0">
-          {/* Request Quote */}
+        <div
+          className="flex w-full flex-col items-stretch sm:w-auto sm:flex-row sm:items-center lg:shrink-0"
+          style={{ gap: fluid(30, 12) }}
+        >
           <button
-            onClick={() => navigate('/bulk-quote')}
-            className="flex h-[50px] items-center justify-center gap-[7px] rounded-[7px] bg-[#cca466] px-6 transition-colors hover:bg-[#b8935a] focus-visible:outline-2 focus-visible:outline-offset-2 sm:w-[210px] sm:px-0 lg:w-[220px]">
-            <span className="whitespace-nowrap font-['Poppins'] text-[16px] font-medium text-[#151642] lg:text-[17px]">
+            onClick={() => navigate("/bulk-quote")}
+            className="flex w-full items-center justify-center bg-[#cca466] transition-colors hover:bg-[#b8935a] focus-visible:outline-2 focus-visible:outline-offset-2 sm:w-[153px] sm:max-w-[153px]"
+            style={{
+              height: s(50),
+              gap: s(7),
+              borderRadius: s(7),
+            }}
+          >
+            <span
+              className="whitespace-nowrap font-['Poppins'] font-medium text-[#151642]"
+              style={{ fontSize: fluid(18, 14) }}
+            >
               Request Quote
             </span>
 
-            <img src={imgQuoteIcon} alt="" className="h-[12px] w-[14px]" />
+            <img
+              src={imgQuoteIcon}
+              alt=""
+              style={{ height: s(12), width: s(14) }}
+            />
           </button>
 
-          {/* Explore Collections */}
           <button
-            onClick={() => navigate('/')}
-            className="flex h-[50px] items-center justify-center rounded-[7px] border-2 border-white px-6 transition-colors hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 sm:w-[210px] sm:px-0 lg:w-[220px]">
-            <span className="whitespace-nowrap font-['Poppins'] text-[16px] font-medium text-white lg:text-[17px]">
+            onClick={() => navigate("/")}
+            className="flex w-full items-center justify-center border-2 border-white transition-colors hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 sm:w-[153px] sm:max-w-[153px]"
+            style={{
+              height: s(50),
+              borderRadius: s(7),
+            }}
+          >
+            <span
+              className="whitespace-nowrap font-['Poppins'] font-medium text-white"
+              style={{ fontSize: fluid(18, 14) }}
+            >
               Explore Collections
             </span>
           </button>

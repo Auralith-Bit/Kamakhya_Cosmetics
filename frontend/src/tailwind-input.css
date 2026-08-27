@@ -61,3 +61,8 @@
 .order-summary-scroll::-webkit-scrollbar-thumb:hover {
   background: #b8944f;
 }
+
+/* Manufacturing content: Figma 1920px → 1280px (2/3), then proportional to viewport */
+.mfg-page {
+  --mfg-s: min(100vw / 1920, 1280 / 1920);
+}

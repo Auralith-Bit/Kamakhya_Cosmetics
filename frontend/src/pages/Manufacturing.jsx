@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar/Navbar";
 import HeroBanner from "../components/Manufacture/HeroBanner";
 import FacilitySection from "../components/Manufacture/FacilitySection";
 import ProcessSection from "../components/Manufacture/ProcessSection";
@@ -10,7 +9,6 @@ import CTABanner from "../components/Manufacture/CTABanner";
 export default function Manufacturing() {
   return (
     <div className="bg-[#fcf9f2] min-h-screen flex flex-col">
-      <Navbar />
       <main className="flex-1">
         <HeroBanner />
         <FacilitySection />

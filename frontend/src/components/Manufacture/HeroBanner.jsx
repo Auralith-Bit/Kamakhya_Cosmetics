@@ -4,14 +4,15 @@ import {
   imgUnderline,
 } from "../../assets/figmaAssets";
 import { ChevronRight } from "lucide-react";
+import { contentMax, fluid, pagePadX, s } from "./figmaScale";
 
 export default function HeroBanner() {
   return (
     <section
-      className="relative min-h-[280px] overflow-hidden sm:min-h-[350px] lg:min-h-[450px]"
+      className="relative overflow-hidden"
+      style={{ minHeight: fluid(450, 220), paddingLeft: pagePadX, paddingRight: pagePadX }}
       aria-label="Hero banner"
     >
-      {/* Background */}
       <img
         src={imgImage36}
         alt=""
@@ -19,67 +20,90 @@ export default function HeroBanner() {
         className="absolute inset-0 h-full w-full object-cover object-top"
       />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#f7f1e8] via-[rgba(247,241,232,0.7)] to-transparent" />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(247, 241, 232, 1) 0%, rgba(247, 241, 232, 0.7) 45%, rgba(247, 241, 232, 0) 65%)",
+        }}
+      />
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col gap-4 px-4 py-12 sm:px-8 lg:gap-5 lg:px-8 lg:py-20 xl:px-16">
-        {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb">
-          <ol className="flex flex-wrap items-center gap-2">
-            <li className="flex items-center gap-1.5">
-              <img
-                src={imgHomeIcon}
-                alt=""
-                className="h-5 w-5 lg:h-[22px] lg:w-[22px]"
-              />
+      <div
+        className="relative z-10 mx-auto flex w-full flex-col"
+        style={{
+          maxWidth: contentMax,
+          gap: fluid(20, 12),
+          paddingTop: fluid(97, 40),
+          paddingBottom: fluid(97, 40),
+        }}
+      >
+        <div className="flex w-full flex-col" style={{ maxWidth: s(372), gap: fluid(20, 12) }}>
+          <nav aria-label="Breadcrumb">
+            <ol className="flex flex-wrap items-center" style={{ gap: fluid(10, 8) }}>
+              <li className="flex items-center" style={{ gap: s(8) }}>
+                <img
+                  src={imgHomeIcon}
+                  alt=""
+                  style={{ height: s(22), width: s(22) }}
+                />
 
-              <a
-                href="/"
-                className="font-['Playfair_Display'] text-[18px] font-bold text-[#2e3192] hover:underline lg:text-[22px]"
-              >
-                Home
-              </a>
-            </li>
+                <a
+                  href="/"
+                  className="font-['Playfair_Display'] font-bold text-[#2e3192] hover:underline"
+                  style={{ fontSize: fluid(28, 18) }}
+                >
+                  Home
+                </a>
+              </li>
 
-            <li>
-              <ChevronRight
-                className="h-[14px] w-[14px] text-[#2e3192] lg:h-[18px] lg:w-[18px]"
-                aria-hidden="true"
-              />
-            </li>
+              <li>
+                <ChevronRight
+                  className="text-[#252775] opacity-80"
+                  style={{ height: s(18), width: s(11) }}
+                  aria-hidden="true"
+                />
+              </li>
 
-            <li>
-              <span
-                className="font-['Playfair_Display'] text-[18px] font-bold text-[#2e3192] lg:text-[22px]"
-                aria-current="page"
-              >
-                Manufacturing
-              </span>
-            </li>
-          </ol>
-        </nav>
+              <li>
+                <span
+                  className="font-['Playfair_Display'] font-bold text-[#2e3192]"
+                  style={{ fontSize: fluid(24, 18) }}
+                  aria-current="page"
+                >
+                  Manufacturing
+                </span>
+              </li>
+            </ol>
+          </nav>
 
-        {/* Tag */}
-        <div>
-          <p className="font-['Poppins'] text-[16px] font-medium text-[#e38f2e] lg:text-[18px]">
-            Where Quality Begins
-          </p>
+          <div className="flex w-full flex-col" style={{ maxWidth: s(266), gap: fluid(10, 6) }}>
+            <p
+              className="font-['Poppins'] font-medium text-[#e38f2e]"
+              style={{ fontSize: fluid(24, 16) }}
+            >
+              Where Quality Begins
+            </p>
 
-          <img
-            src={imgUnderline}
-            alt=""
-            className="mt-1 w-[100px] lg:w-[125px]"
-          />
+            <img
+              src={imgUnderline}
+              alt=""
+              style={{ height: s(3), width: s(125) }}
+            />
+          </div>
         </div>
 
-        {/* Heading */}
-        <div className="max-w-[712px]">
-          <h1 className="font-['Playfair_Display'] text-[30px] font-bold leading-tight text-[#2e3192] sm:text-[38px] lg:text-[44px]">
+        <div className="flex flex-col" style={{ maxWidth: s(712), gap: fluid(10, 6) }}>
+          <h1
+            className="font-['Playfair_Display'] font-bold leading-tight text-[#2e3192]"
+            style={{ fontSize: fluid(54, 28) }}
+          >
             Our Manufacturing
           </h1>
 
-          <p className="mt-2 max-w-[560px] font-['Poppins'] text-[15px] font-medium text-[#70768a] lg:mt-2.5 lg:text-[18px]">
+          <p
+            className="font-['Poppins'] font-medium text-[#70768a]"
+            style={{ maxWidth: s(712), fontSize: fluid(20, 14) }}
+          >
             Discover our advanced manufacturing process built on quality,
             innovation, and trust every day.
           </p>

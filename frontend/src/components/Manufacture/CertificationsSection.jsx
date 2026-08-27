@@ -10,6 +10,7 @@ import {
   imgCertBadge3,
   imgCertBadge4,
 } from "../../assets/figmaAssets";
+import { contentMax, fluid, pagePadX, s } from "./figmaScale";
 
 const CERTS = [
   {
@@ -52,20 +53,37 @@ const CERTS = [
 const CertificationsSection = () => {
   return (
     <section
-      className="bg-white px-4 py-12 sm:px-8 sm:py-16 lg:px-8 lg:py-20 xl:px-16"
+      className="bg-white"
+      style={{
+        paddingLeft: pagePadX,
+        paddingRight: pagePadX,
+        paddingTop: fluid(100, 40),
+        paddingBottom: fluid(70, 32),
+      }}
       aria-labelledby="cert-heading"
     >
-      <div className="mx-auto flex max-w-[1280px] flex-col items-center gap-10 lg:gap-[50px]">
-        {/* Heading */}
-        <div className="flex max-w-[948px] flex-col items-center gap-3 px-2 text-center">
-          <p className="font-['Poppins'] text-[14px] font-semibold uppercase tracking-[2px] text-[#e38f2e] lg:text-[18px]">
+      <div
+        className="mx-auto flex w-full flex-col items-center"
+        style={{ maxWidth: contentMax, gap: fluid(50, 24) }}
+      >
+        <div
+          className="flex w-full flex-col items-center text-center"
+          style={{ maxWidth: s(948) }}
+        >
+          <p
+            className="font-['Poppins'] font-semibold uppercase text-[#e38f2e]"
+            style={{ fontSize: fluid(18, 13), letterSpacing: "0.12em" }}
+          >
             Our Certifications
           </p>
 
           <h2
             id="cert-heading"
-            className="font-['Playfair_Display'] text-[26px] font-bold capitalize text-[#2e3192] lg:text-[34px]"
-            style={{ fontVariationSettings: '"opsz" 12, "wdth" 100' }}
+            className="font-['Playfair_Display'] font-bold capitalize text-[#2e3192]"
+            style={{
+              fontSize: fluid(36, 22),
+              fontVariationSettings: '"opsz" 12, "wdth" 100',
+            }}
           >
             Built on Trust. Verified by Global Standards.
           </h2>
@@ -73,25 +91,35 @@ const CertificationsSection = () => {
           <img
             src={imgWaveDecor}
             alt=""
-            className="h-[20px] w-[140px] lg:h-[24px] lg:w-[172px]"
+            style={{ height: s(24), width: s(172) }}
           />
 
-          <p className="font-['Poppins'] text-[15px] font-medium text-[#666] lg:text-[18px]">
+          <p
+            className="font-['Poppins'] font-medium text-[#666]"
+            style={{ fontSize: fluid(20, 14) }}
+          >
             Quality is more than a promise—it's independently verified. Our
             internationally recognized certifications ensure the highest
             standards of safety, performance, and excellence.
           </p>
         </div>
 
-        {/* Certification Cards */}
-        <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-5">
+        <div
+          className="grid w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-5"
+          style={{ gap: fluid(40, 16) }}
+        >
           {CERTS.map((cert) => (
             <div
               key={cert.code}
-              className="flex flex-col items-center rounded-[10px] border border-[#d7dae4] bg-[#fcf9f2] py-5 shadow-[0px_20px_50px_-12px_rgba(0,0,0,0.05),0px_8px_24px_-6px_rgba(0,0,0,0.08)] transition-shadow hover:shadow-[0px_20px_50px_-8px_rgba(46,49,146,0.12)]"
+              className="flex w-full flex-col items-center border border-[#d7dae4] bg-[#fcf9f2] shadow-[0px_8px_24px_-6px_rgba(0,0,0,0.08),0px_20px_50px_-12px_rgba(0,0,0,0.05)] transition-shadow hover:shadow-[0px_20px_50px_-8px_rgba(46,49,146,0.12)]"
+              style={{
+                borderRadius: s(10),
+                paddingTop: s(20),
+                paddingBottom: s(20),
+                maxWidth: "100%",
+              }}
             >
-              {/* Certificate Logo */}
-              <div className="h-[110px] w-[110px] md:h-[100px] md:w-[100px] lg:h-[110px] lg:w-[110px] xl:h-[130px] xl:w-[130px]">
+              <div style={{ height: s(150), width: s(150) }}>
                 <img
                   src={cert.img}
                   alt={cert.code}
@@ -99,31 +127,46 @@ const CertificationsSection = () => {
                 />
               </div>
 
-              {/* Card Text */}
-              <div className="flex w-full flex-col items-center gap-4 px-3 pb-4 pt-3">
-                <div className="flex flex-col items-center gap-1 text-center">
-                  <p className="whitespace-nowrap font-['Poppins'] text-[15px] font-bold leading-[28px] text-[#2e3192] md:text-[13px] lg:text-[14px] xl:text-[17px]">
-                    {cert.code}
-                  </p>
-
-                  <p
-                    className="font-['Playfair_Display'] text-[16px] font-bold text-[#e38f2e] md:text-[14px] lg:text-[15px] xl:text-[18px]"
-                    style={{ fontVariationSettings: '"opsz" 12, "wdth" 100' }}
+              <div
+                className="flex w-full flex-col items-stretch"
+                style={{ gap: s(10), padding: s(10) }}
+              >
+                <div className="flex flex-col items-center" style={{ gap: s(20) }}>
+                  <div
+                    className="flex flex-col items-center text-center"
+                    style={{ gap: s(10) }}
                   >
-                    {cert.title}
-                  </p>
+                    <p
+                      className="font-['Poppins'] font-bold text-[#2e3192]"
+                      style={{ fontSize: fluid(18, 14), lineHeight: s(32) }}
+                    >
+                      {cert.code}
+                    </p>
 
-                  <p className="font-['Poppins'] text-[13px] leading-snug text-[#333] md:text-[11px] lg:text-[12px] xl:text-[15px]">
-                    {cert.desc}
-                  </p>
+                    <p
+                      className="font-['Playfair_Display'] font-bold text-[#e38f2e]"
+                      style={{
+                        fontSize: fluid(22, 15),
+                        fontVariationSettings: '"opsz" 12, "wdth" 100',
+                      }}
+                    >
+                      {cert.title}
+                    </p>
+
+                    <p
+                      className="font-['Poppins'] font-normal text-[#333]"
+                      style={{ fontSize: fluid(18, 13) }}
+                    >
+                      {cert.desc}
+                    </p>
+                  </div>
+
+                  <img
+                    src={cert.badgeIcon}
+                    alt=""
+                    style={{ height: s(40), width: s(40) }}
+                  />
                 </div>
-
-                {/* Badge */}
-                <img
-                  src={cert.badgeIcon}
-                  alt=""
-                  className="h-9 w-9 md:h-7 md:w-7 lg:h-8 lg:w-8 xl:h-10 xl:w-10"
-                />
               </div>
             </div>
           ))}
