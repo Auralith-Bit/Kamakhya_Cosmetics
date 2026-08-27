@@ -16,6 +16,8 @@ import RoyalLuxuryPage from "./pages/brands/RoyalLuxuryPage";
 import AboutPage from "./pages/AboutPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import ContactUs from "./pages/ContactUs";
+import Manufacturing from "./pages/Manufacturing";
+import ProductPage from "./pages/ProductPage";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -41,7 +43,6 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route element={<Layout />}>
-          ``
           <Route path="/" element={<HomePage />} />
           <Route path="/brands/shine" element={<ShinePage />} />
           <Route path="/products" element={<ProductPage />} />
@@ -51,7 +52,7 @@ function App() {
           <Route path="/distributor" element={<Distributor />} />
           <Route path="/bulk-quote" element={<BulkQuote />} />
           <Route path="/contact" element={<ContactUs />} />
-          <Route path="/manufacture" element={<Manufature />} />
+          <Route path="/manufacture" element={<Manufacturing />} />
           <Route path="*" element={<HomePage />} />
         </Route>
       </Routes>
