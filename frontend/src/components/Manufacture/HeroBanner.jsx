@@ -3,8 +3,7 @@ import {
   imgHomeIcon,
   imgChevron,
   imgUnderline,
-} from '../../assets/figmaAssets'
-import { Link } from 'react-router-dom'
+} from "../../assets/figmaAssets";
 
 export default function HeroBanner() {
   return (
@@ -25,7 +24,6 @@ export default function HeroBanner() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col gap-4 px-4 py-12 sm:px-8 lg:gap-5 lg:px-8 lg:py-20 xl:px-16">
-        
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb">
           <ol className="flex flex-wrap items-center gap-2">
@@ -37,9 +35,9 @@ export default function HeroBanner() {
               />
 
               <a
-                  href="/"
-                  className="font-['Playfair_Display'] text-[18px] font-bold text-[#2e3192] hover:underline lg:text-[22px]"
-                >
+                href="/"
+                className="font-['Playfair_Display'] text-[18px] font-bold text-[#2e3192] hover:underline lg:text-[22px]"
+              >
                 Home
               </a>
             </li>
@@ -87,8 +85,7 @@ export default function HeroBanner() {
             innovation, and trust every day.
           </p>
         </div>
-
       </div>
     </section>
-  )
+  );
 }

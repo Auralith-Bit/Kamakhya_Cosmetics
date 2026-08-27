@@ -6,7 +6,6 @@ import QualitySection from "../components/Manufacture/QualitySection";
 import StatsBar from "../components/StatsBar/StatsBar";
 import CertificationsSection from "../components/Manufacture/CertificationsSection";
 import CTABanner from "../components/Manufacture/CTABanner";
-import Footer from "../components/Footer/Footer";
 
 export default function Manufacturing() {
   return (
