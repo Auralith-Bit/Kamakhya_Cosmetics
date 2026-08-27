@@ -18,9 +18,9 @@ const BoxIcon = () => (
 );
 
 const PRODUCTS = [
-  { name: "Botanical Resurfacing Serum", meta: "30ml . 3 × 500 = 1,500 units", price: "NRs. 3,850.00" },
-  { name: "Botanical Resurfacing Serum", meta: "30ml . 3 × 500 = 1,500 units", price: "NRs. 3,850.00" },
-  { name: "Revitalizing Night Cream",    meta: "30ml . 2 × 750 = 1,500 units", price: "NRs. 4,200.00" },
+  { name: "Botanical Resurfacing Serum", meta: "30ml . 3 × 500 = 1,500 units", price: "NRs. 3,860.00" },
+  { name: "Botanical Resurfacing Serum", meta: "30ml . 3 × 500 = 1,500 units", price: "NRs. 3,860.00" },
+  { name: "Revitalizing Night Cream",    meta: "50ml . 2 × 750 = 1,500 units", price: "NRs. 4,200.00" },
   { name: "Hydrating Facial Mist",       meta: "100ml . 5 × 300 = 1,500 units", price: "NRs. 2,700.00" },
   { name: "Vitamin C Brightening Drops", meta: "15ml . 10 × 150 = 1,500 units", price: "NRs. 5,100.00" },
 ];
@@ -67,12 +67,10 @@ const OrderReview = () => (
         line-height: normal;
       }
 
-      /* ✅ line break forced after "enterprise" */
+      /* line break forced after "enterprise" */
       .or-banner p .or-line{display:block;}
       
       .or-status{display:flex;flex-direction:column;align-items:center;gap:0.7vw;flex-shrink:0;}
-
-      /* ✅ icon sized to the design (≈56px @1920) */
       .or-status svg{width:2.9vw;height:2.9vw;color:#CCA466;}
       
       .or-status span{
@@ -141,7 +139,14 @@ const OrderReview = () => (
       font-weight:600;
       }
 
-      .or-ship .or-name{margin-top:0.8vw;color:#2E3192;font-family:${sans};font-size:0.89vw;font-weight:500;}
+      .or-ship .or-name{
+      margin-top:0.8vw;
+      color:var(--Blue-500, #2E3192);
+      font-family:${sans};
+      font-size:0.89vw;
+      font-weight:500;
+      }
+      
       .or-ship p{
       margin-top:0.55vw;
       color:#444;
@@ -152,57 +157,170 @@ const OrderReview = () => (
 
       .or-ship hr{margin:0.9vw 0;border:none;border-top:1px solid #E3E6EF;}
 
-      .or-step{margin-top:1.2vw;display:flex;gap:0.9vw;background:#fff;
-        border:1px solid #E5E7EF;border-radius:0.4167vw;padding:1.15vw 1.2vw;}
-      .or-step.current{background:#F7F0E4;border-color:#F7F0E4;}
-      .or-step-num{width:1.875vw;height:1.875vw;border-radius:50%;flex-shrink:0;
-        display:grid;place-items:center;background:#E7E9F4;color:#666;
-        font-family:${sans};font-size:0.6771vw;font-weight:600;}
-      .or-step.current .or-step-num{background:#C08A2E;color:#fff;}
-      
-      .or-step-tag{
-      color:#999;
-      font-family:${sans};
-      font-size:0.6771vw;
+      /* ---- step cards ---- */
+      .or-step{
+        margin-top:1.3vw;
+        display:flex;
+        align-items:flex-start;
+        gap:1vw;
+        background:#FBFCFE;
+        border:1px solid #E5E7EF;
+        border-radius:0.5208vw;
+        padding:1.35vw 1.5vw;
       }
-      
-      .or-step.current .or-step-tag{color:#C08A2E;}
-      .or-step h5{margin-top:0.3vw;color:#2E3192;font-family:${serif};
-        font-size:0.9375vw;font-weight:700;line-height:1.3;}
-      .or-step-rule{display:block;width:1.5625vw;height:2px;background:#CCA466;margin:0.55vw 0 0.6vw;}
-      .or-step p{color:#666;font-family:${sans};font-size:0.7292vw;line-height:1.65;}
+      .or-step.current{
+        background:#F6F1E7;
+        border-color:#EDE6D8;
+      }
+      .or-step-num{
+        width:1.875vw;height:1.875vw;border-radius:50%;flex-shrink:0;
+        display:grid;place-items:center;background:#E4E4F0;color:#000;
+        font-family:${sans};font-size:0.89vw;font-weight:0;
+      }
+      /* ✅ number 01 changed to black */
+      .or-step.current .or-step-num{background:#B98A3E;color:#000;}
+      .or-step-tag{
+        color:#B08A4F;
+        font-family:${sans};
+        font-size:0.83vw;
+        font-weight:400;
+      }
+      .or-step.current .or-step-tag{color:#B08A4F;}
+      .or-step h5{
+        margin-top:0.35vw;
+        color:#2E3192;
+        font-family:${serif};
+        font-size:1.05vw;
+        font-weight:700;
+        line-height:1.3;
+        letter-spacing:0.03em;
+      }
+      .or-step-rule{
+        display:block;
+        width:2.2917vw;
+        height:2px;
+        background:#C9A05C;
+        margin:0.6vw 0 0.7vw;
+      }
+      .or-step p{
+      color: #666;
+      font-family: Poppins;
+      font-size: 0.89vw;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      }
 
-      /* ---- right column ---- */
-      .or-products{background:#FBFCFE;border:1px solid #E5E7EF;border-radius:0.4167vw;
-        padding:1.4vw 1.5vw;}
-      .or-products-head{display:flex;align-items:center;justify-content:space-between;
-        padding-bottom:1vw;border-bottom:1px solid #E5E7EF;}
-      .or-products-head h4{color:#333;font-family:${sans};font-size:0.8854vw;font-weight:600;}
-      .or-products-head svg{width:1.1458vw;height:1.1458vw;color:#CCA466;}
-      .or-item{margin-top:1.05vw;}
-      .or-item-row{display:flex;align-items:baseline;justify-content:space-between;gap:1vw;}
-      .or-item-row .n{color:#2E3192;font-family:${sans};font-size:0.8333vw;font-weight:500;}
-      .or-item-row .p{color:#2E3192;font-family:${sans};font-size:0.8333vw;font-weight:500;white-space:nowrap;}
-      .or-item .m{margin-top:0.3vw;color:#888;font-family:${sans};font-size:0.6771vw;}
+      /* ============ RIGHT COLUMN ============ */
+      .or-products{
+        background:#FAFBFD;
+        border:1px solid #E5E7EF;
+        border-radius:0.5208vw;
+        padding:2vw 1.6vw 1.8vw;
+      }
+      .or-products-head{
+        display:flex;align-items:center;justify-content:space-between;
+        padding-bottom:1.3vw;
+        border-bottom:1px solid #DDE1EA;
+      }
+      .or-products-head h4{
+        color:#222;
+        font-family:${sans};
+        font-size:1.15vw;
+        font-weight:500;
+        margin:0;
+      }
+      .or-products-head svg{width:1.45vw;height:1.45vw;color:#CCA466;}
 
-      .or-sum{margin-top:1.3vw;padding-top:1vw;border-top:1px solid #E5E7EF;}
-      .or-sum-row{display:flex;justify-content:space-between;margin-top:0.55vw;
-        color:#555;font-family:${sans};font-size:0.7813vw;}
-      .or-total{margin-top:1vw;padding-top:1vw;border-top:1px solid #E5E7EF;
-        display:flex;align-items:baseline;justify-content:space-between;}
-      .or-total .t{color:#2E3192;font-family:${serif};font-size:1.0417vw;font-weight:700;}
-      .or-total .v{color:#2E3192;font-family:${serif};font-size:1.0417vw;font-weight:700;}
-      .or-total-note{margin-top:0.5vw;color:#999;font-family:${sans};font-size:0.6771vw;}
+      .or-products-head + .or-item{margin-top:2.2vw;}
+      .or-item{margin-top:1.7vw;}
+      .or-item-row{
+        display:flex;
+        align-items:baseline;
+        justify-content:space-between;
+        gap:1vw;
+      }
+      .or-item-row .n{
+        color:#2E3192;
+        font-family:${sans};
+        font-size:1vw;
+        font-weight:500;
+      }
+      .or-item-row .p{
+        color:#2E3192;
+        font-family:${sans};
+        font-size:0.9vw;
+        font-weight:500;
+        white-space:nowrap;
+      }
+      .or-item .m{
+        margin-top:0.45vw;
+        color:#777;
+        font-family:${sans};
+        font-size:0.8854vw;
+      }
+
+      .or-sum{
+        margin-top:2.4vw;
+        padding-top:1.2vw;
+        border-top:1px solid #DDE1EA;
+      }
+      .or-sum-row{
+        display:flex;justify-content:space-between;
+        margin-top:0.9vw;
+        color:#333;
+        font-family:${sans};
+        font-size:0.89vw;
+      }
+      .or-sum-row span:last-child{
+        font-family:${serif};
+        color:#444;
+        font-weight:600;
+        letter-spacing:0.02em;
+      }
+
+      .or-total{
+        margin-top:1.2vw;
+        padding-top:1.2vw;
+        border-top:1px solid #DDE1EA;
+        display:flex;align-items:baseline;justify-content:space-between;
+      }
+      .or-total .t{
+        color:#2E3192;font-family:${serif};
+        font-size:1.3vw;font-weight:700;letter-spacing:0.02em;
+      }
+      .or-total .v{
+        color:#2E3192;font-family:${serif};
+        font-size:1.3vw;font-weight:700;letter-spacing:0.02em;
+      }
+      .or-total-note{
+        margin-top:0.7vw;
+        color:#888;
+        font-family:${sans};
+        font-size:0.8854vw;
+      }
 
       .or-actions{margin-top:1.7vw;display:flex;gap:0.9vw;justify-content:center;}
-      .or-btn1{background:#2E3192;border:none;color:#fff;border-radius:0.3125vw;
-        padding:0.85vw 1.9vw;font-family:${sans};font-size:0.7813vw;font-weight:500;
-        cursor:pointer;transition:background .2s;}
-      .or-btn1:hover{background:#252775;}
-      .or-btn2{background:transparent;border:1px solid #CCA466;color:#2E3192;
-        border-radius:0.3125vw;padding:0.85vw 1.6vw;font-family:${sans};
-        font-size:0.7813vw;font-weight:500;cursor:pointer;transition:background .2s;}
-      .or-btn2:hover{background:rgba(204,164,102,0.12);}
+      
+      .or-btn1{
+      background:#2E3192;
+      border:none;
+      color:#fff;
+      border-radius:0.3125vw;
+      padding:0.85vw 1.9vw;
+      font-family:${sans};
+      font-size:0.83vw;
+      font-weight:500;
+      cursor:pointer;
+      transition:background .2s;
+      }
+      
+      .or-btn2{
+      background:var(--Orange-50, #FCFAF7);border:2px solid #CCA466;color:#2E3192;
+      border-radius:0.3125vw;padding:0.85vw 1.6vw;font-family:${sans};
+      font-size:0.83vw;
+      font-weight:500;cursor:pointer;transition:background .2s;}
+      
 
       /* ============ MOBILE+TABLET ≤1023 ============ */
       @media (max-width:1023px){
@@ -217,25 +335,30 @@ const OrderReview = () => (
         .or-status span{font-size:clamp(12px, 1.5vw, 16px);}
 
         .or-body{grid-template-columns:1fr;padding:6vw 5vw;gap:7vw;}
+        .or-label{font-size:clamp(13px, 1.6vw, 18px);}
         .or-ref{font-size:clamp(20px, 3vw, 30px);}
         .or-date,.or-note{font-size:clamp(11px, 1.4vw, 15px);}
         .or-note{max-width:none;}
         .or-ship h4{font-size:clamp(12px, 1.5vw, 16px);}
         .or-ship p,.or-ship .or-name{font-size:clamp(11px, 1.4vw, 15px);}
-        .or-step-num{width:clamp(26px, 4vw, 38px);height:clamp(26px, 4vw, 38px);font-size:clamp(10px, 1.3vw, 14px);}
-        .or-step-tag{font-size:clamp(10px, 1.3vw, 14px);}
-        .or-step h5{font-size:clamp(14px, 1.9vw, 20px);}
-        .or-step p{font-size:clamp(11px, 1.4vw, 15px);}
-        .or-step-rule{width:clamp(24px, 3vw, 40px);}
+
+        .or-step{padding:4vw 4vw;gap:3vw;margin-top:4vw;}
+        .or-step-num{width:clamp(28px, 4.5vw, 40px);height:clamp(28px, 4.5vw, 40px);font-size:clamp(11px, 1.4vw, 15px);}
+        .or-step-tag{font-size:clamp(11px, 1.4vw, 15px);}
+        .or-step h5{font-size:clamp(15px, 2.1vw, 22px);}
+        .or-step p{font-size:clamp(12px, 1.5vw, 16px);}
+        .or-step-rule{width:clamp(34px, 4vw, 46px);}
 
         .or-products{padding:5vw 4vw;}
-        .or-products-head h4{font-size:clamp(13px, 1.7vw, 18px);}
-        .or-products-head svg{width:clamp(18px, 2.4vw, 26px);height:clamp(18px, 2.4vw, 26px);}
-        .or-item-row .n,.or-item-row .p{font-size:clamp(12px, 1.5vw, 16px);}
-        .or-item .m{font-size:clamp(10px, 1.3vw, 14px);}
-        .or-sum-row{font-size:clamp(11px, 1.4vw, 15px);}
-        .or-total .t,.or-total .v{font-size:clamp(16px, 2.2vw, 24px);}
-        .or-total-note{font-size:clamp(10px, 1.3vw, 14px);}
+        .or-products-head h4{font-size:clamp(15px, 1.9vw, 22px);}
+        .or-products-head svg{width:clamp(20px, 2.6vw, 28px);height:clamp(20px, 2.6vw, 28px);}
+        .or-products-head + .or-item{margin-top:5vw;}
+        .or-item{margin-top:4vw;}
+        .or-item-row .n,.or-item-row .p{font-size:clamp(13px, 1.6vw, 19px);}
+        .or-item .m{font-size:clamp(11px, 1.4vw, 17px);}
+        .or-sum-row{font-size:clamp(12px, 1.5vw, 18px);}
+        .or-total .t,.or-total .v{font-size:clamp(18px, 2.4vw, 26px);}
+        .or-total-note{font-size:clamp(11px, 1.4vw, 17px);}
         .or-actions{flex-direction:column;}
         .or-btn1,.or-btn2{font-size:clamp(12px, 1.5vw, 16px);padding:3vw 5vw;}
       }
