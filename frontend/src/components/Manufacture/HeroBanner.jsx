@@ -6,11 +6,22 @@ import {
 import { ChevronRight } from "lucide-react";
 import { contentMax, fluid, pagePadX, s } from "./figmaScale";
 
+/* ═══════════════════════════════════════════════════════════
+   ✏️ EDIT HERE — hero text horizontal position
+   👉 negative = move text LEFT, positive = move RIGHT
+   -55 = aligned with the page margin (red line / facility image edge)
+═══════════════════════════════════════════════════════════ */
+const HERO_SHIFT = 8;
+
 export default function HeroBanner() {
   return (
     <section
       className="relative overflow-hidden"
-      style={{ minHeight: fluid(450, 220), paddingLeft: pagePadX, paddingRight: pagePadX }}
+      style={{
+        minHeight: fluid(450, 220),
+        paddingLeft: pagePadX,
+        paddingRight: pagePadX,
+      }}
       aria-label="Hero banner"
     >
       <img
@@ -35,11 +46,18 @@ export default function HeroBanner() {
           gap: fluid(20, 12),
           paddingTop: fluid(97, 40),
           paddingBottom: fluid(97, 40),
+          marginLeft: s(HERO_SHIFT), // ✅ editable shift (was centered)
         }}
       >
-        <div className="flex w-full flex-col" style={{ maxWidth: s(372), gap: fluid(20, 12) }}>
+        <div
+          className="flex w-full flex-col"
+          style={{ maxWidth: s(372), gap: fluid(20, 12) }}
+        >
           <nav aria-label="Breadcrumb">
-            <ol className="flex flex-wrap items-center" style={{ gap: fluid(10, 8) }}>
+            <ol
+              className="flex flex-wrap items-center"
+              style={{ gap: fluid(10, 8) }}
+            >
               <li className="flex items-center" style={{ gap: s(8) }}>
                 <img
                   src={imgHomeIcon}
@@ -76,7 +94,10 @@ export default function HeroBanner() {
             </ol>
           </nav>
 
-          <div className="flex w-full flex-col" style={{ maxWidth: s(266), gap: fluid(10, 6) }}>
+          <div
+            className="flex w-full flex-col"
+            style={{ maxWidth: s(266), gap: fluid(10, 6) }}
+          >
             <p
               className="font-['Poppins'] font-medium text-[#e38f2e]"
               style={{ fontSize: fluid(24, 16) }}
@@ -92,7 +113,10 @@ export default function HeroBanner() {
           </div>
         </div>
 
-        <div className="flex flex-col" style={{ maxWidth: s(712), gap: fluid(10, 6) }}>
+        <div
+          className="flex flex-col"
+          style={{ maxWidth: s(712), gap: fluid(10, 6) }}
+        >
           <h1
             className="font-['Playfair_Display'] font-bold leading-tight text-[#2e3192]"
             style={{ fontSize: fluid(54, 28) }}
