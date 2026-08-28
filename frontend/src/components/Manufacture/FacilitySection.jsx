@@ -149,7 +149,7 @@ const FacilitySection = () => {
           {/* Feature icons row */}
           {/* Feature icons row */}
           <div
-            className="grid w-full grid-cols-2 gap-6 items-start lg:flex lg:justify-between lg:-ml-10"
+            className="grid w-full grid-cols-2 gap-6 items-start lg:flex lg:justify-between lg:-ml-9.5"
             style={{ gap: fluid(12, 8) }}
           >
             {FEATURES.map((feature) => (
