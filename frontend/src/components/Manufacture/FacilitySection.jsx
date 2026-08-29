@@ -125,7 +125,7 @@ const FacilitySection = () => {
 
             {/* --- PARAGRAPHS --- */}
             <div
-              className="flex w-full flex-col font-poppins font-light text-left lg:text-justify text-[#333]" // 👈 Left aligned on mobile (prevents ugly gaps), justified on desktop
+              className="flex w-full flex-col font-poppins font-normal text-left lg:text-justify text-[#1c1b1b]" // 👈 Left aligned on mobile (prevents ugly gaps), justified on desktop
               style={{
                 gap: fluid(20, 12),
                 fontSize: fluid(16, 14),
@@ -149,14 +149,18 @@ const FacilitySection = () => {
           {/* Feature icons row */}
           {/* Feature icons row */}
           <div
-            className="grid w-full grid-cols-2 gap-6 items-start lg:flex lg:justify-between lg:-ml-9"
-            style={{ gap: fluid(12, 8) }}
+            className="grid grid-cols-2 lg:grid-cols-4"
+            style={{
+              gap: fluid(12, 8),
+              width: "calc(100% + 24px)", // 12px extra on each side
+              marginLeft: "-9px",
+            }}
           >
             {FEATURES.map((feature) => (
               <div
                 key={feature.label}
-                className="flex min-w-0 flex-col items-center lg:flex-1" // 👈 flex-1 only applies on desktop
-                style={{ maxWidth: "100%", gap: fluid(19, 10) }}
+                className="flex min-w-0 flex-col items-center"
+                style={{ gap: fluid(19, 10) }}
               >
                 <div
                   className="flex shrink-0 items-center justify-center rounded-full border-[#e38f2e]"
@@ -171,7 +175,7 @@ const FacilitySection = () => {
 
                 <p
                   className="whitespace-pre-line text-center font-['Poppins'] font-medium leading-snug text-[#333]"
-                  style={{ fontSize: fluid(18, 12) }} // 👈 Slightly smaller on mobile so text fits
+                  style={{ fontSize: fluid(18, 12) }}
                 >
                   {feature.label}
                 </p>

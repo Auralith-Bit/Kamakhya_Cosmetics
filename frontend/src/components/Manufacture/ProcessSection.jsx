@@ -23,17 +23,15 @@ const CANVAS = { w: 1580, h: 1116 }; // timeline design box
 const DEBUG = false; // set true to see red ✕ anchors while adjusting
 
 // ── SECTION HORIZONTAL POSITION ──
-// 👉 move whole container LEFT:  decrease left / increase right
-// 👉 move whole container RIGHT: increase left / decrease right
 const SECTION_PAD = {
   left: 0,
   right: 150,
 };
 // ── THE CURVY LINE placement ──
 const WAVE = {
-  left: -70, // 👈 line left/right
-  width: 1820, // 👈 line total width
-  top: 200, // 👈 line up/down
+  left: -70,
+  width: 1820,
+  top: 200,
 };
 
 // ── LINE CLIP: line is cut exactly at card-01 left / card-05 right ──
@@ -58,7 +56,7 @@ const SIZE = {
   cardPadX: 18,
   cardPadY: 20,
   descLineHeight: 1.6,
-  desktopTopSpace: 110, // gap between heading & timeline (desktop only)
+  desktopTopSpace: 110,
 };
 
 /* ⭐ TO PUT AN ICON ON THE LINE: change its x / y below. */
@@ -70,8 +68,8 @@ const STEPS = [
       "We source finest natural and premium ingredients from trusted suppliers.",
     image: imgImage37,
     icon: iconPlant,
-    x: 189,
-    y: 625, // ✅ on the line
+    x: 186,
+    y: 625,
     align: "bottom",
     numberSide: "left",
   },
@@ -150,7 +148,7 @@ const NumberBadge = ({ step }) => (
   </div>
 );
 
-const ProcessCard = ({ step }) => (
+const ProcessCard = ({ step, isDesktop = false }) => (
   <article
     className="relative w-full overflow-visible border border-[#eee9df] bg-white shadow-[0px_8px_24px_-6px_rgba(0,0,0,0.08),0px_20px_50px_-12px_rgba(0,0,0,0.05)]"
     style={{ borderRadius: s(SIZE.cardRadius) }}
@@ -158,10 +156,17 @@ const ProcessCard = ({ step }) => (
     <NumberBadge step={step} />
     <div
       className="overflow-hidden"
-      style={{
-        height: s(SIZE.cardImageH),
-        borderRadius: `${s(SIZE.cardRadius)} ${s(SIZE.cardRadius)} 0 0`,
-      }}
+      style={
+        isDesktop
+          ? {
+              height: s(SIZE.cardImageH),
+              borderRadius: `${s(SIZE.cardRadius)} ${s(SIZE.cardRadius)} 0 0`,
+            }
+          : {
+              aspectRatio: "4/3", // ✅ Responsive image height for Mobile/Tablet
+              borderRadius: `${s(SIZE.cardRadius)} ${s(SIZE.cardRadius)} 0 0`,
+            }
+      }
     >
       <img
         src={step.image}
@@ -173,7 +178,9 @@ const ProcessCard = ({ step }) => (
       className="flex flex-col items-center text-center"
       style={{
         gap: s(SIZE.cardTextGap),
-        padding: `${s(SIZE.cardPadY)} ${s(SIZE.cardPadX)}`,
+        padding: isDesktop
+          ? `${s(SIZE.cardPadY)} ${s(SIZE.cardPadX)}`
+          : `${s(16)} ${s(16)}`,
       }}
     >
       <h3
@@ -232,7 +239,7 @@ const ProcessColumn = ({ step }) => (
   <div className="flex w-full flex-col items-center">
     {step.align === "top" ? (
       <>
-        <ProcessCard step={step} />
+        <ProcessCard step={step} isDesktop={true} />
         <Dot />
         <Connector />
         <IconCircle step={step} />
@@ -242,7 +249,7 @@ const ProcessColumn = ({ step }) => (
         <IconCircle step={step} />
         <Connector />
         <Dot />
-        <ProcessCard step={step} />
+        <ProcessCard step={step} isDesktop={true} />
       </>
     )}
   </div>
@@ -255,7 +262,7 @@ const ProcessSection = () => {
     <section
       className="bg-[#FCF9F2]"
       style={{
-        paddingLeft: s(SECTION_PAD.left), // ✅ editable left/right position
+        paddingLeft: s(SECTION_PAD.left),
         paddingRight: s(SECTION_PAD.right),
         paddingTop: fluid(70, 32),
         paddingBottom: fluid(100, 40),
@@ -302,7 +309,7 @@ const ProcessSection = () => {
           </p>
         </div>
 
-        {/* ── Desktop timeline (xl+) ── */}
+        {/* ── Desktop timeline (xl+) - UNTOUCHED ── */}
         <div
           className="relative hidden w-full xl:block"
           style={{ marginTop: s(SIZE.desktopTopSpace) }}
@@ -311,10 +318,6 @@ const ProcessSection = () => {
             className="relative mx-auto w-full"
             style={{ height: `${timelineH}px`, maxWidth: contentMax }}
           >
-            {/* ── processBAR.png —
-                 ✅ clip box is now vertically HUGE (top -1000 / height 4000)
-                 so the line's soft shadow is NEVER cut off top/bottom.
-                 Only left/right is clipped (at card 01 / card 05 margins). ── */}
             <div
               className="pointer-events-none absolute overflow-hidden"
               style={{
@@ -329,7 +332,7 @@ const ProcessSection = () => {
                 style={{
                   left: `${((WAVE.left - LINE_CLIP.left) / LINE_CLIP.width) * 100}%`,
                   width: `${(WAVE.width / LINE_CLIP.width) * 100}%`,
-                  top: WAVE.top * SCALE + 1000, // ✅ +1000 compensates the tall clip box
+                  top: WAVE.top * SCALE + 1000,
                 }}
               >
                 <img
@@ -341,7 +344,6 @@ const ProcessSection = () => {
               </div>
             </div>
 
-            {/* ── DEBUG anchors ── */}
             {DEBUG &&
               STEPS.map((st) => (
                 <div
@@ -356,7 +358,6 @@ const ProcessSection = () => {
                 </div>
               ))}
 
-            {/* ── Steps ── */}
             {STEPS.map((step) => (
               <div
                 key={step.step}
@@ -381,50 +382,49 @@ const ProcessSection = () => {
           </div>
         </div>
 
-        {/* ── Tablet (sm–xl) ── */}
+        {/* ── Tablet (md–xl) - RESPONSIVE UPDATE ── */}
         <div
-          className="hidden w-full grid-cols-2 sm:grid xl:hidden"
-          style={{ gap: fluid(40, 20) }}
+          className="hidden w-full grid-cols-1 md:grid-cols-2 xl:hidden"
+          style={{ gap: fluid(40, 24) }}
         >
           {STEPS.map((step) => (
             <div
               key={step.step}
               className={
                 step.step === "05"
-                  ? "col-span-2 mx-auto w-full"
-                  : "mx-auto w-full"
+                  ? "md:col-span-2 flex justify-center"
+                  : "flex justify-center"
               }
-              style={{ maxWidth: s(SIZE.cardWidth) }}
             >
+              <div className="w-full max-w-sm">
+                <div className="flex flex-col items-center">
+                  <IconCircle step={step} />
+                  <div
+                    className="w-0 border-[#e38f2e]"
+                    style={{ height: s(24), borderLeftWidth: s(3) }}
+                  />
+                  <ProcessCard step={step} isDesktop={false} />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* ── Mobile (< md) - RESPONSIVE UPDATE ── */}
+        <div
+          className="flex w-full flex-col items-center md:hidden"
+          style={{ gap: fluid(40, 24) }}
+        >
+          {STEPS.map((step) => (
+            <div key={step.step} className="w-full max-w-sm mx-auto">
               <div className="flex flex-col items-center">
                 <IconCircle step={step} />
                 <div
                   className="w-0 border-[#e38f2e]"
                   style={{ height: s(24), borderLeftWidth: s(3) }}
                 />
-                <ProcessCard step={step} />
+                <ProcessCard step={step} isDesktop={false} />
               </div>
-            </div>
-          ))}
-        </div>
-
-        {/* ── Mobile ── */}
-        <div
-          className="flex w-full flex-col items-center sm:hidden"
-          style={{ gap: fluid(40, 20) }}
-        >
-          {STEPS.map((step) => (
-            <div
-              key={step.step}
-              className="flex w-full flex-col items-center"
-              style={{ maxWidth: s(SIZE.cardWidth) }}
-            >
-              <IconCircle step={step} />
-              <div
-                className="w-0 border-[#e38f2e]"
-                style={{ height: s(24), borderLeftWidth: s(3) }}
-              />
-              <ProcessCard step={step} />
             </div>
           ))}
         </div>

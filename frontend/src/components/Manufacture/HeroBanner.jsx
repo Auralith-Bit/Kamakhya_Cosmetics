@@ -74,10 +74,11 @@ export default function HeroBanner() {
                 </a>
               </li>
 
-              <li>
+              <li className="flex items-center">
                 <ChevronRight
-                  className="text-[#252775] opacity-80"
-                  style={{ height: s(18), width: s(11) }}
+                  className="text-[#252775]"
+                  strokeWidth={3.5} // ✅ BOLD chevron (default is 2, higher = thicker)
+                  style={{ height: s(20), width: s(20) }}
                   aria-hidden="true"
                 />
               </li>
