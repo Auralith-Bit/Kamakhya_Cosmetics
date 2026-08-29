@@ -80,8 +80,8 @@ const STEPS = [
       "Our expert team blends science and nature to create safe, effective beauty formulas.",
     image: imgImage38,
     icon: iconLab,
-    x: 465,
-    y: 585,
+    x: 510,
+    y: 560,
     align: "top",
     numberSide: "right",
   },
@@ -258,6 +258,12 @@ const ProcessColumn = ({ step }) => (
 const ProcessSection = () => {
   const timelineH = CANVAS.h * SCALE;
 
+  // ✅ MOBILE-ONLY FIX: read the section's right padding so we can cancel it
+  // out on small screens (without touching desktop at all).
+  const padRightRaw = s(SECTION_PAD.right);
+  const PAD_RIGHT =
+    typeof padRightRaw === "number" ? `${padRightRaw}px` : String(padRightRaw);
+
   return (
     <section
       className="bg-[#FCF9F2]"
@@ -266,16 +272,29 @@ const ProcessSection = () => {
         paddingRight: s(SECTION_PAD.right),
         paddingTop: fluid(70, 32),
         paddingBottom: fluid(100, 40),
+        // ✅ exposes the padding value to the mobile-only media query below
+        "--process-pad-right": PAD_RIGHT,
       }}
       aria-labelledby="process-heading"
     >
+      {/* ✅ MOBILE-ONLY recentering. This media query runs BELOW 768px only,
+          so desktop (and tablet) rendering stays 100% identical. */}
+      <style>{`
+        @media (max-width: 767.98px) {
+          .process-mobile-center {
+            width: calc(100% + var(--process-pad-right)) !important;
+            margin-right: calc(-1 * var(--process-pad-right)) !important;
+          }
+        }
+      `}</style>
+
       <div
         className="mx-auto flex w-full flex-col items-center"
         style={{ maxWidth: contentMax, gap: fluid(50, 24) }}
       >
         {/* ── Heading ── */}
         <div
-          className="flex w-full flex-col items-center text-center"
+          className="process-mobile-center flex w-full flex-col items-center text-center"
           style={{ maxWidth: s(948) }}
         >
           <p
@@ -382,7 +401,7 @@ const ProcessSection = () => {
           </div>
         </div>
 
-        {/* ── Tablet (md–xl) - RESPONSIVE UPDATE ── */}
+        {/* ── Tablet (md–xl) - UNTOUCHED ── */}
         <div
           className="hidden w-full grid-cols-1 md:grid-cols-2 xl:hidden"
           style={{ gap: fluid(40, 24) }}
@@ -410,9 +429,9 @@ const ProcessSection = () => {
           ))}
         </div>
 
-        {/* ── Mobile (< md) - RESPONSIVE UPDATE ── */}
+        {/* ── Mobile (< md) - RECENTERED ✅ ── */}
         <div
-          className="flex w-full flex-col items-center md:hidden"
+          className="process-mobile-center flex w-full flex-col items-center md:hidden"
           style={{ gap: fluid(40, 24) }}
         >
           {STEPS.map((step) => (
