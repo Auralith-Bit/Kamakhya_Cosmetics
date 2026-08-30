@@ -16,7 +16,7 @@ const Chev = () => (
 const CartHeader = () => {
   return (
     <section className="w-full h-[200px] bg-[#F7F0E7] flex flex-col justify-center items-center gap-[10px] px-5 max-sm:h-auto max-sm:py-10">
-      <nav className="flex items-center gap-2 font-body text-[14px] font-semibold text-hero-orange" aria-label="Breadcrumb">
+      <nav className="flex items-center gap-2 font-body text-[17px] font-semibold text-hero-orange" aria-label="Breadcrumb">
         <HomeIcon />
         <Link to="/" className="text-hero-orange no-underline transition-colors duration-200 hover:text-brand-blue">
           HOME
