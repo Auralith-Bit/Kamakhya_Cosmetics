@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import vector1 from "../../../assets/Vector (1).svg";
 import img1 from "../../../assets/Rectangle 4647.svg";
 import img2 from "../../../assets/Rectangle 4648.svg";
@@ -176,7 +177,6 @@ const ProductSpotlight = () => {
 
         .psx-right{width:32.4479vw;padding:2.0833vw 0 2.0833vw 3.6458vw;}
 
-        /* ✅ details block re-mounts per product → fades/slides like the video */
         .psx-dyn{animation:psx-fade .5s ease;}
         @keyframes psx-fade{from{opacity:0;transform:translateX(1.0417vw);}to{opacity:1;transform:none;}}
 
@@ -200,17 +200,20 @@ const ProductSpotlight = () => {
         .psx-stats strong{font-family:${serif};font-size:1.217vw;font-style:normal;
           font-weight:550;color:#121212;}
         .psx-stats i{width:0.0521vw;height:2.6042vw;background:#D7DAE4;}
+
+        /* ✅ CTA buttons are now <Link> anchors */
         .psx-cta{margin-top:1vw;width:21.8125vw;height:3vw;background:#2E3192;color:#fff;
           border:none;border-radius:0.4167vw;display:flex;align-items:center;
           justify-content:center;gap:0.5208vw;font-family:${sans};font-size:0.92vw;
-          font-weight:500;cursor:pointer;transition:background .2s;}
+          font-weight:500;cursor:pointer;transition:background .2s;
+          text-decoration:none;}
         .psx-cta svg{width:1.1vw !important;height:1.1vw !important;}
         .psx-cta:hover{background:#1d2170;}
         .psx-cta2{margin-top:0.8333vw;width:21.8125vw;height:3vw;background:transparent;
           border:0.1463vw solid #252775;color:#2E3192;border-radius:0.4167vw;display:flex;
           align-items:center;justify-content:center;gap:0.5208vw;font-family:${sans};
           font-size:0.92vw;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;
-          cursor:pointer;}
+          cursor:pointer;text-decoration:none;}
         .psx-cta2 svg{width:1.25vw !important;height:0.8333vw !important;}
         .psx-cta2:hover{background:#eef0fa;}
 
@@ -351,7 +354,6 @@ const ProductSpotlight = () => {
 
           {/* right details */}
           <div className="psx-right">
-            {/* ✅ keyed wrapper → notes/name/desc re-animate on every switch, like the video */}
             <div className="psx-dyn" key={p.num}>
               <p className="psx-kicker">Signature {p.num}</p>
               <div className="psx-rule" />
@@ -380,8 +382,11 @@ const ProductSpotlight = () => {
               </div>
             </div>
 
-            <button className="psx-cta"><Plus /> Become Distributor</button>
-            <button className="psx-cta2">Request Bulk Quote <Arrow /></button>
+            {/* ✅ Become Distributor → /distributor */}
+            <Link to="/distributor" className="psx-cta"><Plus /> Become Distributor</Link>
+
+            {/* ✅ Request Bulk Quote → /bulk-quote */}
+            <Link to="/bulk-quote" className="psx-cta2">Request Bulk Quote <Arrow /></Link>
           </div>
         </div>
 

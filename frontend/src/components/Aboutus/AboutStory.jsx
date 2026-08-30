@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import warehouseImage from '../../assets/work.png';
 
 const AboutStory = () => {
@@ -49,17 +50,17 @@ const AboutStory = () => {
             </p>
           </div>
 
-          {/* CTA Button */}
+          {/* CTA Button — now routes to /about */}
           <div className="flex items-center mt-[10px]">
-            <a
-              href="#story-details"
+            <Link
+              to="/about"
               className="inline-flex items-center justify-center gap-2 w-[200px] h-[48px] bg-brand-blue border-[3px] border-navy-700 rounded-[7px] text-white font-body text-[12px] font-bold tracking-[1px] no-underline uppercase cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:bg-navy-700 hover:border-navy-800 hover:shadow-[0_6px_20px_rgba(46,49,146,0.3)] active:translate-y-0"
             >
               READ THE STORY
               <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M9 18l6-6-6-6" />
               </svg>
-            </a>
+            </Link>
           </div>
 
         </div>

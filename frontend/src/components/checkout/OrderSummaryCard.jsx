@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';   // ✅ added
 import CartItem from './CartItem';
 import productImg from '../../assets/liner.png';
 
@@ -20,6 +21,8 @@ const DEMO_ITEMS = [
 ];
 
 const OrderSummaryCard = () => {
+  const navigate = useNavigate();   // ✅ added
+
   const subtotal = 16720;
   const tax = 2173.60;
   const shipping = 500;
@@ -67,8 +70,10 @@ const OrderSummaryCard = () => {
         </div>
 
         <div className="mt-6">
+          {/* ✅ Submit Request → /order-review */}
           <button
             type="button"
+            onClick={() => navigate('/order-review')}
             className="w-full h-[55px] flex items-center justify-center gap-[10px] bg-[#2E3192] !text-white font-semibold text-[15px] rounded-[7px] border-none cursor-pointer transition-all hover:bg-[#252775] active:scale-[0.98]"
           >
             <LockIcon />

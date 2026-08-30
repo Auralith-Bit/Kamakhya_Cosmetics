@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import catImg from "../../../assets/Group 60.svg";
 import vector1 from "../../../assets/Vector (1).svg";
 
@@ -54,10 +55,12 @@ const ProductCategories = () => {
         .pc-vector{position:absolute;top:7.4167vw;left:50%;transform:translateX(-50%);
           width:9.25vw;height:auto;}
 
+        /* ✅ cards are now <Link> anchors */
         .pc-card{position:absolute;top:14.2708vw;width:15.1042vw;height:20.0521vw;
           background:#fff;border-radius:0.5208vw;overflow:hidden;
           box-shadow:0 0.4167vw 0.625vw rgba(0,0,0,0.08), 0 1.0417vw 1.3021vw rgba(0,0,0,0.05);
-          animation:pc-in .45s ease;}
+          animation:pc-in .45s ease;
+          display:block;text-decoration:none;cursor:pointer;}
         @keyframes pc-in{from{opacity:0;transform:translateX(1.5vw);}to{opacity:1;transform:none;}}
         .pc-c1{left:8.8542vw;}
         .pc-c2{left:25.651vw;}
@@ -100,7 +103,6 @@ const ProductCategories = () => {
           .pc-sec{height:auto;display:grid;grid-template-columns:1fr auto 1fr;
             column-gap:3vw;row-gap:5vw;padding:8vw 6vw;}
 
-          /* header: flex column so visual order = tag → title → VECTOR → text (as designed) */
           .pc-head{position:static;grid-column:1/-1;grid-row:1;
             display:flex;flex-direction:column;align-items:center;text-align:center;}
           .pc-tag{position:static;order:1;font-size:clamp(12px, 1.4vw, 18px);}
@@ -111,7 +113,6 @@ const ProductCategories = () => {
             line-height:1.6;margin-top:2vw;max-width:92%;}
           .pc-sub br{display:none;}
 
-          /* single queued card */
           .pc-card{position:relative;top:0;left:0;grid-column:1/-1;grid-row:2;
             justify-self:center;width:min(55vw, 480px);height:auto;}
           .pc-c1{left:0;}
@@ -125,7 +126,6 @@ const ProductCategories = () => {
             width:clamp(40px, 5vw, 54px);height:clamp(40px, 5vw, 54px);}
           .pc-arrow svg{width:clamp(14px, 2vw, 22px);height:auto;}
 
-          /* controls: arrows HUG the dots (centered cluster, like the design) */
           .pc-nav{position:static;width:clamp(40px, 6vw, 72px);height:clamp(40px, 6vw, 72px);}
           .pc-nav svg{width:clamp(9px, 1.3vw, 16px);height:auto;}
           .pc-nav.prev{grid-column:1;grid-row:3;justify-self:end;}
@@ -147,13 +147,14 @@ const ProductCategories = () => {
         <img className="pc-vector" src={vector1} alt="" aria-hidden="true" />
       </div>
 
+      {/* ✅ each card is a Link → /products */}
       {items.map((c, i) => (
-        <div className={`pc-card ${SLOTS[i]}`} key={c.name}>
+        <Link to="/products" className={`pc-card ${SLOTS[i]}`} key={c.name}>
           {c.img && <img className="pc-img" src={c.img} alt={`Shine ${c.name}`} />}
           <p className="pc-name">{c.name}</p>
           <p className="pc-count">{c.count}</p>
           <span className="pc-arrow"><Arrow /></span>
-        </div>
+        </Link>
       ))}
 
       <button className="pc-nav prev" aria-label="Previous" onClick={prev}><ChevL /></button>

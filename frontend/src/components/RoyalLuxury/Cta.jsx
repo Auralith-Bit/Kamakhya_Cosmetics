@@ -1,5 +1,5 @@
-import { ArrowRight } from "lucide-react"
-import {Link} from "react-router"
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";   // ✅ was 'react-router'
 
 const Cta = () => {
     return (
@@ -12,17 +12,25 @@ const Cta = () => {
                 </div>
 
                 <div className='flex flex-col gap-4 sm:flex-row lg:flex-col'>
-                    <Link to="/cta" className='bg-[#CCA466] inline-flex items-center justify-center gap-2 px-5 py-2 rounded-sm'>Request Quote <ArrowRight className="w-4 h-4" /></Link>
+                    {/* ✅ Request Quote → /bulk-quote */}
                     <Link
-                        to="/categories"
-                        className='px-5 py-2 text-white border rounded-sm border-white'>
+                        to="/bulk-quote"
+                        className='no-underline bg-[#CCA466] inline-flex items-center justify-center gap-2 px-5 py-2 rounded-sm text-white'
+                    >
+                        Request Quote <ArrowRight className="w-4 h-4" />
+                    </Link>
+
+                    {/* ✅ Explore Collections → /products */}
+                    <Link
+                        to="/products"
+                        className='no-underline px-5 py-2 text-white border rounded-sm border-white'
+                    >
                         Explore Collections
                     </Link>
                 </div>
             </div>
         </section>
+    );
+};
 
-    )
-}
-
-export default Cta
+export default Cta;

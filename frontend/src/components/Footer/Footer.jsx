@@ -71,8 +71,7 @@ const FOOTER_LINKS = {
     { label: "Skincare", to: "/products" },
     { label: "Makeup", to: "/products" },
     { label: "Home care", to: "/products" },
-    /* ❌ Saved Products — no routing per your instruction */
-    { label: "Saved Products", to: null },
+    { label: "Saved Products", to: "/wishlist" },   // ✅ routes to /wishlist
   ],
 };
 
@@ -143,19 +142,12 @@ const Footer = () => {
                   <ul className="m-0 p-0 list-none flex flex-col gap-3">
                     {FOOTER_LINKS[heading].map((link, index) => (
                       <li key={index}>
-                        {link.to ? (
-                          <Link
-                            to={link.to}
-                            className="text-fog no-underline text-sm transition-colors hover:text-footer-gold"
-                          >
-                            <LinkLabel label={link.label} />
-                          </Link>
-                        ) : (
-                          /* Saved Products — plain text, no navigation */
-                          <span className="text-fog text-sm cursor-default">
-                            <LinkLabel label={link.label} />
-                          </span>
-                        )}
+                        <Link
+                          to={link.to}
+                          className="text-fog no-underline text-sm transition-colors hover:text-footer-gold"
+                        >
+                          <LinkLabel label={link.label} />
+                        </Link>
                       </li>
                     ))}
                   </ul>

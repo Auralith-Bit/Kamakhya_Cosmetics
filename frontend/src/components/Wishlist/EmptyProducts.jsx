@@ -1,5 +1,5 @@
 import { Heart, ArrowRight } from 'lucide-react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'   // ✅ was 'react-router'
 
 const EmptyProducts = () => {
     return (
@@ -21,7 +21,7 @@ const EmptyProducts = () => {
 
                     <Link
                         to="/products"
-                        className="inline-flex items-center justify-center gap-2 bg-[#2E3192] hover:bg-[#1d1f5c] text-white font-poppins text-sm font-semibold rounded-lg px-6 py-3 transition-colors"
+                        className="no-underline inline-flex items-center justify-center gap-2 bg-[#2E3192] hover:bg-[#1d1f5c] text-white font-poppins text-sm font-semibold rounded-lg px-6 py-3 transition-colors"
                     >
                         Browse Products
                         <ArrowRight className="w-4 h-4" />

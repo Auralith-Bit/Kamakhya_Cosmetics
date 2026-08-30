@@ -1,5 +1,6 @@
 import photo from "../../../assets/Group 3658.svg";
 import play from "../../../assets/Button.svg";
+import { Link } from "react-router-dom";
 
 const serif = "'Playfair Display', Georgia, serif";
 const sans = "'Poppins', 'Segoe UI', sans-serif";
@@ -115,7 +116,7 @@ const BrandPhilosophy = () => (
 
       .bp-card{
         position:relative;
-        width:12.5vw;                 /* ✅ slightly reduced again */
+        width:12.5vw;
         height:14.65vw;
         background:#FBFBFD;
         border:0.0521vw solid #ECECF2;
@@ -124,10 +125,9 @@ const BrandPhilosophy = () => (
         display:flex;flex-direction:column;align-items:center;text-align:center;
         padding:1.8vw 1.35vw;
         overflow:hidden;
-        transition:box-shadow .3s ease, border-color .3s ease;   /* ✅ no movement */
+        transition:box-shadow .3s ease, border-color .3s ease;
       }
 
-      /* ✅ hover: shadow-only effect */
       .bp-card:hover{
         border-color:#D8DBE6;
         box-shadow:0 1.0417vw 2.0833vw rgba(43,46,126,0.16);
@@ -156,7 +156,7 @@ const BrandPhilosophy = () => (
         margin-top:0.7vw;
       }
 
-      /* buttons — all vw */
+      /* buttons — all vw (now <Link> anchors) */
       .bp-btn{
         position:absolute;
         left:8.8542vw;
@@ -173,6 +173,7 @@ const BrandPhilosophy = () => (
         cursor:pointer;
         transition:background .2s;
         display:flex;align-items:center;justify-content:center;gap:0.5208vw;
+        text-decoration:none;   /* ✅ anchors: no underline */
       }
 
       .bp-btn:hover{background:#0f5217;}
@@ -212,7 +213,7 @@ const BrandPhilosophy = () => (
         .bp-cards{position:static;left:auto;top:auto;flex-direction:column;
           align-items:center;gap:4vw;grid-column:1;grid-row:2;margin-top:6vw;}
         .bp-card{width:70%;max-width:380px;height:auto;padding:4.5vw 3.5vw;border-radius:2.5vw;}
-        .bp-card:hover{box-shadow:0 12px 24px rgba(43,46,126,0.14);}   /* shadow only */
+        .bp-card:hover{box-shadow:0 12px 24px rgba(43,46,126,0.14);}
         .bp-cico{width:clamp(44px, 10vw, 58px);height:clamp(44px, 10vw, 58px);}
         .bp-cico svg{width:clamp(20px, 5vw, 27px);height:clamp(20px, 5vw, 27px);}
         .bp-ctitle{font-size:clamp(15px, 2vw, 20px);margin-top:2.5vw;}
@@ -281,21 +282,23 @@ const BrandPhilosophy = () => (
       ))}
     </div>
 
-    <button className="bp-btn">
+    {/* ✅ EXPLORE OUR COLLECTION → /products */}
+    <Link to="/products" className="bp-btn">
       EXPLORE OUR COLLECTION
       <svg viewBox="0 0 9 14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
         <path d="m1.5 1.5 6 5.5-6 5.5" />
       </svg>
-    </button>
+    </Link>
 
-    <button className="bp-btn bp-btn2">
+    {/* ✅ Download Catalog → /products */}
+    <Link to="/products" className="bp-btn bp-btn2">
       Download Catalog
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
         <polyline points="7 10 12 15 17 10" />
         <line x1="12" y1="15" x2="12" y2="3" />
       </svg>
-    </button>
+    </Link>
   </section>
 );
 

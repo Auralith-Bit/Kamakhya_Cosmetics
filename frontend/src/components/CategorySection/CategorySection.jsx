@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import imgBodyCare1 from '../../assets/sunscreen.png';
 import imgKitchenCare from '../../assets/cleaner.png';
 import imgGlassCleaner from '../../assets/shampoo.png';
@@ -44,6 +45,7 @@ const CursiveUnderline = () => (
 );
 
 const CategorySection = () => {
+  const navigate = useNavigate();
   const scrollRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [pageCount, setPageCount] = useState(1);
@@ -135,6 +137,7 @@ const CategorySection = () => {
           <div key={i} className="cat-item" style={{ flexShrink: 0, scrollSnapAlign: 'start' }}>
             <div
               className="cat-card"
+              onClick={() => navigate('/products')}
               style={{
                 background: '#fff', borderRadius: '16px', padding: '16px',
                 boxShadow: '0 2px 16px rgba(0,0,0,0.06)', cursor: 'pointer',

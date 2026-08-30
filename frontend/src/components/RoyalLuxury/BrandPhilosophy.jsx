@@ -1,7 +1,7 @@
 import React from 'react'
 import LuxVideo from '../../assets/LuxVideo.svg'
 import { Crown, Gem, Heart, Download, ChevronRight } from 'lucide-react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'   // ✅ was 'react-router'
 
 const CornerAccent = ({ className }) => (
     <svg viewBox="0 0 40 40" className={className} preserveAspectRatio="none">
@@ -56,7 +56,7 @@ const BrandPhilosophy = () => {
                             >
                                 {/* corner accents */}
                                 <CornerAccent className='absolute top-0 left-0 w-10 h-10 sm:w-8 sm:h-8' />
-                                <CornerAccent className='absolute bottom-0 right-0 w-1- h-10 sm:w-8 sm:h-8 rotate-180' />
+                                <CornerAccent className='absolute bottom-0 right-0 w-10 h-10 sm:w-8 sm:h-8 rotate-180' />
 
                                 <div className='w-10 h-10 sm:w-11 sm:h-11 rounded-full border-2 border-orange-400 flex items-center justify-center shrink-0'>
                                     <Icon className='w-5 h-5 text-[#E38F2E]' />
@@ -71,15 +71,22 @@ const BrandPhilosophy = () => {
                     </div>
                     {/* buttons  */}
                     <div className='mt-8 sm:mt-12 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-start gap-4 sm:gap-6 lg:gap-10'>
-                        <Link className='bg-[#252775] px-6 sm:px-8 py-2.5 rounded-lg text-white font-poppins text-[13px] sm:text-[14px] flex items-center justify-center gap-3 whitespace-nowrap transition-colors hover:bg-[#1d1f5c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#252775] focus-visible:ring-offset-2'>
+                        {/* ✅ EXPLORE routes to /products */}
+                        <Link
+                            to="/products"
+                            className='bg-[#252775] px-6 sm:px-8 py-2.5 rounded-lg text-white font-poppins text-[13px] sm:text-[14px] flex items-center justify-center gap-3 whitespace-nowrap transition-colors hover:bg-[#1d1f5c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#252775] focus-visible:ring-offset-2 no-underline'
+                        >
                             EXPLORE OUR COLLECTIONS
                             <ChevronRight className="w-4 h-4" aria-hidden="true" />
-
                         </Link>
-                        <Link className='bg-[#FCFAF7] border-2 px-6 sm:px-8 py-2.5 rounded-lg text-[#E38F2E] font-poppins text-[13px] sm:text-[14px] flex items-center justify-center gap-3 whitespace-nowrap transition-colors hover:bg-orange-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E38F2E] focus-visible:ring-offset-2'>
+
+                        {/* ✅ DOWNLOAD CATALOG routes to /products (Trade catalogue) */}
+                        <Link
+                            to="/products"
+                            className='bg-[#FCFAF7] border-2 px-6 sm:px-8 py-2.5 rounded-lg text-[#E38F2E] font-poppins text-[13px] sm:text-[14px] flex items-center justify-center gap-3 whitespace-nowrap transition-colors hover:bg-orange-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E38F2E] focus-visible:ring-offset-2 no-underline'
+                        >
                             DOWNLOAD CATALOG
                             <Download className="w-4 h-4" aria-hidden="true" />
-
                         </Link>
                     </div>
                 </div>
@@ -91,11 +98,8 @@ const BrandPhilosophy = () => {
                         playsInline
                         className='w-full max-w-xs sm:max-w-sm lg:max-w-sm aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto lg:h-full rounded-xl object-cover shadow-md'
                         src={LuxVideo}>
-
                     </video>
                 </div>
-
-
             </div>
         </section>
     )

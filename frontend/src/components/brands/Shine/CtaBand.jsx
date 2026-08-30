@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const serif = "'Playfair Display', Georgia, serif";
 const sans = "'Poppins', 'Segoe UI', sans-serif";
@@ -70,7 +71,7 @@ const CtaBand = () => (
       line-height:1.4583vw;
       }
 
-      /* ---- gold button 230x50 @ (1260,125) ---- */
+      /* ---- gold button 230x50 @ (1260,125) — now a <Link> ---- */
       .cb-gold{
       position:absolute;
       left:65.625vw;
@@ -80,7 +81,7 @@ const CtaBand = () => (
       background:#CCA466;
       border:none;
       border-radius:0.3646vw;
-      color:var(--Blue-950, #151642);;
+      color:var(--Blue-950, #151642);
       display:flex;
       align-items:center;
       justify-content:center;
@@ -92,12 +93,13 @@ const CtaBand = () => (
       letter-spacing: 0.05em;
       cursor:pointer;
       transition:background .2s;
+      text-decoration:none;
       }
       
       .cb-gold:hover{background:#b8905a;}
       .cb-gold svg{width:0.9375vw;height:0.625vw;}
 
-      /* ---- outline button @ (1537,125) ---- */
+      /* ---- outline button @ (1537,125) — now a <Link> ---- */
       .cb-line{
       position:absolute;
       left:80.0521vw;
@@ -117,6 +119,7 @@ const CtaBand = () => (
       letter-spacing: 0.03em;
       cursor:pointer;
       transition:background .2s;
+      text-decoration:none;
       }
 
       
@@ -158,8 +161,11 @@ const CtaBand = () => (
     <h2 className="cb-title">{DATA.title[0]}<br />{DATA.title[1]}</h2>
     <p className="cb-body">{DATA.body[0]}<br />{DATA.body[1]}</p>
 
-    <button className="cb-gold">{DATA.btnGold} <Arrow /></button>
-    <button className="cb-line">{DATA.btnOutline}</button>
+    {/* ✅ Request Quote → /bulk-quote */}
+    <Link to="/bulk-quote" className="cb-gold">{DATA.btnGold} <Arrow /></Link>
+
+    {/* ✅ Explore Collections → /products */}
+    <Link to="/products" className="cb-line">{DATA.btnOutline}</Link>
   </section>
 );
 
