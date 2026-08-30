@@ -19,6 +19,9 @@ import ContactUs from "./pages/ContactUs";
 import Manufacture from "./pages/Manufacturing";
 import ProductPage from "./pages/ProductPage";
 import OrderReview from "./pages/OrderReview";
+import ProductDetails from "./pages/ProductDetailed";
+import Wishlist from "./pages/Wishlist";
+import { WishlistProvider } from "./context/WishlistContext";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -40,25 +43,29 @@ const Layout = () => (
 
 function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/brands/shine" element={<ShinePage />} />
-          <Route path="/products" element={<ProductPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/brands/royal-luxury" element={<RoyalLuxuryPage />} />
-          <Route path="/distributor" element={<Distributor />} />
-          <Route path="/bulk-quote" element={<BulkQuote />} />
-          <Route path="/contact" element={<ContactUs />} />
-          <Route path="/manufacture" element={<Manufacture />} />
-          <Route path="/order-review" element={<OrderReview />} />
-          <Route path="*" element={<HomePage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <WishlistProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/brands/shine" element={<ShinePage />} />
+            <Route path="/products" element={<ProductPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/brands/royal-luxury" element={<RoyalLuxuryPage />} />
+            <Route path="/products/:id" element={<ProductDetails />} />
+            <Route path="/distributor" element={<Distributor />} />
+            <Route path="/bulk-quote" element={<BulkQuote />} />
+            <Route path="/contact" element={<ContactUs />} />
+            <Route path="/manufacture" element={<Manufacture />} />
+            <Route path="/order-review" element={<OrderReview />} />
+            <Route path="/wishlist" element={<Wishlist />} />
+            <Route path="*" element={<HomePage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </WishlistProvider>
   );
 }
 
