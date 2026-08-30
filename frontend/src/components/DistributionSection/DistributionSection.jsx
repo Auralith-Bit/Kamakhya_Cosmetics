@@ -180,7 +180,7 @@ const DistributionSection = () => {
               letterSpacing: '0.5px',
               transition: 'background 0.2s, color 0.2s',
             }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#2E3192'; e.currentTarget.style.color = '#fff'; }}
+            onMouseEnter={e => { e.currentTarget.style.background = '#ffffff'; e.currentTarget.style.color = '#2E3192'; }}
             onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#2E3192'; }}
           >
             REQUEST BULK QUOTE

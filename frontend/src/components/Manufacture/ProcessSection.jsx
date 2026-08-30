@@ -1,18 +1,65 @@
+import processBar from "../../assets/manufactureAssets/processBAR.png";
 import {
   imgImage37,
   imgImage38,
   imgImage40,
   imgImage39,
   imgImage41,
-  imgIconProcess1,
-  imgIconProcess2,
-  imgIconProcess3,
-  imgIconProcess4,
-  imgIconProcess5,
   imgWaveDecor,
-
 } from "../../assets/figmaAssets";
+import iconPlant from "../../assets/manufactureAssets/Vector.svg";
+import iconLab from "../../assets/manufactureAssets/lab.svg";
+import iconSetting from "../../assets/manufactureAssets/setting.svg";
+import iconBox from "../../assets/manufactureAssets/Box.svg";
+import iconTruck from "../../assets/manufactureAssets/truck.svg";
+import { contentMax, fluid, pagePadX, s, SCALE } from "./figmaScale";
 
+/* ═══════════════════════════════════════════════════════════
+   ✏️ EDIT EVERYTHING HERE
+═══════════════════════════════════════════════════════════ */
+
+const CANVAS = { w: 1580, h: 1116 }; // timeline design box
+
+const DEBUG = false; // set true to see red ✕ anchors while adjusting
+
+// ── SECTION HORIZONTAL POSITION ──
+const SECTION_PAD = {
+  left: 0,
+  right: 150,
+};
+// ── THE CURVY LINE placement ──
+const WAVE = {
+  left: -70,
+  width: 1820,
+  top: 200,
+};
+
+// ── LINE CLIP: line is cut exactly at card-01 left / card-05 right ──
+const LINE_CLIP = {
+  left: 27,
+  width: 2000,
+};
+
+const SIZE = {
+  cardWidth: 325,
+  cardRadius: 20,
+  cardImageH: 233,
+  badge: 40,
+  badgeBorder: 4,
+  circle: 80,
+  circleBorder: 8,
+  circleIcon: 35,
+  connectorH: 57,
+  connectorW: 3,
+  dot: 12,
+  cardTextGap: 10,
+  cardPadX: 18,
+  cardPadY: 20,
+  descLineHeight: 1.6,
+  desktopTopSpace: 110,
+};
+
+/* ⭐ TO PUT AN ICON ON THE LINE: change its x / y below. */
 const STEPS = [
   {
     step: "01",
@@ -20,8 +67,11 @@ const STEPS = [
     description:
       "We source finest natural and premium ingredients from trusted suppliers.",
     image: imgImage37,
-    icon: imgIconProcess2,
-    lower: false,
+    icon: iconPlant,
+    x: 186,
+    y: 625,
+    align: "bottom",
+    numberSide: "left",
   },
   {
     step: "02",
@@ -29,8 +79,11 @@ const STEPS = [
     description:
       "Our expert team blends science and nature to create safe, effective beauty formulas.",
     image: imgImage38,
-    icon: imgIconProcess3,
-    lower: true,
+    icon: iconLab,
+    x: 510,
+    y: 560,
+    align: "top",
+    numberSide: "right",
   },
   {
     step: "03",
@@ -38,8 +91,11 @@ const STEPS = [
     description:
       "Using advanced technology, we manufacture every product with precision and hygiene.",
     image: imgImage40,
-    icon: imgIconProcess1,
-    lower: false,
+    icon: iconSetting,
+    x: 850,
+    y: 475,
+    align: "bottom",
+    numberSide: "left",
   },
   {
     step: "04",
@@ -47,8 +103,11 @@ const STEPS = [
     description:
       "Every batch undergoes rigorous testing to ensure safety, purity, and quality.",
     image: imgImage39,
-    icon: imgIconProcess4,
-    lower: true,
+    icon: iconBox,
+    x: 1150,
+    y: 470,
+    align: "top",
+    numberSide: "right",
   },
   {
     step: "05",
@@ -56,220 +115,335 @@ const STEPS = [
     description:
       "Products are carefully packaged, sealed, and delivered with quality standards.",
     image: imgImage41,
-    icon: imgIconProcess5,
-    lower: false,
+    icon: iconTruck,
+    x: 1553,
+    y: 215,
+    align: "bottom",
+    numberSide: "left",
   },
 ];
 
-const WAVE_HEIGHT = 560;
-const ICON_SIZE = 52;
-const TOP_POSITION = 26;
-const BOTTOM_POSITION = TOP_POSITION + 220;
+/* ═══════════════════════════════════════════════════════════
+   Components
+═══════════════════════════════════════════════════════════ */
 
-const POSITIONS = [
-  { x: 100, y: TOP_POSITION },
-  { x: 300, y: BOTTOM_POSITION },
-  { x: 500, y: TOP_POSITION },
-  { x: 700, y: BOTTOM_POSITION },
-  { x: 900, y: TOP_POSITION },
-];
-
-const Wave = () => {
-  let path = `M ${POSITIONS[0].x} ${POSITIONS[0].y}`;
-
-  for (let i = 0; i < POSITIONS.length - 1; i++) {
-    const current = POSITIONS[i];
-    const next = POSITIONS[i + 1];
-    const middleX = (current.x + next.x) / 2;
-
-    path += ` C ${middleX} ${current.y}, ${middleX} ${next.y}, ${next.x} ${next.y}`;
-  }
-
-  return (
-    <svg
-      viewBox={`0 0 1000 ${WAVE_HEIGHT}`}
-      preserveAspectRatio="none"
-      className="pointer-events-none absolute inset-0 h-full w-full"
-      fill="none"
-      aria-hidden="true"
+const NumberBadge = ({ step }) => (
+  <div
+    className="absolute z-10 flex items-center justify-center rounded-full border-[#fcf9f2] bg-[#2e3192]"
+    style={{
+      top: s(-20),
+      height: s(SIZE.badge),
+      width: s(SIZE.badge),
+      borderWidth: s(SIZE.badgeBorder),
+      [step.numberSide === "right" ? "right" : "left"]:
+        step.numberSide === "right" ? s(23) : s(37),
+    }}
+  >
+    <span
+      className="font-['Poppins'] font-bold text-[#f2e8d9]"
+      style={{ fontSize: fluid(16, 11) }}
     >
-      <path d={path} stroke="#CCA466" strokeWidth="2" strokeLinecap="round" />
+      {step.step}
+    </span>
+  </div>
+);
 
-      {POSITIONS.map((position, index) => (
-        <circle
-          key={index}
-          cx={position.x}
-          cy={position.y}
-          r="5"
-          fill="#CCA466"
-        />
-      ))}
-    </svg>
-  );
-};
-
-const Underline = () => {
-  return (
-    <svg
-      width="160"
-      height="22"
-      viewBox="0 0 160 22"
-      fill="none"
-      aria-hidden="true"
+const ProcessCard = ({ step, isDesktop = false }) => (
+  <article
+    className="relative w-full overflow-visible border border-[#eee9df] bg-white shadow-[0px_8px_24px_-6px_rgba(0,0,0,0.08),0px_20px_50px_-12px_rgba(0,0,0,0.05)]"
+    style={{ borderRadius: s(SIZE.cardRadius) }}
+  >
+    <NumberBadge step={step} />
+    <div
+      className="overflow-hidden"
+      style={
+        isDesktop
+          ? {
+              height: s(SIZE.cardImageH),
+              borderRadius: `${s(SIZE.cardRadius)} ${s(SIZE.cardRadius)} 0 0`,
+            }
+          : {
+              aspectRatio: "4/3", // ✅ Responsive image height for Mobile/Tablet
+              borderRadius: `${s(SIZE.cardRadius)} ${s(SIZE.cardRadius)} 0 0`,
+            }
+      }
     >
-      <path
-        d="M 8 14 C 30 4, 50 20, 80 11 S 130 4, 152 14"
-        stroke="#CCA466"
-        strokeWidth="2.2"
-        strokeLinecap="round"
+      <img
+        src={step.image}
+        alt={step.title}
+        className="h-full w-full object-cover"
       />
-    </svg>
-  );
-};
+    </div>
+    <div
+      className="flex flex-col items-center text-center"
+      style={{
+        gap: s(SIZE.cardTextGap),
+        padding: isDesktop
+          ? `${s(SIZE.cardPadY)} ${s(SIZE.cardPadX)}`
+          : `${s(16)} ${s(16)}`,
+      }}
+    >
+      <h3
+        className="font-['Playfair_Display'] font-bold leading-snug text-[#2e3192]"
+        style={{
+          fontSize: fluid(24, 16),
+          fontVariationSettings: '"opsz" 12, "wdth" 100',
+        }}
+      >
+        {step.title}
+      </h3>
+      <p
+        className="font-['Poppins'] font-normal text-[#121212]"
+        style={{ fontSize: fluid(18, 13), lineHeight: SIZE.descLineHeight }}
+      >
+        {step.description}
+      </p>
+    </div>
+  </article>
+);
 
-const ProcessCard = ({ step }) => {
-  return (
-    <article className="relative w-full overflow-visible rounded-[16px] border border-[#d7dae4] bg-white shadow-[0px_8px_24px_-6px_rgba(0,0,0,0.1)]">
-      {/* Step Number */}
-      <div className="absolute -top-[14px] left-7 z-10 flex h-8 w-8 items-center justify-center rounded-full border-[3px] border-[#fcf9f2] bg-[#2e3192]">
-        <span className="font-['Poppins'] text-[11px] font-bold text-[#f2e8d9]">
-          {step.step}
-        </span>
-      </div>
+const IconCircle = ({ step }) => (
+  <div
+    className="relative z-10 flex shrink-0 items-center justify-center rounded-full border-[#f2e8d9] bg-[#2e3192]"
+    style={{
+      height: s(SIZE.circle),
+      width: s(SIZE.circle),
+      borderWidth: s(SIZE.circleBorder),
+    }}
+  >
+    <img
+      src={step.icon}
+      alt=""
+      style={{ height: s(SIZE.circleIcon), width: s(SIZE.circleIcon) }}
+    />
+  </div>
+);
 
-      {/* Image */}
-      <div className="h-[155px] overflow-hidden rounded-t-[16px]">
-        <img
-          src={step.image}
-          alt={step.title}
-          className="h-full w-full object-cover"
-        />
-      </div>
+const Connector = () => (
+  <div
+    className="w-0 border-[#e38f2e]"
+    style={{ height: s(SIZE.connectorH), borderLeftWidth: s(SIZE.connectorW) }}
+    aria-hidden="true"
+  />
+);
 
-      {/* Content */}
-      <div className="flex flex-col gap-1 p-3 text-center">
-        <h3
-          className="font-['Playfair_Display'] text-[14px] font-bold leading-snug text-[#2e3192]"
-          style={{ fontVariationSettings: '"opsz" 12, "wdth" 100' }}
-        >
-          {step.title}
-        </h3>
+const Dot = () => (
+  <div
+    className="shrink-0 rounded-full bg-[#e38f2e]"
+    style={{ width: s(SIZE.dot), height: s(SIZE.dot) }}
+    aria-hidden="true"
+  />
+);
 
-        <p className="font-['Poppins'] text-[12px] leading-relaxed text-[#444]">
-          {step.description}
-        </p>
-      </div>
-    </article>
-  );
-};
+const ProcessColumn = ({ step }) => (
+  <div className="flex w-full flex-col items-center">
+    {step.align === "top" ? (
+      <>
+        <ProcessCard step={step} isDesktop={true} />
+        <Dot />
+        <Connector />
+        <IconCircle step={step} />
+      </>
+    ) : (
+      <>
+        <IconCircle step={step} />
+        <Connector />
+        <Dot />
+        <ProcessCard step={step} isDesktop={true} />
+      </>
+    )}
+  </div>
+);
 
 const ProcessSection = () => {
+  const timelineH = CANVAS.h * SCALE;
+
+  // ✅ MOBILE-ONLY FIX: read the section's right padding so we can cancel it
+  // out on small screens (without touching desktop at all).
+  const padRightRaw = s(SECTION_PAD.right);
+  const PAD_RIGHT =
+    typeof padRightRaw === "number" ? `${padRightRaw}px` : String(padRightRaw);
+
   return (
     <section
-      className="bg-[#fcf9f2] px-4 py-12 sm:px-8 sm:py-16 lg:px-8 lg:py-20 xl:px-16"
+      className="bg-[#FCF9F2]"
+      style={{
+        paddingLeft: s(SECTION_PAD.left),
+        paddingRight: s(SECTION_PAD.right),
+        paddingTop: fluid(70, 32),
+        paddingBottom: fluid(100, 40),
+        // ✅ exposes the padding value to the mobile-only media query below
+        "--process-pad-right": PAD_RIGHT,
+      }}
       aria-labelledby="process-heading"
     >
-      <div className="mx-auto flex max-w-[1280px] flex-col items-center gap-10">
-        {/* Section Heading */}
-        <div className="flex max-w-[700px] flex-col items-center gap-2 text-center">
-          <p className="font-['Poppins'] text-[14px] font-semibold uppercase tracking-[2px] text-[#e38f2e] lg:text-[18px]">
+      {/* ✅ MOBILE-ONLY recentering. This media query runs BELOW 768px only,
+          so desktop (and tablet) rendering stays 100% identical. */}
+      <style>{`
+        @media (max-width: 767.98px) {
+          .process-mobile-center {
+            width: calc(100% + var(--process-pad-right)) !important;
+            margin-right: calc(-1 * var(--process-pad-right)) !important;
+          }
+        }
+      `}</style>
+
+      <div
+        className="mx-auto flex w-full flex-col items-center"
+        style={{ maxWidth: contentMax, gap: fluid(50, 24) }}
+      >
+        {/* ── Heading ── */}
+        <div
+          className="process-mobile-center flex w-full flex-col items-center text-center"
+          style={{ maxWidth: s(948) }}
+        >
+          <p
+            className="font-['Poppins'] font-semibold uppercase text-[#e38f2e]"
+            style={{ fontSize: fluid(18, 13), letterSpacing: "0.12em" }}
+          >
             Why Our Manufacturing
           </p>
-
           <h2
             id="process-heading"
-            className="font-['Playfair_Display'] text-[26px] font-bold capitalize leading-tight text-[#2e3192] lg:text-[34px]"
-            style={{ fontVariationSettings: '"opsz" 12, "wdth" 100' }}
+            className="font-['Playfair_Display'] font-bold capitalize leading-tight text-[#2e3192]"
+            style={{
+              fontSize: fluid(36, 24),
+              fontVariationSettings: '"opsz" 12, "wdth" 100',
+            }}
           >
             Where Quality Meets Precision
           </h2>
-
           <img
             src={imgWaveDecor}
             alt=""
-            className="h-[20px] w-[140px] lg:h-[24px] lg:w-[172px]"
+            style={{ height: s(24), width: s(172) }}
           />
-
-          <p className="font-['Poppins'] text-[15px] font-medium leading-relaxed text-[#555] lg:text-[18px]">
+          <p
+            className="font-['Poppins'] font-medium text-[#666]"
+            style={{ maxWidth: s(943), fontSize: fluid(20, 14) }}
+          >
             From premium ingredients to advanced production and rigorous quality
             checks, every step of our manufacturing process ensures safe,
             consistent, and high-quality products.
           </p>
         </div>
 
-        {/* Desktop */}
-        <div className="hidden w-full lg:block">
+        {/* ── Desktop timeline (xl+) - UNTOUCHED ── */}
+        <div
+          className="relative hidden w-full xl:block"
+          style={{ marginTop: s(SIZE.desktopTopSpace) }}
+        >
           <div
-            className="relative w-full"
-            style={{ height: `${WAVE_HEIGHT}px` }}
+            className="relative mx-auto w-full"
+            style={{ height: `${timelineH}px`, maxWidth: contentMax }}
           >
-            <Wave />
-
-            <div className="absolute inset-0 flex items-start justify-between">
-              {STEPS.map((step, index) => {
-                const position = POSITIONS[index];
-                const iconTop = position.y - ICON_SIZE / 2;
-                const cardTop = iconTop + ICON_SIZE + 8;
-
-                return (
-                  <div key={step.step} className="relative mx-1 h-full flex-1">
-                    {/* Icon */}
-                    <div
-                      className="absolute left-1/2 z-10 flex -translate-x-1/2 items-center justify-center rounded-full border-4 border-[#fcf9f2] bg-[#2e3192]"
-                      style={{
-                        top: `${iconTop}px`,
-                        width: `${ICON_SIZE}px`,
-                        height: `${ICON_SIZE}px`,
-                      }}
-                    >
-                      <img src={step.icon} alt="" className="h-7 w-7" />
-                    </div>
-
-                    {/* Card */}
-                    <div
-                      className="absolute left-0 right-0"
-                      style={{ top: `${cardTop}px` }}
-                    >
-                      <ProcessCard step={step} />
-                    </div>
-                  </div>
-                );
-              })}
+            <div
+              className="pointer-events-none absolute overflow-hidden"
+              style={{
+                left: `${(LINE_CLIP.left / CANVAS.w) * 100}%`,
+                width: `${(LINE_CLIP.width / CANVAS.w) * 100}%`,
+                top: -1000,
+                height: 4000,
+              }}
+            >
+              <div
+                className="absolute"
+                style={{
+                  left: `${((WAVE.left - LINE_CLIP.left) / LINE_CLIP.width) * 100}%`,
+                  width: `${(WAVE.width / LINE_CLIP.width) * 100}%`,
+                  top: WAVE.top * SCALE + 1000,
+                }}
+              >
+                <img
+                  src={processBar}
+                  alt=""
+                  aria-hidden="true"
+                  className="w-full h-auto"
+                />
+              </div>
             </div>
+
+            {DEBUG &&
+              STEPS.map((st) => (
+                <div
+                  key={st.step}
+                  className="absolute z-20 -translate-x-1/2 -translate-y-1/2 text-[18px] font-bold text-red-500"
+                  style={{
+                    left: `${(st.x / CANVAS.w) * 100}%`,
+                    top: st.y * SCALE,
+                  }}
+                >
+                  ✕
+                </div>
+              ))}
+
+            {STEPS.map((step) => (
+              <div
+                key={step.step}
+                className="absolute z-10 -translate-x-1/2"
+                style={{
+                  left: `${(step.x / CANVAS.w) * 100}%`,
+                  width: `${(SIZE.cardWidth / CANVAS.w) * 100}%`,
+                  ...(step.align === "top"
+                    ? {
+                        bottom: (CANVAS.h - step.y) * SCALE,
+                        marginBottom: s(-SIZE.circle / 2),
+                      }
+                    : {
+                        top: step.y * SCALE,
+                        marginTop: s(-SIZE.circle / 2),
+                      }),
+                }}
+              >
+                <ProcessColumn step={step} />
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Tablet */}
-        <div className="hidden w-full grid-cols-2 gap-6 sm:grid lg:hidden">
+        {/* ── Tablet (md–xl) - UNTOUCHED ── */}
+        <div
+          className="hidden w-full grid-cols-1 md:grid-cols-2 xl:hidden"
+          style={{ gap: fluid(40, 24) }}
+        >
           {STEPS.map((step) => (
             <div
               key={step.step}
               className={
                 step.step === "05"
-                  ? "col-span-2 mx-auto w-full max-w-[360px]"
-                  : ""
+                  ? "md:col-span-2 flex justify-center"
+                  : "flex justify-center"
               }
             >
-              <div className="flex flex-col items-center gap-2">
-                <div className="flex h-[44px] w-[44px] items-center justify-center rounded-full border-4 border-[#fcf9f2] bg-[#2e3192]">
-                  <img src={step.icon} alt="" className="h-[22px] w-[22px]" />
+              <div className="w-full max-w-sm">
+                <div className="flex flex-col items-center">
+                  <IconCircle step={step} />
+                  <div
+                    className="w-0 border-[#e38f2e]"
+                    style={{ height: s(24), borderLeftWidth: s(3) }}
+                  />
+                  <ProcessCard step={step} isDesktop={false} />
                 </div>
-
-                <ProcessCard step={step} />
               </div>
             </div>
           ))}
         </div>
 
-        {/* Mobile */}
-        <div className="flex w-full flex-col gap-6 sm:hidden">
+        {/* ── Mobile (< md) - RECENTERED ✅ ── */}
+        <div
+          className="process-mobile-center flex w-full flex-col items-center md:hidden"
+          style={{ gap: fluid(40, 24) }}
+        >
           {STEPS.map((step) => (
-            <div key={step.step} className="flex flex-col items-center gap-2">
-              <div className="flex h-[44px] w-[44px] items-center justify-center rounded-full border-4 border-[#fcf9f2] bg-[#2e3192]">
-                <img src={step.icon} alt="" className="h-[22px] w-[22px]" />
+            <div key={step.step} className="w-full max-w-sm mx-auto">
+              <div className="flex flex-col items-center">
+                <IconCircle step={step} />
+                <div
+                  className="w-0 border-[#e38f2e]"
+                  style={{ height: s(24), borderLeftWidth: s(3) }}
+                />
+                <ProcessCard step={step} isDesktop={false} />
               </div>
-
-              <ProcessCard step={step} />
             </div>
           ))}
         </div>

@@ -129,6 +129,7 @@ const Navbar = () => {
   const [brandsOpen, setBrandsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const desktopBrandsRef = useRef(null);
   const mobileBrandsRef = useRef(null);
 
@@ -155,7 +156,6 @@ const Navbar = () => {
         .kn-nav{position:fixed;top:0;left:0;z-index:1000;width:100%;background:#fff;
           font-family:'Poppins','Segoe UI',sans-serif;box-shadow:0 2px 10px rgba(0,0,0,.08);}
 
-        /* ── DESKTOP: diagonal white panel + logo ── */
         .kn-diag{position:absolute;top:0;left:0;height:100%;width:340px;z-index:1;
           pointer-events:none;filter:drop-shadow(5px 0 9px rgba(0,0,0,.12));}
         .kn-diag > div{width:100%;height:100%;background:#fff;
@@ -164,7 +164,6 @@ const Navbar = () => {
           display:flex;align-items:center;justify-content:center;text-decoration:none;}
         .kn-logo img{display:block;height:118px;width:auto;object-fit:contain;user-select:none;}
 
-        /* ── top blue bar ── */
         .kn-topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;
           min-height:60px;background:#2E3192;padding:10px 40px 10px 330px;}
         .kn-email{display:flex;align-items:center;gap:10px;color:#fff;font-size:15px;
@@ -179,13 +178,11 @@ const Navbar = () => {
         .kn-search button{height:100%;padding:0 12px;border:none;background:transparent;
           display:flex;align-items:center;cursor:pointer;color:#444;}
 
-        /* ── main nav row ── */
         .kn-mainrow{display:flex;align-items:center;gap:20px;min-height:70px;
           padding:10px 40px 10px 280px;}
         .kn-links{display:flex;align-items:center;gap:42px;list-style:none;margin:0;
           padding:0;min-width:0;}
 
-        /* ── shared link & button styles ── */
         .kn-links a, .kn-brands-btn{position:relative;text-decoration:none;color:#1c1c1c;font-size:15px;
           font-weight:600;letter-spacing:.4px;padding:6px 0;white-space:nowrap;transition:color .2s;
           background:none;border:none;cursor:pointer;font-family:inherit;display:flex;align-items:center;}
@@ -197,7 +194,6 @@ const Navbar = () => {
         .kn-links a.active, .kn-brands-btn.active{color:#2E3192;}
         .kn-links a.active::after, .kn-brands-btn.active::after{transform:scaleX(1);}
 
-        /* ── dropdown panel (fixed, portaled to body) ── */
         .bc-drop{position:fixed;transform:translateX(-50%);background:#fff;border:1px solid #E6E6EE;
           border-radius:10px;box-shadow:0 14px 34px rgba(0,0,0,.12);padding:6px;z-index:4000;
           animation:bcIn .18s ease;text-align:left;font-family:'Poppins','Segoe UI',sans-serif;}
@@ -230,7 +226,6 @@ const Navbar = () => {
           white-space:nowrap;transition:background .2s;}
         .kn-cta:hover{background:#252775;}
 
-        /* ── hamburger (hidden on desktop) ── */
         .kn-hamburger{display:none;width:42px;height:42px;border:none;background:transparent;
           cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;
           padding:0;border-radius:6px;transition:background .2s;}
@@ -241,7 +236,6 @@ const Navbar = () => {
         .kn-hamburger.open span:nth-child(2){opacity:0;}
         .kn-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-        /* ── mobile dropdown ── */
         .kn-mobile-menu{display:none;overflow:hidden;max-height:0;transition:max-height .35s ease;}
         .kn-mobile-menu.open{max-height:600px;}
         .kn-mobile-inner{padding:16px 20px 20px;display:flex;flex-direction:column;gap:0;
@@ -271,7 +265,6 @@ const Navbar = () => {
           text-decoration:none;padding:12px 0 4px;}
         .kn-mobile-email svg{flex-shrink:0;}
 
-        /* ============ RESPONSIVE ============ */
         @media (max-width:1400px){
           .kn-topbar{padding-left:300px;}
           .kn-mainrow{padding-left:250px;}
@@ -300,7 +293,6 @@ const Navbar = () => {
           .kn-iconbtn{width:38px;height:38px;}
         }
 
-        /* ── TABLET: stacked layout ── */
         @media (max-width:900px){
           .kn-diag{display:none;}
           .kn-logo{position:static;width:100%;height:auto;padding:10px 0;}
@@ -315,7 +307,6 @@ const Navbar = () => {
           .kn-vline{display:none;}
         }
 
-        /* ── MOBILE: hamburger menu ── */
         @media (max-width:640px){
           .kn-topbar{display:none;}
           .kn-mainrow{display:none;}
@@ -343,12 +334,10 @@ const Navbar = () => {
         <div />
       </div>
 
-      {/* ── DESKTOP: Logo ── */}
       <Link to="/" className="kn-logo">
         <img src={logo} alt="Kamakhya Cosmetics" />
       </Link>
 
-      {/* ── DESKTOP: Top blue bar ── */}
       <div className="kn-topbar">
         <a href="mailto:info@kamakhyacosmetics.com.np" className="kn-email">
           <svg
@@ -391,7 +380,6 @@ const Navbar = () => {
         </form>
       </div>
 
-      {/* ── DESKTOP: Main nav row ── */}
       <div className="kn-mainrow">
         <ul className="kn-links">
           {MENU_ITEMS.map((item) => (
@@ -472,7 +460,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* ── MOBILE: compact top bar with logo, hamburger, actions ── */}
       <div className="kn-mobile-topbar">
         <button
           className={`kn-hamburger ${mobileOpen ? "open" : ""}`}
@@ -612,7 +599,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* ── dropdown portaled to <body> — cannot be clipped by any wrapper ── */}
       <BrandsDropdown
         open={brandsOpen}
         onClose={() => setBrandsOpen(false)}
