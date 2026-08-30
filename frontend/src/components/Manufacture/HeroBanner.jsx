@@ -1,16 +1,8 @@
-import {
-  imgImage36,
-  imgHomeIcon,
-  imgUnderline,
-} from "../../assets/figmaAssets";
+import { imgHomeIcon, imgUnderline } from "../../assets/figmaAssets";
+import imgHomeBanner from "../../assets/manufactureAssets/homeBanner.png"; // ✏️ UPDATED path
 import { ChevronRight } from "lucide-react";
 import { contentMax, fluid, pagePadX, s } from "./figmaScale";
 
-/* ═══════════════════════════════════════════════════════════
-   ✏️ EDIT HERE — hero text horizontal position
-   👉 negative = move text LEFT, positive = move RIGHT
-   -55 = aligned with the page margin (red line / facility image edge)
-═══════════════════════════════════════════════════════════ */
 const HERO_SHIFT = 8;
 
 export default function HeroBanner() {
@@ -24,8 +16,9 @@ export default function HeroBanner() {
       }}
       aria-label="Hero banner"
     >
+      {/* ✏️ REPLACED background image */}
       <img
-        src={imgImage36}
+        src={imgHomeBanner}
         alt=""
         aria-hidden="true"
         className="absolute inset-0 h-full w-full object-cover object-top"

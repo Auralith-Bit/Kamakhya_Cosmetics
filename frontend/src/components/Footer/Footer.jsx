@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/Vector.svg";
 import goldRule from "../../assets/Vector (1) Gold.svg";
 import whiteRule from "../../assets/White Rectangle 13.svg";
@@ -50,11 +51,29 @@ const TwitterIcon = () => (
   </svg>
 );
 
+/* ✅ link mapping — matches each footer label to an existing App.jsx route */
 const FOOTER_LINKS = {
-  Company: ["About Us", "Manufacturing & Quality", "Contact Us"],
-  Brands: ["Royal Luxury", "Shine"],
-  "Business Solutions": ["Become Distributor", "Request Quotes"],
-  Products: ["Trade catalogue", "Skincare", "Makeup", "Home care", "Saved Products"],
+  Company: [
+    { label: "About Us", to: "/about" },
+    { label: "Manufacturing & Quality", to: "/manufacture" },
+    { label: "Contact Us", to: "/contact" },
+  ],
+  Brands: [
+    { label: "Royal Luxury", to: "/brands/royal-luxury" },
+    { label: "Shine", to: "/brands/shine" },
+  ],
+  "Business Solutions": [
+    { label: "Become Distributor", to: "/distributor" },
+    { label: "Request Quotes", to: "/bulk-quote" },
+  ],
+  Products: [
+    { label: "Trade catalogue", to: "/products" },
+    { label: "Skincare", to: "/products" },
+    { label: "Makeup", to: "/products" },
+    { label: "Home care", to: "/products" },
+    /* ❌ Saved Products — no routing per your instruction */
+    { label: "Saved Products", to: null },
+  ],
 };
 
 const FOOTER_LINK_GROUPS = [
@@ -78,7 +97,6 @@ const Footer = () => {
 
   return (
     <footer className="bg-navy text-[#e9e9ee] font-sans">
-      {/* ✅ guaranteed field colors (independent of Tailwind placeholder variant) */}
       <style>{`
         .fu-email{background:#ffffff;color:#1c1c1c;}
         .fu-email::placeholder{color:#8b90a0;opacity:1;}
@@ -91,10 +109,10 @@ const Footer = () => {
         <div className="grid grid-cols-[1.1fr_1fr_1fr] gap-12 pb-10 max-lg:grid-cols-2 max-lg:gap-y-8 max-tab:grid-cols-1">
           <div className="max-lg:col-span-full">
             <div className="flex items-center gap-4 mb-4">
-              <span className="flex items-center">
+              <Link to="/" className="flex items-center">
                 <img src={logo} alt="Kamakhya Cosmetics Logo" className="w-[70px] h-auto block" />
-              </span>
-              <span className="flex flex-col items-center leading-[1.2]">
+              </Link>
+              <Link to="/" className="flex flex-col items-center leading-[1.2] no-underline">
                 <span className="font-serif font-bold text-xl text-white tracking-[0.5px]">KAMAKHYA</span>
                 <span className="flex items-center gap-2 mt-0.5">
                   <img src={goldRule} alt="" className="block h-[3px] w-[18px] shrink-0" />
@@ -108,7 +126,7 @@ const Footer = () => {
                   </span>
                   <img src={whiteRule} alt="" className="block h-0.5 w-3.5 shrink-0" />
                 </span>
-              </span>
+              </Link>
             </div>
             <p className="m-0 text-fog text-sm leading-[1.6] max-w-[260px] max-lg:max-w-full">
               Kamakhya Cosmetics manufactures premium beauty and home-care
@@ -125,9 +143,19 @@ const Footer = () => {
                   <ul className="m-0 p-0 list-none flex flex-col gap-3">
                     {FOOTER_LINKS[heading].map((link, index) => (
                       <li key={index}>
-                        <a href="/" className="text-fog no-underline text-sm transition-colors hover:text-footer-gold">
-                          <LinkLabel label={link} />
-                        </a>
+                        {link.to ? (
+                          <Link
+                            to={link.to}
+                            className="text-fog no-underline text-sm transition-colors hover:text-footer-gold"
+                          >
+                            <LinkLabel label={link.label} />
+                          </Link>
+                        ) : (
+                          /* Saved Products — plain text, no navigation */
+                          <span className="text-fog text-sm cursor-default">
+                            <LinkLabel label={link.label} />
+                          </span>
+                        )}
                       </li>
                     ))}
                   </ul>
@@ -157,7 +185,9 @@ const Footer = () => {
             </p>
             <p className="flex items-start gap-2.5 m-0 mb-3.5 text-fog text-sm leading-[1.5]">
               <span className="shrink-0 text-footer-gold mt-0.5"><MailIcon /></span>
-              <span>info@kamakhya.com.np</span>
+              <a href="mailto:info@kamakhya.com.np" className="text-fog no-underline transition-colors hover:text-footer-gold">
+                info@kamakhya.com.np
+              </a>
             </p>
           </div>
 
@@ -179,7 +209,6 @@ const Footer = () => {
               className="flex w-full max-w-[320px] overflow-hidden rounded-[4px] mb-[18px]"
               onSubmit={(e) => e.preventDefault()}
             >
-              {/* ✅ white container + visible grey placeholder / dark typed text */}
               <input
                 type="email"
                 placeholder="Business email"

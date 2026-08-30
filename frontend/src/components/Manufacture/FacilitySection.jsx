@@ -1,6 +1,6 @@
 import vectorGold from "../../assets/Vector (1) Gold.svg";
+import imgManufacturing from "../../assets/manufactureAssets/aboutManu.png"; // ✏️ REPLACED: local image
 import {
-  imgManufacturing,
   imgPlayBtn,
   imgFacilityIcon1,
   imgFacilityIcon2,
@@ -21,8 +21,8 @@ const FacilitySection = () => {
     <section
       className="bg-[#f5f7fa]"
       style={{
-        paddingLeft: fluid(178, 20), // 👈 Scales down on mobile, stays exactly 178 on desktop
-        paddingRight: fluid(50, 20), // 👈 Scales down on mobile, stays exactly 50 on desktop
+        paddingLeft: fluid(178, 20),
+        paddingRight: fluid(50, 20),
         paddingTop: fluid(100, 40),
         paddingBottom: fluid(100, 40),
       }}
@@ -38,11 +38,11 @@ const FacilitySection = () => {
       >
         {/* Left: Video / Image */}
         <div
-          className="relative w-full overflow-hidden lg:w-auto lg:shrink-0" // 👈 w-full for mobile
+          className="relative w-full overflow-hidden lg:w-auto lg:shrink-0"
           style={{
             width: s(890),
-            height: "auto", // 👈 Changed to auto
-            aspectRatio: "890 / 590", // 👈 Keeps exact desktop height, but scales proportionally on mobile!
+            height: "auto",
+            aspectRatio: "890 / 590",
             maxWidth: "100%",
             marginTop: s(0),
             marginBottom: s(0),
@@ -72,7 +72,7 @@ const FacilitySection = () => {
 
         {/* Right: Content */}
         <div
-          className="flex w-full flex-col lg:flex-1" // 👈 w-full ensures it takes full width on mobile
+          className="flex w-full flex-col lg:flex-1"
           style={{ maxWidth: s(662), gap: fluid(40, 20) }}
         >
           <div className="flex flex-col" style={{ gap: fluid(20, 12) }}>
@@ -111,11 +111,10 @@ const FacilitySection = () => {
               </div>
 
               {/* --- TITLE --- */}
-              {/* --- TITLE --- */}
               <h2
                 id="facility-heading"
-                className="font-['Playfair_Display'] font-bold leading-[1.25] lg:whitespace-nowrap" // 👈 must be lg: (not xl:)
-                style={{ fontSize: fluid(25, 18), maxWidth: "100%" }} // 👈 was fluid(28, 22)
+                className="font-['Playfair_Display'] font-bold leading-[1.25] lg:whitespace-nowrap"
+                style={{ fontSize: fluid(25, 18), maxWidth: "100%" }}
               >
                 <span className="text-[#2e3192]">The World-Class </span>
                 <span className="text-[#e38f2e]">Manufacturing</span>
@@ -125,7 +124,7 @@ const FacilitySection = () => {
 
             {/* --- PARAGRAPHS --- */}
             <div
-              className="flex w-full flex-col font-poppins font-normal text-left lg:text-justify text-[#1c1b1b]" // 👈 Left aligned on mobile (prevents ugly gaps), justified on desktop
+              className="flex w-full flex-col font-poppins font-normal text-left lg:text-justify text-[#1c1b1b]"
               style={{
                 gap: fluid(20, 12),
                 fontSize: fluid(16, 14),
@@ -147,12 +146,11 @@ const FacilitySection = () => {
           </div>
 
           {/* Feature icons row */}
-          {/* Feature icons row */}
           <div
             className="grid grid-cols-2 lg:grid-cols-4"
             style={{
               gap: fluid(12, 8),
-              width: "calc(100% + 24px)", // 12px extra on each side
+              width: "calc(100% + 24px)",
               marginLeft: "-9px",
             }}
           >
