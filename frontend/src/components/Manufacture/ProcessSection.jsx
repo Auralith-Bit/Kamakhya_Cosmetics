@@ -9,6 +9,8 @@ import {
   imgIconProcess3,
   imgIconProcess4,
   imgIconProcess5,
+  imgWaveDecor,
+
 } from "../../assets/figmaAssets";
 
 const STEPS = [
@@ -182,7 +184,11 @@ const ProcessSection = () => {
             Where Quality Meets Precision
           </h2>
 
-          <Underline />
+          <img
+            src={imgWaveDecor}
+            alt=""
+            className="h-[20px] w-[140px] lg:h-[24px] lg:w-[172px]"
+          />
 
           <p className="font-['Poppins'] text-[15px] font-medium leading-relaxed text-[#555] lg:text-[18px]">
             From premium ingredients to advanced production and rigorous quality
