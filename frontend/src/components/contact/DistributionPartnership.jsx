@@ -158,7 +158,7 @@ const DistributionPartnership = () => (
       /* ============ MOBILE+TABLET ≤1023 — stacked ============ */
       @media (max-width:1023px){
         .dp-sec{padding:10vw 5vw;}
-        .dp-wrap{width:auto;grid-template-columns:1fr;gap:8vw;align-items:start;}
+        .dp-wrap{width:auto;grid-template-columns:1fr;gap:8vw;align-items:start;justify-items:center;}
         .dp-tag{font-size:clamp(11px, 1.4vw, 16px);}
         .dp-rule{width:clamp(140px, 40vw, 300px);}
         .dp-rule::before,.dp-rule::after{height:4px;}
@@ -169,10 +169,10 @@ const DistributionPartnership = () => (
         .dp-points li{font-size:clamp(13px, 1.6vw, 17px);}
         .dp-points svg{width:clamp(20px, 3vw, 28px);height:clamp(20px, 3vw, 28px);}
 
-        .dp-card{padding:6vw 5vw 5.5vw;}
+        .dp-card{padding:6vw 5vw 5.5vw;width:min(100%,560px);}
         .dp-card h3{font-size:clamp(18px, 2.6vw, 28px);}
         .dp-card-p{font-size:clamp(12px, 1.5vw, 16px);}
-        .dp-card-p .dp-line{text-align:left;text-align-last:left;}
+        .dp-card-p .dp-line{text-align:center;text-align-last:center;}
         .dp-btn{height:12vw;border-radius:2vw;}
         .dp-btn1{font-size:clamp(13px, 1.6vw, 17px);}
         .dp-btn2{font-size:clamp(12px, 1.5vw, 16px);}

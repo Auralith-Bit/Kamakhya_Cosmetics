@@ -74,7 +74,7 @@ const CTABanner = () => {
       />
 
       <div
-        className="relative mx-auto flex w-full flex-col items-start justify-between lg:flex-row lg:items-center"
+        className="relative mx-auto flex w-full flex-col items-center justify-between lg:flex-row lg:items-center"
         style={{
           minHeight: fluid(LAYOUT.minH, LAYOUT.minHMobile),
           maxWidth: LAYOUT.containerMax,
@@ -136,7 +136,7 @@ const CTABanner = () => {
 
         {/* ── BUTTONS ── */}
         <div
-          className="flex w-full flex-col items-stretch sm:w-auto sm:flex-row sm:items-center lg:shrink-0"
+          className="flex w-full flex-col items-center sm:w-auto sm:flex-row sm:items-center lg:shrink-0"
           style={{ gap: fluid(LAYOUT.gapButtons, 12) }}
         >
           <button

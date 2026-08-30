@@ -100,8 +100,6 @@ const DistributionSection = () => {
         {/* ── RIGHT: Apply Card ── */}
         <div
           style={{
-            width: 'calc(100% - 40px)',
-            justifySelf: 'end',
             alignSelf: 'center',
             background: '#fff',
             borderRadius: '14px',
@@ -109,7 +107,7 @@ const DistributionSection = () => {
             border: '3px solid #BC975E',
             boxShadow: '0 4px 24px rgba(0,0,0,0.15)',
           }}
-          className="max-sm:w-full max-sm:justify-self-center"
+          className="lg:w-[calc(100%-40px)] lg:justify-self-end max-lg:w-[min(100%,560px)] max-lg:justify-self-center max-lg:mx-auto max-sm:w-full"
         >
           {/* Card heading */}
           <h3
@@ -128,6 +126,7 @@ const DistributionSection = () => {
 
           {/* Card description */}
           <p
+            className="max-sm:text-center"
             style={{
               fontFamily: FONT_BODY,
               fontSize: '14px',

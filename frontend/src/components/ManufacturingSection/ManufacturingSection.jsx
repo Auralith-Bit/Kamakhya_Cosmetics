@@ -130,7 +130,7 @@ const ManufacturingSection = () => {
           </div>
 
           {/* CTA Button */}
-          <div>
+          <div className="max-sm:flex max-sm:justify-center max-sm:w-full">
             <a
               href="#manufacturing"
               style={{

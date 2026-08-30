@@ -129,8 +129,8 @@ const PromiseSection = () => (
           pointerEvents: 'none', zIndex: 0,
         }} />
 
-        <div className="max-lg:flex-col max-lg:items-center max-lg:gap-12"
-          style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '36px', position: 'relative' }}>
+        <div className="items-start max-lg:flex-col max-lg:items-center max-lg:gap-12"
+          style={{ display: 'flex', justifyContent: 'space-between', gap: '36px', position: 'relative' }}>
 
           {/* Left features */}
           <div className="promise-feats" style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '45px', paddingTop: '27px', zIndex: 1 }}>
