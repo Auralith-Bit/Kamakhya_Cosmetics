@@ -2,6 +2,8 @@ import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { createPortal } from "react-dom";
 import logo from "../../assets/Group 9.png";
+import RLimage from "../../assets/RLimage.png";      // ✅ Royal Luxury logo
+import Shineimage from "../../assets/Shineimage.png"; // ✅ Shine logo
 
 /* ============ dropdown rendered via portal (escapes all overflow clipping) ============ */
 const BrandsDropdown = ({ open, onClose, anchors }) => {
@@ -63,57 +65,35 @@ const BrandsDropdown = ({ open, onClose, anchors }) => {
       role="menu"
       aria-label="Choose a brand"
     >
-      <button
-        className="bc-item bc-shine"
-        role="menuitem"
-        onClick={() => pick("/brands/shine")}
-      >
-        <span className="bc-ico">
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M12 2l2.2 5.6L20 10l-5.8 2.4L12 18l-2.2-5.6L4 10l5.8-2.4Z" />
-            <path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9Z" />
-          </svg>
-        </span>
-        <span className="bc-txt">
-          <span className="bc-name">Shine</span>
-          <span className="bc-sub">Clean &amp; Fresh — Home Care</span>
-        </span>
-      </button>
-
-      <div className="bc-sep" />
-
+      {/* ✅ 1st — Royal Luxury with its real logo */}
       <button
         className="bc-item bc-royal"
         role="menuitem"
         onClick={() => pick("/brands/royal-luxury")}
       >
         <span className="bc-ico">
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M3 8l4 4 5-6 5 6 4-4v9H3Z" />
-            <path d="M3 17h18" />
-          </svg>
+          <img src={RLimage} alt="Royal Luxury logo" />
         </span>
         <span className="bc-txt">
           <span className="bc-name">Royal Luxury</span>
           <span className="bc-sub">Premium Cosmetics &amp; Skincare</span>
+        </span>
+      </button>
+
+      <div className="bc-sep" />
+
+      {/* ✅ 2nd — Shine with its real logo */}
+      <button
+        className="bc-item bc-shine"
+        role="menuitem"
+        onClick={() => pick("/brands/shine")}
+      >
+        <span className="bc-ico">
+          <img src={Shineimage} alt="Shine logo" />
+        </span>
+        <span className="bc-txt">
+          <span className="bc-name">Shine</span>
+          <span className="bc-sub">Clean &amp; Fresh — Home Care</span>
         </span>
       </button>
     </div>,
@@ -202,9 +182,12 @@ const Navbar = () => {
           border-radius:8px;background:transparent;cursor:pointer;text-align:left;
           font-family:inherit;transition:background .15s;}
         .bc-item:hover{background:#F6F7FB;}
-        .bc-ico{width:38px;height:38px;border-radius:9px;display:grid;place-items:center;flex-shrink:0;}
-        .bc-shine .bc-ico{background:#F4F9EC;color:#3E7A1E;}
-        .bc-royal .bc-ico{background:#FBF7EF;color:#8A6425;}
+
+        /* ✅ logo tile — shows the real brand images */
+        .bc-ico{width:38px;height:38px;border-radius:9px;overflow:hidden;flex-shrink:0;
+          background:#fff;border:1px solid #EEEFF4;display:grid;place-items:center;}
+        .bc-ico img{width:100%;height:100%;object-fit:contain;display:block;}
+
         .bc-txt{display:flex;flex-direction:column;gap:2px;}
         .bc-name{font-family:'Playfair Display',Georgia,serif;font-size:15px;font-weight:700;}
         .bc-shine .bc-name{color:#3E7A1E;}
@@ -223,7 +206,7 @@ const Navbar = () => {
           display:flex;align-items:center;justify-content:center;}
         .kn-cta{margin-left:8px;background:#2E3192;color:#fff;border:none;border-radius:8px;
           padding:14px 24px;font-size:15px;font-weight:600;letter-spacing:.3px;cursor:pointer;
-          white-space:nowrap;transition:background .2s;}
+          white-space:nowrap;transition:background .2s;text-decoration:none;display:inline-flex;align-items:center;}
         .kn-cta:hover{background:#252775;}
 
         .kn-hamburger{display:none;width:42px;height:42px;border:none;background:transparent;
@@ -259,7 +242,7 @@ const Navbar = () => {
 
         .kn-mobile-cta{display:block;width:100%;padding:14px;border:none;border-radius:8px;
           background:#2E3192;color:#fff;font-family:inherit;font-size:15px;font-weight:600;
-          letter-spacing:.3px;cursor:pointer;text-align:center;margin-top:16px;transition:background .2s;}
+          letter-spacing:.3px;cursor:pointer;text-align:center;margin-top:16px;transition:background .2s;text-decoration:none;}
         .kn-mobile-cta:hover{background:#252775;}
         .kn-mobile-email{display:flex;align-items:center;gap:10px;color:#2E3192;font-size:13px;
           text-decoration:none;padding:12px 0 4px;}
