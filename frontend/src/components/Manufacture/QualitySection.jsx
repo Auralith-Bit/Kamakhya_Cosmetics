@@ -1,23 +1,59 @@
-import {
-  imgQualityBadge,
-  imgQualityDecor,
-  imgISOIcon,
-  imgGMPIcon,
-  imgQAIcon,
-  imgSafetyIcon,
-  imgRoyalLuxuryLogoImg,
-  imgSubtract,
-  imgFeatureIcon1,
-  imgFeatureIcon2,
-  imgFeatureIcon3,
-  imgFeatureIcon4,
-  imgFeature1,
-  imgFeature2,
-  imgFeature3,
-  imgFeature4,
-} from "../../assets/figmaAssets";
+import imgQualityBadge from "../../assets/manufactureAssets/QualitySection/GMP_main.svg";
+import imgQualityDecor from "../../assets/manufactureAssets/QualitySection/Vector.svg";
+import imgISOIcon from "../../assets/manufactureAssets/QualitySection/ISO.svg";
+import imgGMPIcon from "../../assets/manufactureAssets/QualitySection/GMP.svg";
+import imgQAIcon from "../../assets/manufactureAssets/QualitySection/qualityAssured.svg";
+import imgSafetyIcon from "../../assets/manufactureAssets/QualitySection/safety_first.svg";
+import imgRoyalLuxuryLogoImg from "../../assets/manufactureAssets/QualitySection/royal.png";
+import imgSubtract from "../../assets/manufactureAssets/QualitySection/Vector.svg";
+import imgFeatureIcon1 from "../../assets/manufactureAssets/QualitySection/authenticQuality.svg";
+import imgFeatureIcon2 from "../../assets/manufactureAssets/QualitySection/ExpertClock.svg";
+import imgFeatureIcon3 from "../../assets/manufactureAssets/QualitySection/Trusted_left.svg";
+import imgFeatureIcon4 from "../../assets/manufactureAssets/QualitySection/Sustainable_GMP.svg";
+import imgFeature1 from "../../assets/manufactureAssets/QualitySection/love-authentic-quality.png";
+import imgFeature2 from "../../assets/manufactureAssets/QualitySection/love-expert-craftsmanship.png";
+import imgFeature3 from "../../assets/manufactureAssets/QualitySection/love-trusted-ingredients.png";
+import imgFeature4 from "../../assets/manufactureAssets/QualitySection/love-sustainable-practices.png";
+import shineLogo from "../../assets/manufactureAssets/QualitySection/shine.png";
+import { contentMax, fluid, pagePadX, s } from "./figmaScale";
 
-import shineLogo from "../../assets/shine.png";
+/* ═══════════════════════════════════════════════════════════
+   ✏️ EDIT EVERYTHING HERE
+═══════════════════════════════════════════════════════════ */
+
+const LAYOUT = {
+  containerMax: "100%",
+  panelWidth: 600,
+  panelHeight: 819,
+  panelRadius: 24,
+  containerShift: 8,
+};
+
+const TYPE = {
+  darkHeading: 32,
+  darkPara: 18,
+  darkParaWeight: 300,
+  darkParaLineHeight: 1.7,
+  darkParaColor: "#ECECEC",
+  darkParaMaxW: 570,
+
+  badgeLabel: 16,
+  badgeLabelWeight: 400,
+  badgeLabelLineHeight: 1.25,
+  badgeColWidth: 95,
+  badgeGap: 16,
+  badgeRowMaxW: 500,
+  badgeDividerH: 56,
+
+  brandName: 24,
+  brandTag: 18,
+  eyebrow: 18,
+  h2: 40,
+  cardTitle: 26,
+  cardDesc: 18,
+  cardDescWeight: 400, // ✏️ FIX #5 — was 300. Normal weight = darker, like design
+  cardDescLineHeight: 1.65,
+};
 
 const BADGES = [
   { icon: imgISOIcon, label: "ISO\nCertified" },
@@ -27,11 +63,7 @@ const BADGES = [
 ];
 
 const BRANDS = [
-  {
-    logo: shineLogo,
-    name: "Shine",
-    tagline: "Premium Home Care Collections.",
-  },
+  { logo: shineLogo, name: "Shine", tagline: "Premium Home Care Collections." },
   {
     logo: imgRoyalLuxuryLogoImg,
     name: "Royal Luxury",
@@ -39,80 +71,114 @@ const BRANDS = [
   },
 ];
 
+/* ✏️ FIX #5 — desc strings now carry hard \n breaks,
+   exactly like the desired UI's line structure */
 const FEATURES = [
   {
     icon: imgFeatureIcon1,
-    iconBg: "rgba(251,192,45,0.35)",
+    iconBg: "rgba(251, 192, 45, 0.4)",
     title: "Authentic Quality",
-    desc: "Crafted with trusted ingredients and quality.",
+    desc: "Crafted with trusted\ningredients and quality.",
     bgImg: imgFeature1,
   },
   {
     icon: imgFeatureIcon2,
-    iconBg: "rgba(196,160,240,0.5)",
+    iconBg: "#D1B0FB",
     title: "Expert Craftsmanship",
-    desc: "Every product is crafted with precision & care.",
+    desc: "Every product is crafted\nwith precision & care.",
     bgImg: imgFeature2,
   },
   {
     icon: imgFeatureIcon3,
-    iconBg: "rgba(34,197,94,0.25)",
+    iconBg: "rgba(34, 197, 94, 0.2)",
     title: "Trusted Ingredients",
-    desc: "Selected for safety, quality, and performance.",
+    desc: "Selected for safety, quality,\nand performance.",
     bgImg: imgFeature3,
   },
   {
     icon: imgFeatureIcon4,
-    iconBg: "rgba(211,47,47,0.18)",
+    iconBg: "rgba(211, 47, 47, 0.2)",
     title: "Sustainable Practices",
-    desc: "Committed to eco-friendly production.",
+    desc: "Committed to eco-\nfriendly production.",
     bgImg: imgFeature4,
   },
 ];
 
+const SIZE = {
+  cardRadius: 10,
+  cardMinH: 265,
+  cardPad: 28,
+  circle: 89,
+  circleIcon: 35,
+  descMaxW: 330,
+};
+
+/* ═══════════════════════════════════════════════════════════ */
+
 const FeatureCard = ({ feature }) => {
   return (
-    <div className="relative min-h-[200px] overflow-hidden rounded-[12px] border border-[#e8e8e8] bg-white">
-      {/* Background Image */}
+    <div
+      className="relative w-full overflow-hidden"
+      style={{ minHeight: s(SIZE.cardMinH), borderRadius: s(SIZE.cardRadius) }}
+    >
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <img
           src={feature.bgImg}
           alt=""
-          className="absolute right-0 top-0 h-full w-[58%] object-cover"
+          className="absolute inset-0 h-full w-full object-cover"
         />
-
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, #ffffff 38%, rgba(255,255,255,0.85) 55%, rgba(255,255,255,0) 75%)",
+              "linear-gradient(270deg, rgba(217, 217, 217, 0) 45%, rgba(244, 244, 244, 0.9) 100%)",
           }}
         />
       </div>
 
-      {/* Card Content */}
-      <div className="relative z-10 flex max-w-[60%] flex-col gap-3 p-5">
-        {/* Icon */}
+      <div
+        className="relative z-10 flex h-full flex-col items-start"
+        style={{ gap: fluid(18, 12), padding: s(SIZE.cardPad) }}
+      >
         <div
-          className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full"
-          style={{ backgroundColor: feature.iconBg }}
+          className="flex shrink-0 items-center justify-center rounded-full"
+          style={{
+            height: s(SIZE.circle),
+            width: s(SIZE.circle),
+            backgroundColor: feature.iconBg,
+          }}
         >
-          <img src={feature.icon} alt="" className="h-6 w-6" />
+          <img
+            src={feature.icon}
+            alt=""
+            style={{ height: s(SIZE.circleIcon), width: s(SIZE.circleIcon) }}
+          />
         </div>
 
-        {/* Text */}
-        <div className="flex flex-col gap-1">
-          <h4
-            className="font-['Playfair_Display'] text-[17px] font-bold leading-snug text-[#2e3192] lg:text-[19px]"
-            style={{ fontVariationSettings: '"opsz" 12, "wdth" 100' }}
-          >
-            {feature.title}
-          </h4>
+        <h4
+          className="font-['Playfair_Display'] font-bold leading-snug text-[#2e3192]"
+          style={{
+            fontSize: fluid(TYPE.cardTitle, 16),
+            fontVariationSettings: '"opsz" 12, "wdth" 100',
+          }}
+        >
+          {feature.title}
+        </h4>
 
-          <p className="font-['Poppins'] text-[13px] leading-relaxed text-[#444] lg:text-[14px]">
-            {feature.desc}
-          </p>
-        </div>
+        {/* ✏️ FIX #5 — whitespace-pre-line so the \n breaks apply;
+            weight 400 + #333 = the darker look of the design */}
+        <p
+          className="whitespace-pre-line font-['Poppins'] text-[#333]"
+          style={{
+            fontSize: fluid(TYPE.cardDesc, 14),
+            fontWeight: TYPE.cardDescWeight,
+            lineHeight: TYPE.cardDescLineHeight,
+            letterSpacing: "0.01em",
+            maxWidth: s(SIZE.descMaxW),
+          }}
+        >
+          {feature.desc}
+        </p>
       </div>
     </div>
   );
@@ -121,103 +187,247 @@ const FeatureCard = ({ feature }) => {
 const QualitySection = () => {
   return (
     <section
-      className="bg-[#f5f5f5] px-4 py-12 sm:px-8 sm:py-16 lg:px-8 lg:py-20 xl:px-16"
+      className="bg-white"
+      style={{
+        paddingLeft: pagePadX,
+        paddingRight: pagePadX,
+        paddingTop: fluid(100, 40),
+        paddingBottom: fluid(70, 32),
+      }}
       aria-labelledby="quality-heading"
     >
-      <div className="mx-auto max-w-[1280px]">
-        {/* Main Container */}
-        <div className="flex flex-col overflow-hidden rounded-[20px] shadow-[0_8px_40px_rgba(0,0,0,0.12)] lg:flex-row">
-          {/* Left Panel */}
-          <div className="flex w-full flex-col items-center gap-7 bg-[#1c1c1c] px-6 py-10 sm:px-8 lg:w-[360px] lg:shrink-0 xl:w-[400px]">
-            {/* Quality Badge */}
-            <div className="flex h-[88px] w-[88px] shrink-0 items-center justify-center rounded-full border-2 border-[#cca466] bg-[radial-gradient(circle,#3a3020_0%,#1c1c1c_100%)]">
-              <img src={imgQualityBadge} alt="" className="h-11 w-9" />
-            </div>
-
-            {/* Quality Heading */}
-            <div className="flex w-full flex-col items-center gap-2">
-              <h3
-                className="text-center font-['Playfair_Display'] text-[26px] font-bold text-[#d4a85a] lg:text-[28px]"
-                style={{ fontVariationSettings: '"opsz" 12, "wdth" 100' }}
+      <style>{`
+        @media (max-width: 1023px) {
+          .main-container {
+            margin-left: 0 !important;
+          }
+          .main-panel {
+            min-height: auto !important;
+          }
+          .left-panel {
+            width: 100% !important;
+          }
+          .left-panel-content {
+            max-width: 100% !important;
+          }
+          .badge-row {
+            max-width: 100% !important;
+          }
+          .brands-container {
+            max-width: 100% !important;
+          }
+          .right-panel-heading {
+            max-width: 100% !important;
+          }
+        }
+      `}</style>
+      <div
+        className="main-container w-full"
+        style={{
+          maxWidth: LAYOUT.containerMax,
+          marginLeft: s(LAYOUT.containerShift),
+        }}
+      >
+        <div
+          className="main-panel flex flex-col overflow-hidden lg:flex-row lg:items-stretch"
+          style={{ borderRadius: s(24), minHeight: s(LAYOUT.panelHeight) }}
+        >
+          {/* ── LEFT DARK PANEL ── */}
+          <div
+            className="left-panel flex w-full flex-col items-center lg:shrink-0"
+            style={{
+              width: s(LAYOUT.panelWidth),
+              gap: fluid(40, 20),
+              backgroundColor: "#333333",
+              borderRadius: `${s(LAYOUT.panelRadius)} 0 0 ${s(LAYOUT.panelRadius)}`,
+              paddingLeft: s(15),
+              paddingRight: s(15),
+              paddingTop: s(29),
+              paddingBottom: s(47),
+            }}
+          >
+            <div
+              className="left-panel-content flex w-full flex-col items-center lg:max-w-none"
+              style={{ maxWidth: s(TYPE.darkParaMaxW), gap: fluid(50, 24) }}
+            >
+              <div
+                className="flex w-full flex-col items-center"
+                style={{ gap: fluid(25, 14) }}
               >
-                Quality Assured
-              </h3>
-
-              <img
-                src={imgQualityDecor}
-                alt=""
-                className="h-[10px] w-[190px]"
-              />
-            </div>
-
-            {/* Description */}
-            <p className="max-w-[300px] text-center font-['Poppins'] text-[14px] leading-relaxed text-[#cccccc] lg:text-[15px]">
-              Manufactured in our ISO-certified facility, adhering to quality,
-              safety, and hygiene standards for premium product excellence.
-            </p>
-
-            {/* Badges */}
-            <div className="grid w-full grid-cols-4 gap-2">
-              {BADGES.map((badge) => (
                 <div
-                  key={badge.label}
-                  className="flex flex-col items-center gap-[6px]"
+                  className="flex shrink-0 items-center justify-center rounded-full border-[#cca466] bg-[#fcf9f2]"
+                  style={{ height: s(100), width: s(100), borderWidth: s(5) }}
                 >
-                  <img src={badge.icon} alt="" className="h-[22px] w-[22px]" />
+                  <img
+                    src={imgQualityBadge}
+                    alt=""
+                    style={{ height: s(45), width: s(36) }}
+                  />
+                </div>
 
-                  <p className="whitespace-pre-line text-center font-['Poppins'] text-[11px] leading-tight text-white lg:text-[12px]">
-                    {badge.label}
+                <div
+                  className="flex w-full flex-col items-center"
+                  style={{ gap: s(5) }}
+                >
+                  <h3
+                    className="text-center font-['Playfair_Display'] font-bold text-[#dec49c]"
+                    style={{
+                      fontSize: fluid(TYPE.darkHeading, 22),
+                      fontVariationSettings: '"opsz" 12, "wdth" 100',
+                    }}
+                  >
+                    Quality Assured
+                  </h3>
+
+                  <img
+                    src={imgQualityDecor}
+                    alt=""
+                    className="max-w-full"
+                    style={{ height: s(10), width: s(250) }}
+                  />
+
+                  <p
+                    className="whitespace-pre-line text-center font-['Poppins']"
+                    style={{
+                      fontSize: fluid(TYPE.darkPara, 13),
+                      fontWeight: TYPE.darkParaWeight,
+                      lineHeight: TYPE.darkParaLineHeight,
+                      letterSpacing: "0.01em",
+                      color: TYPE.darkParaColor,
+                    }}
+                  >
+                    {
+                      "Manufactured in our ISO-certified facility, adhering to\nquality, safety, and hygiene standards for premium\nproduct excellence."
+                    }
                   </p>
                 </div>
-              ))}
+              </div>
+
+              <div
+                className="badge-row flex w-full flex-wrap items-center justify-center"
+                style={{
+                  maxWidth: s(TYPE.badgeRowMaxW),
+                  gap: s(TYPE.badgeGap),
+                }}
+              >
+                {BADGES.map((badge, index) => (
+                  <div
+                    key={badge.label}
+                    className="flex items-center"
+                    style={{ gap: s(TYPE.badgeGap) }}
+                  >
+                    <div
+                      className="flex flex-col items-center"
+                      style={{ width: s(TYPE.badgeColWidth), gap: s(10) }}
+                    >
+                      <img
+                        src={badge.icon}
+                        alt=""
+                        style={{ height: s(30), width: s(30) }}
+                      />
+                      <p
+                        className="whitespace-pre-line text-center font-['Playfair_Display'] font-normal text-white"
+                        style={{
+                          fontSize: fluid(TYPE.badgeLabel, 12),
+                          fontWeight: TYPE.badgeLabelWeight,
+                          lineHeight: TYPE.badgeLabelLineHeight,
+                          letterSpacing: "0.01em",
+                        }}
+                      >
+                        {badge.label}
+                      </p>
+                    </div>
+                    {index < BADGES.length - 1 && (
+                      <div
+                        className="hidden sm:block"
+                        style={{
+                          height: s(TYPE.badgeDividerH),
+                          width: s(1.5),
+                          borderRadius: s(10),
+                          backgroundColor: "rgba(217,217,217,0.3)",
+                        }}
+                        aria-hidden="true"
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* Separator */}
-            <div className="h-px w-full bg-white/15" />
-
-            {/* Brands */}
-            <div className="flex w-full flex-col items-center gap-5">
-              <div className="flex flex-col items-center gap-2">
+            <div
+              className="brands-container flex w-full flex-col items-stretch"
+              style={{ maxWidth: s(510), gap: fluid(25, 14) }}
+            >
+              <div className="flex flex-col items-center" style={{ gap: s(5) }}>
                 <h3
-                  className="text-center font-['Playfair_Display'] text-[22px] font-bold text-[#d4a85a] lg:text-[24px]"
-                  style={{ fontVariationSettings: '"opsz" 12, "wdth" 100' }}
+                  className="text-center font-['Playfair_Display'] font-bold text-[#dec49c]"
+                  style={{
+                    fontSize: fluid(TYPE.darkHeading, 22),
+                    fontVariationSettings: '"opsz" 12, "wdth" 100',
+                  }}
                 >
                   Our Two Brands
                 </h3>
-
                 <img
                   src={imgQualityDecor}
                   alt=""
-                  className="h-[10px] w-[160px]"
+                  className="max-w-full"
+                  style={{ height: s(10), width: s(250) }}
                 />
               </div>
 
-              {/* Brand Cards */}
-              <div className="grid w-full grid-cols-2 gap-3">
+              <div
+                className="flex w-full flex-col items-center justify-center sm:flex-row"
+                style={{ gap: s(15) }}
+              >
                 {BRANDS.map((brand) => (
                   <div
                     key={brand.name}
-                    className="flex items-center justify-center rounded-[10px] border border-[#e2ddd4] bg-[#f9f4ea] px-3 py-6"
+                    className="flex w-full items-center justify-center border border-[#d7dae4] bg-[#fcf9f2]"
+                    style={{
+                      height: s(212),
+                      maxWidth: s(245),
+                      borderRadius: s(10),
+                      paddingLeft: s(30),
+                      paddingRight: s(30),
+                      paddingTop: s(60),
+                      paddingBottom: s(60),
+                    }}
                   >
-                    <div className="flex flex-col items-center gap-[6px]">
+                    <div
+                      className="flex flex-col items-center"
+                      style={{ gap: s(3) }}
+                    >
                       <img
                         src={brand.logo}
                         alt={brand.name}
-                        className="h-[60px] w-[60px] object-contain"
+                        className="object-contain"
+                        style={{ height: s(60), width: s(60) }}
                       />
-
                       <p
-                        className="text-center font-['Playfair_Display'] text-[16px] font-bold text-[#2e3192] lg:text-[17px]"
+                        className="text-center font-['Playfair_Display'] font-bold text-[#2e3192]"
                         style={{
+                          fontSize: fluid(TYPE.brandName, 16),
                           fontVariationSettings: '"opsz" 12, "wdth" 100',
                         }}
                       >
                         {brand.name}
                       </p>
-
-                      <div className="h-[2px] w-[40px] rounded-full bg-[#cca466]" />
-
-                      <p className="text-center font-['Poppins'] text-[11px] leading-snug text-[#555] lg:text-[12px]">
+                      <div
+                        className="bg-[#cca466]"
+                        style={{
+                          height: s(3),
+                          width: s(65),
+                          borderRadius: s(20),
+                        }}
+                      />
+                      <p
+                        className="text-center font-['Poppins'] font-normal leading-snug text-[#333]"
+                        style={{
+                          fontSize: fluid(TYPE.brandTag, 13),
+                          lineHeight: 1.5,
+                        }}
+                      >
                         {brand.tagline}
                       </p>
                     </div>
@@ -227,31 +437,51 @@ const QualitySection = () => {
             </div>
           </div>
 
-          {/* Right Panel */}
-          <div className="flex flex-1 flex-col gap-6 bg-white p-6 sm:p-8 lg:p-10">
-            {/* Heading */}
-            <div className="flex flex-col gap-1">
-              <p className="font-['Poppins'] text-[14px] font-semibold uppercase tracking-[2.5px] text-[#e38f2e] lg:text-[18px]">
+          {/* ── RIGHT PANEL ── */}
+          <div
+            className="flex flex-1 flex-col justify-center border border-[#d7dae4] bg-white shadow-[0px_8px_24px_-6px_rgba(0,0,0,0.08),0px_20px_50px_-12px_rgba(0,0,0,0.05)]"
+            style={{
+              gap: fluid(40, 20),
+              padding: fluid(40, 24),
+              borderTopRightRadius: s(20),
+              borderBottomRightRadius: s(20),
+            }}
+          >
+            <div
+              className="right-panel-heading flex flex-col"
+              style={{ maxWidth: s(770) }}
+            >
+              <p
+                className="font-['Poppins'] font-semibold uppercase text-[#e38f2e]"
+                style={{
+                  fontSize: fluid(TYPE.eyebrow, 13),
+                  letterSpacing: "0.12em",
+                }}
+              >
                 Why You'll Love It
               </p>
-
               <h2
                 id="quality-heading"
-                className="font-['Playfair_Display'] text-[26px] font-bold leading-tight text-[#2e3192] lg:text-[34px]"
-                style={{ fontVariationSettings: '"opsz" 12, "wdth" 100' }}
+                className="font-['Playfair_Display'] font-bold capitalize leading-tight text-[#2e3192]"
+                style={{
+                  fontSize: fluid(TYPE.h2, 24),
+                  fontVariationSettings: '"opsz" 12, "wdth" 100',
+                }}
               >
-                Experience The Kamakhya Difference
+                Experience the Kamakhya Difference
               </h2>
-
               <img
                 src={imgSubtract}
                 alt=""
-                className="mt-1 h-[10px] w-[200px] lg:w-[260px]"
+                className="max-w-full"
+                style={{ marginTop: s(14), height: s(10), width: s(300) }}
               />
             </div>
 
-            {/* Feature Cards */}
-            <div className="grid flex-1 grid-cols-1 gap-4 sm:grid-cols-2">
+            <div
+              className="grid flex-1 grid-cols-1 sm:grid-cols-2"
+              style={{ gap: fluid(40, 16) }}
+            >
               {FEATURES.map((feature) => (
                 <FeatureCard key={feature.title} feature={feature} />
               ))}

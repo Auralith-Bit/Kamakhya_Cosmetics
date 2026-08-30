@@ -1,122 +1,185 @@
+import vectorGold from "../../assets/Vector (1) Gold.svg";
+import imgManufacturing from "../../assets/manufactureAssets/aboutManu.png"; // ✏️ REPLACED: local image
 import {
-  imgManufacturing,
   imgPlayBtn,
   imgFacilityIcon1,
   imgFacilityIcon2,
   imgFacilityIcon3,
   imgFacilityIcon4,
 } from "../../assets/figmaAssets";
+import { contentMax, fluid, pagePadX, s } from "./figmaScale";
 
 const FEATURES = [
-  {
-    icon: imgFacilityIcon1,
-    label: "Advanced\nManufacturing",
-  },
-  {
-    icon: imgFacilityIcon2,
-    label: "Quality Assurance",
-  },
-  {
-    icon: imgFacilityIcon3,
-    label: "International\nCertifications",
-  },
-  {
-    icon: imgFacilityIcon4,
-    label: "Sustainable Practices",
-  },
+  { icon: imgFacilityIcon1, label: "Advanced\nManufacturing" },
+  { icon: imgFacilityIcon2, label: "Quality\nAssurance" },
+  { icon: imgFacilityIcon3, label: "International\nCertifications" },
+  { icon: imgFacilityIcon4, label: "Sustainable\nPractices" },
 ];
 
 const FacilitySection = () => {
   return (
     <section
-      className="bg-white px-4 py-12 sm:px-8 sm:py-16 lg:px-8 lg:py-20 xl:px-16"
+      className="bg-[#f5f7fa]"
+      style={{
+        paddingLeft: fluid(178, 20),
+        paddingRight: fluid(50, 20),
+        paddingTop: fluid(100, 40),
+        paddingBottom: fluid(100, 40),
+      }}
       aria-labelledby="facility-heading"
     >
-      <div className="mx-auto flex max-w-[1280px] flex-col items-center gap-10 lg:flex-row lg:gap-12">
-        {/* Facility Image */}
-        <div className="relative aspect-[820/520] w-full overflow-hidden rounded-[10px] lg:w-[560px] lg:shrink-0">
+      <div
+        className="mx-auto flex w-full flex-col items-center lg:flex-row"
+        style={{
+          maxWidth: "100%",
+          columnGap: fluid(120, 24),
+          rowGap: fluid(60, 24),
+        }}
+      >
+        {/* Left: Video / Image */}
+        <div
+          className="relative w-full overflow-hidden lg:w-auto lg:shrink-0"
+          style={{
+            width: s(890),
+            height: "auto",
+            aspectRatio: "890 / 590",
+            maxWidth: "100%",
+            marginTop: s(0),
+            marginBottom: s(0),
+            marginLeft: s(0),
+            marginRight: s(0),
+            borderRadius: s(10),
+          }}
+        >
           <img
             src={imgManufacturing}
             alt="Inside Kamakhya Cosmetics manufacturing facility"
             className="absolute inset-0 h-full w-full object-cover"
           />
 
-          <div className="absolute inset-0 bg-black/30" aria-hidden="true" />
-
           <button
             aria-label="Play manufacturing facility video"
-            className="absolute left-1/2 top-1/2 flex h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[10px] bg-white shadow-[0px_20px_12px_rgba(0,0,0,0.1)] transition-transform hover:scale-105 lg:h-[72px] lg:w-[72px]"
+            className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center bg-white shadow-[0px_20px_25px_-5px_rgba(0,0,0,0.1),0px_8px_10px_-6px_rgba(0,0,0,0.1)] transition-transform hover:scale-105"
+            style={{ height: s(72), width: s(72), borderRadius: s(12) }}
           >
             <img
               src={imgPlayBtn}
               alt=""
-              className="h-7 w-7 lg:h-[30px] lg:w-[30px]"
+              style={{ height: s(30), width: s(30) }}
             />
           </button>
         </div>
 
-        {/* Content */}
-        <div className="flex w-full flex-col gap-8 lg:flex-1 lg:gap-[40px]">
-          {/* Heading */}
-          <div className="flex flex-col gap-4 lg:gap-[25px]">
-            <div className="flex flex-col gap-2">
-              <p className="font-['Poppins'] text-[14px] font-semibold uppercase tracking-[2px] text-[#e38f2e] lg:text-[18px]">
-                Our Manufacturing Facility
-              </p>
+        {/* Right: Content */}
+        <div
+          className="flex w-full flex-col lg:flex-1"
+          style={{ maxWidth: s(662), gap: fluid(40, 20) }}
+        >
+          <div className="flex flex-col" style={{ gap: fluid(20, 12) }}>
+            <div className="flex flex-col" style={{ gap: fluid(25, 12) }}>
+              {/* --- TAG / EYEBROW --- */}
+              <div
+                className="flex flex-col justify-center"
+                style={{
+                  width: "100%",
+                  maxWidth: "100%",
+                  gap: fluid(10, 6),
+                  marginTop: s(-20),
+                  marginBottom: s(0),
+                  marginLeft: s(0),
+                  marginRight: s(0),
+                }}
+              >
+                <p
+                  className="font-['Poppins'] font-semibold uppercase text-[#e38f2e]"
+                  style={{ fontSize: fluid(17, 13), letterSpacing: "0.12em" }}
+                >
+                  Our Manufacturing Facility
+                </p>
 
-              <div className="h-[3px] w-[55px] rounded-[10px] bg-[#cca466]" />
+                <img
+                  src={vectorGold}
+                  alt=""
+                  aria-hidden="true"
+                  style={{
+                    width: s(75),
+                    height: "auto",
+                    display: "block",
+                    marginLeft: s(0),
+                  }}
+                />
+              </div>
+
+              {/* --- TITLE --- */}
+              <h2
+                id="facility-heading"
+                className="font-['Playfair_Display'] font-bold leading-[1.25] lg:whitespace-nowrap"
+                style={{ fontSize: fluid(25, 18), maxWidth: "100%" }}
+              >
+                <span className="text-[#2e3192]">The World-Class </span>
+                <span className="text-[#e38f2e]">Manufacturing</span>
+                <span className="text-[#2e3192]">, You Can Trust</span>
+              </h2>
             </div>
 
-            <h2
-              id="facility-heading"
-              className="font-['Playfair_Display'] text-[26px] font-bold leading-tight lg:text-[34px]"
-              style={{ fontVariationSettings: '"opsz" 12, "wdth" 100' }}
+            {/* --- PARAGRAPHS --- */}
+            <div
+              className="flex w-full flex-col font-poppins font-normal text-left lg:text-justify text-[#1c1b1b]"
+              style={{
+                gap: fluid(20, 12),
+                fontSize: fluid(16, 14),
+                lineHeight: 1.7,
+              }}
             >
-              <span className="text-[#2e3192]">The World-Class </span>
-              <span className="text-[#e38f2e]">Manufacturing</span>
-              <span className="text-[#2e3192]">, You Can Trust</span>
-            </h2>
+              <p>
+                Our modern manufacturing facility combines advanced technology,
+                skilled professionals, and strict quality standards to produce
+                premium beauty and home care products with precision, safety,
+                and consistency.
+              </p>
+              <p>
+                Every stage—from raw material selection and production to
+                quality testing and packaging—is carefully monitored to ensure
+                products you can trust.
+              </p>
+            </div>
           </div>
 
-          {/* Description */}
-          <div className="space-y-4 font-['Poppins'] text-[15px] leading-relaxed text-[#121212] lg:text-[18px]">
-            <p>
-              Our modern manufacturing facility combines advanced technology,
-              skilled professionals, and strict quality standards to produce
-              premium beauty and home care products with precision, safety, and
-              consistency.
-            </p>
-
-            <p>
-              Every stage—from raw material selection and production to quality
-              testing and packaging—is carefully monitored to ensure products
-              you can trust.
-            </p>
-          </div>
-
-          {/* Features */}
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+          {/* Feature icons row */}
+          <div
+            className="grid grid-cols-2 lg:grid-cols-4"
+            style={{
+              gap: fluid(12, 8),
+              width: "calc(100% + 24px)",
+              marginLeft: "-9px",
+            }}
+          >
             {FEATURES.map((feature) => (
               <div
                 key={feature.label}
-                className="flex flex-col items-center gap-3"
+                className="flex min-w-0 flex-col items-center"
+                style={{ gap: fluid(19, 10) }}
               >
-                <div className="flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-full border-[1.5px] border-[#e38f2e] lg:h-[54px] lg:w-[54px]">
+                <div
+                  className="flex shrink-0 items-center justify-center rounded-full border-[#e38f2e]"
+                  style={{ height: s(54), width: s(54), borderWidth: s(1.5) }}
+                >
                   <img
                     src={feature.icon}
                     alt=""
-                    className="h-5 w-5 lg:h-6 lg:w-6"
+                    style={{ height: s(24), width: s(24) }}
                   />
                 </div>
 
-                <p className="whitespace-pre-line text-center font-['Poppins'] text-[14px] font-medium leading-tight text-[#333] lg:text-[16px]">
+                <p
+                  className="whitespace-pre-line text-center font-['Poppins'] font-medium leading-snug text-[#333]"
+                  style={{ fontSize: fluid(18, 12) }}
+                >
                   {feature.label}
                 </p>
               </div>
             ))}
           </div>
-
-          <hr className="border-[#e2e6e9]" />
         </div>
       </div>
     </section>
