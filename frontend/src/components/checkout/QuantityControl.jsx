@@ -1,12 +1,14 @@
 import React from 'react';
 
-const QuantityControl = ({ quantity }) => {
+const QuantityControl = ({ quantity, onIncrease, onDecrease }) => {
   return (
     <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden shrink-0 h-[32px]">
       <button
         type="button"
         aria-label="Decrease quantity"
-        className="flex items-center justify-center w-[30px] h-full border-none bg-transparent text-gray-500 cursor-pointer transition-colors hover:bg-gray-100 hover:text-gray-800 text-[14px]"
+        onClick={onDecrease}
+        disabled={quantity <= 1}
+        className="flex items-center justify-center w-[30px] h-full border-none bg-transparent text-gray-500 cursor-pointer transition-colors hover:bg-gray-100 hover:text-gray-800 text-[14px] disabled:opacity-40 disabled:cursor-not-allowed"
       >
         -
       </button>
@@ -16,6 +18,7 @@ const QuantityControl = ({ quantity }) => {
       <button
         type="button"
         aria-label="Increase quantity"
+        onClick={onIncrease}
         className="flex items-center justify-center w-[30px] h-full border-none bg-transparent text-gray-500 cursor-pointer transition-colors hover:bg-gray-100 hover:text-gray-800 text-[14px]"
       >
         +

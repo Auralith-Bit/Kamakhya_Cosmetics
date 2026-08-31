@@ -142,7 +142,7 @@ const OurValues = () => {
         </div>
 
         {/* CARDS */}
-        <div className="flex w-full gap-[20px]">
+        <div className="flex w-full flex-wrap justify-center gap-[20px]">
           {VALUES.map((value) => {
             const SmallIconComp = value.SmallIcon;
 
@@ -151,7 +151,7 @@ const OurValues = () => {
                 key={value.title}
                 className="
                   flex
-                  flex-1
+                  w-[calc((100%-80px)/5)]
                   flex-col
                   items-center
                   text-center
@@ -162,6 +162,9 @@ const OurValues = () => {
                   border-[#D7DAE4]
                   bg-[#FCF9F2]
                   shadow-[0_20px_50px_-12px_rgba(0,0,0,0.05),0_8px_24px_-6px_rgba(0,0,0,0.08)]
+                  max-lg:w-[calc((100%-40px)/3)]
+                  max-tab:w-[calc((100%-20px)/2)]
+                  max-sm:w-full
                 "
               >
                 {/* Main Image */}

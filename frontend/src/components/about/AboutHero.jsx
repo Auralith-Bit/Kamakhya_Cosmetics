@@ -42,6 +42,7 @@ const AboutHero = () => {
           display: 'block',
           userSelect: 'none',
           pointerEvents: 'none',
+          
         }}
       />
 
@@ -52,7 +53,7 @@ const AboutHero = () => {
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(90deg, rgba(245,230,211,0.78) 0%, rgba(245,230,211,0.62) 35%, rgba(245,230,211,0.18) 58%, rgba(245,230,211,0) 70%)',
+            'linear-gradient(90deg, rgba(245,230,211,0.95) 0%, rgba(245,230,211,0.85) 35%, rgba(245,230,211,0.18) 58%, rgba(245,230,211,0) 70%)',
           pointerEvents: 'none',
         }}
       />
@@ -64,7 +65,7 @@ const AboutHero = () => {
           zIndex: 2,
           display: 'flex',
           alignItems: 'center',
-          minHeight: '23.4375vw',
+          minHeight: '23.4375vw',   
           width: '100%',
           boxSizing: 'border-box',
           padding: '0 clamp(20px, 8.68vw, 170px)',

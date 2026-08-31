@@ -11,7 +11,7 @@ const TrashIcon = () => (
   </svg>
 );
 
-const CartItem = ({ item }) => {
+const CartItem = ({ item, onIncrease, onDecrease, onRemove }) => {
   return (
     <div className="flex items-start gap-3 py-4 border-b border-gray-100 last:border-b-0">
       <div className="w-[56px] h-[56px] rounded-lg overflow-hidden shrink-0 bg-[#f0e6d6] flex items-center justify-center">
@@ -33,6 +33,7 @@ const CartItem = ({ item }) => {
           <button
             type="button"
             aria-label={`Remove ${item.name}`}
+            onClick={onRemove}
             className="flex items-center justify-center w-7 h-7 rounded-md border-none bg-transparent cursor-pointer shrink-0 hover:bg-red-50"
           >
             <TrashIcon />
@@ -41,9 +42,9 @@ const CartItem = ({ item }) => {
 
         <div className="flex items-center justify-between gap-2 mt-2">
           <div className="flex items-center gap-3">
-            <QuantityControl quantity={item.quantity} />
+            <QuantityControl quantity={item.quantity} onIncrease={onIncrease} onDecrease={onDecrease} />
             <p className="m-0 text-[12px] text-gray-400">
-              {item.quantity} * {item.unitPrice?.toLocaleString()} = {item.totalUnits?.toLocaleString()} units
+              {item.quantity} * {item.unitsPerPack?.toLocaleString()} = {item.unitsPerPack * item.quantity} units
             </p>
           </div>
           <span className="text-[14px] font-bold text-brand-blue whitespace-nowrap">
