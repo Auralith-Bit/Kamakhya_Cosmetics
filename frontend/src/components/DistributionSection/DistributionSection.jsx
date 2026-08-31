@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const FONT_BODY = "'Poppins', sans-serif";
 const FONT_TITLE = "'Playfair Display', 'Playfair', serif";
@@ -18,6 +19,8 @@ const CheckIcon = () => (
 );
 
 const DistributionSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section
       id="distribution"
@@ -141,8 +144,9 @@ const DistributionSection = () => {
             our partnership team will guide your onboarding.
           </p>
 
-          {/* Become Distributor button */}
+          {/* Become Distributor button — routes to /distributor */}
           <button
+            onClick={() => navigate('/distributor')}
             style={{
               width: '100%',
               padding: '14px 0',
@@ -163,8 +167,9 @@ const DistributionSection = () => {
             Become Distributor
           </button>
 
-          {/* Request Bulk Quote button */}
+          {/* Request Bulk Quote button — routes to /bulk-quote */}
           <button
+            onClick={() => navigate('/bulk-quote')}
             style={{
               width: '100%',
               padding: '14px 0',

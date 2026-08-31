@@ -165,7 +165,7 @@ const CTABanner = () => {
           </button>
 
           <button
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/products")}
             className="flex items-center justify-center border-2 border-white transition-colors hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2"
             style={{
               height: s(LAYOUT.btnH),

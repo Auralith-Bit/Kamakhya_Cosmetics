@@ -1,21 +1,21 @@
-import { Link } from 'react-router'
-import { ArrowRight, Trash2, Package, CalendarClock, Sparkles } from 'lucide-react'
-import { products } from '../../data/product'
-import { useWishlist } from '../../context/WishlistContext'
-import EmptyProducts from './EmptyProducts'
+import { Link } from "react-router-dom";   // ✅ was 'react-router'
+import { ArrowRight, Trash2, Package, CalendarClock, Sparkles } from "lucide-react";
+import { products } from "../../data/product";
+import { useWishlist } from "../../context/WishlistContext";
+import EmptyProducts from "./EmptyProducts";
 
 const WishlistCard = ({ product, onRemove }) => (
     <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden group">
         <div className="relative">
             <span className="absolute top-3 left-3 flex items-center gap-1 bg-white/90 text-[10px] font-semibold tracking-wide px-3 py-1.5 rounded-full text-[#E38F2E]">
                 <Sparkles className="w-3 h-3" />
-                {(product.type || 'Featured').toUpperCase()}
+                {(product.type || "Featured").toUpperCase()}
             </span>
 
             <button
                 onClick={(e) => {
-                    e.stopPropagation()
-                    onRemove(product.id)
+                    e.stopPropagation();
+                    onRemove(product.id);
                 }}
                 className="absolute top-3 right-3 z-10 bg-white rounded-full p-2 shadow"
                 aria-label={`Remove ${product.title} from wishlist`}
@@ -23,7 +23,8 @@ const WishlistCard = ({ product, onRemove }) => (
                 <Trash2 className="w-4 h-4 text-[#2E3192]" />
             </button>
 
-            <Link to={`/products/${product.id}`} className="block">
+            {/* ✅ image → product page */}
+            <Link to="/products" className="block no-underline">
                 <img
                     src={product.image}
                     alt={product.title}
@@ -33,7 +34,8 @@ const WishlistCard = ({ product, onRemove }) => (
         </div>
 
         <div className="p-4">
-            <Link to={`/products/${product.id}`}>
+            {/* ✅ title → product page */}
+            <Link to="/products" className="no-underline">
                 <h4 className="text-center font-serif text-lg text-gray-800 mb-1 hover:text-[#2E3192] transition">
                     {product.title}
                 </h4>
@@ -63,25 +65,26 @@ const WishlistCard = ({ product, onRemove }) => (
                 </div>
             </div>
 
+            {/* ✅ View Products → product page */}
             <Link
-                to={`/products/${product.id}`}
-                className="w-full flex items-center justify-center gap-2 border border-[#2E3192] text-[#2E3192] rounded-full py-2 text-sm font-medium hover:bg-[#2E3192] hover:text-white transition"
+                to="/products"
+                className="no-underline w-full flex items-center justify-center gap-2 border border-[#2E3192] text-[#2E3192] rounded-full py-2 text-sm font-medium hover:bg-[#2E3192] hover:text-white transition"
             >
                 View Products
                 <ArrowRight className="w-4 h-4" />
             </Link>
         </div>
     </div>
-)
+);
 
 const ProductWishlist = () => {
-    const { wishlistIds, removeFromWishlist } = useWishlist()
+    const { wishlistIds, removeFromWishlist } = useWishlist();
 
-    const wishlistProducts = products.filter((p) => wishlistIds.includes(p.id))
+    const wishlistProducts = products.filter((p) => wishlistIds.includes(p.id));
 
     return (
-        <section className={`bg-[#FCFAF7] ${wishlistProducts.length === 0 ? 'flex flex-col min-h-[calc(100dvh-12.5rem)]' : ''}`}>
-            <div className={`${wishlistProducts.length === 0 ? 'w-full flex-1 flex flex-col px-[100px] py-[45px]' : 'max-w-6xl mx-auto px-5 sm:px-10 py-20'}`}>
+        <section className={`bg-[#FCFAF7] ${wishlistProducts.length === 0 ? "flex flex-col min-h-[calc(100dvh-12.5rem)]" : ""}`}>
+            <div className={`${wishlistProducts.length === 0 ? "w-full flex-1 flex flex-col px-[100px] py-[45px]" : "max-w-6xl mx-auto px-5 sm:px-10 py-20"}`}>
                 {/* Top Section */}
                 {wishlistProducts.length > 0 && (
                     <div className="flex flex-col justify-start">
@@ -108,11 +111,9 @@ const ProductWishlist = () => {
                         </div>
                     </div>
                 )}
-
-            
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default ProductWishlist
+export default ProductWishlist;

@@ -7,7 +7,7 @@ const UserIcon = () => (
   </svg>
 );
 
-const BusinessContactCard = () => {
+const BusinessContactCard = ({ formData, onChange }) => {
   return (
     <div className="bg-white rounded-[10px] border border-[#CBCBE4] py-[50px] px-[40px] max-sm:py-[30px] max-sm:px-5">
       <div className="flex items-center gap-[10px] mb-[10px] pb-4 border-b border-[#CBCBE4]">
@@ -24,7 +24,10 @@ const BusinessContactCard = () => {
           </label>
           <input
             type="text"
-            placeholder="Your full name"
+            name="companyName"
+            value={formData.companyName || ''}
+            onChange={onChange}
+            placeholder="Your company name"
             required
             className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm text-gray-800 placeholder-gray-400 outline-none transition-colors focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/30"
           />
@@ -36,6 +39,9 @@ const BusinessContactCard = () => {
           </label>
           <input
             type="text"
+            name="fullName"
+            value={formData.fullName || ''}
+            onChange={onChange}
             placeholder="Your full name"
             required
             className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm text-gray-800 placeholder-gray-400 outline-none transition-colors focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/30"
@@ -49,6 +55,9 @@ const BusinessContactCard = () => {
             </label>
             <input
               type="email"
+              name="email"
+              value={formData.email || ''}
+              onChange={onChange}
               placeholder="info@business.com"
               required
               className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm text-gray-800 placeholder-gray-400 outline-none transition-colors focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/30"
@@ -60,6 +69,9 @@ const BusinessContactCard = () => {
             </label>
             <input
               type="tel"
+              name="phone"
+              value={formData.phone || ''}
+              onChange={onChange}
               placeholder="Your Ph. number"
               required
               className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm text-gray-800 placeholder-gray-400 outline-none transition-colors focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/30"

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const serif = "'Playfair Display', Georgia, serif";
 const sans = "'Poppins', 'Segoe UI', sans-serif";
@@ -105,8 +106,6 @@ const DistributionPartnership = () => (
         text-transform: capitalize;
       }
 
-      /* ✅ FINAL: size fills the card naturally; justify only trims the last
-         few pixels so spacing looks like the design and no right gap remains */
       .dp-card-p{
       margin-top:1.1vw;
       color:#666666;
@@ -129,6 +128,7 @@ const DistributionPartnership = () => (
       font-family:${sans};
       cursor:pointer;
       transition:background .2s,color .2s;
+      text-decoration:none;
       }
 
       .dp-btn1{
@@ -210,13 +210,16 @@ const DistributionPartnership = () => (
       <div className="dp-card">
         <h3>Apply To Become A Partner</h3>
         <p className="dp-card-p">
-          <span className="dp-line">Join Kamakhya’s growing network of distributors and retailers.</span>
+          <span className="dp-line">Join Kamakhya's growing network of distributors and retailers.</span>
           <span className="dp-line">Share your territory, sales channel, and expected volume, and</span>
           <span className="dp-line">our partnership team will guide your onboarding.</span>
         </p>
 
-        <button className="dp-btn dp-btn1">Become Distributor</button>
-        <button className="dp-btn dp-btn2">Request Bulk Quote</button>
+        {/* ✅ Become Distributor → /distributor */}
+        <Link to="/distributor" className="dp-btn dp-btn1">Become Distributor</Link>
+
+        {/* ✅ Request Bulk Quote → /bulk-quote */}
+        <Link to="/bulk-quote" className="dp-btn dp-btn2">Request Bulk Quote</Link>
 
         <ul className="dp-note">
           <li>For trade enquiries only. Product pricing is provided through formal quotation.</li>

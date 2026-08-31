@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CartItem from './CartItem';
 import productImg from '../../assets/liner.png';
 
@@ -20,6 +21,7 @@ const DEMO_ITEMS = [
 ].map((item) => ({ ...item, unitCost: Math.round((item.price / item.quantity) * 100) / 100 }));
 
 const OrderSummaryCard = () => {
+  const navigate = useNavigate();
   const [items, setItems] = useState(DEMO_ITEMS);
 
   const updateQuantity = (id, delta) => {
@@ -98,8 +100,10 @@ const OrderSummaryCard = () => {
         </div>
 
         <div className="mt-6">
+          {/* ✅ Submit Request → /order-review */}
           <button
             type="button"
+            onClick={() => navigate('/order-review')}
             className="w-full h-[55px] flex items-center justify-center gap-[10px] bg-[#2E3192] !text-white font-semibold text-[15px] rounded-[7px] border-none cursor-pointer transition-all hover:bg-[#252775] active:scale-[0.98]"
           >
             <LockIcon />

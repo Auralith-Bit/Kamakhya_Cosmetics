@@ -1,5 +1,5 @@
 import Shine from "../../assets/ShinePromo.svg";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";   // ✅ was 'react-router'
 import { ArrowRight } from "lucide-react";
 
 const ShinePromo = () => {
@@ -32,9 +32,10 @@ const ShinePromo = () => {
                         a cleaner, fresher everyday life.
                     </p>
 
+                    {/* ✅ Explore Shine → /brands/shine */}
                     <Link
-                        to="/shine"
-                        className="mt-4 inline-flex items-center gap-2 rounded-lg border-2 border-[#176B22] px-6 py-2 font-semibold text-[#176B22] transition-transform duration-200 hover:scale-105 focus-visible:ring-2 focus-visible:ring-[#176B22] focus-visible:ring-offset-2"
+                        to="/brands/shine"
+                        className="no-underline mt-4 inline-flex items-center gap-2 rounded-lg border-2 border-[#176B22] px-6 py-2 font-semibold text-[#176B22] transition-transform duration-200 hover:scale-105 focus-visible:ring-2 focus-visible:ring-[#176B22] focus-visible:ring-offset-2"
                     >
                         Explore Shine <ArrowRight />
                     </Link>

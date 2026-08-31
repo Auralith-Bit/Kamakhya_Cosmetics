@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import vector1 from "../../../assets/Vector (1).svg";
 import img1 from "../../../assets/Rectangle 4647.svg";
 import img2 from "../../../assets/Rectangle 4648.svg";
@@ -9,7 +10,6 @@ import img5 from "../../../assets/Rectangle 4651.svg";
 const serif = "'Playfair Display', Georgia, serif";
 const sans = "'Poppins', 'Segoe UI', sans-serif";
 
-/* ✅ notes restored EXACTLY as shown in the product-note video (4 bullets each) */
 const PRODUCTS = [
   {
     num: "01", cat: "Kitchencare", badge: "KITCHENCARE", name: "Radiance Renewal Serum",
@@ -176,7 +176,6 @@ const ProductSpotlight = () => {
 
         .psx-right{width:32.4479vw;padding:2.0833vw 0 2.0833vw 3.6458vw;}
 
-        /* ✅ details block re-mounts per product → fades/slides like the video */
         .psx-dyn{animation:psx-fade .5s ease;}
         @keyframes psx-fade{from{opacity:0;transform:translateX(1.0417vw);}to{opacity:1;transform:none;}}
 
@@ -200,17 +199,19 @@ const ProductSpotlight = () => {
         .psx-stats strong{font-family:${serif};font-size:1.217vw;font-style:normal;
           font-weight:550;color:#121212;}
         .psx-stats i{width:0.0521vw;height:2.6042vw;background:#D7DAE4;}
+
         .psx-cta{margin-top:1vw;width:21.8125vw;height:3vw;background:#2E3192;color:#fff;
           border:none;border-radius:0.4167vw;display:flex;align-items:center;
           justify-content:center;gap:0.5208vw;font-family:${sans};font-size:0.92vw;
-          font-weight:500;cursor:pointer;transition:background .2s;}
+          font-weight:500;cursor:pointer;transition:background .2s;
+          text-decoration:none;}
         .psx-cta svg{width:1.1vw !important;height:1.1vw !important;}
         .psx-cta:hover{background:#1d2170;}
         .psx-cta2{margin-top:0.8333vw;width:21.8125vw;height:3vw;background:transparent;
           border:0.1463vw solid #252775;color:#2E3192;border-radius:0.4167vw;display:flex;
           align-items:center;justify-content:center;gap:0.5208vw;font-family:${sans};
           font-size:0.92vw;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;
-          cursor:pointer;}
+          cursor:pointer;text-decoration:none;}
         .psx-cta2 svg{width:1.25vw !important;height:0.8333vw !important;}
         .psx-cta2:hover{background:#eef0fa;}
 
@@ -218,7 +219,7 @@ const ProductSpotlight = () => {
           align-items:center;justify-content:space-between;padding:0 1vw;}
         .psx-foot span{color:#666666;font-family:${sans};font-size:0.86vw;}
 
-        /* ============ ≤1280: stacked flow — tabs → image → arrows → details ============ */
+        /* ============ ≤1280: stacked flow — column list → image → arrows → details ============ */
         @media (max-width:1280px){
           .psx-sec{height:auto;padding:9vw 5vw 10vw;}
 
@@ -240,14 +241,13 @@ const ProductSpotlight = () => {
           .psx-dir{font-size:clamp(11px,1.3vw,16px);}
           .psx-sig{font-size:clamp(18px,2.4vw,30px);}
 
-          .psx-list{order:2;flex:none;flex-direction:row;overflow-x:auto;gap:2vw;
-            margin-top:0;padding:4vw 4vw 2vw;scroll-snap-type:x mandatory;
-            scrollbar-width:none;-webkit-overflow-scrolling:touch;}
-          .psx-list::-webkit-scrollbar{display:none;}
-          .psx-item{flex:0 0 auto;scroll-snap-align:start;padding:2.2vw 3.5vw;
+          /* ✅ directory now stacks vertically (one column), like the desktop sidebar */
+          .psx-list{order:2;flex:none;flex-direction:column;gap:2vw;
+            margin-top:0;padding:4vw 4vw 2vw;}
+          .psx-item{width:100%;padding:2.2vw 3.5vw;
             border-radius:2vw;gap:1vw;}
           .psx-item-cat{font-size:clamp(10px,1.2vw,14px);}
-          .psx-item-name{font-size:clamp(12px,1.4vw,16px);white-space:nowrap;}
+          .psx-item-name{font-size:clamp(12px,1.4vw,16px);white-space:normal;}
 
           .psx-center{order:3;}
           .psx-stage{width:min(70vw,440px);height:auto;aspect-ratio:1/1;margin-top:5vw;}
@@ -351,7 +351,6 @@ const ProductSpotlight = () => {
 
           {/* right details */}
           <div className="psx-right">
-            {/* ✅ keyed wrapper → notes/name/desc re-animate on every switch, like the video */}
             <div className="psx-dyn" key={p.num}>
               <p className="psx-kicker">Signature {p.num}</p>
               <div className="psx-rule" />
@@ -380,8 +379,8 @@ const ProductSpotlight = () => {
               </div>
             </div>
 
-            <button className="psx-cta"><Plus /> Become Distributor</button>
-            <button className="psx-cta2">Request Bulk Quote <Arrow /></button>
+            <Link to="/distributor" className="psx-cta"><Plus /> Become Distributor</Link>
+            <Link to="/bulk-quote" className="psx-cta2">Request Bulk Quote <Arrow /></Link>
           </div>
         </div>
 
