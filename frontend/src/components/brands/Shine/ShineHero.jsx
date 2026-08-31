@@ -24,7 +24,7 @@ const ShineHero = () => (
       .sh-hero{
         position:relative;
         width:100%;
-        height:23.4375vw;            /* 👈 height responsive with width */
+        height:23.4375vw;
         background:#F6EDE3;
         overflow:hidden;
       }
@@ -48,44 +48,47 @@ const ShineHero = () => (
       .sh-p{margin-top:1.1458vw;color:#5A6673;font-family:${sans};
         font-size:1.0417vw;line-height:1.5104vw;max-width:40.625vw;}
 
-      /* ============ MOBILE+TABLET ≤1023 — same as your approved version,
-         only the tuck deepened so the top edge hides behind the copy on
-         EVERY device (copy is z-2 above the image, so nothing else moves) ============ */
-      @media (max-width:1023px){
-        .sh-hero{height:auto;display:flex;flex-direction:column;background:#F6EDE3;}
+      /* ============ PHONES ≤639 — compact hero (Contact pattern) ============ */
+      @media (max-width:639px){
+        .sh-hero{height:auto;}
 
+        /* copy in flow; 24vw bottom padding = image window below the text */
         .sh-copy{position:relative;z-index:2;left:auto;top:auto;width:auto;
-          order:1;padding:10vw 6vw 0;}
+          padding:8vw 6vw 24vw;}
         .sh-crumb{font-size:clamp(13px, 1.6vw, 18px);gap:2vw;}
         .ic-home{width:clamp(14px, 1.8vw, 20px);height:clamp(14px, 1.8vw, 20px);}
         .ic-chev{width:clamp(6px, 0.9vw, 10px);height:clamp(10px, 1.4vw, 15px);}
-        .sh-tag{margin-top:4vw;font-size:clamp(12px, 1.5vw, 18px);}
+        .sh-tag{margin-top:3vw;font-size:clamp(12px, 1.5vw, 18px);}
         .sh-rule{width:clamp(40px, 10vw, 70px);height:3px;margin-top:2vw;border-radius:2px;}
-        .sh-title{margin-top:3vw;font-size:clamp(28px, 6vw, 44px);}
-        .sh-p{margin-top:4vw;font-size:clamp(13px, 1.6vw, 18px);
+        .sh-title{margin-top:2.5vw;font-size:clamp(28px, 6vw, 44px);}
+        .sh-p{margin-top:3vw;font-size:clamp(13px, 1.6vw, 18px);
           line-height:1.6;max-width:none;}
 
-        /* ✅ -56vw → -62vw : deepens overlap just past the tallest copy
-           render, so no cream sliver can show above the image */
-        .sh-bg{position:relative;z-index:1;inset:auto;width:100%;display:block;
-          order:2;margin-top:-62vw;}
+        /* ✅ product image = full-bleed background, exactly like Contact hero */
+        .sh-bg{position:absolute;inset:0;width:100%;height:100%;
+          object-fit:cover;object-position:22% center;z-index:1;}
 
         .sh-shade{display:none;}
       }
 
-      /* ============ PHONES <640 — unchanged crop ============ */
-      @media (max-width:639px){
-        .sh-bg{aspect-ratio:16/10;object-fit:cover;object-position:62% center;}
-      }
-
-      /* ============ TABLET 640–1023 — unchanged crop/type, tuck -36 → -42 ============ */
+      /* ============ TABLET 640–1023 — mini-desktop, shorter stage ============ */
       @media (min-width:640px) and (max-width:1023px){
-        .sh-copy{padding:8vw 6vw 0;}
-        .sh-crumb{font-size:15px;}
-        .sh-tag{font-size:14px;}
-        .sh-title{font-size:40px;}
-        .sh-p{font-size:15px;}
-        .sh-bg{margin-top:-42vw;aspect-ratio:21/9;object-fit:cover;object-position:center;}
+        .sh-hero{height:auto;aspect-ratio:16/9;}
+
+        .sh-copy{position:absolute;left:7vw;top:6vw;width:52%;z-index:2;
+          padding:0;}
+        .sh-crumb{font-size:15px;gap:8px;}
+        .ic-home{width:18px;height:18px;}
+        .ic-chev{width:8px;height:13px;}
+        .sh-tag{margin-top:12px;font-size:14px;}
+        .sh-rule{width:56px;height:3px;margin-top:10px;border-radius:2px;}
+        .sh-title{margin-top:10px;font-size:34px;}
+        .sh-p{margin-top:12px;font-size:14px;line-height:1.55;max-width:none;}
+
+        .sh-bg{position:absolute;inset:0;width:100%;height:100%;
+          object-fit:cover;object-position:center right;z-index:1;}
+
+        .sh-shade{display:none;}
       }
     `}</style>
 
