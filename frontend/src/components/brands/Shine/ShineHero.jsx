@@ -44,7 +44,8 @@ const ShineHero = () => (
       .sh-rule{width:5.4167vw;height:0.1563vw;background:#E38F2E;
         margin-top:0.625vw;border-radius:0.1042vw;}
       .sh-title{margin-top:1.0417vw;color:#2E3192;font-family:${serif};
-        font-size:2.6042vw;font-weight:400;line-height:1.1;}
+      font-size:2.6042vw;font-weight:600;letter-spacinf: 0.01em;line-height:1.1;}
+      
       .sh-p{margin-top:1.1458vw;color:#5A6673;font-family:${sans};
         font-size:1.0417vw;line-height:1.5104vw;max-width:40.625vw;}
 
