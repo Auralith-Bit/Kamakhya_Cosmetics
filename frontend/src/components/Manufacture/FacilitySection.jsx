@@ -32,7 +32,7 @@ const FacilitySection = () => {
         className="mx-auto flex w-full flex-col items-center lg:flex-row"
         style={{
           maxWidth: "100%",
-          columnGap: fluid(120, 24),
+          columnGap: fluid(48, 16),
           rowGap: fluid(60, 24),
         }}
       >
@@ -40,7 +40,7 @@ const FacilitySection = () => {
         <div
           className="relative w-full overflow-hidden lg:w-auto lg:shrink-0"
           style={{
-            width: s(890),
+            width: s(950),
             height: "auto",
             aspectRatio: "890 / 590",
             maxWidth: "100%",
@@ -73,7 +73,7 @@ const FacilitySection = () => {
         {/* Right: Content */}
         <div
           className="flex w-full flex-col lg:flex-1"
-          style={{ maxWidth: s(662), gap: fluid(40, 20) }}
+          style={{ maxWidth: s(800), gap: fluid(40, 20), marginTop: s(-100), marginLeft: fluid(0, 50), paddingTop: fluid(0, 10), paddingLeft: fluid(0, 20) }}
         >
           <div className="flex flex-col" style={{ gap: fluid(20, 12) }}>
             <div className="flex flex-col" style={{ gap: fluid(25, 12) }}>
@@ -92,7 +92,7 @@ const FacilitySection = () => {
               >
                 <p
                   className="font-['Poppins'] font-semibold uppercase text-[#e38f2e]"
-                  style={{ fontSize: fluid(17, 13), letterSpacing: "0.12em" }}
+                  style={{ fontSize: fluid(17, 15), letterSpacing: "0.15em" }}
                 >
                   Our Manufacturing Facility
                 </p>
@@ -102,7 +102,7 @@ const FacilitySection = () => {
                   alt=""
                   aria-hidden="true"
                   style={{
-                    width: s(75),
+                    width: s(90),
                     height: "auto",
                     display: "block",
                     marginLeft: s(0),
@@ -114,7 +114,7 @@ const FacilitySection = () => {
               <h2
                 id="facility-heading"
                 className="font-['Playfair_Display'] font-bold leading-[1.25] lg:whitespace-nowrap"
-                style={{ fontSize: fluid(25, 18), maxWidth: "100%" }}
+                style={{ fontSize: fluid(25, 20), maxWidth: "100%", letterSpacing: "0.095em" }}
               >
                 <span className="text-[#2e3192]">The World-Class </span>
                 <span className="text-[#e38f2e]">Manufacturing</span>
@@ -122,13 +122,18 @@ const FacilitySection = () => {
               </h2>
             </div>
 
-            {/* --- PARAGRAPHS --- */}
+            {/* --- PARAGRAPHS --- ✅ length widened: uses the full remaining column width */}
             <div
               className="flex w-full flex-col font-poppins font-normal text-left lg:text-justify text-[#1c1b1b]"
               style={{
                 gap: fluid(20, 12),
-                fontSize: fluid(16, 14),
+                fontSize: fluid(16, 15),
+                fontWeight: 400,
+                textAlign: "justify",
+                color: "#121212",
+                letterSpacing: "0.03em",
                 lineHeight: 1.7,
+                maxWidth: s(800),
               }}
             >
               <p>
@@ -145,12 +150,13 @@ const FacilitySection = () => {
             </div>
           </div>
 
-          {/* Feature icons row */}
+          {/* Feature icons row — ✅ capped at the ORIGINAL width so its spread is unchanged */}
           <div
             className="grid grid-cols-2 lg:grid-cols-4"
             style={{
               gap: fluid(12, 8),
               width: "calc(100% + 24px)",
+              maxWidth: s(800),
               marginLeft: "-9px",
             }}
           >
