@@ -1,11 +1,11 @@
 import processBar from "../../assets/manufactureAssets/processBAR.png";
+import vectorGold from "../../assets/Vector (1).svg"; // ✅ golden curve (replaces broken imgWaveDecor)
 import {
   imgImage37,
   imgImage38,
   imgImage40,
   imgImage39,
   imgImage41,
-  imgWaveDecor,
 } from "../../assets/figmaAssets";
 import iconPlant from "../../assets/manufactureAssets/Vector.svg";
 import iconLab from "../../assets/manufactureAssets/lab.svg";
@@ -13,10 +13,6 @@ import iconSetting from "../../assets/manufactureAssets/setting.svg";
 import iconBox from "../../assets/manufactureAssets/Box.svg";
 import iconTruck from "../../assets/manufactureAssets/truck.svg";
 import { contentMax, fluid, pagePadX, s, SCALE } from "./figmaScale";
-
-/* ═══════════════════════════════════════════════════════════
-   ✏️ EDIT EVERYTHING HERE
-═══════════════════════════════════════════════════════════ */
 
 const CANVAS = { w: 1580, h: 1116 }; // timeline design box
 
@@ -150,7 +146,7 @@ const NumberBadge = ({ step }) => (
 
 const ProcessCard = ({ step, isDesktop = false }) => (
   <article
-    className="relative w-full overflow-visible border border-[#eee9df] bg-white shadow-[0px_8px_24px_-6px_rgba(0,0,0,0.08),0px_20px_50px_-12px_rgba(0,0,0,0.05)]"
+    className="pcard relative w-full overflow-visible border border-[#eee9df] bg-white shadow-[0px_8px_24px_-6px_rgba(0,0,0,0.08),0px_20px_50px_-12px_rgba(0,0,0,0.05)]"
     style={{ borderRadius: s(SIZE.cardRadius) }}
   >
     <NumberBadge step={step} />
@@ -277,13 +273,32 @@ const ProcessSection = () => {
       }}
       aria-labelledby="process-heading"
     >
-      {/* ✅ MOBILE-ONLY recentering. This media query runs BELOW 768px only,
-          so desktop (and tablet) rendering stays 100% identical. */}
       <style>{`
+        /* ✅ MOBILE-ONLY recentering. Runs BELOW 768px only,
+           so desktop (and tablet) rendering stays 100% identical. */
         @media (max-width: 767.98px) {
           .process-mobile-center {
             width: calc(100% + var(--process-pad-right)) !important;
             margin-right: calc(-1 * var(--process-pad-right)) !important;
+          }
+        }
+
+        /* ✅ CARD HOVER — dark, wide-spreading shadow, NO movement.
+           Plain CSS so it always applies (Tailwind arbitrary hover failed). */
+        .pcard{
+          transition: box-shadow .35s ease;
+          cursor: pointer;
+        }
+        .pcard:hover{
+          box-shadow:
+            0 0.5208vw 1.0417vw rgba(0,0,0,0.16),
+            0 1.5625vw 3.125vw rgba(43,46,126,0.30);
+        }
+        @media (max-width: 1023px) {
+          .pcard:hover{
+            box-shadow:
+              0 6px 14px rgba(0,0,0,0.15),
+              0 16px 32px rgba(43,46,126,0.28);
           }
         }
       `}</style>
@@ -292,10 +307,10 @@ const ProcessSection = () => {
         className="mx-auto flex w-full flex-col items-center"
         style={{ maxWidth: contentMax, gap: fluid(50, 24) }}
       >
-        {/* ── Heading ── */}
+        {/* ── Heading  */}
         <div
           className="process-mobile-center flex w-full flex-col items-center text-center"
-          style={{ maxWidth: s(948) }}
+          style={{ maxWidth: s(980) }}
         >
           <p
             className="font-['Poppins'] font-semibold uppercase text-[#e38f2e]"
@@ -313,14 +328,17 @@ const ProcessSection = () => {
           >
             Where Quality Meets Precision
           </h2>
+
           <img
-            src={imgWaveDecor}
+            src={vectorGold}
             alt=""
-            style={{ height: s(24), width: s(172) }}
+            aria-hidden="true"
+            style={{ width: s(172), height: "auto", display: "block" }}
           />
+
           <p
             className="font-['Poppins'] font-medium text-[#666]"
-            style={{ maxWidth: s(943), fontSize: fluid(20, 14) }}
+            style={{ maxWidth: s(980), fontSize: fluid(20, 14) }}
           >
             From premium ingredients to advanced production and rigorous quality
             checks, every step of our manufacturing process ensures safe,

@@ -133,15 +133,13 @@ const CertificationsSection = () => {
       }}
       aria-labelledby="cert-heading"
     >
-      {/* Animated background decoration */}
+      {/* Static background decoration (no animation) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
-          className="absolute -top-40 -right-40 w-80 h-80 bg-[#e38f2e]/5 rounded-full blur-3xl animate-pulse"
-          style={{ animationDuration: "4s" }}
+          className="absolute -top-40 -right-40 w-80 h-80 bg-[#e38f2e]/5 rounded-full blur-3xl"
         />
         <div
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#2e3192]/5 rounded-full blur-3xl animate-pulse"
-          style={{ animationDuration: "6s", animationDelay: "1s" }}
+          className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#2e3192]/5 rounded-full blur-3xl"
         />
       </div>
 
@@ -163,7 +161,7 @@ const CertificationsSection = () => {
           }}
         >
           <p
-            className="font-['Poppins'] font-semibold uppercase text-[#e38f2e] transform hover:scale-105 transition-transform duration-300"
+            className="font-['Poppins'] font-semibold uppercase text-[#e38f2e]"
             style={{
               fontSize: fluid(TYPE.eyebrow, 13),
               letterSpacing: "0.12em",
@@ -188,9 +186,9 @@ const CertificationsSection = () => {
             alt=""
             className="mt-6"
             style={{
-              height: s(24),
-              width: s(172),
-              animation: "float 3s ease-in-out infinite",
+              height: "auto",
+              width: s(230),
+              marginTop: s(8),
             }}
           />
 
@@ -200,6 +198,7 @@ const CertificationsSection = () => {
               fontSize: fluid(TYPE.intro, TYPE.introMin),
               fontWeight: TYPE.introWeight,
               lineHeight: 1.6,
+              marginTop: s(8),
             }}
           >
             Quality is more than a promise—it's independently verified. Our
@@ -219,7 +218,7 @@ const CertificationsSection = () => {
           {CERTS.map((cert, index) => (
             <div
               key={cert.code}
-              className="relative flex h-full w-full flex-col items-center border border-[#d7dae4] bg-[#fcf9f2] shadow-[0px_8px_24px_-6px_rgba(0,0,0,0.08),0px_20px_50px_-12px_rgba(0,0,0,0.05)] transition-all duration-500 ease-out opacity-0 animate-card-enter group cursor-pointer"
+              className="ccard relative flex h-full w-full flex-col items-center border border-[#d7dae4] bg-[#fcf9f2] shadow-[0px_8px_24px_-6px_rgba(0,0,0,0.08),0px_20px_50px_-12px_rgba(0,0,0,0.05)] opacity-0 animate-card-enter"
               style={{
                 minHeight: s(LAYOUT.cardMinH),
                 borderRadius: s(LAYOUT.cardRadius),
@@ -242,7 +241,7 @@ const CertificationsSection = () => {
                 <img
                   src={cert.img}
                   alt={cert.code}
-                  className="object-contain drop-shadow-lg transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
+                  className="object-contain drop-shadow-lg"
                   style={{
                     height: s(cert.badgeSize ?? LAYOUT.badgeSize),
                     width: s(cert.badgeSize ?? LAYOUT.badgeSize),
@@ -253,7 +252,7 @@ const CertificationsSection = () => {
 
               {/* blue code */}
               <p
-                className="text-center font-['Poppins'] transform transition-all duration-300 group-hover:-translate-y-1"
+                className="text-center"
                 style={{
                   marginTop: s(LAYOUT.gapBadgeCode),
                   fontSize: fluid(TYPE.code, TYPE.codeMin),
@@ -267,7 +266,7 @@ const CertificationsSection = () => {
 
               {/* orange title */}
               <p
-                className="text-center font-['Playfair_Display'] transform transition-all duration-300 group-hover:-translate-y-1"
+                className="text-center font-['Playfair_Display']"
                 style={{
                   marginTop: s(LAYOUT.gapCodeTitle),
                   fontSize: fluid(TYPE.title, TYPE.titleMin),
@@ -282,7 +281,7 @@ const CertificationsSection = () => {
 
               {/* description */}
               <p
-                className="text-center font-['Poppins'] transform transition-all duration-300 group-hover:-translate-y-1"
+                className="text-center font-['Poppins']"
                 style={{
                   marginTop: s(LAYOUT.gapTitleDesc),
                   fontSize: fluid(TYPE.desc, TYPE.descMin),
@@ -306,28 +305,18 @@ const CertificationsSection = () => {
                 <img
                   src={cert.badgeIcon}
                   alt=""
-                  className="transform transition-all duration-300 group-hover:scale-125 group-hover:rotate-12"
                   style={{
                     height: s(LAYOUT.bottomIconSize),
                     width: s(LAYOUT.bottomIconSize),
                   }}
                 />
               </div>
-
-              {/* Hover glow effect */}
-              <div
-                className="absolute inset-0 rounded-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{
-                  background:
-                    "radial-gradient(circle at center, rgba(227,143,46,0.1) 0%, transparent 70%)",
-                }}
-              />
             </div>
           ))}
         </div>
       </div>
 
-      {/* Custom CSS for animations */}
+      {/* Custom CSS for animations + card hover shadow */}
       <style>{`
         @keyframes fade-in-up {
           from { opacity: 0; transform: translateY(30px); }
@@ -337,12 +326,25 @@ const CertificationsSection = () => {
           from { opacity: 0; transform: translateY(40px) scale(0.95); }
           to   { opacity: 1; transform: translateY(0) scale(1); }
         }
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50%      { transform: translateY(-10px); }
-        }
         .animate-fade-in-up { animation: fade-in-up 0.8s ease-out; }
         .animate-card-enter { animation: card-enter 0.6s ease-out; }
+
+        /* ✅ CARD HOVER — dark wide-spreading shadow, NO movement/scale */
+        .ccard{
+          transition: box-shadow .35s ease;
+        }
+        .ccard:hover{
+          box-shadow:
+            0 0.5208vw 1.0417vw rgba(0,0,0,0.16),
+            0 1.5625vw 3.125vw rgba(43,46,126,0.30);
+        }
+        @media (max-width: 1023px) {
+          .ccard:hover{
+            box-shadow:
+              0 6px 14px rgba(0,0,0,0.15),
+              0 16px 32px rgba(43,46,126,0.28);
+          }
+        }
       `}</style>
     </section>
   );
