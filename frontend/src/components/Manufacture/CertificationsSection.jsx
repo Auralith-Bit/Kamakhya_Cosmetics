@@ -228,6 +228,15 @@ const CertificationsSection = () => {
                 paddingRight: s(LAYOUT.cardPadX),
                 animationDelay: `${0.2 + index * 0.1}s`,
                 animationFillMode: "forwards",
+                transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = '#CCA466';
+                e.currentTarget.style.boxShadow = '0 0.25vw 0.5vw rgba(0,0,0,0.09), 0 0.9vw 1.6vw rgba(43,46,126,0.14)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = '#d7dae4';
+                e.currentTarget.style.boxShadow = '0px 8px 24px -6px rgba(0,0,0,0.08), 0px 20px 50px -12px rgba(0,0,0,0.05)';
               }}
             >
               {/* ✏️ FIX — FIXED-HEIGHT badge box on every card.
