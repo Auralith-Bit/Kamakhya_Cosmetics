@@ -27,6 +27,14 @@ const AboutHero = () => {
         backgroundColor: '#f5e6d3',
       }}
     >
+      <style>{`
+        @media (max-width:900px){
+          #about-hero{min-height:380px;}
+        }
+        @media (max-width:640px){
+          #about-hero{min-height:300px;}
+        }
+      `}</style>
       {/* Full-width background image */}
       <img
         src={aboutHeroBg}
@@ -60,6 +68,7 @@ const AboutHero = () => {
 
       {/* Content overlay */}
       <div
+        id="about-hero-inner"
         style={{
           position: 'relative',
           zIndex: 2,
@@ -71,6 +80,17 @@ const AboutHero = () => {
           padding: '0 clamp(20px, 8.68vw, 170px)',
         }}
       >
+      <style>{`
+        @media (max-width:1023px){
+          #about-hero-inner{padding-top:120px !important;}
+        }
+        @media (max-width:900px){
+          #about-hero{min-height:380px;}
+        }
+        @media (max-width:640px){
+          #about-hero{min-height:300px;}
+        }
+      `}</style>
         {/* Left Text Panel */}
         <div
           style={{
