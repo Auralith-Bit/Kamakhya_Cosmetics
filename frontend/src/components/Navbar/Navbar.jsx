@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { createPortal } from "react-dom";
+import { useWishlist } from "../../context/WishlistContext";
 import logo from "../../assets/Group 9.png";
-import RLimage from "../../assets/RLimage.png";      // ✅ Royal Luxury logo
-import Shineimage from "../../assets/Shineimage.png"; // ✅ Shine logo
+import RLimage from "../../assets/RLimage.png";
+import Shineimage from "../../assets/Shineimage.png";
 
 /* ============ dropdown rendered via portal (escapes all overflow clipping) ============ */
 const BrandsDropdown = ({ open, onClose, anchors }) => {
@@ -103,8 +104,8 @@ const BrandsDropdown = ({ open, onClose, anchors }) => {
 
 /* ================= navbar ================= */
 const Navbar = () => {
-  const [cartCount] = useState(1);
-  const [wishlistCount] = useState(1);
+  const { wishlistIds } = useWishlist();
+  const [cartCount, setCartCount] = useState(0);
   const [searchValue, setSearchValue] = useState("");
   const [brandsOpen, setBrandsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -418,7 +419,7 @@ const Navbar = () => {
               >
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
               </svg>
-              <span className="kn-badge">{wishlistCount}</span>
+              {wishlistIds.length > 0 && <span className="kn-badge">{wishlistIds.length}</span>}
             </button>
           </Link>
 
@@ -442,7 +443,7 @@ const Navbar = () => {
                 <line x1="3" y1="6" x2="21" y2="6" />
                 <path d="M16 10a4 4 0 0 1-8 0" />
               </svg>
-              <span className="kn-badge">{cartCount}</span>
+              {cartCount > 0 && <span className="kn-badge">{cartCount}</span>}
             </button>
           </Link>
 
@@ -481,7 +482,7 @@ const Navbar = () => {
               >
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
               </svg>
-              <span className="kn-badge">{wishlistCount}</span>
+              {wishlistIds.length > 0 && <span className="kn-badge">{wishlistIds.length}</span>}
             </button>
           </Link>
           <Link to="/checkout">
@@ -504,7 +505,7 @@ const Navbar = () => {
                 <line x1="3" y1="6" x2="21" y2="6" />
                 <path d="M16 10a4 4 0 0 1-8 0" />
               </svg>
-              <span className="kn-badge">{cartCount}</span>
+              {cartCount > 0 && <span className="kn-badge">{cartCount}</span>}
             </button>
           </Link>
         </div>
