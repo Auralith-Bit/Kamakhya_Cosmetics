@@ -34,7 +34,7 @@ const ScrollToTop = () => {
 const Layout = () => (
   <>
     <Navbar />
-    <main className="w-full pt-[130px]">
+    <main className="w-full pt-32.5">
       <Outlet />
     </main>
     <Footer />
