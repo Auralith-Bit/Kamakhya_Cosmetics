@@ -120,17 +120,17 @@ const HeroSection = () => {
         aria-label="Hero Banner"
         className="relative lg:hidden w-full bg-[linear-gradient(120deg,#f8ede0_0%,#f5e8d8_35%,#f0e0cc_100%)] font-sans"
       >
-        <div className="relative w-full px-6 pt-[190px] pb-10 sm:px-10 sm:pt-[190px] sm:pb-12">
-          <p className="font-title font-bold text-[#E38F2E] text-xs sm:text-lg md:text-xl tracking-wide mb-2 uppercase">
+        <div className="relative w-full px-6 pt-14 pb-10 sm:px-10 tab:px-[60px] tab:pt-[240px] tab:pb-12 nav:px-[100px]">
+          <p className="font-title font-bold text-[#E38F2E] text-xs sm:text-base tab:text-lg tracking-wide mb-2 uppercase">
             Premium Beauty & Home Care
           </p>
           <div className="h-0.5 w-20 bg-[#E38F2E] mb-3 rounded-full" />
 
-<h1 className="font-title text-[1.75rem] sm:text-4xl md:text-5xl text-[#2E3192] font-bold leading-tight mb-2">
-          Beauty Crafted With Care
-        </h1>
+          <h1 className="font-title text-[1.75rem] sm:text-3xl tab:text-[2.5rem] text-[#2E3192] font-bold leading-tight mb-2">
+            Beauty Crafted With Care
+          </h1>
 
-          <p className="text-gray-600 max-w-md text-sm sm:text-base lg:text-lg leading-relaxed">
+          <p className="text-gray-600 max-w-md text-sm sm:text-base tab:text-lg leading-relaxed">
             Premium cosmetics and household solutions crafted with trusted
             ingredients and modern innovation for everyday living
           </p>
