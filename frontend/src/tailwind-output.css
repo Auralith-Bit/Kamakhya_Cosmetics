@@ -2784,6 +2784,9 @@
     }
   }
   @media (width >= 600px) {
+    .tab\:px-8 {
+      padding-inline: calc(var(--spacing) * 8);
+    }
     .tab\:px-\[60px\] {
       padding-inline: 60px;
     }
@@ -2802,6 +2805,9 @@
     }
   }
   @media (width >= 860px) {
+    .nav\:px-\[60px\] {
+      padding-inline: 60px;
+    }
     .nav\:px-\[100px\] {
       padding-inline: 100px;
     }
@@ -2917,6 +2923,9 @@
     }
     .xl\:hidden {
       display: none;
+    }
+    .xl\:px-\[125px\] {
+      padding-inline: 125px;
     }
   }
   @media (width >= 48rem) {

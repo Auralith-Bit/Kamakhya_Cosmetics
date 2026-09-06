@@ -226,7 +226,7 @@ const BrandCard = ({ image, badge, badgeBg, badgeSide, overlayAlign, categoryTag
 /* ─── Main Section ──────────────────────────────────────────────────── */
 const BrandsSection = () => (
   <section style={{ background: '#f7f6f2', padding: '72px 0 80px', overflow: 'hidden' }}>
-    <div className="px-[125px] max-lg:px-8 max-sm:px-5">
+    <div className="px-6 tab:px-8 nav:px-[60px] xl:px-[125px]">
 
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '52px' }}>
