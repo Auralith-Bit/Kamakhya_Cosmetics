@@ -17,7 +17,7 @@ const HeroBanner = () => {
                     <Link to='/home'
                         className="text-base sm:text-xl">Home</Link>
                     <ChevronRight className="w-4 h-4" strokeWidth={3} />
-                    <span className="text-sm sm:text-base">Products</span>
+                    <span className="text-sm font-playfair sm:text-base">Products</span>
                 </div>
 
 
@@ -31,7 +31,7 @@ const HeroBanner = () => {
                    Our Products
                 </h1>
 
-                <p className="text-gray-600 max-w-md text-sm sm:text-base leading-relaxed">
+                <p className="text-[#70768A] max-w-md text-sm sm:text-base leading-relaxed">
                     Explore Royal Luxury collections beauty, skincare, haircare, and makeup
                     designed with quality, safety, and elegance.
                 </p>

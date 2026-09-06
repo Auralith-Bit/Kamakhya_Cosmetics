@@ -46,7 +46,7 @@ const FilterSection = ({ title, items, selected, onSelect, emptyMessage }) => (
             <p className="text-xs text-gray-400 italic">{emptyMessage}</p>
         ) : (
             <div className="space-y-2">
-                {items.map((name) => {
+                {items.map(({ name, count }) => {
                     const isChecked = selected === name
                     return (
                         <label
@@ -64,6 +64,7 @@ const FilterSection = ({ title, items, selected, onSelect, emptyMessage }) => (
                                 />
                                 {name}
                             </span>
+                            <span className="text-xs font-medium text-[#2E3192]">({count})</span>
                         </label>
                     )
                 })}
@@ -105,8 +106,23 @@ const ProductCard = ({ product }) => {
             borderRadius: '16px',
             border: '1px solid rgba(204, 164, 102, 0.15)',
             boxShadow: '0 4px 20px rgba(0, 0, 0, 0.06)',
+            transition: 'box-shadow 300ms ease-out',
             overflow: 'hidden',
             height: '100%',
+        }}
+        onMouseEnter={e => {
+            e.currentTarget.style.boxShadow = '0 16px 45px rgba(0, 0, 0, 0.16)'
+            const img = e.currentTarget.querySelector('.card-img')
+            const curve = e.currentTarget.querySelector('.card-curve')
+            if (img) img.style.transform = 'scale(1)'
+            if (curve) curve.style.transform = 'translateY(4px) scale(1)'
+        }}
+        onMouseLeave={e => {
+            e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.06)'
+            const img = e.currentTarget.querySelector('.card-img')
+            const curve = e.currentTarget.querySelector('.card-curve')
+            if (img) img.style.transform = 'scale(1.08)'
+            if (curve) curve.style.transform = 'translateY(4px) scale(1.08)'
         }}
     >
         {/* ── Image with curved gold bottom ── */}
@@ -118,15 +134,13 @@ const ProductCard = ({ product }) => {
                 <img
                     src={product.image}
                     alt={product.title}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="card-img absolute inset-0 w-full h-full object-cover"
                     style={{
                         objectPosition: 'center 40%',
                         transform: 'scale(1.08)',
                         transition: 'transform 300ms ease-out',
                         transformOrigin: 'center 40%',
                     }}
-                    onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1)' }}
-                    onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1.08)' }}
                 />
             </div>
 
@@ -135,8 +149,14 @@ const ProductCard = ({ product }) => {
                 viewBox="0 0 371 314"
                 fill="none"
                 preserveAspectRatio="none"
-                className="absolute bottom-0 left-0 w-full pointer-events-none"
-                style={{ height: '100%', transform: 'translateY(4px)', overflow: 'visible' }}
+                className="card-curve absolute bottom-0 left-0 w-full pointer-events-none"
+                style={{
+                    height: '100%',
+                    transform: 'translateY(4px) scale(1.08)',
+                    transformOrigin: 'center bottom',
+                    transition: 'transform 300ms ease-out',
+                    overflow: 'visible',
+                }}
             >
                 <path d="M371 256.16 C371 259.24 369.4 262.1 366.73 263.82 C318.28 294.53 254.65 314 185 314 C115.83 314 52.64 294.78 4.34 264.48 C1.6 262.76 0 259.87 0 256.79" stroke="#CCA466" strokeWidth="2.5" fill="none" />
             </svg>
@@ -191,8 +211,8 @@ const ProductCard = ({ product }) => {
                     width="18"
                     height="18"
                     viewBox="0 0 24 24"
-                    fill={inWishlist ? '#2E3192' : 'none'}
-                    stroke="#2E3192"
+                    fill={inWishlist ? '#E11D48' : 'none'}
+                    stroke={inWishlist ? '#E11D48' : '#2E3192'}
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -327,13 +347,13 @@ const ProductCard = ({ product }) => {
                     height: '40px',
                     padding: '0 48px',
                     borderRadius: '107px',
-                    border: '2px solid #2E3192',
+                    border: '1.5px solid #2E3192',
                     background: '#FFF',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     fontFamily: FONT_BODY,
-                    fontWeight: 500,
+                    fontWeight: 400,
                     fontSize: '15px',
                     color: '#2E3192',
                     cursor: 'pointer',
@@ -369,7 +389,7 @@ const ProductCard = ({ product }) => {
                         width: '32px',
                         height: '32px',
                         borderRadius: '50%',
-                        background: '#C9CBEC',
+                        background: '#CBCBE4',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -418,7 +438,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             <button
                 onClick={() => onPageChange(Math.max(1, currentPage - 1))}
                 disabled={currentPage === 1}
-                className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#2E3192] hover:text-[#2E3192] transition"
+                className="w-9 h-9 mr-[100px] flex items-center justify-center rounded-full border border-[#A1A2CE] bg-[#F5F5FA] text-gray-500 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#2E3192] hover:text-[#2E3192] transition"
                 aria-label="Previous page"
             >
                 <ChevronLeft className="w-4 h-4" />
@@ -433,11 +453,12 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
                     <button
                         key={page}
                         onClick={() => onPageChange(page)}
-                        className={`w-9 h-9 flex items-center justify-center rounded-full border text-sm font-medium transition ${
+                        className={`w-9 h-9 cursor-pointer flex items-center justify-center rounded-lg border text-sm font-medium transition ${
                             page === currentPage
-                                ? 'bg-[#2E3192] border-[#2E3192] text-white'
-                                : 'border-gray-200 text-gray-600 hover:border-[#2E3192] hover:text-[#2E3192]'
+                                ? 'bg-[#2E3192] border-[#2E3192] !text-white'
+                                : 'bg-white border-[#7779B8] text-black hover:border-[#2E3192]'
                         }`}
+                        style={{ fontFamily: "'Inter', sans-serif" }}
                     >
                         {page}
                     </button>
@@ -447,7 +468,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             <button
                 onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
                 disabled={currentPage === totalPages}
-                className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#2E3192] hover:text-[#2E3192] transition"
+                className="w-9 h-9 ml-[100px] flex items-center justify-center rounded-full border border-[#A1A2CE] bg-[#F5F5FA] text-gray-500 disabled:opacity-40 disabled:cursor-not-allowed hover:border-[#2E3192] hover:text-[#2E3192] transition"
                 aria-label="Next page"
             >
                 <ChevronRight className="w-4 h-4" />
@@ -473,6 +494,36 @@ const Catalogue = () => {
     // Which category list shows in the sidebar depends on the selected brand.
     // No brand selected -> empty list (user picks a brand first).
     const currentCategories = selectedBrand ? categoriesByBrand[selectedBrand] : []
+
+    // Counts how many products match a given (term, brand, category, type) combo.
+    // An empty string means "no filter for that facet".
+    const countProducts = (term, brand, category, type) =>
+        products.filter((p) =>
+            p.title.toLowerCase().includes(term.toLowerCase()) &&
+            (brand === '' || p.brand === brand) &&
+            (category === '' || p.category === category) &&
+            (type === '' || p.type === type)
+        ).length
+
+    // Facet counts: each option's count respects search + the other sections'
+    // selections, so the numbers reflect what selecting that option would yield.
+    const brandItems = useMemo(() =>
+        brands.map((brand) => ({
+            name: brand,
+            count: countProducts(search, brand, selectedCategory, selectedType),
+        })), [search, selectedCategory, selectedType])
+
+    const categoryItems = useMemo(() =>
+        currentCategories.map((category) => ({
+            name: category,
+            count: countProducts(search, selectedBrand, category, selectedType),
+        })), [search, selectedBrand, currentCategories, selectedType])
+
+    const typeItems = useMemo(() =>
+        productTypes.map((type) => ({
+            name: type,
+            count: countProducts(search, selectedBrand, selectedCategory, type),
+        })), [search, selectedBrand, selectedCategory])
 
     // Toggles a single-select group: clicking the active value clears it,
     // clicking a new value replaces whatever was selected before.
@@ -557,7 +608,7 @@ const Catalogue = () => {
                     className="w-full flex items-center justify-between lg:hidden"
                 >
                     <span className="flex items-center gap-2 font-semibold text-gray-800">
-                        <SlidersHorizontal className="w-4 h-4" />
+                        <SlidersHorizontal className="w-4 h-4 font-playfair " />
                         Filter By
                         {activeFilterCount > 0 && (
                             <span className="bg-[#2E3192] text-white text-[10px] rounded-full px-2 py-0.5">
@@ -600,13 +651,13 @@ const Catalogue = () => {
                                 setCurrentPage(1)
                             }}
                             placeholder="Search catalogue"
-                            className="w-full bg-gray-50 border border-gray-200 rounded-full pl-9 pr-3 py-2 text-sm focus:outline-none"
+                            className="w-full bg-gray-50 border border-gray-200 rounded-lg pl-9 pr-3 py-2 text-sm focus:outline-none"
                         />
                     </div>
 
                     <FilterSection
                         title="Brand"
-                        items={brands}
+                        items={brandItems}
                         selected={selectedBrand}
                         onSelect={handleBrandSelect}
                     />
@@ -616,7 +667,7 @@ const Catalogue = () => {
                         Nothing selected yet -> prompt the user to pick a brand first. */}
                     <FilterSection
                         title="Category"
-                        items={currentCategories}
+                        items={categoryItems}
                         selected={selectedCategory}
                         onSelect={handleCategorySelect}
                         emptyMessage="Select a brand to see its categories"
@@ -624,7 +675,7 @@ const Catalogue = () => {
 
                     <FilterSection
                         title="Product Type"
-                        items={productTypes}
+                        items={typeItems}
                         selected={selectedType}
                         onSelect={handleTypeSelect}
                     />
