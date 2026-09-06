@@ -53,8 +53,15 @@ export default function HeroBanner() {
           .mh-tag{margin-top:3vw;font-size:clamp(16px, 2vw, 24px);}
           .mh-rule{width:clamp(80px, 10vw, 135px);height:3px;margin-top:2vw;border-radius:2px;}
           .mh-title{margin-top:2.5vw;font-size:clamp(28px, 6vw, 44px);}
-          .mh-p{margin-top:3vw;font-size:clamp(14px, 1.7vw, 20px);
-            line-height:1.6;max-width:none;}
+          
+          .mh-p{
+          margin-top:3vw;
+          font-size:clamp(14px, 1.7vw, 20px);
+          text-align:justify;
+          letter-spacing:0.01em;
+          line-height:1.2;
+          max-width:80%;
+          }
 
           /* ✅ crop pinned to the FAR-LEFT cream slice — the facility/products
              area (right of the banner) can never enter the visible window */
@@ -72,21 +79,45 @@ export default function HeroBanner() {
 
         /* ============ TABLET 640–1023 — mini-desktop, shorter stage ============ */
         @media (min-width:640px) and (max-width:1023px){
-          .mh-hero{height:auto;aspect-ratio:16/9;}
+          .mh-hero{
+          height:auto;
+          aspect-ratio:16/9;
+          }
 
-          .mh-copy{position:absolute;left:7vw;top:6vw;width:52%;z-index:2;
-            padding:0;}
+          .mh-copy{
+          position:absolute;
+          left:5.8vw;
+          top:24vw;
+          width:52%;
+          z-index:2;
+          padding:0;
+          }
+          
           .mh-crumb{font-size:15px;gap:8px;}
           .mh-crumb a{font-size:20px;}
           .mh-ic-home{width:20px;height:20px;}
           .mh-ic-chev{width:18px;height:18px;}
-          .mh-tag{margin-top:12px;font-size:18px;}
+          
+          .mh-tag{
+          margin-top:15px;
+          font-size:18px;
+          }
+          
           .mh-rule{width:100px;height:3px;margin-top:10px;border-radius:2px;}
           .mh-title{margin-top:10px;font-size:34px;}
-          .mh-p{margin-top:12px;font-size:15px;line-height:1.55;max-width:none;}
+          
+          .mh-p{
+          margin-top:12px;
+          font-size:15px;
+          letter-spacing:0.01em;
+          line-height:1.55;
+          max-width:none;
+          }
 
-          .mh-bg{position:absolute;inset:0;width:100%;height:100%;
-            object-fit:cover;object-position:center right;z-index:1;}
+          .mh-bg{
+            position:absolute;inset:0;width:100%;height:100%;
+            object-fit:cover;object-position:0% 50%;z-index:1;
+          }
 
           .mh-veil{display:none;}
         }

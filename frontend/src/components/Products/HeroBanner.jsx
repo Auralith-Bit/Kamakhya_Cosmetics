@@ -6,13 +6,12 @@ import { Link } from 'react-router'
 
 const HeroBanner = () => {
     return (
-        <div
-            style={{ backgroundImage: `url(${BannerImg})` }}
+        <section
             className="relative overflow-hidden bg-cover bg-center"
+            style={{ backgroundImage: `url(${BannerImg})` }}
         >
-            <div className="page-container py-14 sm:py-16 lg:py-20">
-              
-                <div className="flex items-center gap-2 text-[#2E3192] font-serif text-base sm:text-xl  mb-3">
+            <div className="px-5 sm:px-10 lg:px-20 lg:ml-4 py-14 sm:py-16 lg:py-20">
+                <div className="flex items-center gap-2 text-[#2E3192] font-serif text-base sm:text-xl mb-3">
                     <Home className="w-5 h-5" strokeWidth={2.5} />
                     <Link to='/home'
                         className="text-base sm:text-xl">Home</Link>
@@ -36,7 +35,7 @@ const HeroBanner = () => {
                     designed with quality, safety, and elegance.
                 </p>
             </div>
-        </div>
+        </section>
     )
 }
 
