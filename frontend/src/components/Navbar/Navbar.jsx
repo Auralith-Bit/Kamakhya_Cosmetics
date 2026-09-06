@@ -142,7 +142,7 @@ const Navbar = () => {
       <style>{`
         .kn-nav, .kn-nav *{box-sizing:border-box;}
         .kn-nav{position:fixed;top:0;left:0;z-index:1000;width:100%;background:#fff;
-          font-family:'Poppins','Segoe UI',sans-serif;box-shadow:0 2px 10px rgba(0,0,0,.08);}
+          font-family:'Poppins','Segoe UI',sans-serif;box-shadow:0 4px 20px rgba(0,0,0,.3);}
 
         .kn-diag{position:absolute;top:0;left:0;height:100%;width:340px;z-index:1;
           pointer-events:none;filter:drop-shadow(5px 0 9px rgba(0,0,0,.12));}
