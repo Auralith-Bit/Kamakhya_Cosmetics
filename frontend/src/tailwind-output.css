@@ -455,6 +455,9 @@
   .mr-\[-20px\] {
     margin-right: -20px;
   }
+  .mr-\[100px\] {
+    margin-right: 100px;
+  }
   .mb-0 {
     margin-bottom: 0px;
   }
@@ -520,6 +523,9 @@
   }
   .ml-10 {
     margin-left: calc(var(--spacing) * 10);
+  }
+  .ml-\[100px\] {
+    margin-left: 100px;
   }
   .box-border {
     box-sizing: border-box;
@@ -1169,8 +1175,14 @@
   .border-\[\#2E3192\] {
     border-color: #2E3192;
   }
+  .border-\[\#7779B8\] {
+    border-color: #7779B8;
+  }
   .border-\[\#252775\] {
     border-color: #252775;
+  }
+  .border-\[\#A1A2CE\] {
+    border-color: #A1A2CE;
   }
   .border-\[\#CBCBE4\] {
     border-color: #CBCBE4;
@@ -1318,6 +1330,9 @@
   }
   .bg-\[\#E38F2E\] {
     background-color: #E38F2E;
+  }
+  .bg-\[\#F5F5FA\] {
+    background-color: #F5F5FA;
   }
   .bg-\[\#F7F0E7\] {
     background-color: #F7F0E7;
@@ -1617,6 +1632,9 @@
   }
   .py-5 {
     padding-block: calc(var(--spacing) * 5);
+  }
+  .py-6 {
+    padding-block: calc(var(--spacing) * 6);
   }
   .py-7 {
     padding-block: calc(var(--spacing) * 7);
@@ -1971,9 +1989,6 @@
   .text-\[\#\#333333\] {
     color: ##333333;
   }
-.text-\[\#1c1b1b\] {
-    color: #1c1b1b;
-  }
   .text-\[\#2E3192\] {
     color: #2E3192;
   }
@@ -2036,6 +2051,9 @@
   }
   .text-about-text {
     color: var(--color-about-text);
+  }
+  .text-black {
+    color: var(--color-black);
   }
   .text-brand-blue {
     color: var(--color-brand-blue);
@@ -2228,11 +2246,6 @@
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
-.transition-opacity {
-    transition-property: opacity;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-    transition-duration: var(--tw-duration, var(--default-transition-duration));
-  }
   .transition-transform {
     transition-property: transform, translate, scale, rotate;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
@@ -2258,33 +2271,6 @@
     -webkit-user-select: none;
     user-select: none;
   }
-@media (hover: hover) {
-    .group-hover\:-translate-y-1:is(:where(.group):hover *) {
-      --tw-translate-y: calc(var(--spacing) * -1);
-      translate: var(--tw-translate-x) var(--tw-translate-y);
-    }
-    .group-hover\:scale-110:is(:where(.group):hover *) {
-      --tw-scale-x: 110%;
-      --tw-scale-y: 110%;
-      --tw-scale-z: 110%;
-      scale: var(--tw-scale-x) var(--tw-scale-y);
-    }
-    .group-hover\:scale-125:is(:where(.group):hover *) {
-      --tw-scale-x: 125%;
-      --tw-scale-y: 125%;
-      --tw-scale-z: 125%;
-      scale: var(--tw-scale-x) var(--tw-scale-y);
-    }
-    .group-hover\:rotate-3:is(:where(.group):hover *) {
-      rotate: 3deg;
-    }
-    .group-hover\:rotate-12:is(:where(.group):hover *) {
-      rotate: 12deg;
-    }
-    .group-hover\:opacity-100:is(:where(.group):hover *) {
-      opacity: 100%;
-    }
-  }
   .placeholder\:text-slate-400::placeholder {
     color: var(--color-slate-400);
   }
@@ -2296,12 +2282,6 @@
     .hover\:-translate-y-0\.5:hover {
       --tw-translate-y: calc(var(--spacing) * -0.5);
       translate: var(--tw-translate-x) var(--tw-translate-y);
-    }
-.hover\:scale-105:hover {
-      --tw-scale-x: 105%;
-      --tw-scale-y: 105%;
-      --tw-scale-z: 105%;
-      scale: var(--tw-scale-x) var(--tw-scale-y);
     }
     .hover\:border-\[\#2E3192\]:hover {
       border-color: #2E3192;
@@ -2692,7 +2672,7 @@
     .sm\:h-5 {
       height: calc(var(--spacing) * 5);
     }
-.sm\:h-8 {
+    .sm\:h-8 {
       height: calc(var(--spacing) * 8);
     }
     .sm\:h-20 {
@@ -2710,7 +2690,7 @@
     .sm\:w-5 {
       width: calc(var(--spacing) * 5);
     }
-.sm\:w-8 {
+    .sm\:w-8 {
       width: calc(var(--spacing) * 8);
     }
     .sm\:w-20 {
@@ -2783,6 +2763,10 @@
     .sm\:text-lg {
       font-size: var(--text-lg);
       line-height: var(--tw-leading, var(--text-lg--line-height));
+    }
+    .sm\:text-sm {
+      font-size: var(--text-sm);
+      line-height: var(--tw-leading, var(--text-sm--line-height));
     }
     .sm\:text-xl {
       font-size: var(--text-xl);
@@ -2925,7 +2909,7 @@
     .md\:grid-cols-2 {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-.md\:px-\[100px\] {
+    .md\:px-\[100px\] {
       padding-inline: 100px;
     }
     .md\:text-3xl {
