@@ -131,6 +131,11 @@ const Navbar = () => {
 
   const closeMobile = () => setMobileOpen(false);
 
+  useEffect(() => {
+    setMobileOpen(false);
+    setBrandsOpen(false);
+  }, [location]);
+
   return (
     <header className="kn-nav">
       <style>{`
