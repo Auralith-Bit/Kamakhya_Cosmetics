@@ -209,7 +209,7 @@ const CertificationsSection = () => {
 
         {/* ── CARDS GRID ── */}
         <div
-          className={`grid w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 ${ALIGN_CLASS[LAYOUT.gridAlign]}`}
+          className={`certs-grid grid w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 ${ALIGN_CLASS[LAYOUT.gridAlign]}`}
           style={{
             gap: fluid(LAYOUT.gridGap, LAYOUT.gridGapMobile),
             marginLeft: s(LAYOUT.cardsShiftPx),
@@ -218,7 +218,9 @@ const CertificationsSection = () => {
           {CERTS.map((cert, index) => (
             <div
               key={cert.code}
-              className="ccard relative flex h-full w-full flex-col items-center border border-[#d7dae4] bg-[#fcf9f2] shadow-[0px_8px_24px_-6px_rgba(0,0,0,0.08),0px_20px_50px_-12px_rgba(0,0,0,0.05)] opacity-0 animate-card-enter"
+              /* ✅ BASE SHADOW moved from Tailwind utility into <style> for a
+                 single source of truth (softer, aligned with other sections). */
+              className="ccard relative flex h-full w-full flex-col items-center border border-[#d7dae4] bg-[#fcf9f2] opacity-0 animate-card-enter"
               style={{
                 minHeight: s(LAYOUT.cardMinH),
                 borderRadius: s(LAYOUT.cardRadius),
@@ -239,18 +241,15 @@ const CertificationsSection = () => {
                 e.currentTarget.style.boxShadow = '0px 8px 24px -6px rgba(0,0,0,0.08), 0px 20px 50px -12px rgba(0,0,0,0.05)';
               }}
             >
-              {/* ✏️ FIX — FIXED-HEIGHT badge box on every card.
-                  The image inside can be any size (cert.badgeSize)
-                  but the box height is identical → code/title/desc
-                  lines align perfectly across all 5 cards. */}
+              {/* ✏️ FIX — FIXED-HEIGHT badge box on every card. */}
               <div
-                className="flex w-full shrink-0 items-center justify-center"
+                className="badge-box flex w-full shrink-0 items-center justify-center"
                 style={{ height: s(LAYOUT.badgeBox) }}
               >
                 <img
                   src={cert.img}
                   alt={cert.code}
-                  className="object-contain drop-shadow-lg"
+                  className="badge-img object-contain drop-shadow-lg"
                   style={{
                     height: s(cert.badgeSize ?? LAYOUT.badgeSize),
                     width: s(cert.badgeSize ?? LAYOUT.badgeSize),
@@ -302,7 +301,7 @@ const CertificationsSection = () => {
                 {cert.desc}
               </p>
 
-              {/* bottom icon — pinned bottom + ✏️ gap below it now */}
+              {/* bottom icon */}
               <div
                 className="flex w-full justify-center"
                 style={{
@@ -314,6 +313,7 @@ const CertificationsSection = () => {
                 <img
                   src={cert.badgeIcon}
                   alt=""
+                  className="bottom-icon"
                   style={{
                     height: s(LAYOUT.bottomIconSize),
                     width: s(LAYOUT.bottomIconSize),
@@ -325,7 +325,7 @@ const CertificationsSection = () => {
         </div>
       </div>
 
-      {/* Custom CSS for animations + card hover shadow */}
+      {/* Custom CSS for animations + card hover shadow + tablet fixes */}
       <style>{`
         @keyframes fade-in-up {
           from { opacity: 0; transform: translateY(30px); }
@@ -338,20 +338,70 @@ const CertificationsSection = () => {
         .animate-fade-in-up { animation: fade-in-up 0.8s ease-out; }
         .animate-card-enter { animation: card-enter 0.6s ease-out; }
 
-        /* ✅ CARD HOVER — dark wide-spreading shadow, NO movement/scale */
+        /* ✅ BASE SHADOW — same softened value used across other sections */
         .ccard{
-          transition: box-shadow .35s ease;
+          transition: box-shadow .3s ease;
+          box-shadow:
+            0 0.4167vw 0.8333vw rgba(0,0,0,0.10),
+            0 1.0417vw 2.0833vw rgba(43,46,126,0.08);
         }
+
+        /* ✅ HOVER — same softened, wide-spreading shadow, NO movement/scale */
         .ccard:hover{
           box-shadow:
-            0 0.5208vw 1.0417vw rgba(0,0,0,0.16),
-            0 1.5625vw 3.125vw rgba(43,46,126,0.30);
+            0 0.625vw 1.25vw rgba(0,0,0,0.12),
+            0 1.5625vw 3.125vw rgba(43,46,126,0.20);
         }
-        @media (max-width: 1023px) {
+        
+        /* ============ TABLET 640–1023 ============ */
+        @media (min-width: 640px) and (max-width: 1023px) {
+          .ccard{
+            box-shadow:
+              0 2px 6px rgba(0,0,0,0.08),
+              0 6px 16px rgba(43,46,126,0.08);
+          }
           .ccard:hover{
             box-shadow:
-              0 6px 14px rgba(0,0,0,0.15),
-              0 16px 32px rgba(43,46,126,0.28);
+              0 4px 10px rgba(0,0,0,0.10),
+              0 12px 24px rgba(43,46,126,0.18);
+          }
+          
+          /* Fix squished cards on tablet by enforcing min-height and padding */
+          .ccard {
+            min-height: 400px !important;
+            padding: 24px 16px !important;
+          }
+          .badge-box {
+            height: 160px !important;
+          }
+          .badge-img {
+            height: 140px !important;
+            width: 140px !important;
+          }
+          .bottom-icon {
+            height: 32px !important;
+            width: 32px !important;
+          }
+          
+          /* Center the 5th orphan card in the 2-column layout */
+          .certs-grid > *:nth-child(5) {
+            grid-column: 1 / -1;
+            max-width: calc(50% - 15px);
+            margin: 0 auto;
+          }
+        }
+
+        /* ============ PHONES ≤639 ============ */
+        @media (max-width: 639px) {
+          .ccard{
+            box-shadow:
+              0 2px 6px rgba(0,0,0,0.08),
+              0 6px 16px rgba(43,46,126,0.08);
+          }
+          .ccard:hover{
+            box-shadow:
+              0 4px 10px rgba(0,0,0,0.10),
+              0 12px 24px rgba(43,46,126,0.18);
           }
         }
       `}</style>

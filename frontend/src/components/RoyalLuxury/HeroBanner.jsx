@@ -43,7 +43,7 @@ const HeroBanner = () => (
         font-size:1.25vw;font-weight:500;}
       .sh-rule{width:5.4167vw;height:0.1563vw;background:#E38F2E;
       margin-top:0.625vw;border-radius:0.1042vw;}
-      
+
       .sh-title{
       margin-top:1.0417vw;
       color:#2E3192;
@@ -53,7 +53,7 @@ const HeroBanner = () => (
       letter-spacing: 0.01em;
       line-height:1.1;
       }
-      
+
       .sh-p{
       margin-top:1.1458vw;
       color:#5A6673;
@@ -67,7 +67,6 @@ const HeroBanner = () => (
       @media (max-width:639px){
         .sh-hero{height:auto;}
 
-        /* copy in flow; 24vw bottom padding = image window below the text */
         .sh-copy{position:relative;z-index:2;left:auto;top:auto;width:auto;
           padding:8vw 6vw 24vw;}
         .sh-crumb{font-size:clamp(13px, 1.6vw, 18px);gap:2vw;}
@@ -79,29 +78,48 @@ const HeroBanner = () => (
         .sh-p{margin-top:3vw;font-size:clamp(13px, 1.6vw, 18px);
           line-height:1.6;max-width:none;}
 
-        /* ✅ product image = full-bleed background, exactly like Contact hero */
         .sh-bg{position:absolute;inset:0;width:100%;height:100%;
           object-fit:cover;object-position:22% center;z-index:1;}
 
         .sh-shade{display:none;}
       }
 
-      /* ============ TABLET 640–1023 — mini-desktop, shorter stage ============ */
+      /* ============ TABLET 640–1023 — NOTHING CAN BE CLIPPED ============ */
       @media (min-width:640px) and (max-width:1023px){
-        .sh-hero{height:auto;aspect-ratio:16/9;}
+        .sh-hero{
+          height:auto;
+          overflow:visible;
+          --nav-h:150px;
+        }
 
-        .sh-copy{position:absolute;left:7vw;top:6vw;width:52%;z-index:2;
-          padding:0;}
-        .sh-crumb{font-size:15px;gap:8px;}
-        .ic-home{width:18px;height:18px;}
-        .ic-chev{width:8px;height:13px;}
-        .sh-tag{margin-top:12px;font-size:14px;}
-        .sh-rule{width:56px;height:3px;margin-top:10px;border-radius:2px;}
-        .sh-title{margin-top:10px;font-size:34px;}
-        .sh-p{margin-top:12px;font-size:14px;line-height:1.55;max-width:none;}
+        .sh-copy{
+          position:relative;
+          left:auto;top:auto;
+          z-index:2;
+          width:55%;
+          /* copy always starts BELOW the fixed header */
+          padding:calc(6vw + var(--nav-h)) 4vw 8vw 6vw;
+        }
 
-        .sh-bg{position:absolute;inset:0;width:100%;height:100%;
-          object-fit:cover;object-position:center right;z-index:1;}
+        .sh-crumb{font-size:clamp(13px, 2vw, 16px);gap:8px;
+          white-space:normal;flex-wrap:wrap;}
+        .ic-home{width:clamp(16px, 2.2vw, 20px);height:clamp(16px, 2.2vw, 20px);}
+        .ic-chev{width:clamp(7px, 1vw, 9px);height:clamp(11px, 1.5vw, 13px);}
+        .sh-tag{margin-top:clamp(8px, 1.5vw, 12px);font-size:clamp(12px, 1.8vw, 15px);}
+        .sh-rule{width:clamp(48px, 7vw, 60px);height:3px;
+          margin-top:clamp(8px, 1.2vw, 10px);border-radius:2px;}
+        .sh-title{margin-top:clamp(8px, 1.2vw, 10px);font-size:clamp(26px, 4.5vw, 36px);}
+        .sh-p{margin-top:clamp(8px, 1.5vw, 12px);font-size:clamp(12px, 1.8vw, 15px);
+          line-height:1.55;max-width:none;}
+
+        .sh-bg{
+          position:absolute;
+          top:40%;right:0;bottom:0;left:20%;
+          width:auto;height:60%;
+          objec-fit:cover;
+          object-tposition:right;
+          z-index:1;
+        }
 
         .sh-shade{display:none;}
       }

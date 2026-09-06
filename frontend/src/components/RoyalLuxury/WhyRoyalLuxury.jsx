@@ -141,19 +141,22 @@ const WhyRoyalLuxury = () => (
         object-fit:contain;display:block;z-index:1;pointer-events:none;}
 
       /* ---- cards ---- */
+      /* ✅ BASE SHADOW aligned with the other sections */
       .wc-card{position:absolute;width:19.8958vw;height:7.2396vw;background:#fff;
         border-radius:0.5208vw;z-index:3;
-        box-shadow:0 0.4167vw 0.625vw rgba(0,0,0,0.08), 0 1.0417vw 1.3021vw rgba(0,0,0,0.05);
+        box-shadow:0 0.4167vw 0.8333vw rgba(0,0,0,0.10),
+                   0 1.0417vw 2.0833vw rgba(43,46,126,0.08);
         display:flex;align-items:center;gap:1.5625vw;padding:0 1.5625vw;
-        transition:box-shadow .35s ease;
+        transition:box-shadow .3s ease;
         cursor:pointer;
       }
 
-      /* ✅ darker, wide-spreading hover shadow — no translate/scale */
+      /* ✅ REPLACED HOVER — same softened, wide-spreading shadow as the
+         other sections (was 0.16 / 0.30); no translate/scale */
       .wc-card:hover{
         box-shadow:
-          0 0.5208vw 1.0417vw rgba(0,0,0,0.16),
-          0 1.5625vw 3.125vw rgba(43,46,126,0.30);
+          0 0.625vw 1.25vw rgba(0,0,0,0.12),
+          0 1.5625vw 3.125vw rgba(43,46,126,0.20);
       }
 
       .wc-l1{left:8.8542vw;top:17.5vw;}
@@ -180,14 +183,17 @@ const WhyRoyalLuxury = () => (
       @media (max-width:1023px){
         .wc-sec{height:auto;display:grid;grid-template-columns:1fr;padding:10vw 5vw;}
 
+        /* ✅ px-based base + REPLACED hover shadow for small screens */
         .wc-card{position:static;width:auto;height:auto;margin-top:3vw;
-          padding:3.5vw 4vw;gap:3.5vw;border-radius:2vw;align-items:center;text-align:left;}
-        .wc-card p br{display:none;}
+          padding:3.5vw 4vw;gap:3.5vw;border-radius:2vw;align-items:center;text-align:left;
+          box-shadow:0 2px 6px rgba(0,0,0,0.08),
+                     0 6px 16px rgba(43,46,126,0.08);}
         .wc-card:hover{
           box-shadow:
-            0 6px 14px rgba(0,0,0,0.15),
-            0 16px 32px rgba(43,46,126,0.28);
+            0 4px 10px rgba(0,0,0,0.10),
+            0 12px 24px rgba(43,46,126,0.18);
         }
+        .wc-card p br{display:none;}
         .wc-l1,.wc-l2,.wc-l3,.wc-r1,.wc-r2,.wc-r3{left:auto;top:auto;}
 
         .wc-tag{order:1;position:static;font-size:clamp(12px, 1.4vw, 18px);}

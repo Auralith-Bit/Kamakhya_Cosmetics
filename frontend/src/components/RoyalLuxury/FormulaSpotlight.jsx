@@ -73,24 +73,27 @@ const FormulaSpotlight = () => (
       .fs-grid{position:absolute;left:8.8542vw;top:14.375vw;width:82.2917vw;
         display:grid;grid-template-columns:repeat(3, 26.0417vw);gap:2.0833vw;}
 
+      /* ✅ BASE SHADOW aligned with the other sections */
       .fs-card{
       background:#FCF9F2;
       border:0.0521vw solid #D7DAE4;
       border-radius:0.5208vw;
       height:9.375vw;
       padding:2.0833vw 1.5625vw;
-      box-shadow:0 0.4167vw 0.625vw rgba(0,0,0,0.05), 0 1.0417vw 1.3021vw rgba(0,0,0,0.04);
+      box-shadow:0 0.4167vw 0.8333vw rgba(0,0,0,0.10),
+                 0 1.0417vw 2.0833vw rgba(43,46,126,0.08);
       cursor:pointer;
       /* ✅ shadow-only transition — no transform */
       transition:border-color .3s ease, box-shadow .3s ease;
       }
 
-      /* ✅ hover: NO movement — dark, wide-spreading shadow only */
+      /* ✅ REPLACED HOVER — same softened, wide-spreading shadow as the
+         other sections (was 0.16 / 0.30); NO movement */
       .fs-card:hover{
       border-color:#CCA466;
       box-shadow:
-        0 0.5208vw 1.0417vw rgba(0,0,0,0.16),
-        0 1.5625vw 3.125vw rgba(43,46,126,0.30);
+        0 0.625vw 1.25vw rgba(0,0,0,0.12),
+        0 1.5625vw 3.125vw rgba(43,46,126,0.20);
       }
       
       .fs-card h3{
@@ -122,13 +125,16 @@ const FormulaSpotlight = () => (
         .fs-grid{position:static;left:auto;top:auto;width:auto;
           grid-template-columns:1fr;gap:4vw;margin-top:8vw;}
 
-        .fs-card{height:auto;padding:5vw;border-radius:2vw;}
+        /* ✅ px-based base shadow for small screens */
+        .fs-card{height:auto;padding:5vw;border-radius:2vw;
+          box-shadow:0 2px 6px rgba(0,0,0,0.08),
+                     0 6px 16px rgba(43,46,126,0.08);}
 
-        /* ✅ same dark spread hover on mobile, still no movement */
+        /* ✅ REPLACED hover — same softened spread, still no movement */
         .fs-card:hover{
           box-shadow:
-            0 6px 14px rgba(0,0,0,0.15),
-            0 16px 32px rgba(43,46,126,0.28);
+            0 4px 10px rgba(0,0,0,0.10),
+            0 12px 24px rgba(43,46,126,0.18);
         }
 
         .fs-card h3{font-size:clamp(14px, 1.7vw, 21px);}

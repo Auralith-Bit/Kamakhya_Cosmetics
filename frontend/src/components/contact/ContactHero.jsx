@@ -70,22 +70,47 @@ const ContactHero = () => (
         .ct-shade{display:none;}
       }
 
-      /* ============ TABLET 640–1023 — mini-desktop, shorter stage ============ */
+      /* ============ TABLET 640–1023 — NOTHING CAN BE CLIPPED ============ */
       @media (min-width:640px) and (max-width:1023px){
-        .ct-hero{height:auto;aspect-ratio:16/9;}   /* ✅ was 4/3 */
+        .ct-hero{
+          height:auto;
+          overflow:visible;
+          --nav-h:150px;
+        }
 
-        .ct-copy{position:absolute;left:7vw;top:6vw;width:52%;z-index:2;
-          padding:0;}
-        .ct-crumb{font-size:15px;gap:8px;}
-        .ct-ic-home{width:18px;height:18px;}
-        .ct-ic-chev{width:8px;height:13px;}
-        .ct-tag{margin-top:12px;font-size:14px;}
-        .ct-rule{width:56px;height:3px;margin-top:10px;border-radius:2px;}
-        .ct-title{margin-top:10px;font-size:34px;}
-        .ct-p{margin-top:12px;font-size:14px;line-height:1.55;max-width:none;}
+        .ct-copy{
+          position:relative;
+          left:auto;top:auto;
+          z-index:2;
+          width:55%;
+          /* copy always starts BELOW the fixed header */
+          padding:calc(6vw + var(--nav-h)) 4vw 8vw 6vw;
+        }
 
-        .ct-bg{position:absolute;inset:0;width:100%;height:100%;
-          object-fit:cover;object-position:center right;z-index:1;}
+        .ct-crumb{font-size:clamp(13px, 2vw, 16px);gap:8px;
+          white-space:normal;flex-wrap:wrap;}
+        .ct-ic-home{width:clamp(16px, 2.2vw, 20px);height:clamp(16px, 2.2vw, 20px);}
+        .ct-ic-chev{width:clamp(7px, 1vw, 9px);height:clamp(11px, 1.5vw, 13px);}
+        .ct-tag{margin-top:clamp(8px, 1.5vw, 12px);font-size:clamp(12px, 1.8vw, 15px);}
+        .ct-rule{width:clamp(48px, 7vw, 60px);height:3px;
+          margin-top:clamp(8px, 1.2vw, 10px);border-radius:2px;}
+        .ct-title{margin-top:clamp(8px, 1.2vw, 10px);font-size:clamp(26px, 4.5vw, 36px);}
+        .ct-p{margin-top:clamp(8px, 1.5vw, 12px);font-size:clamp(12px, 1.8vw, 15px);
+          line-height:1.55;max-width:none;}
+
+        /* ✅ NO OVERLAP (same fix as the Shine hero): image starts AFTER the
+           55% copy column, and its left edge is faded with a mask so there is
+           no hard seam over the peach background. */
+        .ct-bg{
+          position:absolute;
+          top:40%;right:0;bottom:0;left:10%;
+          width:auto;height:60%;
+          object-fit:cover;
+          object-position:right;
+          -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 22%);
+          mask-image:linear-gradient(90deg, transparent 0%, #000 22%);
+          z-index:1;
+        }
 
         .ct-shade{display:none;}
       }
@@ -102,7 +127,7 @@ const ContactHero = () => (
         <span>Contact</span>
       </nav>
 
-      <p className="ct-tag">We’re Here to Help</p>
+      <p className="ct-tag">We're Here to Help</p>
       <div className="ct-rule" />
       <h1 className="ct-title">Contact Us</h1>
 
