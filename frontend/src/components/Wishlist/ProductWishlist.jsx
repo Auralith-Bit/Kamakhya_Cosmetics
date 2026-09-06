@@ -20,7 +20,7 @@ const WishlistCard = ({ product, onRemove }) => (
                 className="absolute top-3 right-3 z-10 bg-white rounded-full p-2 shadow"
                 aria-label={`Remove ${product.title} from wishlist`}
             >
-                <Trash2 className="w-4 h-4 text-[#2E3192]" />
+                <Trash2 className="w-4 cursor-pointer h-4 text-[#2E3192]" />
             </button>
 
             {/* ✅ image → product page */}
@@ -83,8 +83,8 @@ const ProductWishlist = () => {
     const wishlistProducts = products.filter((p) => wishlistIds.includes(p.id));
 
     return (
-        <section className={`bg-[#FCFAF7] ${wishlistProducts.length === 0 ? "flex flex-col min-h-[calc(100dvh-12.5rem)]" : ""}`}>
-            <div className={`${wishlistProducts.length === 0 ? "w-full flex-1 flex flex-col px-[100px] py-[45px]" : "max-w-6xl mx-auto px-5 sm:px-10 py-20"}`}>
+        <section className={`bg-[#FCFAF7] ${wishlistProducts.length === 0 ? "flex flex-col min-h-[calc(50dvh-6rem)] sm:min-h-[calc(100dvh-12.5rem)]" : ""}`}>
+            <div className={`${wishlistProducts.length === 0 ? "w-full flex-1 flex flex-col px-7 sm:px-12 md:px-[100px] py-6 sm:py-[45px]" : "max-w-6xl mx-auto px-5 sm:px-10 py-20"}`}>
                 {/* Top Section */}
                 {wishlistProducts.length > 0 && (
                     <div className="flex flex-col justify-start">
