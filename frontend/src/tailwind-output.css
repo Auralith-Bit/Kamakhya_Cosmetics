@@ -1663,6 +1663,9 @@
   .pt-\[130px\] {
     padding-top: 130px;
   }
+  .pt-\[190px\] {
+    padding-top: 190px;
+  }
   .pr-1 {
     padding-right: var(--spacing);
   }
@@ -2663,9 +2666,6 @@
     .sm\:px-6 {
       padding-inline: calc(var(--spacing) * 6);
     }
-    .sm\:px-8 {
-      padding-inline: calc(var(--spacing) * 8);
-    }
     .sm\:px-10 {
       padding-inline: calc(var(--spacing) * 10);
     }
@@ -2677,6 +2677,12 @@
     }
     .sm\:py-16 {
       padding-block: calc(var(--spacing) * 16);
+    }
+    .sm\:pt-\[190px\] {
+      padding-top: 190px;
+    }
+    .sm\:pb-12 {
+      padding-bottom: calc(var(--spacing) * 12);
     }
     .sm\:pb-16 {
       padding-bottom: calc(var(--spacing) * 16);

@@ -118,9 +118,9 @@ const HeroSection = () => {
       {/* ── Mobile / Tablet (<lg) — compact page-banner layout ── */}
       <section
         aria-label="Hero Banner"
-        className="relative lg:hidden w-full overflow-hidden bg-[linear-gradient(120deg,#f8ede0_0%,#f5e8d8_35%,#f0e0cc_100%)] font-sans"
+        className="relative lg:hidden w-full bg-[linear-gradient(120deg,#f8ede0_0%,#f5e8d8_35%,#f0e0cc_100%)] font-sans"
       >
-        <div className="relative max-w-lg px-6 sm:px-8 py-8 sm:py-10">
+        <div className="relative w-full px-6 pt-[190px] pb-10 sm:px-10 sm:pt-[190px] sm:pb-12">
           <p className="font-title font-bold text-[#E38F2E] text-xs sm:text-lg md:text-xl tracking-wide mb-2 uppercase">
             Premium Beauty & Home Care
           </p>
