@@ -1,4 +1,3 @@
-
 import React from 'react'
 import BannerImg from '../../assets/productbanner.svg'
 import { ChevronRight, Home } from 'lucide-react'
