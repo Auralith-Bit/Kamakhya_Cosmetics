@@ -1,8 +1,8 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import vector1 from "../../../assets/Vector (1).svg";
 import group56 from "../../../assets/Group 56.svg";
 import intersect from "../../../assets/Intersect.svg";
+import { useWishlist } from "../../../context/WishlistContext";
 
 const serif = "'Playfair Display', Georgia, serif";
 const sans = "'Poppins', 'Segoe UI', sans-serif";
@@ -12,10 +12,10 @@ const HEART_BLUE = "#3436A4";
 const HEART_RED  = "#E02020";
 
 const PRODUCTS = [
-  { id: "detergent-powder", title: "Detergent Powder", image: group56, tint: "#F5F3F6" },
-  { id: "dish-washer", title: "Dish Washer", image: intersect, tint: "#E7DED3" },
-  { id: "detergent-powder-2", title: "Detergent Powder", image: group56, tint: "#F5F3F6" },
-  { id: "dish-washer-2", title: "Dish Washer", image: intersect, tint: "#E7DED3" },
+  { id: 12, title: "Dish Soap", image: group56, tint: "#F5F3F6" },
+  { id: 13, title: "Glass Cleaner", image: intersect, tint: "#E7DED3" },
+  { id: 14, title: "Floor Cleaner", image: group56, tint: "#F5F3F6" },
+  { id: 15, title: "Bathroom Cleaner", image: intersect, tint: "#E7DED3" },
 ];
 
 const DESC = "Nail Polish is the best things in the world and were for protection. i love…";
@@ -75,7 +75,8 @@ const Arrow = () => (
 
 /* ---------- card ---------- */
 function BestSellerCard({ p }) {
-  const [liked, setLiked] = useState(false);
+  const { isInWishlist, toggleWishlist } = useWishlist();
+  const liked = isInWishlist(p.id);
   return (
     <Link to={`/products/${p.id}`} className="bs-card">
       {/* media */}
@@ -85,7 +86,7 @@ function BestSellerCard({ p }) {
           type="button"
           aria-label={liked ? "Remove from wishlist" : "Add to wishlist"}
           aria-pressed={liked}
-          onClick={(e) => { e.preventDefault(); e.stopPropagation(); setLiked(!liked); }}
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleWishlist(p.id); }}
           className="bs-wish"
         >
           <Heart filled={liked} />

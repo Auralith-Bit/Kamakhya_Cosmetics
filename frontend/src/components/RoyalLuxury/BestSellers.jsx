@@ -7,10 +7,10 @@ const serif = "'Playfair Display', Georgia, serif";
 const sans = "'Poppins', 'Segoe UI', sans-serif";
 
 const PRODUCTS = [
-  { id: "detergent-powder", title: "Nail Polish", image: group56 },
-  { id: "dish-washer", title: "Nail Polish", image: intersect },
-  { id: "detergent-powder-2", title: "Nail Polish", image: group56 },
-  { id: "dish-washer-2", title: "Nail Polish", image: intersect },
+  { cardId: "royalLuxuryBestSeller1", id: 2, title: "Nail Polish", image: group56 },
+  { cardId: "royalLuxuryBestSeller2", id: 5, title: "Nail Polish", image: intersect },
+  { cardId: "royalLuxuryBestSeller3", id: 2, title: "Nail Polish", image: group56 },
+  { cardId: "royalLuxuryBestSeller4", id: 5, title: "Nail Polish", image: intersect },
 ];
 
 const DESC = "Nail Polish is the best things in the world and were for protection. i love…";
@@ -63,7 +63,7 @@ export default function BestSellers() {
       >
         {PRODUCTS.map((p) => (
           <ProductCard
-            key={p.id}
+            key={p.cardId}
             product={{ ...p, desc: DESC, moq: "500 pcs", lead: "7–10 days", tag: "Best Seller" }}
           />
         ))}
