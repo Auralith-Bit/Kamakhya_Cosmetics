@@ -198,7 +198,12 @@ const FacilitySection = () => (
         }
         .mf-play svg{width: clamp(22px, 6vw, 30px); height: clamp(22px, 6vw, 30px);}
 
-        .mf-copy{max-width: none; width: 100%; gap: 5vw;}
+        .mf-copy{
+        margin-top: 3vw;
+        max-width: none;
+        width: 100%;
+        gap: 5vw;
+        }
 
         .mf-tag{
           font-size: clamp(12px, 3.2vw, 15px);
