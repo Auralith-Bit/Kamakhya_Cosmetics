@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import aboutHeroBg from '../../assets/abouthero.png';
 
@@ -15,6 +15,18 @@ const Chev = () => (
 );
 
 const AboutHero = () => {
+  // clear the fixed navbar at any width: measure its real height
+  const [navPad, setNavPad] = useState(130);
+  useEffect(() => {
+    const update = () => {
+      const nav = document.querySelector('.kn-nav');
+      setNavPad(nav ? nav.getBoundingClientRect().height + 20 : 130);
+    };
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
   return (
     <section
       id="about-hero"
@@ -73,17 +85,14 @@ const AboutHero = () => {
           position: 'relative',
           zIndex: 2,
           display: 'flex',
-          alignItems: 'center',
-          minHeight: '23.4375vw',   
+          alignItems: 'flex-start',
+          minHeight: '23.4375vw',
           width: '100%',
           boxSizing: 'border-box',
-          padding: '0 clamp(20px, 8.68vw, 170px)',
+          padding: `${navPad}px clamp(20px, 8.68vw, 170px) 60px`,
         }}
       >
       <style>{`
-        @media (max-width:1023px){
-          #about-hero-inner{padding-top:120px !important;}
-        }
         @media (max-width:900px){
           #about-hero{min-height:380px;}
         }
