@@ -411,8 +411,8 @@ const FeaturedCollection = () => {
 
       {/* ── BOTTOM CTA ── */}
       <div className="relative z-10 flex justify-center mt-10 px-6">
-        <a
-          href="#collections"
+        <Link
+          to="/products"
           className="inline-flex items-center gap-2 rounded-lg no-underline transition-colors"
           style={{
             fontFamily: FONT_BODY,
@@ -432,7 +432,7 @@ const FeaturedCollection = () => {
             <line x1="5" y1="12" x2="19" y2="12" />
             <polyline points="12 5 19 12 12 19" />
           </svg>
-        </a>
+        </Link>
       </div>
     </section>
   );

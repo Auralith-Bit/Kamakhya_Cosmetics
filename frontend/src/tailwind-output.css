@@ -2771,6 +2771,9 @@
     .lg\:px-20 {
       padding-inline: calc(var(--spacing) * 20);
     }
+    .lg\:px-\[125px\] {
+      padding-inline: 125px;
+    }
     .lg\:py-20 {
       padding-block: calc(var(--spacing) * 20);
     }

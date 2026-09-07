@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import manufacturingImg from '../../assets/scientist.png';
 
 const FONT_BODY = "'Poppins', sans-serif";
@@ -131,8 +132,8 @@ const ManufacturingSection = () => {
 
           {/* CTA Button */}
           <div className="max-sm:flex max-sm:justify-center max-sm:w-full">
-            <a
-              href="#manufacturing"
+            <Link
+              to="/manufacture"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -155,7 +156,7 @@ const ManufacturingSection = () => {
               onMouseLeave={e => e.currentTarget.style.background = '#2E3192'}
             >
               EXPLORE MANUFACTURING
-            </a>
+            </Link>
           </div>
         </div>
 

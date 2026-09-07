@@ -217,7 +217,7 @@ const BrandCard = ({ image, badge, badgeBg, badgeSide, overlayAlign, categoryTag
         onMouseEnter={e => { e.currentTarget.style.background = brandColor + '1A'; e.currentTarget.style.color = brandColor; e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.10)'; }}
         onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = brandColor; e.currentTarget.style.boxShadow = 'none'; }}
       >
-        Explore Colletctions <ArrowRight />
+        Explore Collections <ArrowRight />
       </Link>
     </div>
   </div>
