@@ -1,13 +1,15 @@
 import React from "react";
 import processBar from "../../assets/manufactureAssets/processBAR.png";
 import vectorGold from "../../assets/Vector (1).svg";
-import {
-  imgImage37,
-  imgImage38,
-  imgImage40,
-  imgImage39,
-  imgImage41,
-} from "../../assets/figmaAssets";
+
+/* ✅ IMAGES NOW LOCAL — direct imports from src/assets/figmaAssets
+   (filenames contain spaces, which is fine inside import strings) */
+import imgImage37 from "../../assets/figmaAssets/image 37.png";
+import imgImage38 from "../../assets/figmaAssets/image 38.png";
+import imgImage39 from "../../assets/figmaAssets/image 39.png";
+import imgImage40 from "../../assets/figmaAssets/image 40.png";
+import imgImage41 from "../../assets/figmaAssets/image 41.png";
+
 import iconPlant from "../../assets/manufactureAssets/Vector.svg";
 import iconLab from "../../assets/manufactureAssets/lab.svg";
 import iconSetting from "../../assets/manufactureAssets/setting.svg";
@@ -124,9 +126,6 @@ const ProcessSection = () => (
         align-items:center;
         text-align:center;
         max-width:51.0417vw;
-        /* ✅ FIX: Shift right by half of the section's right padding (150px / 7.8125vw)
-           so the heading visually centers on the viewport, despite the
-           asymmetric padding used to accommodate the timeline wave. */
         margin-left: calc(${vw(SECTION_PAD.right)} / 2);
       }
       

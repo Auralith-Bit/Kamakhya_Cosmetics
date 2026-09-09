@@ -323,8 +323,11 @@ const ContactSections = () => {
           .cx-sec{padding:8vw 5vw 10vw;}
           
           /* ✅ px-based shadows for containers on small screens */
-          .cx-info{width:auto;display:grid;grid-template-columns:1fr 1fr;gap:6vw 0;
-            padding:6vw 4vw;min-height:0;
+          /* ✅ MORE SPACE among the 4 info blocks:
+             row-gap 6vw→10vw, column-gap 0→8vw, bigger inner padding */
+          .cx-info{width:auto;display:grid;grid-template-columns:1fr 1fr;
+            gap:10vw 8vw;
+            padding:9vw 7vw;min-height:0;
             box-shadow:0 2px 6px rgba(0,0,0,0.08),
                        0 6px 16px rgba(43,46,126,0.08);}
           .cx-info-item{padding:0 !important;}
@@ -388,6 +391,8 @@ const ContactSections = () => {
 
         @media (min-width:640px) and (max-width:1023px){
           .cx-feats{grid-template-columns:1fr 1fr;}
+          /* ✅ tablet: slightly tighter than phones but still airy */
+          .cx-info{gap:8vw 6vw;padding:7vw 6vw;}
         }
       `}</style>
 
@@ -496,5 +501,5 @@ const ContactSections = () => {
     </section>
   );
 };
-
+  
 export default ContactSections;

@@ -154,10 +154,19 @@ const BrandPhilosophy = () => (
       .bp-corner.br{bottom:0;right:0;transform:rotate(180deg);}
       .bp-card > :not(.bp-corner){position:relative;}
 
+      /* ✅ TRUE CIRCLE FIX: equal width/height + aspect-ratio + flex-shrink:0 
+         (prevents flexbox from squishing it into an oval) */
       .bp-cico{
-        width:4.55vw;height:3.25vw;border-radius:50%;
-        border:0.1042vw solid #C9A063;color:#E38F2E;background:#fff;
-        display:grid;place-items:center;
+        width:3.8vw;
+        height:3.8vw;
+        aspect-ratio: 1 / 1;
+        flex-shrink: 0;
+        border-radius:50%;
+        border:0.1042vw solid #C9A063;
+        color:#E38F2E;
+        background:#fff;
+        display:grid;
+        place-items:center;
       }
       .bp-cico svg{width:1.9vw;height:1.9vw;}
 
@@ -227,7 +236,14 @@ const BrandPhilosophy = () => (
           align-items:center;gap:4vw;grid-column:1;grid-row:2;margin-top:6vw;}
         .bp-card{width:70%;max-width:380px;height:auto;padding:5vw 3.5vw 4.5vw;border-radius:2.5vw;}
         .bp-card:hover{box-shadow:0 12px 24px rgba(43,46,126,0.14);}
-        .bp-cico{width:clamp(56px, 13vw, 74px);height:clamp(40px, 9.5vw, 54px);}
+        
+        /* ✅ TRUE CIRCLE FIX for Mobile */
+        .bp-cico{
+          width:clamp(56px, 13vw, 74px);
+          height:clamp(56px, 13vw, 74px);
+          aspect-ratio: 1 / 1;
+          flex-shrink: 0;
+        }
         .bp-cico svg{width:clamp(20px, 5vw, 27px);height:clamp(20px, 5vw, 27px);}
         .bp-ctitle{font-size:clamp(15px, 2vw, 20px);margin-top:1.2vw;}
         .bp-crule{width:clamp(36px, 6vw, 50px);height:3px;margin-top:1vw;}
@@ -268,7 +284,14 @@ const BrandPhilosophy = () => (
         .bp-p{font-size:14px;}
         .bp-cards{flex-direction:row;align-items:stretch;gap:3.5vw;}
         .bp-card{width:auto;flex:1;max-width:none;padding:2.6vw 1.8vw 2.2vw;}
-        .bp-cico{width:64px;height:46px;}
+        
+        /* ✅ TRUE CIRCLE FIX for Tablet */
+        .bp-cico{
+          width:64px;
+          height:64px;
+          aspect-ratio: 1 / 1;
+          flex-shrink: 0;
+        }
         .bp-ctitle{font-size:16px;margin-top:8px;}
         .bp-crule{margin-top:7px;}
         .bp-ctxt{font-size:12px;margin-top:14px;}
