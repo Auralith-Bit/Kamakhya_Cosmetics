@@ -87,7 +87,7 @@ export default function HeroBanner() {
           height:auto;
           aspect-ratio:21/9;
           overflow:hidden;
-          margin-top:-8vw
+          margin-top:-8vw;
           }
 
           .mh-copy{
@@ -121,7 +121,7 @@ export default function HeroBanner() {
           }
 
           .mh-bg{
-            position:absolute;
+          position:absolute;
           left:50%;
           top:50%;
           width:72%;

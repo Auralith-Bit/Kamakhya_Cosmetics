@@ -4,11 +4,17 @@ const WhatsAppIcon = ({ size = 34 }) => (
   </svg>
 )
 
-const WhatsAppButton = ({ phone = "919876543210" }) => (
+/* ✅ NUMBER UPDATED: +977 9857049884 (digits only), same greeting as the
+   contact page so both entry points open an identical chat. */
+const WhatsAppButton = ({
+  phone = "9779857049884",
+  message = "Hello! I'd like to know more about your products.",
+}) => (
   <a
-    href={`https://wa.me/${phone}`}
+    href={`https://wa.me/${phone}?text=${encodeURIComponent(message)}`}
     target="_blank"
     rel="noopener noreferrer"
+    aria-label="Chat with us on WhatsApp"
     style={{
       position: "fixed",
       bottom: "24px",

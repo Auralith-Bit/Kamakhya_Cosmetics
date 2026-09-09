@@ -75,15 +75,19 @@ const ContactHero = () => (
       @media (min-width:640px) and (max-width:1023px){
         .ct-hero{
           height:auto;
-          aspect-ratio:16/9;
+          aspect-ratio:21/9;
           overflow:hidden;
+          margin-top:-8vw;
         }
 
+        /* ✅ WIDER CONTAINER: increased from 52% to 68% so the paragraph
+           (and all copy) can span wider. The first 2 products are still on
+           the right side, so this doesn't cause overlap. */
         .ct-copy{
           position:absolute;
           left:5.8vw;
-          top:24vw;
-          width:52%;
+          top:6vw;
+          width:68%;
           z-index:2;
           padding:0;
         }
@@ -104,17 +108,24 @@ const ContactHero = () => (
         .ct-p{
           margin-top:12px;
           font-size:15px;
+          text-align:justify;
           letter-spacing:0.01em;
           line-height:1.55;
-          max-width:none;
+          max-width:150%;
         }
 
         .ct-bg{
-          position:absolute;inset:0;width:100%;height:100%;
-          object-fit:cover;object-position:0% 50%;z-index:1;
+          display:none;
         }
 
-        .ct-shade{display:none;}
+        .ct-shade{
+        position:absolute;
+          left:50%;
+          top:50%;
+          width:72%;
+          height:70%;
+          transform:translate(-50%, -50%) scale(1.4);
+        }
       }
     `}</style>
 

@@ -7,6 +7,14 @@ import Shineimage from "../../assets/Shineimage.png";
 const serif = "'Playfair Display', Georgia, serif";
 const sans = "'Poppins', 'Segoe UI', sans-serif";
 
+/* ✅ WHATSAPP CONFIG — edit here only
+   Number in international format, digits only (no +, spaces, dashes).
+   On phones/tablets this opens the installed WhatsApp app;
+   on desktop it opens WhatsApp Web automatically. */
+const WHATSAPP_NUMBER = "9779857049884"; // +977 9857049884
+const WHATSAPP_MESSAGE = "Hello! I'd like to know more about your products.";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+
 /* ---------------- icons ---------------- */
 const Pin = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -234,9 +242,10 @@ const ContactSections = () => {
         .cx-quick > svg{width:2vw;height:2vw;color:#22C55E;margin:0 auto;display:block;}
         .cx-quick h4{margin-top:0.7vw;color:#333333;font-family:${sans};font-size:1.2vw;font-weight:600;}
         .cx-quick p{margin-top:0.35vw;color:#666666;font-family:${sans};font-size:0.9vw;}
+        /* ✅ now an <a> — added text-decoration:none so it looks identical */
         .cx-wa{margin-top:0.9vw;display:inline-flex;align-items:center;gap:0.5vw;background:#22C55E;color:#fff;
           border:none;border-radius:0.68vw;padding:0.65vw 1.3vw;font-family:${sans};font-size:0.9vw;font-weight:600;
-          cursor:pointer;transition:background .2s;}
+          cursor:pointer;transition:background .2s;text-decoration:none;}
         .cx-wa:hover{background:#1aad50;}
         .cx-wa svg{width:0.95vw;height:0.95vw;}
 
@@ -353,7 +362,12 @@ const ContactSections = () => {
           .cx-send{height:12vw;border-radius:2vw;font-size:clamp(12px, 1.6vw, 17px);}
           .cx-send svg{width:clamp(14px, 1.8vw, 18px);height:clamp(14px, 1.8vw, 18px);}
 
-          .cx-brands{padding:5vw;flex:0 0 auto;}
+          .cx-brands{
+          
+          padding:5vw;
+          flex:0 0 auto;
+          }
+          
           .cx-brands > h4{font-size:clamp(14px, 1.9vw, 20px);}
           .cx-brand{padding:4vw 0;}
           .cx-logo{width:clamp(44px, 8vw, 64px);height:clamp(44px, 8vw, 64px);}
@@ -471,7 +485,16 @@ const ContactSections = () => {
             <ChatI />
             <h4>Need Quick Help?</h4>
             <p>Chat with us instantly on WhatsApp.</p>
-            <button className="cx-wa"><WaI /> Chat on WhatsApp</button>
+            {/* ✅ WHATSAPP LINK — opens the app on mobile, WhatsApp Web on desktop */}
+            <a
+              className="cx-wa"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat with us on WhatsApp"
+            >
+              <WaI /> Chat on WhatsApp
+            </a>
           </div>
         </div>
       </div>

@@ -182,6 +182,12 @@ const DistributionPartnership = () => (
       @media (min-width:640px) and (max-width:1023px){
         .dp-points{grid-template-columns:1fr 1fr;}
         .dp-btn{height:3.4vw;min-height:44px;}
+
+        .dp-card-p{
+          text-align:justify;
+          text-align-last:left;
+          text-justify:inter-word;
+        }
       }
     `}</style>
 
@@ -210,9 +216,9 @@ const DistributionPartnership = () => (
       <div className="dp-card">
         <h3>Apply To Become A Partner</h3>
         <p className="dp-card-p">
-          <span className="dp-line">Join Kamakhya's growing network of distributors and retailers.</span>
-          <span className="dp-line">Share your territory, sales channel, and expected volume, and</span>
-          <span className="dp-line">our partnership team will guide your onboarding.</span>
+          Join Kamakhya's growing network of distributors and retailers.
+          Share your territory, sales channel, and expected volume, and
+          our partnership team will guide your onboarding.
         </p>
 
         {/* ✅ Become Distributor → /distributor */}

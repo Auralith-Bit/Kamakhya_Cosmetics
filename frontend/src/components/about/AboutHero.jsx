@@ -79,13 +79,15 @@ const AboutHero = () => (
       @media (min-width:640px) and (max-width:1023px){
         .ah-hero{
           height:auto;
-          aspect-ratio:16/9;
+          aspect-ratio:21/9;
+          overflow:hidden;
+          margin-top:-8vw
         }
 
         .ah-copy{
           position:absolute;
           left:5.8vw;
-          top:24vw;
+          top:6vw;
           width:52%;
           z-index:2;
           padding:0;
@@ -113,8 +115,12 @@ const AboutHero = () => (
         }
 
         .ah-bg{
-          position:absolute;inset:0;width:100%;height:100%;
-          object-fit:cover;object-position:0% 50%;z-index:1;
+          position:absolute;
+          left:50%;
+          top:50%;
+          width:72%;
+          height:70%;
+          transform:translate(-50%, -50%) scale(1.4);
         }
       }
     `}</style>
