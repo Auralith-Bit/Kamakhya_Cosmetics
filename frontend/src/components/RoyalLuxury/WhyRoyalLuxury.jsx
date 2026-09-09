@@ -110,7 +110,7 @@ const WhyRoyalLuxury = () => (
         min-width:120px;
         height:0.55vw;
         min-height:6px;
-        overflow:hidden;
+        overflow:visible;
         display:flex;
         align-items:flex-start;
       }
@@ -141,7 +141,6 @@ const WhyRoyalLuxury = () => (
         object-fit:contain;display:block;z-index:1;pointer-events:none;}
 
       /* ---- cards ---- */
-      /* ✅ BASE SHADOW aligned with the other sections */
       .wc-card{position:absolute;width:19.8958vw;height:7.2396vw;background:#fff;
         border-radius:0.5208vw;z-index:3;
         box-shadow:0 0.4167vw 0.8333vw rgba(0,0,0,0.10),
@@ -151,8 +150,6 @@ const WhyRoyalLuxury = () => (
         cursor:pointer;
       }
 
-      /* ✅ REPLACED HOVER — same softened, wide-spreading shadow as the
-         other sections (was 0.16 / 0.30); no translate/scale */
       .wc-card:hover{
         box-shadow:
           0 0.625vw 1.25vw rgba(0,0,0,0.12),
@@ -166,7 +163,6 @@ const WhyRoyalLuxury = () => (
       .wc-r2{left:71.25vw;top:27.8646vw;}
       .wc-r3{left:71.25vw;top:38.2292vw;}
 
-      /* ✅ BIGGER icon circles + glyphs (desktop) */
       .wc-ico{flex:0 0 5.2vw;width:5.2vw;height:5.2vw;border-radius:50%;
         background:#FCFAF7;border:0.0521vw solid #E8D6BA;color:#CCA466;
         display:flex;align-items:center;justify-content:center;}
@@ -183,7 +179,6 @@ const WhyRoyalLuxury = () => (
       @media (max-width:1023px){
         .wc-sec{height:auto;display:grid;grid-template-columns:1fr;padding:10vw 5vw;}
 
-        /* ✅ px-based base + REPLACED hover shadow for small screens */
         .wc-card{position:static;width:auto;height:auto;margin-top:3vw;
           padding:3.5vw 4vw;gap:3.5vw;border-radius:2vw;align-items:center;text-align:left;
           box-shadow:0 2px 6px rgba(0,0,0,0.08),
@@ -242,9 +237,16 @@ const WhyRoyalLuxury = () => (
         .wc-sec{padding:8vw 6vw;}
         .wc-tag{font-size:13px;}
         .wc-title{font-size:28px;}
-        .wc-sub{font-size:14px;line-height:1.6;}
+        .wc-vector{
+          width:20%;
+          margin-top: 1vw;
+        }
+        .wc-sub{
+        font-size:14px;
+        line-height:1.6;
+        }
+        
         .wc-media{width:min(60vw,520px);}
-        /* ✅ BIGGER icons on tablet */
         .wc-ico{flex:0 0 64px;width:64px;height:64px;}
         .wc-ico svg{width:32px;height:32px;}
         .wc-card h3{font-size:16px;}
@@ -255,7 +257,6 @@ const WhyRoyalLuxury = () => (
     <p className="wc-tag">Why Choose Royal Luxury</p>
     <h2 className="wc-title">Luxury That Complements Your Beauty</h2>
 
-    {/* ✅ curve CLIPPER: fixed height + overflow:hidden hides the bottom loops */}
     <div className="wc-vector">
       <Squiggle />
     </div>
@@ -266,8 +267,6 @@ const WhyRoyalLuxury = () => (
       care, and confidence to your everyday routine.
     </p>
 
-    {/* ✅ ring fade per design: solid through the dots (0.76), short tail, gone by 0.83 —
-         nothing reaches the pedestal */}
     <svg className="wc-wires" viewBox="0 0 1920 1089" preserveAspectRatio="none" fill="none">
       <defs>
         <linearGradient id="wc-fade" x1="0" y1="0" x2="0" y2="1">

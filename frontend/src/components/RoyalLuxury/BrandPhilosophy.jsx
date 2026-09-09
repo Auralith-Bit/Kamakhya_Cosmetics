@@ -132,7 +132,7 @@ const BrandPhilosophy = () => (
 
       .bp-card{
         position:relative;
-        width:12.5vw;
+        width:11.8vw;
         height:14.65vw;
         background:#FBFBFD;
         border:0.0521vw solid #ECECF2;
@@ -233,7 +233,7 @@ const BrandPhilosophy = () => (
         .bp-line{display:inline;text-align:left;text-align-last:auto;}
 
         .bp-cards{position:static;left:auto;top:auto;flex-direction:column;
-          align-items:center;gap:4vw;grid-column:1;grid-row:2;margin-top:6vw;}
+          align-items:center;gap:5vw;grid-column:1;grid-row:2;margin-top:6vw;}
         .bp-card{width:70%;max-width:380px;height:auto;padding:5vw 3.5vw 4.5vw;border-radius:2.5vw;}
         .bp-card:hover{box-shadow:0 12px 24px rgba(43,46,126,0.14);}
         
@@ -281,9 +281,19 @@ const BrandPhilosophy = () => (
         .bp-sec{padding:8vw 6vw;}
         .bp-tag{font-size:13px;}
         .bp-title{font-size:30px;}
-        .bp-p{font-size:14px;}
-        .bp-cards{flex-direction:row;align-items:stretch;gap:3.5vw;}
-        .bp-card{width:auto;flex:1;max-width:none;padding:2.6vw 1.8vw 2.2vw;}
+        .bp-p{
+        font-size:14px;
+        }
+        
+        .bp-cards{flex-direction:row;align-items:stretch;gap:5vw;}
+        
+        .bp-card{
+        width:auto;
+        height:auto;
+        flex:1;
+        max-width:none;
+        padding:2.6vw 1.8vw 2.2vw;
+        }
         
         /* ✅ TRUE CIRCLE FIX for Tablet */
         .bp-cico{

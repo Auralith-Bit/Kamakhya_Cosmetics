@@ -43,7 +43,6 @@ export default function HeroBanner() {
         @media (max-width:639px){
           .mh-hero{height:auto;}
 
-          /* copy in flow; 24vw bottom padding = image window below the text */
           .mh-copy{position:relative;z-index:2;left:auto;top:auto;width:auto;
             padding:8vw 6vw 24vw;}
           .mh-crumb{font-size:clamp(13px, 1.6vw, 18px);gap:2vw;}
@@ -63,31 +62,38 @@ export default function HeroBanner() {
           max-width:80%;
           }
 
-          /* ✅ crop pinned to the FAR-LEFT cream slice — the facility/products
-             area (right of the banner) can never enter the visible window */
+          /* ✅ LEAVES-ONLY CROP: anchored at the left edge AND zoomed 1.8×
+             from that edge, so the visible window shrinks to the leftmost
+             ~25% of the banner — the product/machinery zone can no longer
+             reach into the frame at all. */
           .mh-bg{position:absolute;inset:0;width:100%;height:100%;
-            object-fit:cover;object-position:0% 50%;z-index:1;}
+            object-fit:cover;object-position:0% center;
+            transform:scale(1.8);
+            transform-origin:left center;
+            z-index:1;}
 
-          /* ✅ right-edge cream fade: guarantees the rectangle area stays cream
-             even if a 1–2% sliver of the facility sits at the crop boundary */
+          /* ✅ VEIL: soft cream shade behind the copy, fading out to the
+             right so the leaves stay visible. */
           .mh-veil{display:block;
             background:linear-gradient(90deg,
-              rgba(247,241,232,0) 0%,
-              rgba(247,241,232,0) 55%,
-              rgba(247,241,232,1) 90%);}
+              rgba(247,241,232,0.95) 0%,
+              rgba(247,241,232,0.55) 45%,
+              rgba(247,241,232,0) 75%);}
         }
 
         /* ============ TABLET 640–1023 — mini-desktop, shorter stage ============ */
         @media (min-width:640px) and (max-width:1023px){
           .mh-hero{
           height:auto;
-          aspect-ratio:16/9;
+          aspect-ratio:21/9;
+          overflow:hidden;
+          margin-top:-8vw
           }
 
           .mh-copy{
           position:absolute;
           left:5.8vw;
-          top:24vw;
+          top:6vw;
           width:52%;
           z-index:2;
           padding:0;
@@ -111,12 +117,16 @@ export default function HeroBanner() {
           font-size:15px;
           letter-spacing:0.01em;
           line-height:1.55;
-          max-width:none;
+          max-width:40vw;
           }
 
           .mh-bg{
-            position:absolute;inset:0;width:100%;height:100%;
-            object-fit:cover;object-position:0% 50%;z-index:1;
+            position:absolute;
+          left:50%;
+          top:50%;
+          width:72%;
+          height:70%;
+          transform:translate(-50%, -50%) scale(1.4);
           }
 
           .mh-veil{display:none;}

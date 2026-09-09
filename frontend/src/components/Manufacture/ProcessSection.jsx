@@ -133,8 +133,8 @@ const ProcessSection = () => (
         letter-spacing:0.12em;text-transform:uppercase;}
       .ps-title{margin-top:1.0417vw;color:#2E3192;font-family:${serif};font-size:1.875vw;
         font-weight:700;line-height:1.2;text-transform:capitalize;}
-      .ps-squiggle{width:8.9583vw;height:auto;display:block;margin-top:1.5625vw;}
-      .ps-intro{margin-top:1.5625vw;color:#666;font-family:${sans};font-size:1.0417vw;
+      .ps-squiggle{width:9vw;height:auto;display:block;margin-top:0.5vw;}
+      .ps-intro{margin-top:0.5vw;color:#666;font-family:${sans};font-size:1.0417vw;
         font-weight:500;line-height:1.6;max-width:51.0417vw;}
 
       /* desktop timeline */

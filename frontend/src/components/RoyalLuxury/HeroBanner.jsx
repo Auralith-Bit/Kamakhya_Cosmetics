@@ -89,14 +89,15 @@ const HeroBanner = () => (
       @media (min-width:640px) and (max-width:1023px){
         .sh-hero{
           height:auto;
-          aspect-ratio:16/9;
+          aspect-ratio:21/9;
           overflow:hidden;
+          margin-top:-8vw;
         }
 
         .sh-copy{
           position:absolute;
           left:5.8vw;
-          top:24vw;
+          top:6vw;
           width:52%;
           z-index:2;
           padding:0;
@@ -118,14 +119,19 @@ const HeroBanner = () => (
         .sh-p{
           margin-top:12px;
           font-size:15px;
+          text-align:justify;
           letter-spacing:0.01em;
           line-height:1.55;
-          max-width:none;
+          max-width:100%;
         }
 
         .sh-bg{
-          position:absolute;inset:0;width:100%;height:100%;
-          object-fit:cover;object-position:0% 50%;z-index:1;
+          position:absolute;
+          left:50%;
+          top:50%;
+          width:100%;
+          height:68%;
+          transform:translate(-50%, -50%) scale(1.4);
         }
 
         .sh-shade{display:none;}
