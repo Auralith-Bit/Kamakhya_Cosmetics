@@ -1,17 +1,17 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import vector1 from "../../../assets/Vector (1).svg";
 import group56 from "../../../assets/Group 56.svg";
 import intersect from "../../../assets/Intersect.svg";
+import { useWishlist } from "../../../context/WishlistContext";
 
 const serif = "'Playfair Display', Georgia, serif";
 const sans = "'Poppins', 'Segoe UI', sans-serif";
 
 const PRODUCTS = [
-  { id: "detergent-powder", title: "Detergent Powder", image: group56, tint: "#F5F3F6" },
-  { id: "dish-washer", title: "Dish Washer", image: intersect, tint: "#E7DED3" },
-  { id: "detergent-powder-2", title: "Detergent Powder", image: group56, tint: "#F5F3F6" },
-  { id: "dish-washer-2", title: "Dish Washer", image: intersect, tint: "#E7DED3" },
+  { id: 16, title: "Detergent Powder", image: group56, tint: "#F5F3F6" },
+  { id: 12, title: "Dish Washer", image: intersect, tint: "#E7DED3" },
+  { id: 16, title: "Detergent Powder", image: group56, tint: "#F5F3F6" },
+  { id: 12, title: "Dish Washer", image: intersect, tint: "#E7DED3" },
 ];
 
 const DESC = "Nail Polish is the best things in the world and were for protection. i love…";
@@ -28,10 +28,10 @@ const Spark = () => (
 );
 
 const Heart = ({ filled }) => (
-  <svg viewBox="-1 -1 21 18.5" fill={filled ? "#3436A4" : "none"} aria-hidden="true">
+  <svg viewBox="-1 -1 21 18.5" fill={filled ? "#E38F2E" : "none"} aria-hidden="true">
     <path
       d="M3.355 0.768C1.334 1.535 0 3.455 0 5.597C0 7.76 1.425 9.358 2.85 10.769L8.083 15.782C8.446 16.185 8.966 16.413 9.512 16.41C10.057 16.407 10.575 16.171 10.933 15.764L16.15 10.769C17.575 9.358 19 7.75 19 5.597C19.01 3.45 17.677 1.521 15.651 0.752C13.626 -0.016 11.331 0.537 9.889 2.14C9.788 2.247 9.647 2.91 9.5 2.91C9.353 2.91 9.212 2.247 9.112 2.14C7.665 0.547 5.376 0.001 3.355 0.768Z"
-      stroke="#3436A4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+      stroke={filled ? "#E38F2E" : "#3436A4"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
     />
   </svg>
 );
@@ -61,7 +61,8 @@ const Arrow = () => (
 
 /* ---------- card ---------- */
 function BestSellerCard({ p }) {
-  const [liked, setLiked] = useState(false);
+  const { isInWishlist, toggleWishlist } = useWishlist();
+  const liked = isInWishlist(p.id);
   return (
     <Link to={`/products/${p.id}`} className="bs-card">
       {/* media */}
@@ -69,8 +70,8 @@ function BestSellerCard({ p }) {
         <span className="bs-badge"><Spark /> BEST SELLER</span>
         <button
           type="button"
-          aria-label="Add to wishlist"
-          onClick={(e) => { e.preventDefault(); e.stopPropagation(); setLiked(!liked); }}
+          aria-label="Toggle wishlist"
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleWishlist(p.id); }}
           className="bs-wish"
         >
           <Heart filled={liked} />

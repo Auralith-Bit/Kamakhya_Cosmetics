@@ -123,8 +123,8 @@ const ProductCard = ({ product }) => {
                     width="18"
                     height="18"
                     viewBox="0 0 24 24"
-                    fill={inWishlist ? '#E11D48' : 'none'}
-                    stroke={inWishlist ? '#E11D48' : '#2E3192'}
+                    fill={inWishlist ? '#E38F2E' : 'none'}
+                    stroke={inWishlist ? '#E38F2E' : '#2E3192'}
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"

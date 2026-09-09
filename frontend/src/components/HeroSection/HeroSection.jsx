@@ -5,6 +5,7 @@ import badgeCertificate from '../../assets/certificate.png';
 import badgeLeaf from '../../assets/leaf.png';
 import badgeEnergy from '../../assets/energy.png';
 import { ChevronRight, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const TRUST_BADGES = [
   {
@@ -56,23 +57,23 @@ const HeroSection = () => {
         </p>
 
         <div className="flex items-center gap-6 flex-wrap mt-5 max-sm:flex-col max-sm:items-stretch max-sm:w-full mb-12">
-          <a
-            href="#contact"
+          <Link
+            to="/bulk-quote"
             className="inline-flex items-center justify-center min-h-[44px] sm:min-h-[48px] px-[clamp(20px,2vw,32px)] rounded-lg text-xs sm:text-sm font-body font-bold tracking-wide uppercase bg-[#2E3192] text-white box-border cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
           >
             REQUEST QUOTE
             <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="ml-2 inline">
               <path d="M9 18l6-6-6-6" />
             </svg>
-          </a>
+          </Link>
 
-          <a
-            href="#about"
+          <Link
+            to="/about"
             className="inline-flex text-[#E38F2E] items-center justify-center min-h-[44px] sm:min-h-[48px] px-[clamp(20px,2vw,32px)] rounded-lg text-xs sm:text-sm font-semi-bold tracking-wider  uppercase bg-white/80  border-2 border-[#CCA466] box-border cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
           >
             ABOUT US
             <ArrowRight className="ml-2 inline text-[#E38F2E]" size={15} />
-          </a>
+          </Link>
         </div>
 
         <div className="flex items-center gap-5 flex-wrap  max-sm:gap-4" role="list">

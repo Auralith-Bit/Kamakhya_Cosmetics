@@ -292,8 +292,8 @@ const BrandPhilosophy = () => (
       ))}
     </div>
 
-    {/* ✅ EXPLORE OUR COLLECTION → /products */}
-    <Link to="/products" className="bp-btn">
+    {/* ✅ EXPLORE OUR COLLECTION → /products?brand=Shine */}
+    <Link to="/products?brand=Shine" className="bp-btn">
       EXPLORE OUR COLLECTION
       <svg viewBox="0 0 9 14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
         <path d="m1.5 1.5 6 5.5-6 5.5" />

@@ -190,7 +190,7 @@ const ProductDetailed = () => {
         </div>
 
         {/* Info + configurator */}
-        <div className="bg-white rounded-lg p-8 border border-gray-100  shadow-[0_4px_8px_2px_rgba(0,0,0,0.15)]">
+        <div className="bg-white rounded-lg p-8 border border-gray-100  shadow-[0_2px_12px_rgba(0,0,0,0.08)]">
           <p className="tracking-widest font-poppins text-[#E38F2E] mb-1">{product.tag}</p>
           <div className='h-0.5 w-20 mb-5 bg-[#E38F2E] rounded-full' />
           <h2 className="text-3xl tracking-wider font-playfair font-bold text-[#2E3192] mb-2">{product.title}</h2>
@@ -324,12 +324,12 @@ const ProductDetailed = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 mt-15">
-            <Link to="/bulk-quote" className="flex items-center justify-center border-[3px] border-[#252775] font-poppins text-white bg-[#2E3192] text-xs rounded-lg py-2.5 px-15 font-medium">
+          <div className="grid grid-cols-2 gap-4 mt-15 max-sm:grid-cols-1">
+            <Link to="/bulk-quote" className="flex items-center justify-center border-[3px] border-[#252775] font-poppins text-white bg-[#2E3192] text-xs rounded-lg py-2.5 px-15 font-medium whitespace-nowrap">
               <ShoppingBag className="w-4 h-4 mr-2" />
               Add to Order
             </Link>
-            <Link to="/distributor" className="flex items-center justify-center border-2 border-[#CCA466] font-poppins text-[#E38F2E] text-xs rounded-lg py-2.5 px-12 font-medium">
+            <Link to="/distributor" className="flex items-center justify-center border-2 border-[#CCA466] font-poppins text-[#E38F2E] text-xs rounded-lg py-2.5 px-12 font-medium whitespace-nowrap">
               Request Sample Kit
             </Link>
           </div>
