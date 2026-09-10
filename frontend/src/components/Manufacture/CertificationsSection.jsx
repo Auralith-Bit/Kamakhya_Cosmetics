@@ -393,7 +393,10 @@ const CertificationsSection = () => {
 
         /* ============ PHONES ≤639 ============ */
         @media (max-width: 639px) {
-          .ccard{
+          /* ✅ NARROWER CARDS — constrain width to 340px and center */
+          .ccard {
+            max-width: 340px !important;
+            margin: 0 auto;
             box-shadow:
               0 2px 6px rgba(0,0,0,0.08),
               0 6px 16px rgba(43,46,126,0.08);
@@ -402,6 +405,11 @@ const CertificationsSection = () => {
             box-shadow:
               0 4px 10px rgba(0,0,0,0.10),
               0 12px 24px rgba(43,46,126,0.18);
+          }
+          
+          /* ✅ MORE SPACE BETWEEN CARDS — increase gap from 14px to 28px */
+          .certs-grid {
+            gap: 28px !important;
           }
         }
       `}</style>

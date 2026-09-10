@@ -31,15 +31,26 @@ const ScrollToTop = () => {
   return null;
 };
 
-const Layout = () => (
-  <>
-    <Navbar />
-    <main className="w-full pt-32.5 min-[641px]:max-[900px]:pt-[360px]">
-      <Outlet />
-    </main>
-    <Footer />
-  </>
-);
+const Layout = () => {
+  const { pathname } = useLocation();
+  const about = pathname === "/about";
+  return (
+    <>
+      <Navbar />
+      <main
+        className={
+          "w-full " +
+          (about
+            ? "w-full"
+            : "w-full pt-32.5 min-[641px]:max-[900px]:pt-[360px]")
+        }
+      >
+        <Outlet />
+      </main>
+      <Footer />
+    </>
+  );
+};
 
 function App() {
   return (

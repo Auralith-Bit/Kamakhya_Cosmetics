@@ -127,7 +127,7 @@ const BrandCard = ({ image, badge, badgeBg, badgeSide, overlayAlign, categoryTag
     style={{
       background: '#fbfbf9', borderRadius: '12px', boxShadow: '0 4px 28px rgba(0,0,0,0.09)',
       border: '1.5px solid transparent',
-      overflow: 'hidden', width: 'min(470px, 100%)', flexShrink: 0,
+      overflow: 'hidden', width: 'min(470px, 100%)',
       transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
     }}
     onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = `0 8px 32px rgba(0,0,0,0.14)`; e.currentTarget.style.borderColor = brandColor + '60'; }}
@@ -226,7 +226,7 @@ const BrandCard = ({ image, badge, badgeBg, badgeSide, overlayAlign, categoryTag
 /* ─── Main Section ──────────────────────────────────────────────────── */
 const BrandsSection = () => (
   <section style={{ background: '#f7f6f2', padding: '72px 0 80px', overflow: 'hidden' }}>
-    <div className="px-6 tab:px-8 nav:px-[60px] xl:px-[125px]">
+    <div className="px-[125px]">
 
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '52px' }}>
@@ -255,7 +255,7 @@ const BrandsSection = () => (
         />
 
         {/* Center connector */}
-        <div className="max-lg:hidden" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0, width: '330px' }}>
+        <div className="max-lg:hidden" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0, width: 'clamp(210px, 24vw, 330px)' }}>
           <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
             <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: ORANGE, flexShrink: 0, zIndex: 2 }} />
             <div style={{ flex: 1, height: 0, borderTop: `2px dashed ${GOLD}` }} />
