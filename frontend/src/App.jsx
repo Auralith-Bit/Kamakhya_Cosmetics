@@ -22,6 +22,8 @@ import OrderReview from "./pages/OrderReview";
 import ProductDetails from "./pages/ProductDetailed";
 import Wishlist from "./pages/Wishlist";
 import { WishlistProvider } from "./context/WishlistContext";
+import { CartProvider } from "./context/CartContext";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -31,31 +33,22 @@ const ScrollToTop = () => {
   return null;
 };
 
-const Layout = () => {
-  const { pathname } = useLocation();
-  const about = pathname === "/about";
-  return (
-    <>
-      <Navbar />
-      <main
-        className={
-          "w-full " +
-          (about
-            ? "w-full"
-            : "w-full pt-32.5 min-[641px]:max-[900px]:pt-[360px]")
-        }
-      >
-        <Outlet />
-      </main>
-      <Footer />
-    </>
-  );
-};
+const Layout = () => (
+  <>
+    <Navbar />
+    <main className="w-full pt-32.5 min-[641px]:max-[900px]:pt-[360px]">
+      <Outlet />
+    </main>
+    <Footer />
+    <WhatsAppButton />
+  </>
+);
 
 function App() {
   return (
     <WishlistProvider>
-      <BrowserRouter>
+      <CartProvider>
+        <BrowserRouter>
         <ScrollToTop />
         <Routes>
           <Route element={<Layout />}>
@@ -76,6 +69,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+      </CartProvider>
     </WishlistProvider>
   );
 }

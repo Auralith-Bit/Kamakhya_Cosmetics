@@ -6,6 +6,7 @@ import badgeCertificate from '../../assets/certificate.png';
 import badgeLeaf from '../../assets/leaf.png';
 import badgeEnergy from '../../assets/energy.png';
 import { ChevronRight, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const TRUST_BADGES = [
   {

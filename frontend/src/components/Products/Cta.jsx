@@ -25,7 +25,7 @@ const CtaSection = () => {
                         className="flex items-center justify-center gap-2 bg-[#D4A056] text-[#151B32] rounded-lg px-6 py-3 text-sm font-semibold hover:bg-[#c4914a] transition"
                     >
                         Request Quote
-                        <ArrowRight className="w-4 h-4" />
+                        <ArrowRight className=" strokeWidth={2}" />
                     </Link>
                     <Link
                         to="/collection"

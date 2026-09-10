@@ -1,9 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 const BANNER_TOP_SPACE = 40;    
 const BANNER_BOTTOM_SPACE = 40;  
 const BANNER_MIN_HEIGHT = 0;    
+
+const SHIPPING = 500;
 
 const serif = "'Playfair Display', Georgia, serif";
 const sans = "'Poppins', 'Segoe UI', sans-serif";
@@ -19,14 +22,6 @@ const BoxIcon = () => (
   </svg>
 );
 
-const PRODUCTS = [
-  { name: "Botanical Resurfacing Serum", meta: "30ml . 3 × 500 = 1,500 units", price: "NRs. 3,860.00" },
-  { name: "Botanical Resurfacing Serum", meta: "30ml . 3 × 500 = 1,500 units", price: "NRs. 3,860.00" },
-  { name: "Revitalizing Night Cream",    meta: "50ml . 2 × 750 = 1,500 units", price: "NRs. 4,200.00" },
-  { name: "Hydrating Facial Mist",       meta: "100ml . 5 × 300 = 1,500 units", price: "NRs. 2,700.00" },
-  { name: "Vitamin C Brightening Drops", meta: "15ml . 10 × 150 = 1,500 units", price: "NRs. 5,100.00" },
-];
-
 const STEPS = [
   { num: "01", tag: "Current", title: "Request review",
     text: "We verify your business details, product configurations and delivery destination.", state: "current" },
@@ -38,6 +33,26 @@ const STEPS = [
 
 const OrderReview = () => {
   const navigate = useNavigate();
+  const { items, subtotal, submittedOrder } = useCart();
+
+  // Show the snapshot that was submitted; fall back to the live cart
+  // (e.g. revisiting the page after a reload).
+  const orderedItems = submittedOrder?.items ?? items;
+  const sum = submittedOrder
+    ? { subtotal: submittedOrder.subtotal, tax: submittedOrder.tax, shipping: submittedOrder.shipping, total: submittedOrder.total }
+    : (() => {
+        const tax = Math.round(subtotal * 0.13 * 100) / 100;
+        return { subtotal, tax, shipping: SHIPPING, total: Math.round((subtotal + tax + SHIPPING) * 100) / 100 };
+      })();
+
+  const contact = submittedOrder ?? {};
+
+  const formatDate = (iso) => {
+    if (!iso) return '';
+    const d = new Date(iso);
+    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+  };
+  const submittedDate = formatDate(contact.submittedAt);
 
   const handleContinueShopping = () => {
     navigate("/products");
@@ -389,7 +404,7 @@ const OrderReview = () => {
           <div>
             <h2>Your request is now in review.</h2>
             <p>
-              <span className="or-line">A confirmation has been prepared for hos.019260@gmail.com. Our enterprise</span>
+              <span className="or-line">A confirmation has been prepared for {contact.email || 'your email'}. Our enterprise</span>
               <span className="or-line">team will verify availability, freight and terms before issuing an invoice.</span>
             </p>
           </div>
@@ -404,18 +419,18 @@ const OrderReview = () => {
           {/* left */}
           <div>
             <span className="or-label">Order reference</span>
-            <h3 className="or-ref">KC-2026-56498</h3>
-            <p className="or-date">Submitted August 26,2026</p>
-            <p className="or-note">Save this reference for all communication regarding abc beatiul pasal.</p>
+            <h3 className="or-ref">{contact.ref || 'KC-2026-56498'}</h3>
+            <p className="or-date">{submittedDate ? `Submitted ${submittedDate}` : 'Submitted'}</p>
+            <p className="or-note">{contact.companyName ? `Save this reference for all communication regarding ${contact.companyName}.` : 'Save this reference for all communication regarding your order.'}</p>
 
             <div className="or-ship">
               <h4>Delivering to :</h4>
-              <p className="or-name">abc beatui pasal.</p>
-              <p>Akash Prasad Barai</p>
-              <p>Rohini-01</p>
-              <p>Chanuli, Nepal</p>
+              {contact.companyName && <p className="or-name">{contact.companyName}</p>}
+              <p>{contact.fullName || '—'}</p>
+              <p>{contact.deliveryAddress || '—'}</p>
+              <p>{[contact.city, contact.country].filter(Boolean).join(', ') || '—'}</p>
               <hr />
-              <p>akasbarai@gmail.com</p>
+              <p>{contact.email || '—'}</p>
             </div>
 
             {STEPS.map((s) => (
@@ -439,24 +454,32 @@ const OrderReview = () => {
                 <BoxIcon />
               </div>
 
-              {PRODUCTS.map((p, i) => (
-                <div className="or-item" key={i}>
+              {orderedItems.map((p, i) => (
+                <div className="or-item" key={`${p.id}-${i}`}>
                   <div className="or-item-row">
                     <span className="n">{p.name}</span>
-                    <span className="p">{p.price}</span>
+                    <span className="p">NRs. {p.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                   </div>
-                  <p className="m">{p.meta}</p>
+                  <p className="m">
+                    {p.size ? `${p.size} . ` : ''}{p.quantity} × {Number(p.unitsPerPack).toLocaleString()} = {Number(p.quantity * p.unitsPerPack).toLocaleString()} units
+                  </p>
                 </div>
               ))}
+              {orderedItems.length === 0 && (
+                <div className="or-item">
+                  <p className="m">Your cart is empty.</p>
+                </div>
+              )}
 
               <div className="or-sum">
-                <div className="or-sum-row"><span>Sub Total</span><span>NRs. 16,720</span></div>
-                <div className="or-sum-row"><span>Shipping</span><span>NRs. 500</span></div>
+                <div className="or-sum-row"><span>Sub Total</span><span>NRs. {sum.subtotal.toLocaleString(undefined, { maximumFractionDigits: 2 })}</span></div>
+                <div className="or-sum-row"><span>Tax (13%)</span><span>NRs. {sum.tax.toLocaleString(undefined, { maximumFractionDigits: 2 })}</span></div>
+                <div className="or-sum-row"><span>Shipping</span><span>NRs. {sum.shipping}</span></div>
               </div>
 
               <div className="or-total">
                 <span className="t">Total</span>
-                <span className="v">NRs. 9,760.00</span>
+                <span className="v">NRs. {sum.total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
               </div>
               <p className="or-total-note">Final invoice issued after review</p>
             </div>

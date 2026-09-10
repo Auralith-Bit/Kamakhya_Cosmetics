@@ -88,6 +88,18 @@ const VALUES = [
 const OurValues = () => {
   return (
     <section className="w-full bg-white py-[85px]">
+      {/* ✅ MOBILE WIDTH FIX — slightly widened to 80% (from 75%) to match
+             the sample certification card width. Still one card per row,
+             centered. */}
+      <style>{`
+        @media (max-width: 639px) {
+          .ov-card {
+            width: 80% !important;
+            max-width: none !important;
+          }
+        }
+      `}</style>
+
       <div className="w-full px-[125px] max-lg:px-8 max-sm:px-5">
         {/* Header */}
         <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-[1100px] mx-auto mb-12 max-sm:mb-8">
@@ -150,6 +162,7 @@ const OurValues = () => {
               <div
                 key={value.title}
                 className="
+                  ov-card
                   flex
                   w-[calc((100%-80px)/5)]
                   flex-col

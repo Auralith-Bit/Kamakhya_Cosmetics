@@ -74,13 +74,15 @@ const ShineHero = () => (
       @media (min-width:640px) and (max-width:1023px){
         .sh-hero{
           height:auto;
-          overflow:visible;
-          --nav-h:150px;
+          aspect-ratio:21/9;
+          overflow:hidden;
+          margin-top:-8vw;
         }
 
         .sh-copy{
           position:relative;
-          left:auto;top:auto;
+          left:5.8vw;
+          top:6vw;
           z-index:2;
           width:55%;
           padding:calc(6vw + var(--nav-h)) 4vw 8vw 6vw;
@@ -97,18 +99,13 @@ const ShineHero = () => (
         .sh-p{margin-top:clamp(8px, 1.5vw, 12px);font-size:clamp(12px, 1.8vw, 15px);
           line-height:1.55;max-width:none;}
 
-        /* ✅ NO MORE OVERLAP: image now starts AFTER the copy column
-           (left:52% > copy 55% minus its right padding), and the left edge
-           is faded with a mask so there's no hard seam over the cream bg. */
         .sh-bg{
           position:absolute;
-          top:40%;right:0;bottom:0;left:20%;
-          width:auto;height:60%;
-          object-fit:cover;
-          object-position:right;
-          -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 22%);
-          mask-image:linear-gradient(90deg, transparent 0%, #000 22%);
-          z-index:1;
+          left:50%;
+          top:50%;
+          width:100%;
+          height:68%;
+          transform:translate(-50%, -50%) scale(1.4);
         }
 
         .sh-shade{display:none;}

@@ -13,7 +13,7 @@ const IcChat = () => (
 );
 const IcClip = () => (
   <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M9 2h6a1 1 0 0 1 1 1v2H8V3a1 1 0 0 1 1-1Z" />
+    <path d="M9 2h6a1 1 0 0 1 1 1v2H8V3a1 1 0 0 1-1-1Z" />
     <path fillRule="evenodd" clipRule="evenodd" d="M7 5H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2v2H7V5Zm1 6h8v1.7H8V11Zm0 4h8v1.7H8V15Z" />
   </svg>
 );
@@ -145,7 +145,18 @@ const HowWeWork = () => (
 
       @media (min-width:640px) and (max-width:1023px){
         .hw-steps{grid-template-columns:1fr 1fr;gap:9vw 4vw;}
-        .hw-step:last-child:nth-child(odd){grid-column:1 / -1;max-width:48%;margin:0 auto;}
+
+        /* ✅ FIXED WIDTH FOR THE ORPHAN CARD:
+           margin:auto disables grid stretch, so max-width alone let the card
+           collapse to its content width. An explicit width = exactly one
+           column (container minus the 4vw column-gap, halved) makes it
+           identical to cards 01–04, still centered on its own row. */
+        .hw-step:last-child:nth-child(odd){
+          grid-column:1 / -1;
+          width:calc((100% - 4vw) / 2);
+          margin:0 auto;
+        }
+
         .hw-step{padding:6.5vw 3vw 5vw;}
         .hw-ico{top:clamp(-35px, -5vw, -30px);}
       }

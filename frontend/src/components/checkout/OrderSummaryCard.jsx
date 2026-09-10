@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import CartItem from './CartItem';
-import productImg from '../../assets/liner.png';
+import { useCart } from '../../context/CartContext';
 
 const LockIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -10,39 +10,10 @@ const LockIcon = () => (
   </svg>
 );
 
-const DEMO_ITEMS = [
-  { id: 1, name: 'Botanical Resurfacing Serum', size: '30ml . 1,000units', unitsPerPack: 1000, quantity: 2, price: 3860, image: productImg },
-  { id: 2, name: 'Botanical Resurfacing Serum', size: '50ml . 500units', unitsPerPack: 500, quantity: 7, price: 9760, image: productImg },
-  { id: 3, name: 'Botanical Resurfacing Serum', size: '30ml . 1,000units', unitsPerPack: 1000, quantity: 2, price: 3860, image: productImg },
-  { id: 4, name: 'Hydrating Face Mist', size: '100ml . 800units', unitsPerPack: 800, quantity: 3, price: 2700, image: productImg },
-  { id: 5, name: 'Vitamin C Brightening Cream', size: '50ml . 600units', unitsPerPack: 600, quantity: 6, price: 8640, image: productImg },
-  { id: 6, name: 'Niacinamide Serum', size: '30ml . 1,000units', unitsPerPack: 1000, quantity: 2, price: 3610, image: productImg },
-  { id: 7, name: 'Hyaluronic Acid Moisturizer', size: '75ml . 500units', unitsPerPack: 500, quantity: 4, price: 5280, image: productImg },
-].map((item) => ({ ...item, unitCost: Math.round((item.price / item.quantity) * 100) / 100 }));
-
-const OrderSummaryCard = () => {
+const OrderSummaryCard = ({ formData = {} }) => {
   const navigate = useNavigate();
-  const [items, setItems] = useState(DEMO_ITEMS);
+  const { items, updateQuantity, removeFromCart, subtotal, submitOrder } = useCart();
 
-  const updateQuantity = (id, delta) => {
-    setItems((prev) =>
-      prev.map((item) => {
-        if (item.id !== id) return item;
-        const nextQuantity = Math.max(1, item.quantity + delta);
-        return {
-          ...item,
-          quantity: nextQuantity,
-          price: Math.round(item.unitCost * nextQuantity),
-        };
-      })
-    );
-  };
-
-  const removeItem = (id) => {
-    setItems((prev) => prev.filter((item) => item.id !== id));
-  };
-
-  const subtotal = items.reduce((sum, item) => sum + item.price, 0);
   const tax = Math.round(subtotal * 0.13 * 100) / 100;
   const shipping = 500;
   const total = Math.round((subtotal + tax + shipping) * 100) / 100;
@@ -65,7 +36,7 @@ const OrderSummaryCard = () => {
               item={item}
               onIncrease={() => updateQuantity(item.id, 1)}
               onDecrease={() => updateQuantity(item.id, -1)}
-              onRemove={() => removeItem(item.id)}
+              onRemove={() => removeFromCart(item.id)}
             />
           ))}
           {items.length === 0 && (
@@ -103,7 +74,10 @@ const OrderSummaryCard = () => {
           {/* ✅ Submit Request → /order-review */}
           <button
             type="button"
-            onClick={() => navigate('/order-review')}
+            onClick={() => {
+              submitOrder(formData);
+              navigate('/order-review');
+            }}
             className="w-full h-[55px] flex items-center justify-center gap-[10px] bg-[#2E3192] !text-white font-semibold text-[15px] rounded-[7px] border-none cursor-pointer transition-all hover:bg-[#252775] active:scale-[0.98]"
           >
             <LockIcon />

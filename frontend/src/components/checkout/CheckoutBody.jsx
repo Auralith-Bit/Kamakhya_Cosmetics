@@ -9,6 +9,10 @@ const CheckoutBody = () => {
     fullName: '',
     email: '',
     phone: '',
+    deliveryAddress: '',
+    city: '',
+    country: '',
+    orderNotes: '',
   });
 
   const handleChange = (e) => {
@@ -21,11 +25,11 @@ const CheckoutBody = () => {
       <div className="mx-auto max-w-[1280px] grid grid-cols-[3fr_2fr] gap-8 items-start max-lg:grid-cols-1">
         <div className="flex flex-col gap-6">
           <BusinessContactCard formData={formData} onChange={handleChange} />
-          <DeliveryDetailsCard />
+          <DeliveryDetailsCard formData={formData} onChange={handleChange} />
         </div>
 
         <div className="max-lg:order-first lg:sticky lg:top-28">
-          <OrderSummaryCard />
+          <OrderSummaryCard formData={formData} />
         </div>
       </div>
     </section>
