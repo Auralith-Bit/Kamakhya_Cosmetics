@@ -55,8 +55,6 @@ const ProductCategories = () => {
         .pc-vector{position:absolute;top:7.4167vw;left:50%;transform:translateX(-50%);
           width:9.25vw;height:auto;}
 
-        /* ✅ cards are now <Link> anchors */
-        /* ✅ BASE SHADOW strengthened + smooth shadow transition (same as other cards) */
         .pc-card{position:absolute;top:14.2708vw;width:15.1042vw;height:20.0521vw;
           background:#fff;border-radius:0.5208vw;overflow:hidden;
           box-shadow:0 0.4167vw 0.8333vw rgba(0,0,0,0.10),
@@ -65,7 +63,6 @@ const ProductCategories = () => {
           animation:pc-in .45s ease;
           display:block;text-decoration:none;cursor:pointer;}
 
-        /* ✅ HOVER — same dark, wide-spreading shadow, NO card movement */
         .pc-card:hover{
           box-shadow:0 0.625vw 1.25vw rgba(0,0,0,0.12),
                      0 1.5625vw 3.125vw rgba(43,46,126,0.20);
@@ -148,6 +145,27 @@ const ProductCategories = () => {
           .pc-dots{position:static;grid-column:2;grid-row:3;justify-self:center;}
           .pc-dot{width:clamp(9px, 1.2vw, 14px);height:clamp(5px, 0.8vw, 9px);}
           .pc-dot.active{width:clamp(20px, 2.6vw, 30px);height:clamp(6px, 0.9vw, 10px);}
+        }
+
+        /* ============ TABLET 640–1023 — ✅ COMPACT CAROUSEL CARD ============ */
+        @media (min-width:640px) and (max-width:1023px){
+          .pc-vector{width:20%;}
+
+          /* ✅ card capped well below 55vw so it stops dominating the screen */
+          .pc-card{width:min(44vw, 380px);border-radius:14px;}
+
+          /* ✅ 4:3 crop instead of the full square — cuts ~25% of the height */
+          .pc-img{aspect-ratio:4/3;border-radius:14px 14px 0 0;}
+
+          /* ✅ fixed px text/controls inside the card */
+          .pc-name{font-size:16px;margin:16px 18px 6px;}
+          .pc-count{font-size:12px;margin:0 18px 18px;}
+          .pc-arrow{right:14px;bottom:14px;width:38px;height:38px;}
+          .pc-arrow svg{width:16px;height:auto;}
+
+          /* ✅ slightly tighter carousel controls */
+          .pc-nav{width:44px;height:44px;}
+          .pc-nav svg{width:10px;height:auto;}
         }
       `}</style>
 

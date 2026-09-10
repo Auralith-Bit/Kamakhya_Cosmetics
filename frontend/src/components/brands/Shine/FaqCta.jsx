@@ -145,11 +145,11 @@ const FaqCta = () => {
           .fq-sec{height:auto;padding:10vw 5vw;}
 
           .fq-tag{position:static;font-size:clamp(12px, 1.4vw, 18px);}
-          .fq-title{position:static;font-size:clamp(20px, 2.3vw, 32px);margin-top:2vw;}
+          .fq-title{position:static;font-size:clamp(20px, 2.3vw, 32px);margin-top:1vw;}
           .fq-vector{position:static;transform:none;display:block;
-            width:clamp(70px, 12vw, 120px);margin:2.5vw auto 0;}
+            width:18%;margin:1vw auto 0;}
           .fq-sub{position:static;font-size:clamp(12px, 1.35vw, 17px);
-            line-height:clamp(18px, 2vw, 26px);margin-top:2.5vw;}
+            line-height:clamp(18px, 2vw, 26px);margin-top:1vw;}
           .fq-sub br{display:none;}
 
           /* accordion: full-width rows, auto heights, natural wrapping */
@@ -183,22 +183,43 @@ const FaqCta = () => {
           .fq-send svg{width:clamp(14px, 2vw, 18px);height:clamp(9px, 1.4vw, 12px);}
         }
 
-        /* ============ TABLET 640–1023 — same stack, larger fixed type ============ */
+        /* ============ TABLET 640–1023 — ✅ CAPPED, CENTERED COLUMNS ============ */
         @media (min-width:640px) and (max-width:1023px){
           .fq-sec{padding:8vw 6vw;}
           .fq-tag{font-size:13px;}
           .fq-title{font-size:28px;}
           .fq-sub{font-size:14px;line-height:1.6;}
-          .fq-qt{font-size:16px;}
+
+          /* ✅ accordion column capped + centered (was full-bleed) */
+          .fq-list{
+            width:min(80vw, 640px);
+            margin:40px auto 0;
+            gap:12px;
+          }
+          .fq-item{border-radius:12px;}
+          .fq-q{padding:16px 20px;gap:14px;}
           .fq-num{font-size:13px;}
-          .fq-a p{font-size:13px;line-height:1.5;}
+          .fq-qt{font-size:16px;}
+          .fq-tgl{flex:0 0 36px;width:36px;height:36px;}
+          .fq-tgl svg{width:12px;height:12px;}
           .fq-item.open .fq-a{max-height:400px;}
-          .fq-card h3{font-size:24px;}
-          .fq-card .fq-p{font-size:13px;}
-          .fq-label{font-size:13px;}
-          .fq-input{height:120px;font-size:14px;}
-          .fq-note{font-size:11px;}
-          .fq-send{height:52px;font-size:15px;}
+          .fq-a p{font-size:13px;line-height:1.5;margin:0 20px 16px 48px;}
+
+          /* ✅ CTA card capped + centered (was full-bleed) */
+          .fq-card{
+            width:min(80vw, 560px);
+            margin:40px auto 0;
+            padding:40px 36px;
+            border-radius:16px;
+          }
+          .fq-art{width:140px;}
+          .fq-card h3{font-size:24px;margin-top:12px;}
+          .fq-card .fq-p{font-size:13px;margin-top:8px;}
+          .fq-label{font-size:13px;margin-top:16px;}
+          .fq-input{margin-top:8px;height:120px;padding:12px;border-radius:10px;font-size:14px;}
+          .fq-note{font-size:11px;margin-top:8px;}
+          .fq-send{margin-top:16px;height:52px;border-radius:10px;font-size:15px;}
+          .fq-send svg{width:16px;height:11px;}
         }
       `}</style>
 

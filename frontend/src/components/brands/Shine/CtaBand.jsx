@@ -145,15 +145,34 @@ const CtaBand = () => (
           margin-top:3vw;border-radius:2vw;font-size:clamp(12px, 1.5vw, 17px);}
       }
 
-      /* ============ TABLET 640–1023 — buttons side-by-side, larger type ============ */
+      /* ============ TABLET 640–1023 — ✅ FIXED-PX SIDE-BY-SIDE CTAs ============ */
       @media (min-width:640px) and (max-width:1023px){
-        .cb-sec{grid-template-columns:1fr 1fr;gap:0 3vw;padding:8vw 6vw;}
-        .cb-tag,.cb-title,.cb-body{grid-column:1/-1;}
+        .cb-sec{grid-template-columns:1fr 1fr;gap:0 16px;padding:8vw 6vw;}
+        .cb-tag,.cb-title,.cb-body{grid-column:1 / -1;}
+
         .cb-tag{font-size:13px;}
-        .cb-title{font-size:30px;}
-        .cb-body{font-size:14px;}
-        .cb-gold{grid-column:1;height:52px;margin-top:6vw;}
-        .cb-line{grid-column:2;height:52px;margin-top:6vw;}
+        .cb-title{font-size:30px;margin-top:12px;}
+        .cb-body{font-size:14px;margin-top:16px;}
+
+        /* ✅ both buttons: one row, equal widths, 52px height, 10px radius —
+           identical to the other tablet CTA pairs */
+        .cb-gold{
+          grid-column:1;
+          height:52px;
+          margin-top:40px;
+          border-radius:10px;
+          font-size:15px;
+          gap:10px;
+        }
+        .cb-gold svg{width:16px;height:11px;}
+        .cb-line{
+          grid-column:2;
+          height:52px;
+          margin-top:40px;
+          border-radius:10px;
+          border:2px solid #ffffff;   /* was 0.0781vw ≈ 0.6px hairline on tablet */
+          font-size:15px;
+        }
       }
     `}</style>
 

@@ -2868,6 +2868,14 @@
       line-height: var(--tw-leading, var(--text-base--line-height));
     }
   }
+  @media (width >= 1280px) {
+    .min-\[1280px\]\:grid-cols-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .min-\[1280px\]\:px-\[125px\] {
+      padding-inline: 125px;
+    }
+  }
   @media (width >= 48rem) {
     .md\:h-\[48px\] {
       height: 48px;

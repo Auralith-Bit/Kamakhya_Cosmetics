@@ -129,7 +129,7 @@ const ProductCategories = () => {
           .pc-sub{position:static;order:3;font-size:clamp(13px, 1.8vw, 22px);
             line-height:1.6;margin-top:2vw;max-width:92%;}
           .pc-sub br{display:none;}
-          .pc-vector{position:absolute;top: 17%; left:40vw; transform:translateX(-50%);order:4;transform:none;display:block;
+          .pc-vector{position:absolute;top: 18%; left:40vw; transform:translateX(-50%);order:4;transform:none;display:block;
             width:clamp(90px, 17vw, 220px);margin:2vw auto 0;}
 
           .pc-card{position:relative;top:0;left:0;grid-column:1/-1;grid-row:2;
