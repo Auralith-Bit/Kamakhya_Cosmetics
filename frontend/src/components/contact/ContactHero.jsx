@@ -52,7 +52,7 @@ const ContactHero = () => (
         .ct-hero{height:auto;}
 
         .ct-copy{position:relative;z-index:2;left:auto;top:auto;width:auto;
-          padding:8vw 6vw 24vw;}
+          padding:8vw 6vw 12vw;}
         .ct-crumb{font-size:clamp(13px, 1.6vw, 18px);gap:2vw;}
         .ct-crumb a{font-size:clamp(16px, 2vw, 22px);}
         .ct-ic-home{width:clamp(16px, 2vw, 22px);height:clamp(16px, 2vw, 22px);}
@@ -61,7 +61,7 @@ const ContactHero = () => (
         .ct-rule{width:clamp(80px, 10vw, 135px);height:3px;margin-top:2vw;border-radius:2px;}
         .ct-title{margin-top:2.5vw;font-size:clamp(28px, 6vw, 44px);}
         .ct-p{margin-top:3vw;font-size:clamp(14px, 1.7vw, 20px);
-          text-align:justify;letter-spacing:0.01em;line-height:1.2;max-width:80%;}
+          text-align:justify;letter-spacing:0.01em;line-height:1.2;max-width:100%;}
 
         .ct-bg{position:absolute;inset:0;width:100%;height:100%;
           object-fit:cover;object-position:0% 50%;z-index:1;}
