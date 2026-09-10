@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import { useWishlist } from '../../context/WishlistContext'
 
 const FONT_BODY = "'Poppins', sans-serif"
@@ -7,11 +7,14 @@ const FONT_TITLE = "'Playfair Display', 'Playfair', serif"
 
 const ProductCard = ({ product }) => {
     const { isInWishlist, toggleWishlist } = useWishlist()
+    const navigate = useNavigate()
     const inWishlist = isInWishlist(product.id)
+
+    const handleCardClick = () => navigate(`/products/${product.id}`)
 
     return (
     <div
-        className="relative bg-white w-full max-w-[330px] lg:max-w-[340px] mx-auto"
+        className="relative bg-white w-full max-w-[330px] max-lg:max-w-none lg:max-w-[340px] mx-auto"
         style={{
             display: 'flex',
             flexDirection: 'column',
@@ -21,7 +24,18 @@ const ProductCard = ({ product }) => {
             transition: 'box-shadow 300ms ease-out',
             overflow: 'hidden',
             height: '100%',
+            cursor: 'pointer',
         }}
+        onClick={handleCardClick}
+        onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                handleCardClick()
+            }
+        }}
+        role="link"
+        tabIndex={0}
+        aria-label={`View ${product.title} details`}
         onMouseEnter={e => {
             e.currentTarget.style.boxShadow = '0 16px 45px rgba(0, 0, 0, 0.16)'
             const img = e.currentTarget.querySelector('.card-img')
@@ -137,7 +151,7 @@ const ProductCard = ({ product }) => {
         {/* ── Content ── */}
         <div style={{ display: 'flex', flexDirection: 'column', flex: 1, padding: '18px 20px 18px', overflow: 'hidden' }}>
             {/* Product title */}
-            <Link to={`/products/${product.id}`} className="no-underline">
+            <Link to={`/products/${product.id}`} className="no-underline" onClick={(e) => e.stopPropagation()}>
                 <h3
                     className="m-0"
                     style={{
@@ -253,6 +267,7 @@ const ProductCard = ({ product }) => {
             <Link
                 to={`/products/${product.id}`}
                 className="no-underline transition-colors"
+                onClick={(e) => e.stopPropagation()}
                 style={{
                     position: 'relative',
                     width: '100%',

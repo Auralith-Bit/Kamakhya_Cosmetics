@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import banner from "../../assets/image 29.png";
 import shade from "../../assets/Rectangle 4618.png";
+import { ChevronRight } from "lucide-react";
 
 const serif = "'Playfair Display', Georgia, serif";
 const sans = "'Poppins', 'Segoe UI', sans-serif";
@@ -11,11 +12,7 @@ const HomeIcon = () => (
     <path d="M3 10.5 12 3l9 7.5" /><path d="M5 9.5V21h14V9.5" /><path d="M9 21v-6h6v6" />
   </svg>
 );
-const Chev = () => (
-  <svg className="ct-ic-chev" viewBox="0 0 9 14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-    <path d="m1.5 1.5 6 5.5-6 5.5" />
-  </svg>
-);
+
 
 const ContactHero = () => (
   <section id="contact-hero" className="ct-hero">
@@ -136,7 +133,7 @@ const ContactHero = () => (
       <nav className="ct-crumb" aria-label="Breadcrumb">
         <HomeIcon />
         <Link to="/">Home</Link>
-        <Chev />
+        <ChevronRight strokeWidth={3} />
         <span>Contact</span>
       </nav>
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { createPortal } from "react-dom";
 import { useWishlist } from "../../context/WishlistContext";
+import { useCart } from "../../context/CartContext";
 import logo from "../../assets/Group 9.png";
 import RLimage from "../../assets/RLimage.png";
 import Shineimage from "../../assets/Shineimage.png";
@@ -105,7 +106,7 @@ const BrandsDropdown = ({ open, onClose, anchors }) => {
 /* ================= navbar ================= */
 const Navbar = () => {
   const { wishlistIds } = useWishlist();
-  const [cartCount, setCartCount] = useState(0);
+  const { cartCount } = useCart();
   const [searchValue, setSearchValue] = useState("");
   const [brandsOpen, setBrandsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);

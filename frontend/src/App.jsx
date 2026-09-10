@@ -22,6 +22,7 @@ import OrderReview from "./pages/OrderReview";
 import ProductDetails from "./pages/ProductDetailed";
 import Wishlist from "./pages/Wishlist";
 import { WishlistProvider } from "./context/WishlistContext";
+import { CartProvider } from "./context/CartContext";
 import WhatsAppButton from "./components/WhatsAppButton";
 
 const ScrollToTop = () => {
@@ -46,7 +47,8 @@ const Layout = () => (
 function App() {
   return (
     <WishlistProvider>
-      <BrowserRouter>
+      <CartProvider>
+        <BrowserRouter>
         <ScrollToTop />
         <Routes>
           <Route element={<Layout />}>
@@ -67,6 +69,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+      </CartProvider>
     </WishlistProvider>
   );
 }
