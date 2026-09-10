@@ -44,7 +44,7 @@ export default function HeroBanner() {
           .mh-hero{height:auto;}
 
           .mh-copy{position:relative;z-index:2;left:auto;top:auto;width:auto;
-            padding:8vw 6vw 24vw;}
+            padding:8vw 6vw 12vw;}
           .mh-crumb{font-size:clamp(13px, 1.6vw, 18px);gap:2vw;}
           .mh-crumb a{font-size:clamp(16px, 2vw, 22px);}
           .mh-ic-home{width:clamp(16px, 2vw, 22px);height:clamp(16px, 2vw, 22px);}
@@ -59,7 +59,7 @@ export default function HeroBanner() {
           text-align:justify;
           letter-spacing:0.01em;
           line-height:1.2;
-          max-width:80%;
+          max-width:100%;
           }
 
           /* ✅ LEAVES-ONLY CROP: anchored at the left edge AND zoomed 1.8×

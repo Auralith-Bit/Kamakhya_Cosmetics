@@ -54,7 +54,7 @@ const AboutHero = () => (
         .ah-bg{object-position:22% 30%;}
 
         .ah-copy{position:relative;z-index:2;left:auto;top:auto;width:auto;
-          padding:8vw 6vw 20vw;}
+          padding:8vw 6vw 12vw;}
         .ah-crumb{font-size:clamp(13px, 1.6vw, 18px);gap:2vw;
           white-space:normal;flex-wrap:wrap;}
         .ah-crumb a{font-size:clamp(16px, 2vw, 22px);}
@@ -64,7 +64,7 @@ const AboutHero = () => (
         .ah-rule{width:clamp(80px, 10vw, 135px);height:3px;margin-top:2vw;border-radius:2px;}
         .ah-title{margin-top:2.5vw;font-size:clamp(28px, 6vw, 44px);}
         .ah-p{margin-top:3vw;font-size:clamp(14px, 1.7vw, 20px);
-          letter-spacing:0.01em;line-height:1.3;max-width:82%;}
+          letter-spacing:0.01em;line-height:1.3;max-width:100%;}
 
         .ah-veil{background:linear-gradient(90deg,
           rgba(246,231,220,1) 0%,
