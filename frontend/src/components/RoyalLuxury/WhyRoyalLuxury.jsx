@@ -140,8 +140,11 @@ const WhyRoyalLuxury = () => (
       .wc-img{position:absolute;left:31.7708vw;top:15.0521vw;width:36.4583vw;height:36.4583vw;
         object-fit:contain;display:block;z-index:1;pointer-events:none;}
 
-      /* ---- cards ---- */
-      .wc-card{position:absolute;width:19.8958vw;height:7.2396vw;background:#fff;
+      /* ---- cards ----
+         ✅ horizontal positions use % of the section (same coordinate space as
+         the connector SVG), so lines always meet the card edges exactly —
+         vertical offsets stay vw to match the vw-based stage height. */
+      .wc-card{position:absolute;width:19.8958%;height:7.2396vw;background:#fff;
         border-radius:0.5208vw;z-index:3;
         box-shadow:0 0.4167vw 0.8333vw rgba(0,0,0,0.10),
                    0 1.0417vw 2.0833vw rgba(43,46,126,0.08);
@@ -156,12 +159,14 @@ const WhyRoyalLuxury = () => (
           0 1.5625vw 3.125vw rgba(43,46,126,0.20);
       }
 
-      .wc-l1{left:8.8542vw;top:17.5vw;}
-      .wc-l2{left:8.8542vw;top:27.8646vw;}
-      .wc-l3{left:8.8542vw;top:38.2292vw;}
-      .wc-r1{left:71.25vw;top:17.5vw;}
-      .wc-r2{left:71.25vw;top:27.8646vw;}
-      .wc-r3{left:71.25vw;top:38.2292vw;}
+      /* ✅ left cards: right edge = 8.8542% + 19.8958% = 28.75% = wire start (552/1920) */
+      .wc-l1{left:8.8542%;top:17.5vw;}
+      .wc-l2{left:8.8542%;top:27.8646vw;}
+      .wc-l3{left:8.8542%;top:38.2292vw;}
+      /* ✅ right cards: left edge = 71.25% = wire start (1368/1920) */
+      .wc-r1{left:71.25%;top:17.5vw;}
+      .wc-r2{left:71.25%;top:27.8646vw;}
+      .wc-r3{left:71.25%;top:38.2292vw;}
 
       .wc-ico{flex:0 0 5.2vw;width:5.2vw;height:5.2vw;border-radius:50%;
         background:#FCFAF7;border:0.0521vw solid #E8D6BA;color:#CCA466;

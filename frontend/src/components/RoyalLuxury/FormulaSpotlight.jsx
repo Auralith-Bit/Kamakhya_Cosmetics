@@ -116,7 +116,7 @@ const FormulaSpotlight = () => (
         .fs-tag{position:static;font-size:clamp(12px, 1.4vw, 18px);}
         .fs-title{position:static;font-size:clamp(20px, 2.3vw, 32px);margin-top:2vw;}
         .fs-vector{position:static;transform:none;display:block;
-          width:clamp(70px, 12vw, 120px);margin:2.5vw auto 0;}
+          width:18%;margin:2.5vw auto 0;}
         .fs-sub{position:static;font-size:clamp(12px, 1.35vw, 17px);
           line-height:clamp(18px, 2vw, 26px);margin-top:2.5vw;}
         .fs-sub br{display:none;}
@@ -144,12 +144,16 @@ const FormulaSpotlight = () => (
         .fs-card p br{display:none;}
       }
 
-      /* ============ TABLET 640–1023 — same rows, larger type only ============ */
+      /* ============ TABLET 640–1023 — ✅ TWO CARDS PER ROW ============ */
       @media (min-width:640px) and (max-width:1023px){
         .fs-sec{padding:8vw 6vw;}
         .fs-tag{font-size:13px;}
         .fs-title{font-size:28px;}
         .fs-sub{font-size:14px;line-height:1.6;}
+
+        /* ✅ 2-up grid on tablet: 6 cards → 3 rows of 2 */
+        .fs-grid{grid-template-columns:1fr 1fr;gap:4vw 3vw;}
+
         .fs-card{padding:5vw 4vw;}
         .fs-card h3{font-size:16px;}
         .fs-rule{width:44px;}
