@@ -226,7 +226,7 @@ const SignatureCollection = () => {
           .psx-tag{position:static;font-size:clamp(12px,1.4vw,18px);}
           .psx-title{position:static;font-size:clamp(24px,3.4vw,44px);margin-top:1.5vw;}
           .psx-vector{position:static;transform:none;display:block;
-            width:clamp(80px,12vw,160px);margin:2vw auto 0;}
+            width:18%;margin:2vw auto 0;}
           .psx-sub{position:static;font-size:clamp(13px,1.8vw,20px);line-height:1.6;margin-top:2vw;}
           .psx-sub span{max-width:92%;}
           .psx-sub br{display:none;}
@@ -293,29 +293,49 @@ const SignatureCollection = () => {
           .psx-foot span{font-size:clamp(11px,1.3vw,15px);}
         }
 
-        /* ============ TABLET ONLY (640–1023) — tablet-specific overrides ============ */
+        /* ============ TABLET ONLY (640–1023) ============ */
         @media (min-width:640px) and (max-width:1023px){
           .psx-sec{padding:10vw 7vw;}
           .psx-tag{font-size:14px;}
           .psx-title{font-size:34px;}
           .psx-sub{font-size:16px;}
           .psx-panel{border-radius:16px;}
-          .psx-sidehead{padding:36px 32px 24px;}
-          .psx-dir{font-size:14px;}
-          .psx-sig{font-size:24px;}
-          .psx-list{padding:32px 32px 16px;gap:16px;}
-          .psx-item{padding:18px 28px;border-radius:16px;}
-          .psx-item-cat{font-size:12px;}
-          .psx-item-name{font-size:15px;}
+
+          /* ✅ directory head — tighter */
+          .psx-sidehead{padding:20px 24px 14px;}
+          .psx-dir{font-size:11px;}
+          .psx-sig{font-size:18px;}
+
+          .psx-list{
+            padding:14px 24px 10px;
+            gap:10px;
+            display:grid;
+            grid-template-columns:1fr;
+          }
+          .psx-item{padding:8px 12px;border-radius:10px;gap:1px;}
+          .psx-item-cat{font-size:10px;}
+          .psx-item-name{font-size:12px;}
+
+          /* ✅ nav pulled closer under the compact list */
+          .psx-nav{margin-top:16px;gap:64px;}
+          .psx-arrow{width:40px;height:40px;}
+          .psx-count{font-size:14px;}
+
           .psx-stage{width:400px;margin-top:40px;}
           .psx-badge{padding:12px 20px;font-size:12px;}
           .psx-dots{bottom:20px;gap:12px;}
           .psx-dot{width:22px;height:22px;}
           .psx-dot.active{width:44px;}
-          .psx-nav{margin-top:40px;gap:80px;}
-          .psx-arrow{width:48px;height:48px;}
-          .psx-count{font-size:16px;}
-          .psx-right{padding:48px 40px 40px 32px;}
+
+          /* ✅ right column: details span both columns, CTAs share one row */
+          .psx-right{
+            padding:48px 40px 40px 32px;
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:0 16px;
+            align-items:stretch;
+          }
+          .psx-dyn{grid-column:1 / -1;}
           .psx-kicker{font-size:14px;}
           .psx-name{font-size:28px;margin-top:16px;}
           .psx-desc{font-size:15px;margin-top:24px;}
@@ -328,9 +348,39 @@ const SignatureCollection = () => {
           .psx-stats span{font-size:13px;}
           .psx-stats strong{font-size:20px;}
           .psx-stats i{height:72px;}
-          .psx-cta{height:52px;margin-top:48px;font-size:15px;}
-          .psx-cta2{height:52px;margin-top:24px;margin-bottom:16px;font-size:15px;}
-          .psx-foot{padding:28px 32px;gap:12px;}
+
+          .psx-cta{
+            grid-column:1;
+            width:100%;
+            height:52px;
+            margin-top:48px;
+            border-radius:10px;
+            font-size:15px;
+          }
+          .psx-cta svg{width:18px !important;height:18px !important;}
+          .psx-cta2{
+            grid-column:2;
+            width:100%;
+            height:52px;
+            margin-top:48px;
+            margin-bottom:16px;
+            border-radius:10px;
+            font-size:13px;
+          }
+          .psx-cta2 svg{width:18px !important;height:12px !important;}
+
+          /* ✅ FOOTER IN ONE ROW — brand line left, hint line right */
+          .psx-foot{
+            padding:20px 32px;
+            gap:16px;
+            flex-direction:row;
+            align-items:center;
+            justify-content:space-between;
+            flex-wrap:wrap;
+            text-align:left;
+          }
+          .psx-foot span:first-child{text-align:left;}
+          .psx-foot span:last-child{text-align:right;}
           .psx-foot span{font-size:13px;}
         }
 

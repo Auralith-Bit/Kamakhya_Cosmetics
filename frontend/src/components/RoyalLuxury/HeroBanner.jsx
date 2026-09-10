@@ -64,7 +64,7 @@ const HeroBanner = () => (
         .sh-hero{height:auto;}
 
         .sh-copy{position:relative;z-index:2;left:auto;top:auto;width:auto;
-          padding:8vw 6vw 24vw;}
+          padding:8vw 6vw 10vw;}
         .sh-crumb{font-size:clamp(13px, 1.6vw, 18px);gap:2vw;}
         .sh-crumb a{font-size:clamp(16px, 2vw, 22px);}
         .ic-home{width:clamp(16px, 2vw, 22px);height:clamp(16px, 2vw, 22px);}

@@ -220,6 +220,10 @@ const BrandPhilosophy = () => (
             
       .bp-btn2 svg{width:1.0417vw;height:1.0417vw;flex-shrink:0;}
 
+      /* ✅ wrapper is invisible on desktop — the two buttons keep their
+         absolute positions exactly as before */
+      .bp-actions{display:contents;}
+
       /* ============ MOBILE+TABLET ≤1023 ============ */
       @media (max-width:1023px){
         .bp-sec{height:auto;display:grid;grid-template-columns:1fr;padding:10vw 5vw;}
@@ -268,11 +272,19 @@ const BrandPhilosophy = () => (
           width:clamp(48px, 12vw, 90px);height:auto;
         }
 
+        /* ✅ button wrapper becomes the single grid row; phones stack them */
+        .bp-actions{
+          display:flex;
+          flex-direction:column;
+          gap:3vw;
+          grid-column:1;
+          grid-row:4;
+          margin-top:6vw;
+        }
         .bp-btn{position:static;left:auto;top:auto;width:100%;height:auto;
-          padding:3.5vw 4vw;border-radius:2vw;font-size:clamp(12px, 1.5vw, 17px);
-          grid-column:1;grid-row:4;margin-top:6vw;}
+          padding:3.5vw 4vw;border-radius:2vw;font-size:clamp(12px, 1.5vw, 17px);}
         .bp-btn svg{width:clamp(6px, 0.9vw, 10px);height:clamp(10px, 1.4vw, 15px);}
-        .bp-btn2{left:auto;width:100%;grid-row:5;margin-top:3vw;}
+        .bp-btn2{left:auto;width:100%;}
         .bp-btn2 svg{width:clamp(16px, 2.2vw, 22px);height:clamp(16px, 2.2vw, 22px);}
       }
 
@@ -306,7 +318,13 @@ const BrandPhilosophy = () => (
         .bp-crule{margin-top:7px;}
         .bp-ctxt{font-size:12px;margin-top:14px;}
         .bp-stage{border-radius:1.5vw;}
+
+        /* ✅ BOTH CTAs IN ONE ROW on tablet — equal width, shared height,
+           comfortable gap */
+        .bp-actions{flex-direction:row;gap:4vw;margin-top:5vw;}
+        .bp-btn,.bp-btn2{flex:1 1 0;min-width:0;padding:3vw 4vw;}
         .bp-btn{font-size:15px;}
+        .bp-btn2{font-size:14px;}
       }
     `}</style>
 
@@ -352,23 +370,27 @@ const BrandPhilosophy = () => (
       ))}
     </div>
 
-    {/* ✅ EXPLORE OUR COLLECTIONS → /products?brand=Royal Luxury */}
-    <Link to="/products?brand=Royal Luxury" className="bp-btn">
-      EXPLORE OUR COLLECTIONS
-      <svg viewBox="0 0 9 14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-        <path d="m1.5 1.5 6 5.5-6 5.5" />
-      </svg>
-    </Link>
+    {/* ✅ wrapper: invisible on desktop (display:contents), flex row on tablet,
+         flex column on phones */}
+    <div className="bp-actions">
+      {/* ✅ EXPLORE OUR COLLECTIONS → /products?brand=Royal Luxury */}
+      <Link to="/products?brand=Royal Luxury" className="bp-btn">
+        EXPLORE OUR COLLECTIONS
+        <svg viewBox="0 0 9 14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+          <path d="m1.5 1.5 6 5.5-6 5.5" />
+        </svg>
+      </Link>
 
-    {/* ✅ DOWNLOAD CATALOG → /products */}
-    <Link to="/products" className="bp-btn bp-btn2">
-      Download Catalog
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-        <polyline points="7 10 12 15 17 10" />
-        <line x1="12" y1="15" x2="12" y2="3" />
-      </svg>
-    </Link>
+      {/* ✅ DOWNLOAD CATALOG → /products */}
+      <Link to="/products" className="bp-btn bp-btn2">
+        Download Catalog
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
+      </Link>
+    </div>
   </section>
 );
 
