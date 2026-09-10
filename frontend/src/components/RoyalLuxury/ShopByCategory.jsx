@@ -11,7 +11,7 @@ const CATS = [
   { name: "Body Care",   count: "18+ Products",  img: catImg },
   { name: "Body Care", count: "18+ Products", img: catImg },
   { name: "Body Care",        count: "18+ Products", img: catImg },
-  { name: "Body Care",  count: "18+ Products",  img: catImg },
+  { name: "Body Care",  count: "18+ Products", img: catImg },
 ];
 const SLOTS = ["pc-c1", "pc-c2", "pc-c3", "pc-c4", "pc-c5"];
 const DOTS = [0, 1, 2, 3];
@@ -42,45 +42,33 @@ const ProductCategories = () => {
   return (
     <section id="shine-categories" className="pc-sec">
       <style>{`
-        /* ================= DESKTOP (≥1024): ORIGINAL, UNTOUCHED ================= */
+        /* ================= DESKTOP (>1280): identical to Shine ================= */
         .pc-sec{position:relative;width:100%;height:42.6563vw;background:#FCF9F2;overflow:hidden;}
 
         .pc-head{position:absolute;left:0;top:0;width:100%;text-align:center;}
-        
         .pc-tag{position:absolute;top:3.0104vw;width:100%;color:#E38F2E;
-        font-family:${sans};font-size:0.88vw;font-weight:600;letter-spacing:0.18em;}
-        
+          font-family:${sans};font-size:0.88vw;font-weight:600;letter-spacing:0.18em;}
         .pc-title{position:absolute;top:4.6vw;width:100%;color:#2E3192;
-        font-family:${serif};font-size:1.7vw;font-weight:700;line-height:1.2;}
-        
-        .pc-sub{
-        position:absolute;
-        top:9vw;
-        width:100%;
-        color:#666666;
-        font-family:${sans};
-        font-size:0.95vw;
-        line-height:1.5;
-        }
-        
-        .pc-vector{position:absolute;top:7.2vw;left:50%;transform:translateX(-50%);
-          width:10vw;height:auto;}
+          font-family:${serif};font-size:1.7vw;font-weight:700;line-height:1.2;}
+        .pc-sub{position:absolute;top:9vw;width:100%;color:#666666;
+          font-family:${sans};font-size:1vw;}
+        .pc-vector{position:absolute;top:7.4167vw;left:50%;transform:translateX(-50%);
+          width:9.25vw;height:auto;}
 
         .pc-card{position:absolute;top:14.2708vw;width:15.1042vw;height:20.0521vw;
           background:#fff;border-radius:0.5208vw;overflow:hidden;
-          box-shadow:0 0.4167vw 0.625vw rgba(0,0,0,0.08), 0 1.0417vw 1.3021vw rgba(0,0,0,0.05);
+          box-shadow:0 0.4167vw 0.8333vw rgba(0,0,0,0.10),
+                     0 1.0417vw 2.0833vw rgba(43,46,126,0.08);
+          transition:box-shadow .3s ease;
           animation:pc-in .45s ease;
-          display:block;text-decoration:none;cursor:pointer;
-          transition:box-shadow .35s ease;
-        }
-        @keyframes pc-in{from{opacity:0;transform:translateX(1.5vw);}to{opacity:1;transform:none;}}
+          display:block;text-decoration:none;cursor:pointer;}
 
         .pc-card:hover{
-          box-shadow:
-            0 0.5208vw 1.0417vw rgba(0,0,0,0.16),
-            0 1.5625vw 3.125vw rgba(43,46,126,0.30);
+          box-shadow:0 0.625vw 1.25vw rgba(0,0,0,0.12),
+                     0 1.5625vw 3.125vw rgba(43,46,126,0.20);
         }
 
+        @keyframes pc-in{from{opacity:0;transform:translateX(1.5vw);}to{opacity:1;transform:none;}}
         .pc-c1{left:8.8542vw;}
         .pc-c2{left:25.651vw;}
         .pc-c3{left:42.4479vw;}
@@ -98,7 +86,7 @@ const ProductCategories = () => {
           font-family:${sans};font-size:0.7292vw;}
         .pc-arrow{position:absolute;right:1.0677vw;top:16.4063vw;width:2.2917vw;height:2.2917vw;
           border-radius:50%;display:flex;align-items:center;justify-content:center;
-          background:#F5F5FA;color:#2E3192;transition:background .3s ease;}
+          background:transparent;color:#2E3192;transition:background .3s ease;}
         .pc-arrow svg{width:0.8854vw;height:0.5208vw;transition:transform .3s ease;}
         .pc-card:hover .pc-arrow{background:#E4E4F0;}
         .pc-card:hover .pc-arrow svg{transform:rotate(-45deg);}
@@ -117,8 +105,8 @@ const ProductCategories = () => {
         .pc-dot.active{width:2.6042vw;height:0.7292vw;border-radius:0.3646vw;
           background:#2E3192;border:none;}
 
-        /* ============ MOBILE + TABLET (≤1023) — shared base rules ============ */
-        @media (max-width:1023px){
+        /* ============ ≤1280: design-order header, bigger type, tight controls ============ */
+        @media (max-width:1280px){
           .pc-sec{height:auto;display:grid;grid-template-columns:1fr auto 1fr;
             column-gap:3vw;row-gap:5vw;padding:8vw 6vw;}
 
@@ -126,14 +114,18 @@ const ProductCategories = () => {
             display:flex;flex-direction:column;align-items:center;text-align:center;}
           .pc-tag{position:static;order:1;font-size:clamp(12px, 1.4vw, 18px);}
           .pc-title{position:static;order:2;font-size:clamp(26px, 3.4vw, 48px);margin-top:1.5vw;}
-          .pc-sub{position:static;order:3;font-size:clamp(13px, 1.8vw, 22px);
+          .pc-vector{position:static;order:3;transform:none;display:block;
+            width:clamp(90px, 17vw, 220px);margin:2vw auto 0;}
+          .pc-sub{position:static;order:4;font-size:clamp(13px, 1.8vw, 22px);
             line-height:1.6;margin-top:2vw;max-width:92%;}
           .pc-sub br{display:none;}
-          .pc-vector{position:absolute;top: 18%; left:40vw; transform:translateX(-50%);order:4;transform:none;display:block;
-            width:clamp(90px, 17vw, 220px);margin:2vw auto 0;}
 
           .pc-card{position:relative;top:0;left:0;grid-column:1/-1;grid-row:2;
-            justify-self:center;width:min(55vw, 480px);height:auto;}
+            justify-self:center;width:min(55vw, 480px);height:auto;
+            box-shadow:0 2px 6px rgba(0,0,0,0.08),
+                       0 6px 16px rgba(43,46,126,0.08);}
+          .pc-card:hover{box-shadow:0 4px 10px rgba(0,0,0,0.10),
+                                    0 12px 24px rgba(43,46,126,0.18);}
           .pc-c1{left:0;}
           .pc-c2,.pc-c3,.pc-c4,.pc-c5{display:none;}
 
@@ -145,12 +137,6 @@ const ProductCategories = () => {
             width:clamp(40px, 5vw, 54px);height:clamp(40px, 5vw, 54px);}
           .pc-arrow svg{width:clamp(14px, 2vw, 22px);height:auto;}
 
-          .pc-card:hover{
-            box-shadow:
-              0 6px 14px rgba(0,0,0,0.15),
-              0 16px 32px rgba(43,46,126,0.28);
-          }
-
           .pc-nav{position:static;width:clamp(40px, 6vw, 72px);height:clamp(40px, 6vw, 72px);}
           .pc-nav svg{width:clamp(9px, 1.3vw, 16px);height:auto;}
           .pc-nav.prev{grid-column:1;grid-row:3;justify-self:end;}
@@ -160,34 +146,21 @@ const ProductCategories = () => {
           .pc-dot.active{width:clamp(20px, 2.6vw, 30px);height:clamp(6px, 0.9vw, 10px);}
         }
 
-        /* ============ TABLET ONLY (640–1023) — tablet-specific overrides ============ */
+        /* ============ TABLET 640–1023 — ✅ COMPACT CAROUSEL CARD (identical to Shine) ============ */
         @media (min-width:640px) and (max-width:1023px){
-          .pc-sec{padding:10vw 8vw;}
-          .pc-tag{font-size:14px;}
-          .pc-title{font-size:36px;}
-          .pc-sub{font-size:16px;}
-          .pc-card{width:min(45vw, 420px);}
-          .pc-img{aspect-ratio:4/3;}
-          .pc-name{font-size:18px;}
-          .pc-count{font-size:13px;}
-          .pc-nav{width:56px;height:56px;}
-          .pc-dot{width:12px;height:7px;}
-          .pc-dot.active{width:26px;height:8px;}
-        }
+          .pc-vector{width:20%;}
 
-        /* ============ MOBILE ONLY (≤639) — mobile-specific overrides ============ */
-        @media (max-width:639px){
-          .pc-sec{padding:12vw 5vw;}
-          .pc-tag{font-size:13px;}
-          .pc-title{font-size:28px;margin-top:3vw;}
-          .pc-sub{font-size:14px;margin-top:4vw;}
-          .pc-vector{width:30vw;position:absolute;top:18%;left:50vw;transform:translateX(-50%);}
-          .pc-card{width:min(85vw, 360px);}
-          .pc-name{font-size:16px;}
-          .pc-count{font-size:12px;}
-          .pc-nav{width:48px;height:48px;}
-          .pc-dot{width:10px;height:6px;}
-          .pc-dot.active{width:22px;height:7px;}
+          .pc-card{width:min(44vw, 380px);border-radius:14px;}
+
+          .pc-img{aspect-ratio:4/3;border-radius:14px 14px 0 0;}
+
+          .pc-name{font-size:16px;margin:16px 18px 6px;}
+          .pc-count{font-size:12px;margin:0 18px 18px;}
+          .pc-arrow{right:14px;bottom:14px;width:38px;height:38px;}
+          .pc-arrow svg{width:16px;height:auto;}
+
+          .pc-nav{width:44px;height:44px;}
+          .pc-nav svg{width:10px;height:auto;}
         }
       `}</style>
 
@@ -203,8 +176,8 @@ const ProductCategories = () => {
       </div>
 
       {items.map((c, i) => (
-        <Link to="/products" className={`pc-card ${SLOTS[i]}`} key={c.name}>
-          {c.img && <img className="pc-img" src={c.img} alt={`Shine ${c.name}`} />}
+        <Link to="/products" className={`pc-card ${SLOTS[i]}`} key={`${c.name}-${i}`}>
+          {c.img && <img className="pc-img" src={c.img} alt={`Royal Luxury ${c.name}`} />}
           <p className="pc-name">{c.name}</p>
           <p className="pc-count">{c.count}</p>
           <span className="pc-arrow"><Arrow /></span>

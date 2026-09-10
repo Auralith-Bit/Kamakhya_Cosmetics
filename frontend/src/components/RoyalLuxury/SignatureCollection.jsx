@@ -10,9 +10,10 @@ import img5 from "../../assets/Rectangle 4651.svg";
 const serif = "'Playfair Display', Georgia, serif";
 const sans = "'Poppins', 'Segoe UI', sans-serif";
 
+/* ✅ each product now carries an id for the details route /products/:id */
 const PRODUCTS = [
   {
-    num: "01", cat: "Kitchencare", badge: "KITCHENCARE", name: "Radiance Renewal Serum",
+    id: 21, num: "01", cat: "Kitchencare", badge: "KITCHENCARE", name: "Radiance Renewal Serum",
     desc: [
       "A lightweight brightening serum with stabilised",
       "vitamin C and botanical extracts for visibly",
@@ -22,7 +23,7 @@ const PRODUCTS = [
     moq: "500 units", lead: "10–15 days", img: img1,
   },
   {
-    num: "02", cat: "Haircare", badge: "SKIN CARE", name: "Soothing Aloe Gel",
+    id: 22, num: "02", cat: "Haircare", badge: "SKIN CARE", name: "Soothing Aloe Gel",
     desc: [
       "A cooling, fragrance-free aloe gel that calms and",
       "hydrates, leaving scalp and strands refreshed",
@@ -32,7 +33,7 @@ const PRODUCTS = [
     moq: "500 units", lead: "10–15 days", img: img2,
   },
   {
-    num: "03", cat: "Lipcare", badge: "SKIN CARE", name: "Hydrating Balance Cream",
+    id: 23, num: "03", cat: "Lipcare", badge: "SKIN CARE", name: "Hydrating Balance Cream",
     desc: [
       "A balancing daily cream that restores moisture and",
       "comfort, leaving lips and skin soft, supple and",
@@ -42,7 +43,7 @@ const PRODUCTS = [
     moq: "750 units", lead: "01–10 days", img: img3,
   },
   {
-    num: "04", cat: "Skincare", badge: "SKIN CARE", name: "Night Repair Elixir",
+    id: 24, num: "04", cat: "Skincare", badge: "SKIN CARE", name: "Night Repair Elixir",
     desc: [
       "A lightweight brightening serum with stabilised",
       "vitamin C and botanical extracts for visibly",
@@ -52,7 +53,7 @@ const PRODUCTS = [
     moq: "500 units", lead: "10–15 days", img: img4,
   },
   {
-    num: "05", cat: "Skincare", badge: "SKIN CARE", name: "Vitamin C Glow Drops",
+    id: 25, num: "05", cat: "Skincare", badge: "SKIN CARE", name: "Vitamin C Glow Drops",
     desc: [
       "Concentrated glow drops with stabilised vitamin C",
       "and botanical extracts for visibly even, luminous",
@@ -162,7 +163,10 @@ const SignatureCollection = () => {
           border-radius:0.5208vw;overflow:hidden;border:0.0521vw solid #D7DAE4;}
         .psx-track{display:flex;width:100%;height:100%;transition:transform .6s ease;}
         .psx-slide{flex:0 0 100%;height:100%;}
+
+        .psx-slide-link{display:block;width:100%;height:100%;cursor:pointer;}
         .psx-slide img{width:100%;height:100%;object-fit:cover;display:block;}
+
         .psx-badge{position:absolute;top:1.0417vw;left:1.6146vw;z-index:2;background:#fff;
           border-radius:1.0417vw;display:flex;align-items:center;gap:0.3125vw;
           padding:0.3646vw 0.7292vw;color:#E38F2E;font-family:${sans};font-size:0.625vw;
@@ -226,7 +230,7 @@ const SignatureCollection = () => {
           .psx-tag{position:static;font-size:clamp(12px,1.4vw,18px);}
           .psx-title{position:static;font-size:clamp(24px,3.4vw,44px);margin-top:1.5vw;}
           .psx-vector{position:static;transform:none;display:block;
-            width:18%;margin:2vw auto 0;}
+            width:20%;margin:1vw auto -1vw;}
           .psx-sub{position:static;font-size:clamp(13px,1.8vw,20px);line-height:1.6;margin-top:2vw;}
           .psx-sub span{max-width:92%;}
           .psx-sub br{display:none;}
@@ -301,33 +305,34 @@ const SignatureCollection = () => {
           .psx-sub{font-size:16px;}
           .psx-panel{border-radius:16px;}
 
-          /* ✅ directory head — tighter */
           .psx-sidehead{padding:20px 24px 14px;}
           .psx-dir{font-size:11px;}
           .psx-sig{font-size:18px;}
 
           .psx-list{
             padding:14px 24px 10px;
-            gap:10px;
+            gap:15px;
             display:grid;
             grid-template-columns:1fr;
           }
-          .psx-item{padding:8px 12px;border-radius:10px;gap:1px;}
+          .psx-item{padding:8px 12px;border-radius:10px;gap:15px;}
           .psx-item-cat{font-size:10px;}
           .psx-item-name{font-size:12px;}
 
-          /* ✅ nav pulled closer under the compact list */
           .psx-nav{margin-top:16px;gap:64px;}
           .psx-arrow{width:40px;height:40px;}
           .psx-count{font-size:14px;}
 
-          .psx-stage{width:400px;margin-top:40px;}
+          .psx-stage{
+            width:min(58vw, 400px);
+            margin-top:40px;
+            aspect-ratio:4/5;
+          }
           .psx-badge{padding:12px 20px;font-size:12px;}
           .psx-dots{bottom:20px;gap:12px;}
           .psx-dot{width:22px;height:22px;}
           .psx-dot.active{width:44px;}
 
-          /* ✅ right column: details span both columns, CTAs share one row */
           .psx-right{
             padding:48px 40px 40px 32px;
             display:grid;
@@ -369,7 +374,6 @@ const SignatureCollection = () => {
           }
           .psx-cta2 svg{width:18px !important;height:12px !important;}
 
-          /* ✅ FOOTER IN ONE ROW — brand line left, hint line right */
           .psx-foot{
             padding:20px 32px;
             gap:16px;
@@ -470,7 +474,14 @@ const SignatureCollection = () => {
               <div className="psx-track" style={{ transform: `translateX(-${idx * 100}%)` }}>
                 {PRODUCTS.map((it) => (
                   <div className="psx-slide" key={it.num}>
-                    <img src={it.img} alt={it.name} />
+                    {/* ✅ tap/click the image → product details page */}
+                    <Link
+                      to={`/products/${it.id}`}
+                      className="psx-slide-link"
+                      aria-label={`View ${it.name} details`}
+                    >
+                      <img src={it.img} alt={it.name} />
+                    </Link>
                   </div>
                 ))}
               </div>
@@ -518,7 +529,7 @@ const SignatureCollection = () => {
         </div>
 
         <div className="psx-foot">
-          <span>Shine by Kamakhya Cosmetics</span>
+          <span>Royal Luxury by Kamakhya Cosmetics</span>
           <span>Use arrow keys to browse the collection</span>
         </div>
       </div>

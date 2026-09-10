@@ -6,9 +6,9 @@ const sans = "'Poppins', 'Segoe UI', sans-serif";
 
 /* ✏️ All copy editable here */
 const CARDS = [
-  { title: "24K Gold Infusion", body: ["Enhances skin radiance for a luminous,", "youth-looking complexion."] },
-  { title: "Collagen Complex", body: ["Supports skin firmness and improves natural", "elasticity over time."] },
-  { title: "Hyaluronic Moisture Lock", body: ["Provides deep hydration for soft, smooth, and ", "plump-looking skin."] },
+  { title: "24K Gold Infusion", body: ["Enhances skin radiance for a luminous,", "youthful-looking complexion."] },
+  { title: "Collagen Complex", body: ["Supports skin firmness and improves", "elasticity over time."] },
+  { title: "Hyaluronic Moisture Lock", body: ["Provides deep hydration for soft, smooth, and", "plump-looking skin."] },
   { title: "Vitamin C Brightening", body: ["Brightens dull skin and promotes a naturally", "even complexion."] },
   { title: "Botanical Recovery Blend", body: ["Nourishes and calms skin with carefully", "selected botanical extracts."] },
   { title: "Peptide Firming Technology", body: ["Helps improve skin firmness for a smoother,", "youthful appearance."] },
@@ -57,23 +57,21 @@ const FormulaSpotlight = () => (
       }
       
       .fs-sub{
-        position:absolute;
-        top:8.9063vw;
-        width:100%;
-        text-align:center;
-        color:#666666;
-        font-family:${sans};
-        font-size:0.93vw;
-        font-weight: 500;
-        letter-spacing: 0.045em;
-        line-height:1.5625vw;
+      position:absolute;
+      top:8.9063vw;
+      width:100%;
+      text-align:center;
+      color:#666666;
+       font-family:${sans};
+       font-size:0.93vw;
+       letter-spacing: 0.045em;
+       line-height:1.5625vw;
+       max-width:68vw;margin:0 auto;
        }
 
-      /* ---- 3x2 card grid (500x180, gap 40) ---- */
       .fs-grid{position:absolute;left:8.8542vw;top:14.375vw;width:82.2917vw;
         display:grid;grid-template-columns:repeat(3, 26.0417vw);gap:2.0833vw;}
 
-      /* ✅ BASE SHADOW aligned with the other sections */
       .fs-card{
       background:#FCF9F2;
       border:0.0521vw solid #D7DAE4;
@@ -83,17 +81,13 @@ const FormulaSpotlight = () => (
       box-shadow:0 0.4167vw 0.8333vw rgba(0,0,0,0.10),
                  0 1.0417vw 2.0833vw rgba(43,46,126,0.08);
       cursor:pointer;
-      /* ✅ shadow-only transition — no transform */
       transition:border-color .3s ease, box-shadow .3s ease;
       }
 
-      /* ✅ REPLACED HOVER — same softened, wide-spreading shadow as the
-         other sections (was 0.16 / 0.30); NO movement */
       .fs-card:hover{
       border-color:#CCA466;
-      box-shadow:
-        0 0.625vw 1.25vw rgba(0,0,0,0.12),
-        0 1.5625vw 3.125vw rgba(43,46,126,0.20);
+      box-shadow:0 0.625vw 1.25vw rgba(0,0,0,0.12),
+                 0 1.5625vw 3.125vw rgba(43,46,126,0.20);
       }
       
       .fs-card h3{
@@ -114,29 +108,21 @@ const FormulaSpotlight = () => (
         .fs-sec{height:auto;padding:10vw 5vw;}
 
         .fs-tag{position:static;font-size:clamp(12px, 1.4vw, 18px);}
-        .fs-title{position:static;font-size:clamp(20px, 2.3vw, 32px);margin-top:2vw;}
+        .fs-title{position:static;font-size:clamp(20px, 2.3vw, 32px);margin-top:0vw;}
         .fs-vector{position:static;transform:none;display:block;
-          width:18%;margin:2.5vw auto 0;}
+          width:clamp(70px, 12vw, 120px);margin:2.5vw auto 0;}
         .fs-sub{position:static;font-size:clamp(12px, 1.35vw, 17px);
-          line-height:clamp(18px, 2vw, 26px);margin-top:2.5vw;}
+          line-height:clamp(18px, 2vw, 26px);margin-top:1vw;}
         .fs-sub br{display:none;}
 
-        /* single column = each template on its own full-width row */
         .fs-grid{position:static;left:auto;top:auto;width:auto;
           grid-template-columns:1fr;gap:4vw;margin-top:8vw;}
 
-        /* ✅ px-based base shadow for small screens */
         .fs-card{height:auto;padding:5vw;border-radius:2vw;
           box-shadow:0 2px 6px rgba(0,0,0,0.08),
                      0 6px 16px rgba(43,46,126,0.08);}
-
-        /* ✅ REPLACED hover — same softened spread, still no movement */
-        .fs-card:hover{
-          box-shadow:
-            0 4px 10px rgba(0,0,0,0.10),
-            0 12px 24px rgba(43,46,126,0.18);
-        }
-
+        .fs-card:hover{box-shadow:0 4px 10px rgba(0,0,0,0.10),
+                                  0 12px 24px rgba(43,46,126,0.18);}
         .fs-card h3{font-size:clamp(14px, 1.7vw, 21px);}
         .fs-rule{width:clamp(36px, 7vw, 50px);height:3px;margin-top:2vw;border-radius:2px;}
         .fs-card p{margin-top:2.5vw;font-size:clamp(11px, 1.25vw, 15px);
@@ -144,30 +130,35 @@ const FormulaSpotlight = () => (
         .fs-card p br{display:none;}
       }
 
-      /* ============ TABLET 640–1023 — ✅ TWO CARDS PER ROW ============ */
+      /* ============ TABLET 640–1023 — ✅ 2 CARDS PER ROW ============ */
       @media (min-width:640px) and (max-width:1023px){
         .fs-sec{padding:8vw 6vw;}
         .fs-tag{font-size:13px;}
         .fs-title{font-size:28px;}
+
+        .fs-vector{width:18%; margin-top:1vw;}
+
         .fs-sub{font-size:14px;line-height:1.6;}
 
-        /* ✅ 2-up grid on tablet: 6 cards → 3 rows of 2 */
-        .fs-grid{grid-template-columns:1fr 1fr;gap:4vw 3vw;}
+        .fs-grid{
+          grid-template-columns:1fr 1fr;
+          gap:24px 20px;
+          margin-top:40px;
+        }
 
-        .fs-card{padding:5vw 4vw;}
+        .fs-card{padding:24px 22px;border-radius:16px;}
         .fs-card h3{font-size:16px;}
-        .fs-rule{width:44px;}
-        .fs-card p{font-size:13px;line-height:1.5;}
+        .fs-rule{width:44px;height:3px;margin-top:10px;border-radius:2px;}
+        .fs-card p{font-size:13px;line-height:1.5;margin-top:12px;}
       }
     `}</style>
 
     <p className="fs-tag">Formula Spotlight</p>
-    <h2 className="fs-title">Advanced Beauty Science, Perfected</h2>
+    <h2 className="fs-title">Advanced beauty Science, Perfected</h2>
     <img className="fs-vector" src={vector1} alt="" aria-hidden="true" />
     <p className="fs-sub">
-      Every Royal Luxury formula blends premium ingredients, advanced skincare science, 
-      <br />
-      and luxurious Care.
+      Every Royal Luxury formula blends premium ingredients, advanced skincare science,
+      and luxurious care.
     </p>
 
     <div className="fs-grid">
