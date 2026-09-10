@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import catImg from "../../assets/Product.svg";
-import Curve from "../../assets/Curve.svg";          // ✅ gold squiggle (replaces vector1)
+import Curve from "../../assets/Curve.svg";
 
 const serif = "'Playfair Display', Georgia, serif";
 const sans = "'Poppins', 'Segoe UI', sans-serif";
 
-/* ✅ each category can have its own product photo — swap catImg for real bottle shots */
 const CATS = [
   { name: "Body Care",  count: "18+ Products", img: catImg },
   { name: "Body Care",   count: "18+ Products",  img: catImg },
@@ -43,7 +42,7 @@ const ProductCategories = () => {
   return (
     <section id="shine-categories" className="pc-sec">
       <style>{`
-        /* ================= DESKTOP (>1280): ORIGINAL, UNTOUCHED ================= */
+        /* ================= DESKTOP (≥1024): ORIGINAL, UNTOUCHED ================= */
         .pc-sec{position:relative;width:100%;height:42.6563vw;background:#FCF9F2;overflow:hidden;}
 
         .pc-head{position:absolute;left:0;top:0;width:100%;text-align:center;}
@@ -64,12 +63,9 @@ const ProductCategories = () => {
         line-height:1.5;
         }
         
-        /* ✅ squiggle moved BELOW the paragraph (was between title and sub) */
-        
         .pc-vector{position:absolute;top:7.2vw;left:50%;transform:translateX(-50%);
           width:10vw;height:auto;}
 
-        /* ✅ cards are now <Link> anchors */
         .pc-card{position:absolute;top:14.2708vw;width:15.1042vw;height:20.0521vw;
           background:#fff;border-radius:0.5208vw;overflow:hidden;
           box-shadow:0 0.4167vw 0.625vw rgba(0,0,0,0.08), 0 1.0417vw 1.3021vw rgba(0,0,0,0.05);
@@ -79,7 +75,6 @@ const ProductCategories = () => {
         }
         @keyframes pc-in{from{opacity:0;transform:translateX(1.5vw);}to{opacity:1;transform:none;}}
 
-        /* ✅ dark wide-spreading hover shadow — no card movement */
         .pc-card:hover{
           box-shadow:
             0 0.5208vw 1.0417vw rgba(0,0,0,0.16),
@@ -122,8 +117,8 @@ const ProductCategories = () => {
         .pc-dot.active{width:2.6042vw;height:0.7292vw;border-radius:0.3646vw;
           background:#2E3192;border:none;}
 
-        /* ============ ≤1280: design-order header, bigger type, tight controls ============ */
-        @media (max-width:1280px){
+        /* ============ MOBILE + TABLET (≤1023) — shared base rules ============ */
+        @media (max-width:1023px){
           .pc-sec{height:auto;display:grid;grid-template-columns:1fr auto 1fr;
             column-gap:3vw;row-gap:5vw;padding:8vw 6vw;}
 
@@ -134,8 +129,7 @@ const ProductCategories = () => {
           .pc-sub{position:static;order:3;font-size:clamp(13px, 1.8vw, 22px);
             line-height:1.6;margin-top:2vw;max-width:92%;}
           .pc-sub br{display:none;}
-          /* ✅ squiggle stays last on mobile too */
-          .pc-vector{position:static;order:4;transform:none;display:block;
+          .pc-vector{position:absolute;top: 17%; left:40vw; transform:translateX(-50%);order:4;transform:none;display:block;
             width:clamp(90px, 17vw, 220px);margin:2vw auto 0;}
 
           .pc-card{position:relative;top:0;left:0;grid-column:1/-1;grid-row:2;
@@ -151,7 +145,6 @@ const ProductCategories = () => {
             width:clamp(40px, 5vw, 54px);height:clamp(40px, 5vw, 54px);}
           .pc-arrow svg{width:clamp(14px, 2vw, 22px);height:auto;}
 
-          /* ✅ mobile hover — same dark spread, no movement */
           .pc-card:hover{
             box-shadow:
               0 6px 14px rgba(0,0,0,0.15),
@@ -166,6 +159,36 @@ const ProductCategories = () => {
           .pc-dot{width:clamp(9px, 1.2vw, 14px);height:clamp(5px, 0.8vw, 9px);}
           .pc-dot.active{width:clamp(20px, 2.6vw, 30px);height:clamp(6px, 0.9vw, 10px);}
         }
+
+        /* ============ TABLET ONLY (640–1023) — tablet-specific overrides ============ */
+        @media (min-width:640px) and (max-width:1023px){
+          .pc-sec{padding:10vw 8vw;}
+          .pc-tag{font-size:14px;}
+          .pc-title{font-size:36px;}
+          .pc-sub{font-size:16px;}
+          .pc-card{width:min(45vw, 420px);}
+          .pc-img{aspect-ratio:4/3;}
+          .pc-name{font-size:18px;}
+          .pc-count{font-size:13px;}
+          .pc-nav{width:56px;height:56px;}
+          .pc-dot{width:12px;height:7px;}
+          .pc-dot.active{width:26px;height:8px;}
+        }
+
+        /* ============ MOBILE ONLY (≤639) — mobile-specific overrides ============ */
+        @media (max-width:639px){
+          .pc-sec{padding:12vw 5vw;}
+          .pc-tag{font-size:13px;}
+          .pc-title{font-size:28px;margin-top:3vw;}
+          .pc-sub{font-size:14px;margin-top:4vw;}
+          .pc-vector{width:30vw;position:absolute;top:15%;left:50vw;transform:translateX(-50%);}
+          .pc-card{width:min(85vw, 360px);}
+          .pc-name{font-size:16px;}
+          .pc-count{font-size:12px;}
+          .pc-nav{width:48px;height:48px;}
+          .pc-dot{width:10px;height:6px;}
+          .pc-dot.active{width:22px;height:7px;}
+        }
       `}</style>
 
       <div className="pc-head">
@@ -176,11 +199,9 @@ const ProductCategories = () => {
            <br/>
            beauty essentials.
         </p>
-        {/* ✅ gold squiggle now BELOW the paragraph (per design) */}
         <img className="pc-vector" src={Curve} alt="" aria-hidden="true" />
       </div>
 
-      {/* ✅ each card is a Link → /products */}
       {items.map((c, i) => (
         <Link to="/products" className={`pc-card ${SLOTS[i]}`} key={c.name}>
           {c.img && <img className="pc-img" src={c.img} alt={`Shine ${c.name}`} />}

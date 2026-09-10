@@ -30,6 +30,7 @@ const ContactHero = () => (
       .ct-shade{position:absolute;top:-1.6146vw;left:-10.9375vw;
         width:98.9583vw;height:28vw;object-fit:fill;
         z-index:1;pointer-events:none;}
+      .ct-veil{position:absolute;inset:0;display:none;pointer-events:none;z-index:1;}
       .ct-copy{position:absolute;left:9.1667vw;top:4.1667vw;width:40.625vw;z-index:2;}
       .ct-crumb{display:flex;align-items:center;gap:0.5208vw;color:#2E3192;
         font-family:${serif};font-size:1.25vw;font-weight:700;white-space:nowrap;}
@@ -72,6 +73,12 @@ const ContactHero = () => (
             rgba(246,231,220,0) 70%);}
 
         .ct-shade{display:none;}
+
+        .ct-veil{display:block;
+          background:linear-gradient(90deg,
+            rgba(246,231,220,1) 0%,
+            rgba(246,231,220,0.85) 55%,
+            rgba(246,231,220,0) 70%);}
       }
 
       /* ============ TABLET 640–1023 — mini-desktop ============ */
@@ -134,6 +141,7 @@ const ContactHero = () => (
     <img className="ct-bg" src={banner} alt="Shine support specialist with Royal Luxury and Shine products" />
     <div className="ct-veil" aria-hidden="true" />
     <img className="ct-shade" src={shade} alt="" aria-hidden="true" />
+    <div className="ct-veil" aria-hidden="true" />
 
     <div className="ct-copy">
       <nav className="ct-crumb" aria-label="Breadcrumb">

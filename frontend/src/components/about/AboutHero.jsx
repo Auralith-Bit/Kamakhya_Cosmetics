@@ -31,7 +31,7 @@ const AboutHero = () => (
           rgba(246,231,220,1) 0%,
           rgba(246,231,220,0.7) 45%,
           rgba(246,231,220,0) 65%);}
-      .ah-copy{position:absolute;left:6.5104vw;top:4.1667vw;width:40.625vw;z-index:2;}
+      .ah-copy{position:absolute;left:125px;top:4.1667vw;width:40.625vw;z-index:2;}
       .ah-crumb{display:flex;align-items:center;gap:0.5208vw;color:#2E3192;
         font-family:${serif};font-size:1.25vw;font-weight:700;white-space:nowrap;}
       .ah-crumb a{color:#2E3192;text-decoration:none;font-size:1.4583vw;}
