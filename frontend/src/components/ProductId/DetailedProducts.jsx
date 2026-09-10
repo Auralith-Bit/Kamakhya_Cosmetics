@@ -127,7 +127,7 @@ const ProductDetailed = () => {
 
       <div className="max-w-6xl mx-auto px-5 sm:px-10 py-10 grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-8">
         {/* Image Section  */}
-        <div className="lg:sticky lg:top-24 lg:self-start">
+        <div className="lg:sticky lg:top-24 lg:self-start min-[641px]:max-[1023px]:max-w-md min-[641px]:max-[1023px]:mx-auto">
           <div className="rounded-lg overflow-hidden  border border-gray-200 mb-4">
             <img
               src={product.images?.[activeImage] || product.image}
@@ -305,7 +305,6 @@ const ProductDetailed = () => {
                     batches,
                     price: volume?.price,
                   })
-                  navigate('/checkout')
                 }}
                 className="flex items-center justify-center border-[3px] border-[#252775] font-poppins  bg-[#2E3192] text-white text-xs rounded-lg py-2 px-12 font-medium whitespace-nowrap cursor-pointer"
               >
@@ -598,7 +597,7 @@ const ProductDetailed = () => {
           </clipPath>
         </defs>
       </svg>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 min-[641px]:max-[1023px]:gap-7">
         {recommendedProducts.map((recProduct) => (
           <ProductCard key={recProduct.id} product={recProduct} />
         ))}

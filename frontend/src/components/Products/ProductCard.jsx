@@ -13,8 +13,9 @@ const ProductCard = ({ product }) => {
     const handleCardClick = () => navigate(`/products/${product.id}`)
 
     return (
+    <>
     <div
-        className="relative bg-white w-full max-w-[330px] max-lg:max-w-none lg:max-w-[340px] mx-auto"
+        className="relative bg-white w-full max-w-[330px] min-[641px]:max-[1023px]:max-w-[300px] lg:max-w-[340px] mx-auto pc-root"
         style={{
             display: 'flex',
             flexDirection: 'column',
@@ -52,7 +53,7 @@ const ProductCard = ({ product }) => {
         }}
     >
         {/* ── Image with curved gold bottom ── */}
-        <div className="relative w-full" style={{ aspectRatio: '371 / 314' }}>
+        <div className="relative w-full pc-figure">
             <div
                 className="absolute inset-0"
                 style={{ clipPath: 'url(#figureCardImageClip)' }}
@@ -333,6 +334,13 @@ const ProductCard = ({ product }) => {
             </Link>
         </div>
     </div>
+    <style>{`
+        .pc-figure{aspect-ratio:371/314;}
+        @media (min-width:641px) and (max-width:1023px){
+            .pc-figure{aspect-ratio:4/3;}
+        }
+    `}</style>
+    </>
     )
 }
 
