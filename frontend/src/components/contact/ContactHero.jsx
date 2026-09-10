@@ -65,6 +65,12 @@ const ContactHero = () => (
         .ct-bg{position:absolute;inset:0;width:100%;height:100%;
           object-fit:cover;object-position:0% 50%;z-index:1;}
 
+        .ct-veil{display:block;position:absolute;inset:0;pointer-events:none;z-index:1;
+          background:linear-gradient(90deg,
+            rgba(246,231,220,1) 0%,
+            rgba(246,231,220,0.85) 55%,
+            rgba(246,231,220,0) 70%);}
+
         .ct-shade{display:none;}
       }
 
@@ -126,6 +132,7 @@ const ContactHero = () => (
     `}</style>
 
     <img className="ct-bg" src={banner} alt="Shine support specialist with Royal Luxury and Shine products" />
+    <div className="ct-veil" aria-hidden="true" />
     <img className="ct-shade" src={shade} alt="" aria-hidden="true" />
 
     <div className="ct-copy">

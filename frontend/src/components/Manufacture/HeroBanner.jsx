@@ -74,11 +74,11 @@ export default function HeroBanner() {
 
           /* ✅ VEIL: soft cream shade behind the copy, fading out to the
              right so the leaves stay visible. */
-          .mh-veil{display:block;
+          .mh-veil{display:block;position:absolute;inset:0;pointer-events:none;z-index:1;
             background:linear-gradient(90deg,
-              rgba(247,241,232,0.95) 0%,
-              rgba(247,241,232,0.55) 45%,
-              rgba(247,241,232,0) 75%);}
+              rgba(247,241,232,1) 0%,
+              rgba(247,241,232,0.85) 55%,
+              rgba(247,241,232,0) 70%);}
         }
 
         /* ============ TABLET 640–1023 — mini-desktop, shorter stage ============ */
