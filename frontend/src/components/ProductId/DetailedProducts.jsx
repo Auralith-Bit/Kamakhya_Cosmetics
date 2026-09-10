@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router'
-import { CheckCircle2, Minus, Plus, ShoppingBag, Sparkles, FlaskConical, Droplet, ShieldAlert, ArrowRight, Heart, Check } from 'lucide-react'
+import { CheckCircle2, Minus, Plus, ShoppingBag, Sparkles, FlaskConical, Droplet, ShieldAlert, ArrowRight, Check } from 'lucide-react'
 import { products } from '../../data/product'
 import { useWishlist } from '../../context/WishlistContext'
 import { useCart } from '../../context/CartContext'
 import SampleRequestForm from './RequestQuote'
 import SampleReceived from './SampleReceived'
 import Curve from '../../assets/Curve.svg'
+import ProductCard from '../Products/ProductCard'
 
 const defaultPackSizes = [{ size: '30 ml', label: 'Standard', desc: 'Standard packaging' }]
 const defaultVolumeTiers = [{ units: 300, price: 5.0, label: 'Standard tier' }]
@@ -45,76 +46,6 @@ const tabIcons = {
 }
 
 const YOU_MAY_ALSO_LIKE_COUNT = 4
-
-// Same card styling as the catalogue's ProductCard, used here for the
-// "You May Also Like" recommendation strip.
-const RecommendedProductCard = ({ product }) => {
-  const { isInWishlist, toggleWishlist } = useWishlist()
-  const saved = isInWishlist(product.id)
-
-  return (
-    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden group">
-      <div className="relative">
-        <span className="absolute top-3 left-3 bg-white/90 text-[10px] font-semibold tracking-wide px-3 py-1 rounded-full text-[#CCA466]">
-          {product.tag}
-        </span>
-        <button
-          onClick={(e) => {
-            e.stopPropagation()
-            toggleWishlist(product.id)
-          }}
-          aria-pressed={saved}
-          aria-label={saved ? `Remove ${product.title} from wishlist` : `Add ${product.title} to wishlist`}
-          className={`absolute top-3 right-3 z-10 bg-white rounded-full p-1.5 shadow transition-colors ${saved ? 'text-[#E38F2E]' : 'text-gray-500 hover:text-[#E38F2E]'
-            }`}
-        >
-          <Heart
-            className="w-4 h-4"
-            fill={saved ? 'currentColor' : 'none'}
-          />
-        </button>
-
-        <Link to={`/products/${product.id}`} className="block">
-          <img
-            src={product.image}
-            alt={product.title}
-            className="w-full h-64 object-cover"
-          />
-        </Link>
-      </div>
-
-      <div className="p-4">
-        <Link to={`/products/${product.id}`}>
-          <h4 className="text-center font-serif text-gray-800 mb-1 hover:text-[#2E3192] transition">
-            {product.title}
-          </h4>
-        </Link>
-        <p className="text-center text-xs text-gray-500 mb-3 line-clamp-2">
-          {product.desc}
-        </p>
-
-        <div className="flex justify-center gap-6 text-xs text-gray-600 mb-4">
-          <div className="text-center">
-            <p className="text-[#CCA466]">MOQ</p>
-            <p className="font-medium">{product.moq}</p>
-          </div>
-          <div className="text-center">
-            <p className="text-[#CCA466]">Lead Time</p>
-            <p className="font-medium">{product.lead}</p>
-          </div>
-        </div>
-
-        <Link
-          to={`/products/${product.id}`}
-          className="w-full flex items-center justify-center gap-2 border border-[#2E3192] text-[#2E3192] rounded-full py-2 text-sm font-medium hover:bg-[#2E3192] hover:text-white transition"
-        >
-          View Products
-          <ArrowRight className="w-4 h-4" />
-        </Link>
-      </div>
-    </div>
-  )
-}
 
 const ProductDetailed = () => {
   const { id } = useParams()
@@ -221,35 +152,36 @@ const ProductDetailed = () => {
         </div>
 
         {/* Info + configurator */}
-        {sampleStage === 'form' ? (
-          <SampleRequestForm
-            product={product}
-            onBack={() => setSampleStage('config')}
-            onSubmitted={() => setSampleStage('received')}
-          />
-        ) : sampleStage === 'received' ? (
-          <SampleReceived product={product} onSubmitAnother={() => setSampleStage('form')} />
-        ) : (
-          <div className="bg-white rounded-lg p-8 border border-gray-100  shadow-[0_2px_12px_rgba(0,0,0,0.08)]">
-            <p className="tracking-widest font-poppins text-[#E38F2E] mb-1">{product.tag}</p>
-            <div className='h-0.5 w-20 mb-5 bg-[#E38F2E] rounded-full' />
-            <h2 className="text-3xl tracking-wider font-playfair font-bold text-[#2E3192] mb-2">{product.title}</h2>
-            <p className="text-sm text-[#666666] mb-4">{product.desc}</p>
+        <div className="bg-white rounded-lg p-8 border border-gray-100  shadow-[0_2px_12px_rgba(0,0,0,0.08)]">
+          <p className="tracking-widest font-poppins text-[#E38F2E] mb-1">{product.tag}</p>
+          <div className='h-0.5 w-20 mb-5 bg-[#E38F2E] rounded-full' />
+          <h2 className="text-3xl tracking-wider font-playfair font-bold text-[#2E3192] mb-2">{product.title}</h2>
+          <p className="text-sm text-[#666666] mb-4">{product.desc}</p>
 
-            {product.notes?.length > 0 && (
-              <div className="mb-6">
-                <p className="font-semibold text-gray-800 mb-2">Product Notes</p>
-                <ul className="space-y-1.5">
-                  {product.notes.map((note, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm font-poppins text-[#666666]">
-                      <CheckCircle2 className="w-4 h-4 text-[#CCA466]" />
-                      {note}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+          {product.notes?.length > 0 && (
+            <div className="mb-6">
+              <p className="font-semibold text-gray-800 mb-2">Product Notes</p>
+              <ul className="space-y-1.5">
+                {product.notes.map((note, i) => (
+                  <li key={i} className="flex items-center gap-2 text-sm font-poppins text-[#666666]">
+                    <CheckCircle2 className="w-4 h-4 text-[#CCA466]" />
+                    {note}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
+          {sampleStage === 'form' ? (
+            <SampleRequestForm
+              product={product}
+              onBack={() => setSampleStage('config')}
+              onSubmitted={() => setSampleStage('received')}
+            />
+          ) : sampleStage === 'received' ? (
+            <SampleReceived product={product} onSubmitAnother={() => setSampleStage('form')} />
+          ) : (
+            <>
             {/* Pack size */}
             <div className="mb-6">
               <p className="flex items-center gap-2 font-semibold text-gray-800 mb-3">
@@ -375,26 +307,27 @@ const ProductDetailed = () => {
                   })
                   navigate('/checkout')
                 }}
-                className="flex items-center justify-center border-[3px] border-[#252775] font-poppins  bg-[#2E3192 text-white text-xs rounded-lg py-2.5 px-12 font-medium whitespace-nowrap cursor-pointer"
+                className="flex items-center justify-center border-[3px] border-[#252775] font-poppins  bg-[#2E3192] text-white text-xs rounded-lg py-2 px-12 font-medium whitespace-nowrap cursor-pointer"
               >
                 <ShoppingBag className="w-4 h-4 mr-2" />
                 Add to Order
               </button>
               <button
                 onClick={() => setSampleStage('form')}
-                className="flex items-center justify-center border-2  border-[#CCA466] font-poppins text-[#E38F2E] text-xs rounded-lg py-2.5 px-12 font-medium whitespace-nowrap cursor-pointer"
+                className="flex items-center justify-center border-2  border-[#CCA466] font-poppins text-[#E38F2E] text-xs rounded-lg py-2 px-12 font-medium whitespace-nowrap cursor-pointer"
               >
                 Request Sample Kit
               </button>
             </div>
-          </div>
-        )}
+            </>
+          )}
+        </div>
       </div>
 
       {/* Tabs */}
       <div className="w-full bg-white">
         <div className="max-w-6xl mx-auto px-5 sm:px-10 py-14">
-          <div className="flex gap-6 border-b  border-[#D7DAE4] bg-[#F5F5FA] mb-6 justify-evenly  ">
+          <div className="flex gap-5 border-b  border-[#D7DAE4] bg-[#F5F5FA] mb-6 justify-evenly items-center pt-3 ">
             {Object.keys(tabs).map((tabName) => {
               const Icon = tabIcons[tabName] || Sparkles
               return (
@@ -403,7 +336,7 @@ const ProductDetailed = () => {
                   onClick={() => setActiveTab(tabName)}
                   aria-pressed={activeTab === tabName}
                   className={`flex items-center  gap-2 pb-3 px-1 whitespace-nowrap text-sm font-medium border-b-2 ${activeTab === tabName
-                    ? 'border-[#E38F2E] text-orange-500'
+                    ? 'border-[#E38F2E] text-[#E38F2E]'
                     : 'border-transparent text-gray-500'
                     }`}
                 >
@@ -415,7 +348,7 @@ const ProductDetailed = () => {
           </div>
 
           {activeTab === 'Clinical Benefits' ? (
-            <div className="w-full bg-white rounded-2xl border border-[#E8D6BA] shadow-[0_2px_12px_rgba(0,0,0,0.06)] px-6 py-10">
+            <div className="w-full bg-white  px-6 py-10">
               <div className="max-w-5xl mx-auto">
                 {/* Header */}
                 <div className="flex items-start gap-4 mb-8">
@@ -458,7 +391,7 @@ const ProductDetailed = () => {
               </div>
             </div>
           ) : activeTab === 'Key Ingredients' ? (
-            <div className="w-full bg-white rounded-2xl border border-[#E8D6BA] shadow-[0_2px_12px_rgba(0,0,0,0.06)] px-6 py-10">
+            <div className="w-full bg-white px-6 py-10">
               <div className="max-w-5xl mx-auto">
                 {/* Header */}
                 <div className="flex items-start gap-4 mb-8">
@@ -508,7 +441,7 @@ const ProductDetailed = () => {
               </div>
             </div>
           ) : activeTab === 'How to use' ? (
-            <div className="w-full bg-white rounded-2xl border border-[#E8D6BA] shadow-[0_2px_12px_rgba(0,0,0,0.06)] px-6 py-10">
+            <div className="w-full bg-white  px-6 py-10">
               <div className="max-w-6xl mx-auto">
                 {/* Header */}
                 <div className="flex items-start gap-4 mb-8">
@@ -539,7 +472,7 @@ const ProductDetailed = () => {
                       key={i}
                       className="rounded-lg border border-[#E8D6BA] bg-[#FCFAF7] px-6 py-6"
                     >
-                      <p className="text-[#E38F2E] text-sm font-poppins mb-2">
+                      <p className="text-[#E38F2E] text-base font-medium font-poppins mb-2">
                         {`Step ${String(i + 1).padStart(2, '0')}`}
                       </p>
                       <p className="text-[#2E3192] font-poppins mb-1 ">
@@ -557,11 +490,11 @@ const ProductDetailed = () => {
             </div>
           </div>
         ) : (
-        <div className="w-full bg-white rounded-2xl border border-[#E8D6BA] shadow-[0_2px_12px_rgba(0,0,0,0.06)] px-6 py-10">
+        <div className="w-full bg-white px-6 py-10">
           <div className="max-w-5xl mx-auto">
             {/* Header */}
             <div className="flex items-start gap-4 mb-8">
-              <div className="flex-shrink-0 w-14 h-14 rounded-full border border-[#E8D6BA] bg-[#F7F1E8] flex items-center justify-center">
+              <div className="shrink-0 w-14 h-14 rounded-full border border-[#E8D6BA] bg-[#F7F1E8] flex items-center justify-center">
                 <ShieldAlert className="w-6 h-6 text-[#E38F2E]" strokeWidth={1.5} />
               </div>
               <div>
@@ -604,7 +537,7 @@ const ProductDetailed = () => {
                   {tabs[activeTab]?.length > 0 ? (
                     tabs[activeTab].map((point, i) => (
                       <li key={i} className="flex items-start  text-white gap-2 text-sm">
-                        <span className="text-orange-300 ">•</span>
+                        <span className="text-white ">•</span>
                         <span>{point}</span>
                       </li>
                     ))
@@ -650,7 +583,7 @@ const ProductDetailed = () => {
   <div>
     <div className="flex flex-col items-center justify-center py-14 sm:py-16 lg:py-20">
       <h2 className='text-[#E38F2E] uppercase'>You May Also Like</h2>
-      <h1 className='text-3xl text-[#2E3192] tracking-wide font-playfair'>Find Your Next Beauty Essential</h1>
+      <h1 className='text-center text-3xl text-[#2E3192] tracking-wide font-playfair'>Find Your Next Beauty Essential</h1>
       <div><img src={Curve} alt="" /></div>
       <p className='font-poppins text-center text-[#666666] max-w-3xl  mx-auto'>
         Explore more skincare and beauty favorites, thoughtfully selected to complement your routine and elevate your everyday care.
@@ -658,9 +591,16 @@ const ProductDetailed = () => {
     </div>
 
     <div className="px-5 sm:px-10 lg:px-20">
+      <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
+        <defs>
+          <clipPath id="figureCardImageClip" clipPathUnits="objectBoundingBox">
+            <path d="M0 0 L1 0 L1 0.8158 C1 0.8256 0.9957 0.8347 0.9885 0.8402 C0.8579 0.938 0.6864 1 0.4987 1 C0.3122 1 0.1419 0.9388 0.0117 0.8423 C0.0043 0.8368 0 0.8276 0 0.8178 Z" />
+          </clipPath>
+        </defs>
+      </svg>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {recommendedProducts.map((recProduct) => (
-          <RecommendedProductCard key={recProduct.id} product={recProduct} />
+          <ProductCard key={recProduct.id} product={recProduct} />
         ))}
       </div>
 

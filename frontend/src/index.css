@@ -24,7 +24,7 @@ body {
 }
 
 img, svg, video, canvas { max-width: 100%; display: block; }
-button, input, select, textarea { font: inherit; color: inherit; }
+button, input, select, textarea { font: inherit; }
 * { -webkit-tap-highlight-color: transparent; }   /* no blue flash on touch */
 
 /* Shared Royal Luxury layout utilities. */
