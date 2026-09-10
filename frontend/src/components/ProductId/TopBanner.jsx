@@ -44,7 +44,7 @@ const TopBanner = ({ title }) => (
 
             /* ============ TABLET 640–1023 ============ */
             @media (min-width:640px) and (max-width:1023px){
-                .pi-banner{height:auto;aspect-ratio:16/9;}
+                .pi-banner{height:auto;aspect-ratio:21/9;max-height:220px;}
                 .pi-copy{position:absolute;left:0;right:0;top:50%;
                     transform:translateY(-50%);width:100%;z-index:2;padding:0;
                     display:flex;flex-direction:column;align-items:center;text-align:center;}

@@ -397,7 +397,7 @@ const Catalogue = () => {
                     <p className="text-center text-gray-500 py-16">No products match your filters.</p>
                 ) : (
                     <>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 min-[641px]:max-[1023px]:gap-7">
                             {paginatedProducts.map((product) => (
                                 <ProductCard key={product.id} product={product} />
                             ))}
