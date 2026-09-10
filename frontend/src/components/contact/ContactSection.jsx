@@ -7,10 +7,6 @@ import Shineimage from "../../assets/Shineimage.png";
 const serif = "'Playfair Display', Georgia, serif";
 const sans = "'Poppins', 'Segoe UI', sans-serif";
 
-/* ✅ WHATSAPP CONFIG — edit here only
-   Number in international format, digits only (no +, spaces, dashes).
-   On phones/tablets this opens the installed WhatsApp app;
-   on desktop it opens WhatsApp Web automatically. */
 const WHATSAPP_NUMBER = "9779857049884"; // +977 9857049884
 const WHATSAPP_MESSAGE = "Hello! I'd like to know more about your products.";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
@@ -117,7 +113,6 @@ const ContactSections = () => {
         .cx-sec{width:100%;background:#F7F3EC;padding:2.5vw 0 4.5vw;}
 
         /* ---- info strip ---- */
-        /* ✅ BASE SHADOW softened to match the family */
         .cx-info{width:82.2917vw;margin:0 auto;background:#FCF9F2;
           border:0.0521vw solid #D7DAE4;border-radius:0.5208vw;
           box-shadow:0 0.4167vw 0.8333vw rgba(0,0,0,0.10),
@@ -157,7 +152,6 @@ const ContactSections = () => {
         .cx-main{width:82.2917vw;margin:2.5vw auto 0;display:grid;
           grid-template-columns:51.25fr 28.34fr;gap:2.83vw;align-items:stretch;}
 
-        /* ✅ BASE SHADOW softened to match the family */
         .cx-form{background:#FBFBFD;border:1px solid #E6E6EE;border-radius:0.9vw;
           padding:2.2vw 2.7vw 2.7vw;
           box-shadow:0 0.4167vw 0.8333vw rgba(0,0,0,0.10),
@@ -242,7 +236,6 @@ const ContactSections = () => {
         .cx-quick > svg{width:2vw;height:2vw;color:#22C55E;margin:0 auto;display:block;}
         .cx-quick h4{margin-top:0.7vw;color:#333333;font-family:${sans};font-size:1.2vw;font-weight:600;}
         .cx-quick p{margin-top:0.35vw;color:#666666;font-family:${sans};font-size:0.9vw;}
-        /* ✅ now an <a> — added text-decoration:none so it looks identical */
         .cx-wa{margin-top:0.9vw;display:inline-flex;align-items:center;gap:0.5vw;background:#22C55E;color:#fff;
           border:none;border-radius:0.68vw;padding:0.65vw 1.3vw;font-family:${sans};font-size:0.9vw;font-weight:600;
           cursor:pointer;transition:background .2s;text-decoration:none;}
@@ -293,14 +286,12 @@ const ContactSections = () => {
         /* ---- feature cards — circles resized to design (≈76px @1920) ---- */
         .cx-feats{width:82.2917vw;margin:3vw auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:1.6vw;}
         
-        /* ✅ BASE SHADOW aligned with the other sections + smooth transition */
         .cx-feat{background:#fff;border-radius:0.9vw;
           box-shadow:0 0.4167vw 0.8333vw rgba(0,0,0,0.10),
                      0 1.0417vw 2.0833vw rgba(43,46,126,0.08);
           padding:1.25vw 1.2vw;display:flex;align-items:center;gap:1.1vw;
           transition:box-shadow .3s ease;cursor:pointer;}
           
-        /* ✅ HOVER — same softened, wide-spreading shadow, NO movement */
         .cx-feat:hover{
           box-shadow:0 0.625vw 1.25vw rgba(0,0,0,0.12),
                      0 1.5625vw 3.125vw rgba(43,46,126,0.20);
@@ -331,9 +322,6 @@ const ContactSections = () => {
         @media (max-width:1023px){
           .cx-sec{padding:8vw 5vw 10vw;}
           
-          /* ✅ px-based shadows for containers on small screens */
-          /* ✅ MORE SPACE among the 4 info blocks:
-             row-gap 6vw→10vw, column-gap 0→8vw, bigger inner padding */
           .cx-info{width:auto;display:grid;grid-template-columns:1fr 1fr;
             gap:10vw 8vw;
             padding:9vw 7vw;min-height:0;
@@ -405,7 +393,6 @@ const ContactSections = () => {
 
         @media (min-width:640px) and (max-width:1023px){
           .cx-feats{grid-template-columns:1fr 1fr;}
-          /* ✅ tablet: slightly tighter than phones but still airy */
           .cx-info{gap:8vw 6vw;padding:7vw 6vw;}
         }
       `}</style>
@@ -485,7 +472,6 @@ const ContactSections = () => {
             <ChatI />
             <h4>Need Quick Help?</h4>
             <p>Chat with us instantly on WhatsApp.</p>
-            {/* ✅ WHATSAPP LINK — opens the app on mobile, WhatsApp Web on desktop */}
             <a
               className="cx-wa"
               href={WHATSAPP_URL}
