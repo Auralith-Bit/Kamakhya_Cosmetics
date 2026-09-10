@@ -108,7 +108,7 @@ const SignatureCollection = () => {
   return (
     <section id="shine-spotlight" className="psx-sec">
       <style>{`
-        /* ================= DESKTOP (>1280): ORIGINAL, UNTOUCHED ================= */
+        /* ================= DESKTOP (≥1024): ORIGINAL, UNTOUCHED ================= */
         .psx-sec{position:relative;width:100%;height:64.3229vw;background:#fff;}
 
         .psx-tag{position:absolute;top:3.7vw;width:100%;text-align:center;color:#E38F2E;
@@ -219,8 +219,8 @@ const SignatureCollection = () => {
           align-items:center;justify-content:space-between;padding:0 1vw;}
         .psx-foot span{color:#666666;font-family:${sans};font-size:0.86vw;}
 
-        /* ============ ≤1280: stacked flow — column list → image → arrows → details ============ */
-        @media (max-width:1280px){
+        /* ============ MOBILE + TABLET (≤1023) — shared base rules ============ */
+        @media (max-width:1023px){
           .psx-sec{height:auto;padding:9vw 5vw 10vw;}
 
           .psx-tag{position:static;font-size:clamp(12px,1.4vw,18px);}
@@ -241,7 +241,6 @@ const SignatureCollection = () => {
           .psx-dir{font-size:clamp(11px,1.3vw,16px);}
           .psx-sig{font-size:clamp(18px,2.4vw,30px);}
 
-          /* ✅ directory now stacks vertically (one column), like the desktop sidebar */
           .psx-list{order:2;flex:none;flex-direction:column;gap:2vw;
             margin-top:0;padding:4vw 4vw 2vw;}
           .psx-item{width:100%;padding:2.2vw 3.5vw;
@@ -292,6 +291,90 @@ const SignatureCollection = () => {
           .psx-foot{height:auto;padding:3.5vw 4vw;flex-direction:column;gap:1.5vw;
             justify-content:center;text-align:center;}
           .psx-foot span{font-size:clamp(11px,1.3vw,15px);}
+        }
+
+        /* ============ TABLET ONLY (640–1023) — tablet-specific overrides ============ */
+        @media (min-width:640px) and (max-width:1023px){
+          .psx-sec{padding:10vw 7vw;}
+          .psx-tag{font-size:14px;}
+          .psx-title{font-size:34px;}
+          .psx-sub{font-size:16px;}
+          .psx-panel{border-radius:16px;}
+          .psx-sidehead{padding:36px 32px 24px;}
+          .psx-dir{font-size:14px;}
+          .psx-sig{font-size:24px;}
+          .psx-list{padding:32px 32px 16px;gap:16px;}
+          .psx-item{padding:18px 28px;border-radius:16px;}
+          .psx-item-cat{font-size:12px;}
+          .psx-item-name{font-size:15px;}
+          .psx-stage{width:400px;margin-top:40px;}
+          .psx-badge{padding:12px 20px;font-size:12px;}
+          .psx-dots{bottom:20px;gap:12px;}
+          .psx-dot{width:22px;height:22px;}
+          .psx-dot.active{width:44px;}
+          .psx-nav{margin-top:40px;gap:80px;}
+          .psx-arrow{width:48px;height:48px;}
+          .psx-count{font-size:16px;}
+          .psx-right{padding:48px 40px 40px 32px;}
+          .psx-kicker{font-size:14px;}
+          .psx-name{font-size:28px;margin-top:16px;}
+          .psx-desc{font-size:15px;margin-top:24px;}
+          .psx-div{margin-top:40px;}
+          .psx-notes-h{font-size:15px;margin-top:40px;}
+          .psx-notes{margin-top:24px;gap:20px;}
+          .psx-notes li{font-size:14px;gap:16px;}
+          .psx-notes li svg{width:20px !important;height:20px !important;}
+          .psx-stats{margin-top:32px;gap:48px;}
+          .psx-stats span{font-size:13px;}
+          .psx-stats strong{font-size:20px;}
+          .psx-stats i{height:72px;}
+          .psx-cta{height:52px;margin-top:48px;font-size:15px;}
+          .psx-cta2{height:52px;margin-top:24px;margin-bottom:16px;font-size:15px;}
+          .psx-foot{padding:28px 32px;gap:12px;}
+          .psx-foot span{font-size:13px;}
+        }
+
+        /* ============ MOBILE ONLY (≤639) — mobile-specific overrides ============ */
+        @media (max-width:639px){
+          .psx-sec{padding:12vw 5vw;}
+          .psx-tag{font-size:13px;}
+          .psx-title{font-size:26px;margin-top:12px;}
+          .psx-vector{width:140px;margin:16px auto 0;}
+          .psx-sub{font-size:14px;margin-top:16px;}
+          .psx-panel{margin-top:48px;border-radius:12px;}
+          .psx-sidehead{padding:28px 20px 20px;}
+          .psx-dir{font-size:12px;}
+          .psx-sig{font-size:20px;}
+          .psx-list{padding:24px 20px 16px;gap:12px;}
+          .psx-item{padding:16px 20px;border-radius:12px;gap:8px;}
+          .psx-item-cat{font-size:11px;}
+          .psx-item-name{font-size:13px;}
+          .psx-stage{width:85vw;max-width:320px;margin-top:32px;}
+          .psx-badge{top:16px;left:16px;padding:10px 16px;font-size:11px;border-radius:20px;}
+          .psx-dots{bottom:16px;gap:10px;}
+          .psx-dot{width:18px;height:18px;}
+          .psx-dot.active{width:36px;}
+          .psx-nav{margin-top:32px;gap:60px;}
+          .psx-arrow{width:44px;height:44px;}
+          .psx-count{font-size:14px;}
+          .psx-right{padding:32px 24px 28px 20px;}
+          .psx-kicker{font-size:13px;}
+          .psx-name{font-size:22px;margin-top:12px;}
+          .psx-desc{font-size:13px;margin-top:20px;}
+          .psx-div{margin-top:32px;}
+          .psx-notes-h{font-size:14px;margin-top:32px;}
+          .psx-notes{margin-top:20px;gap:16px;}
+          .psx-notes li{font-size:12px;gap:12px;}
+          .psx-notes li svg{width:18px !important;height:18px !important;}
+          .psx-stats{margin-top:28px;gap:32px;flex-direction:column;align-items:flex-start;}
+          .psx-stats div{gap:12px;}
+          .psx-stats span{font-size:12px;}
+          .psx-stats strong{font-size:17px;}
+          .psx-stats i{display:none;}
+          .psx-cta{height:48px;margin-top:40px;font-size:14px;}
+          .psx-cta2{height:48px;margin-top:20px;margin-bottom:12px;font-size:14px;}
+          .psx-foot{padding:24px 20px;gap:10px;}
+          .psx-foot span{font-size:12px;}
         }
       `}</style>
 

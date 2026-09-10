@@ -4,8 +4,6 @@ const WhatsAppIcon = ({ size = 34 }) => (
   </svg>
 )
 
-/* ✅ NUMBER UPDATED: +977 9857049884 (digits only), same greeting as the
-   contact page so both entry points open an identical chat. */
 const WhatsAppButton = ({
   phone = "9779857049884",
   message = "Hello! I'd like to know more about your products.",
