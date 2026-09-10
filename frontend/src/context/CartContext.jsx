@@ -96,7 +96,7 @@ export const CartProvider = ({ children }) => {
   const clearCart = () => setItems([])
 
   const submitOrder = (details = {}) => {
-    const shipping = 500
+    const shipping = subtotal > 0 ? 500 : 0
     const tax = Math.round(subtotal * 0.13 * 100) / 100
     const total = Math.round((subtotal + tax + shipping) * 100) / 100
     setSubmittedOrder({

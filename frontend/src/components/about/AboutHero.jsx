@@ -78,7 +78,6 @@ const AboutHero = () => (
           height:auto;
           aspect-ratio:21/9;
           overflow:hidden;
-          margin-top:-8vw
         }
 
         .ah-copy{

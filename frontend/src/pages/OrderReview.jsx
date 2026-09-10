@@ -42,7 +42,8 @@ const OrderReview = () => {
     ? { subtotal: submittedOrder.subtotal, tax: submittedOrder.tax, shipping: submittedOrder.shipping, total: submittedOrder.total }
     : (() => {
         const tax = Math.round(subtotal * 0.13 * 100) / 100;
-        return { subtotal, tax, shipping: SHIPPING, total: Math.round((subtotal + tax + SHIPPING) * 100) / 100 };
+        const shipping = subtotal > 0 ? SHIPPING : 0;
+        return { subtotal, tax, shipping, total: Math.round((subtotal + tax + shipping) * 100) / 100 };
       })();
 
   const contact = submittedOrder ?? {};

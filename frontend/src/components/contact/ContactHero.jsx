@@ -74,7 +74,6 @@ const ContactHero = () => (
           height:auto;
           aspect-ratio:21/9;
           overflow:hidden;
-          margin-top:-8vw;
         }
 
         /* ✅ WIDER CONTAINER: increased from 52% to 68% so the paragraph

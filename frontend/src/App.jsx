@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter,
   Routes,
@@ -33,16 +33,30 @@ const ScrollToTop = () => {
   return null;
 };
 
-const Layout = () => (
-  <>
-    <Navbar />
-    <main className="w-full pt-32.5 min-[641px]:max-[900px]:pt-[360px]">
-      <Outlet />
-    </main>
-    <Footer />
-    <WhatsAppButton />
-  </>
-);
+const Layout = () => {
+  const [navHeight, setNavHeight] = useState(0);
+
+  useEffect(() => {
+    const measure = () => {
+      const nav = document.querySelector('.kn-nav');
+      if (nav) setNavHeight(nav.getBoundingClientRect().height);
+    };
+    measure();
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, []);
+
+  return (
+    <>
+      <Navbar />
+      <main className="w-full" style={{ paddingTop: navHeight || 130 }}>
+        <Outlet />
+      </main>
+      <Footer />
+      <WhatsAppButton />
+    </>
+  );
+};
 
 function App() {
   return (

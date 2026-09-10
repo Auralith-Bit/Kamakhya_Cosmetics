@@ -15,7 +15,7 @@ const OrderSummaryCard = ({ formData = {} }) => {
   const { items, updateQuantity, removeFromCart, subtotal, submitOrder } = useCart();
 
   const tax = Math.round(subtotal * 0.13 * 100) / 100;
-  const shipping = 500;
+  const shipping = subtotal > 0 ? 500 : 0;
   const total = Math.round((subtotal + tax + shipping) * 100) / 100;
 
   return (
