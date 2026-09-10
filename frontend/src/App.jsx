@@ -39,7 +39,10 @@ const Layout = () => {
   useEffect(() => {
     const measure = () => {
       const nav = document.querySelector('.kn-nav');
-      if (nav) setNavHeight(nav.getBoundingClientRect().height);
+      if (nav) {
+        const height = nav.getBoundingClientRect().height;
+        setNavHeight(window.innerWidth > 900 ? height : 0);
+      }
     };
     measure();
     window.addEventListener('resize', measure);
@@ -49,7 +52,7 @@ const Layout = () => {
   return (
     <>
       <Navbar />
-      <main className="w-full" style={{ paddingTop: navHeight || 130 }}>
+      <main className="w-full" style={{ paddingTop: navHeight }}>
         <Outlet />
       </main>
       <Footer />
