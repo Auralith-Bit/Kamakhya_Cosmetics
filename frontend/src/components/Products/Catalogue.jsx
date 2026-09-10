@@ -84,7 +84,7 @@ const NeedHelpBox = () => (
         <p className="text-xs text-gray-500 mb-3">
             We're here for your business sourcing needs.
         </p>
-        <Link to='/contact-us' className="border border-orange-300 text-orange-500 text-xs font-medium rounded-full px-4 py-2">
+        <Link to='/contact' className="border border-orange-300 text-orange-500 text-xs font-medium rounded-full px-4 py-2">
             CONTACT US
         </Link>
     </div>
