@@ -41,7 +41,7 @@ const Layout = () => {
       const nav = document.querySelector('.kn-nav');
       if (nav) {
         const height = nav.getBoundingClientRect().height;
-        setNavHeight(window.innerWidth > 900 ? height : 0);
+        setNavHeight(height);
       }
     };
     measure();

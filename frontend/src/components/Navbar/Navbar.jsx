@@ -286,7 +286,7 @@ const Navbar = () => {
         }
 
         @media (max-width:900px){
-          .kn-nav{position:relative;}
+          .kn-nav{position:fixed;top:0;left:0;width:100%;}
           .kn-diag{display:none;}
           .kn-logo{position:static;width:100%;height:auto;padding:10px 0;}
           .kn-logo img{height:80px;}
