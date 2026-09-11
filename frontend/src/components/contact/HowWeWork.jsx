@@ -143,22 +143,42 @@ const HowWeWork = () => (
         .hw-step p{font-size:clamp(11px, 1.4vw, 15px);}
       }
 
+      /* ============ TABLET 640–1023 — REFINED LAYOUT ============ */
       @media (min-width:640px) and (max-width:1023px){
-        .hw-steps{grid-template-columns:1fr 1fr;gap:9vw 4vw;}
+        .hw-sec{padding:72px 5vw 80px;}
+        
+        /* Header */
+        .hw-tag{font-size:13px;}
+        .hw-title{font-size:28px;margin-top:8px;}
+        .hw-squiggle{width:110px;margin-top:12px;}
+        .hw-p{font-size:14px;line-height:1.6;margin-top:12px;}
 
-        /* ✅ FIXED WIDTH FOR THE ORPHAN CARD:
-           margin:auto disables grid stretch, so max-width alone let the card
-           collapse to its content width. An explicit width = exactly one
-           column (container minus the 4vw column-gap, halved) makes it
-           identical to cards 01–04, still centered on its own row. */
+        /* Steps: 2-column grid with tablet spacing */
+        .hw-steps{margin-top:64px;grid-template-columns:1fr 1fr;gap:56px 32px;}
+        
+        .hw-step{
+          padding:32px 20px 24px;
+          border-radius:10px;
+          border-width:1px;
+        }
+        
+        .hw-ico{
+          top:-26px;
+          width:52px;
+          height:52px;
+        }
+        .hw-ico svg{width:28px;height:28px;}
+        
+        .hw-num{font-size:14px;margin-top:12px;}
+        .hw-step h4{font-size:17px;margin-top:10px;line-height:1.3;}
+        .hw-step p{font-size:13px;line-height:1.6;margin-top:10px;}
+
+        /* ✅ Orphan card (5th step): centered on its own row */
         .hw-step:last-child:nth-child(odd){
           grid-column:1 / -1;
-          width:calc((100% - 4vw) / 2);
+          width:calc((100% - 32px) / 2);
           margin:0 auto;
         }
-
-        .hw-step{padding:6.5vw 3vw 5vw;}
-        .hw-ico{top:clamp(-35px, -5vw, -30px);}
       }
     `}</style>
 

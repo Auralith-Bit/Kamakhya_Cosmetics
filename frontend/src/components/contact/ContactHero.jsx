@@ -73,67 +73,72 @@ const ContactHero = () => (
             rgba(246,231,220,0) 70%);}
 
         .ct-shade{display:none;}
-
-        .ct-veil{display:block;
-          background:linear-gradient(90deg,
-            rgba(246,231,220,1) 0%,
-            rgba(246,231,220,0.85) 55%,
-            rgba(246,231,220,0) 70%);}
       }
 
-      /* ============ TABLET 640–1023 — mini-desktop ============ */
+      /* ============ TABLET 640–1023 — refined mini-desktop ============ */
       @media (min-width:640px) and (max-width:1023px){
         .ct-hero{
           height:auto;
-          aspect-ratio:21/9;
-          overflow:hidden;
-        }
-
-        /* ✅ WIDER CONTAINER: increased from 52% to 68% so the paragraph
-           (and all copy) can span wider. The first 2 products are still on
-           the right side, so this doesn't cause overlap. */
-        .ct-copy{
-          position:absolute;
-          left:5.8vw;
-          top:6vw;
-          width:68%;
-          z-index:2;
-          padding:0;
-        }
-
-        .ct-crumb{font-size:15px;gap:8px;}
-        .ct-crumb a{font-size:20px;}
-        .ct-ic-home{width:20px;height:20px;}
-        .ct-ic-chev{width:18px;height:18px;}
-
-        .ct-tag{
-          margin-top:15px;
-          font-size:18px;
-        }
-
-        .ct-rule{width:100px;height:3px;margin-top:10px;border-radius:2px;}
-        .ct-title{margin-top:10px;font-size:34px;}
-
-        .ct-p{
-          margin-top:12px;
-          font-size:15px;
-          text-align:justify;
-          letter-spacing:0.01em;
-          line-height:1.55;
-          max-width:150%;
+          min-height:420px;
+          display:flex;
+          align-items:center;
+          padding: 8vw 0;
         }
 
         .ct-bg{
-          display:none;
+          display:block;
+          position:absolute;
+          inset:0;
+          width:100%;
+          height:100%;
+          object-fit:cover;
+          object-position:center right;
+          z-index:0;
+        }
+
+        .ct-veil{
+          display:block;
+          position:absolute;
+          inset:0;
+          pointer-events:none;
+          z-index:1;
+          background:linear-gradient(90deg,
+            rgba(246,231,220,1) 0%,
+            rgba(246,231,220,0.92) 40%,
+            rgba(246,231,220,0) 70%);
         }
 
         .ct-shade{
-        position:absolute;
-          left:50%;
-          top:50%;
-          width:72%;
-          height:70%;
-          transform:translate(-50%, -50%) scale(1.4);
+          display:none;
+        }
+
+        .ct-copy{
+          position:relative;
+          z-index:2;
+          left:auto;
+          top:auto;
+          width:55%;
+          max-width:480px;
+          margin-top: -12vw;
+          margin-left:6vw;
+          padding:0;
+        }
+
+        .ct-crumb{font-size:14px;gap:6px;}
+        .ct-crumb a{font-size:16px;}
+        .ct-ic-home{width:18px;height:18px;}
+        .ct-ic-chev{width:16px;height:16px;}
+
+        .ct-tag{margin-top:14px;font-size:15px;}
+        .ct-rule{width:80px;height:3px;margin-top:10px;border-radius:2px;}
+        .ct-title{margin-top:12px;font-size:clamp(28px, 4vw, 36px);line-height:1.2;}
+        
+        .ct-p{
+          margin-top:14px;
+          font-size:14px;
+          line-height:1.6;
+          max-width:100%;
+          color:#4A4E5E; /* slightly darker for better contrast against the veil */
         }
       }
     `}</style>

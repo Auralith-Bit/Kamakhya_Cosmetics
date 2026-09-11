@@ -56,17 +56,22 @@ const FormulaSpotlight = () => (
       height:auto;
       }
       
+      /* ✅ CENTERED: left+right pinned so the auto margins truly center the
+         capped 60vw box (also removed the stray "s" typo) */
       .fs-sub{
       position:absolute;
       top:8.9063vw;
-      width:100%;
+      left:0;
+      right:0;
+      width:auto;
+      max-width:60vw;
+      margin:0 auto;
       text-align:center;
       color:#666666;
        font-family:${sans};
        font-size:0.93vw;
        letter-spacing: 0.045em;
        line-height:1.5625vw;
-       max-width:68vw;margin:0 auto;
        }
 
       .fs-grid{position:absolute;left:8.8542vw;top:14.375vw;width:82.2917vw;
@@ -111,9 +116,11 @@ const FormulaSpotlight = () => (
         .fs-title{position:static;font-size:clamp(20px, 2.3vw, 32px);margin-top:0vw;}
         .fs-vector{position:static;transform:none;display:block;
           width:clamp(70px, 12vw, 120px);margin:2.5vw auto 0;}
+
+        /* ✅ centered capped box on small screens; br visible everywhere */
         .fs-sub{position:static;font-size:clamp(12px, 1.35vw, 17px);
-          line-height:clamp(18px, 2vw, 26px);margin-top:1vw;}
-        .fs-sub br{display:none;}
+          line-height:clamp(18px, 2vw, 26px);
+          max-width:720px;margin:1vw auto 0;text-align:center;}
 
         .fs-grid{position:static;left:auto;top:auto;width:auto;
           grid-template-columns:1fr;gap:4vw;margin-top:8vw;}
@@ -156,8 +163,10 @@ const FormulaSpotlight = () => (
     <p className="fs-tag">Formula Spotlight</p>
     <h2 className="fs-title">Advanced beauty Science, Perfected</h2>
     <img className="fs-vector" src={vector1} alt="" aria-hidden="true" />
+    {/* ✅ centered; line breaks right after "science," on all breakpoints */}
     <p className="fs-sub">
       Every Royal Luxury formula blends premium ingredients, advanced skincare science,
+      <br />
       and luxurious care.
     </p>
 

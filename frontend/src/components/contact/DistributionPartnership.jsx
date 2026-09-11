@@ -179,14 +179,63 @@ const DistributionPartnership = () => (
         .dp-note{font-size:clamp(11px, 1.4vw, 15px);}
       }
 
+      /* ============ TABLET 640–1023 — REFINED LAYOUT ============ */
       @media (min-width:640px) and (max-width:1023px){
-        .dp-points{grid-template-columns:1fr 1fr;}
-        .dp-btn{height:3.4vw;min-height:44px;}
+        .dp-sec{padding:80px 5vw;}
+        .dp-wrap{gap:48px;}
 
+        /* Left section */
+        .dp-tag{font-size:13px;}
+        .dp-rule{width:200px;}
+        .dp-rule::before,.dp-rule::after{height:4px;}
+        .dp-rule span{width:8px;height:8px;}
+        .dp-title{font-size:30px;margin-top:14px;}
+        .dp-p{font-size:14px;line-height:1.6;margin-top:20px;}
+
+        /* Points: 2-column with tablet spacing */
+        .dp-points{grid-template-columns:1fr 1fr;gap:16px 32px;margin-top:28px;}
+        .dp-points li{font-size:14px;}
+        .dp-points svg{width:22px;height:22px;}
+
+        /* Card: tablet proportions */
+        .dp-card{
+          padding:36px 32px 32px;
+          width:min(100%, 520px);
+          border-radius:16px;
+          border-width:2px;
+        }
+        .dp-card h3{font-size:24px;}
         .dp-card-p{
-          text-align:justify;
+          font-size:14px;
+          line-height:1.6;
+          margin-top:16px;
+          text-align:left;
           text-align-last:left;
-          text-justify:inter-word;
+        }
+        .dp-card-p .dp-line{
+          text-align:left;
+          text-align-last:left;
+        }
+
+        /* Buttons: standard 52px tablet CTAs */
+        .dp-btn{
+          height:52px;
+          border-radius:10px;
+          border-width:2px;
+        }
+        .dp-btn1{
+          font-size:15px;
+          margin-top:24px;
+        }
+        .dp-btn2{
+          font-size:13px;
+          margin-top:12px;
+        }
+
+        .dp-note{
+          font-size:12px;
+          margin-top:20px;
+          padding-left:16px;
         }
       }
     `}</style>
