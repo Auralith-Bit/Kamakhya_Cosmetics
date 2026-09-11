@@ -11,7 +11,7 @@ const TopBanner = () => (
             .wish-banner{
                 position:relative;
                 width:100%;
-                height:10.41665vw;
+                height:200px;
                 background:#F7F0E7;
                 overflow:hidden;
                 display:flex;
