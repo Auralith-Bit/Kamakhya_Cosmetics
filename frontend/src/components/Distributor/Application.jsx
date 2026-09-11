@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
 
 const Application = () => {
@@ -396,21 +397,21 @@ const Application = () => {
               range in your market first.
             </p>
 
-            <button
-              type="button"
-              className="w-full flex items-center justify-center gap-2 bg-[#252775] text-white text-[15px] rounded-lg py-2.5 mb-3 "
+            <Link
+              to="/bulk-quote"
+              className="w-full flex items-center justify-center gap-2 bg-[#252775] text-white text-[15px] rounded-lg py-2.5 mb-3 no-underline"
             >
               Request a bulk quote
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
 
-            <button
-              type="button"
-              className="w-full flex items-center justify-center gap-2 bg-white border border-[#252775] hover:bg-slate-50 text-indigo-800 font-poppins  text-[15px] rounded-lg py-2.5 transition-colors"
+            <Link
+              to="/products"
+              className="w-full flex items-center justify-center gap-2 bg-white border border-[#252775] hover:bg-slate-50 text-indigo-800 font-poppins  text-[15px] rounded-lg py-2.5 transition-colors no-underline"
             >
               Browse the catalogue
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </div>
         </div>
       </div>

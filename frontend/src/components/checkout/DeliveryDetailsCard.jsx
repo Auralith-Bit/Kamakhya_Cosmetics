@@ -7,7 +7,21 @@ const MapPinIcon = () => (
   </svg>
 );
 
-const DeliveryDetailsCard = ({ formData, onChange }) => {
+const DeliveryDetailsCard = ({ formData, onChange, errors = {} }) => {
+  const inputCls = (field) =>
+    `w-full border rounded-lg px-4 py-3 text-sm text-gray-800 placeholder-gray-400 outline-none transition-colors focus:ring-1 ${
+      errors[field]
+        ? 'border-red-500 focus:border-red-500 focus:ring-red-500/30'
+        : 'border-gray-300 focus:border-brand-blue focus:ring-brand-blue/30'
+    }`;
+
+  const selectCls = (field) =>
+    `w-full border rounded-lg px-4 py-3 text-sm text-gray-800 outline-none appearance-none bg-white bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%236b7280%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px] bg-[right_12px_center] bg-no-repeat transition-colors focus:ring-1 ${
+      errors[field]
+        ? 'border-red-500 focus:border-red-500 focus:ring-red-500/30'
+        : 'border-gray-300 focus:border-brand-blue focus:ring-brand-blue/30'
+    }`;
+
   return (
     <div className="bg-white rounded-[10px] border border-[#CBCBE4] py-[50px] px-[40px] max-sm:py-[30px] max-sm:px-5">
       <div className="flex items-center gap-[10px] mb-[10px] pb-4 border-b border-[#CBCBE4]">
@@ -28,9 +42,9 @@ const DeliveryDetailsCard = ({ formData, onChange }) => {
             value={formData.deliveryAddress || ''}
             onChange={onChange}
             placeholder="Your Delivery address"
-            required
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm text-gray-800 placeholder-gray-400 outline-none transition-colors focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/30"
+            className={inputCls('deliveryAddress')}
           />
+          {errors.deliveryAddress && <p className="text-red-500 text-[12px] m-0 mt-[-4px]">{errors.deliveryAddress}</p>}
         </div>
 
         <div className="grid grid-cols-2 gap-[10px] max-sm:grid-cols-1">
@@ -44,9 +58,9 @@ const DeliveryDetailsCard = ({ formData, onChange }) => {
               value={formData.city || ''}
               onChange={onChange}
               placeholder="Enter the city"
-              required
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm text-gray-800 placeholder-gray-400 outline-none transition-colors focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/30"
+              className={inputCls('city')}
             />
+            {errors.city && <p className="text-red-500 text-[12px] m-0 mt-[-4px]">{errors.city}</p>}
           </div>
           <div className="flex flex-col gap-[10px]">
             <label className="text-[14px] font-semibold text-gray-800">
@@ -56,8 +70,7 @@ const DeliveryDetailsCard = ({ formData, onChange }) => {
               name="country"
               value={formData.country || ''}
               onChange={onChange}
-              required
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm text-gray-800 outline-none appearance-none bg-white bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%236b7280%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px] bg-[right_12px_center] bg-no-repeat transition-colors focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/30"
+              className={selectCls('country')}
             >
               <option value="" disabled>Select an Option</option>
               <option value="NP">Nepal</option>
@@ -66,6 +79,7 @@ const DeliveryDetailsCard = ({ formData, onChange }) => {
               <option value="LK">Sri Lanka</option>
               <option value="BT">Bhutan</option>
             </select>
+            {errors.country && <p className="text-red-500 text-[12px] m-0 mt-[-4px]">{errors.country}</p>}
           </div>
         </div>
 
@@ -78,10 +92,10 @@ const DeliveryDetailsCard = ({ formData, onChange }) => {
             value={formData.orderNotes || ''}
             onChange={onChange}
             placeholder="Packaging, documentation or delivery timing requirements"
-            required
             rows={5}
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm text-gray-800 placeholder-gray-400 outline-none resize-y min-h-[120px] transition-colors focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/30"
+            className={`${inputCls('orderNotes')} resize-y min-h-[120px]`}
           />
+          {errors.orderNotes && <p className="text-red-500 text-[12px] m-0 mt-[-4px]">{errors.orderNotes}</p>}
         </div>
       </div>
     </div>

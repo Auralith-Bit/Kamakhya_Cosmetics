@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CartItem from './CartItem';
 import { useCart } from '../../context/CartContext';
@@ -10,16 +10,51 @@ const LockIcon = () => (
   </svg>
 );
 
-const OrderSummaryCard = ({ formData = {} }) => {
+const OrderSummaryCard = ({ formData = {}, onSubmit }) => {
   const navigate = useNavigate();
   const { items, updateQuantity, removeFromCart, subtotal, submitOrder } = useCart();
+  const [showEmptyCart, setShowEmptyCart] = useState(false);
 
   const tax = Math.round(subtotal * 0.13 * 100) / 100;
   const shipping = subtotal > 0 ? 500 : 0;
   const total = Math.round((subtotal + tax + shipping) * 100) / 100;
 
+  const handleClick = () => {
+    if (items.length === 0) {
+      setShowEmptyCart(true);
+      return;
+    }
+    if (onSubmit?.()) {
+      submitOrder(formData);
+      navigate('/order-review');
+    }
+  };
+
   return (
     <div className="bg-white rounded-[10px] border border-[#D7DAE4] overflow-hidden">
+      {showEmptyCart && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40" onClick={() => setShowEmptyCart(false)}>
+          <div className="bg-white rounded-2xl p-8 max-w-sm w-full mx-4 text-center shadow-xl" onClick={(e) => e.stopPropagation()}>
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-red-50 flex items-center justify-center">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="15" y1="9" x2="9" y2="15" />
+                <line x1="9" y1="9" x2="15" y2="15" />
+              </svg>
+            </div>
+            <h3 className="text-[18px] font-bold text-gray-900 mb-2">Cart is Empty</h3>
+            <p className="text-[14px] text-gray-500 mb-5">Add products to your cart before submitting a request.</p>
+            <button
+              type="button"
+              onClick={() => { setShowEmptyCart(false); navigate('/products'); }}
+              className="px-6 py-2.5 bg-[#2E3192] text-white text-[14px] font-semibold rounded-lg cursor-pointer hover:bg-[#252775] transition-colors"
+            >
+              Browse Products
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="px-[25px] pt-[30px] pb-0">
         <div className="border-b border-[#D7DAE4] pb-4">
           <h2 className="m-0 font-title text-brand-blue text-[22px] font-bold leading-tight">
@@ -71,13 +106,9 @@ const OrderSummaryCard = ({ formData = {} }) => {
         </div>
 
         <div className="mt-6">
-          {/* ✅ Submit Request → /order-review */}
           <button
             type="button"
-            onClick={() => {
-              submitOrder(formData);
-              navigate('/order-review');
-            }}
+            onClick={handleClick}
             className="w-full h-[55px] flex items-center justify-center gap-[10px] bg-[#2E3192] !text-white font-semibold text-[15px] rounded-[7px] border-none cursor-pointer transition-all hover:bg-[#252775] active:scale-[0.98]"
           >
             <LockIcon />
