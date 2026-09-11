@@ -1,9 +1,6 @@
 import vector1 from "../../../assets/Vector (1).svg";
-/* ✅ SHINE IMAGES UNCHANGED — same assets as before */
 import group56 from "../../../assets/Group 56.svg";
 import intersect from "../../../assets/Intersect.svg";
-/* ✅ shared card (same as Royal Luxury page).
-   If your folder depth differs, adjust: e.g. ../Products/ProductCard */
 import ProductCard from "../../Products/ProductCard";
 
 const serif = "'Playfair Display', Georgia, serif";
@@ -36,6 +33,17 @@ export default function BestSellers() {
           .bs-sub{font-size:1.3vw;line-height:2vw;} .bs-sub br{display:none;}
           .bs-squiggle{width:12vw;margin:0 auto;}
         }
+
+        /* ============ TABLET 640–1023 — ✅ FIXED-PX HEADER, 18% CURVE ============ */
+        @media (min-width:640px) and (max-width:1023px){
+          .bs-sec{padding:64px 0 72px;}
+          .bs-head{max-width:none;margin:0 auto 48px;padding:0 32px;}
+          .bs-eyebrow{font-size:13px;}
+          .bs-title{font-size:28px;margin-top:8px;}
+          .bs-squiggle{width:18%;margin:8px auto 0;}
+          .bs-sub{font-size:14px;line-height:1.6;}
+        }
+
         @media (max-width:639px){
           .bs-title{font-size:5vw;} .bs-sub{font-size:3vw;line-height:4.6vw;}
           .bs-eyebrow{font-size:2.4vw;} .bs-squiggle{width:24vw;}
@@ -62,7 +70,7 @@ export default function BestSellers() {
       </header>
 
       <div
-        className="relative z-10 grid grid-cols-4 gap-6 max-lg:grid-cols-2 max-sm:grid-cols-1 px-[125px] max-lg:px-8 max-sm:px-5"
+        className="relative z-10 grid grid-cols-2 gap-6 min-[1280px]:grid-cols-4 max-sm:grid-cols-1 px-8 min-[1280px]:px-[125px] max-sm:px-5"
         style={{ gridAutoRows: '1fr' }}
       >
         {PRODUCTS.map((p) => (

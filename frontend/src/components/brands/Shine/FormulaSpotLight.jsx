@@ -110,11 +110,11 @@ const FormulaSpotlight = () => (
         .fs-sec{height:auto;padding:10vw 5vw;}
 
         .fs-tag{position:static;font-size:clamp(12px, 1.4vw, 18px);}
-        .fs-title{position:static;font-size:clamp(20px, 2.3vw, 32px);margin-top:2vw;}
+        .fs-title{position:static;font-size:clamp(20px, 2.3vw, 32px);margin-top:0vw;}
         .fs-vector{position:static;transform:none;display:block;
           width:clamp(70px, 12vw, 120px);margin:2.5vw auto 0;}
         .fs-sub{position:static;font-size:clamp(12px, 1.35vw, 17px);
-          line-height:clamp(18px, 2vw, 26px);margin-top:2.5vw;}
+          line-height:clamp(18px, 2vw, 26px);margin-top:1vw;}
         .fs-sub br{display:none;}
 
         /* single column = each template on its own full-width row */
@@ -134,16 +134,29 @@ const FormulaSpotlight = () => (
         .fs-card p br{display:none;}
       }
 
-      /* ============ TABLET 640–1023 — same rows, larger type only ============ */
+      /* ============ TABLET 640–1023 — ✅ 2 CARDS PER ROW ============ */
       @media (min-width:640px) and (max-width:1023px){
         .fs-sec{padding:8vw 6vw;}
         .fs-tag{font-size:13px;}
         .fs-title{font-size:28px;}
+
+        /* ✅ gold curve matches the other Shine section headers on tablet */
+        .fs-vector{width:18%; margin-top:1vw;}
+
         .fs-sub{font-size:14px;line-height:1.6;}
-        .fs-card{padding:5vw 4vw;}
+
+        /* ✅ 2-up grid: 6 cards → 3 tidy rows of 2 (was 6 stretched rows) */
+        .fs-grid{
+          grid-template-columns:1fr 1fr;
+          gap:24px 20px;
+          margin-top:40px;
+        }
+
+        /* ✅ fixed px card box sized for the ~330px column */
+        .fs-card{padding:24px 22px;border-radius:16px;}
         .fs-card h3{font-size:16px;}
-        .fs-rule{width:44px;}
-        .fs-card p{font-size:13px;line-height:1.5;}
+        .fs-rule{width:44px;height:3px;margin-top:10px;border-radius:2px;}
+        .fs-card p{font-size:13px;line-height:1.5;margin-top:12px;}
       }
     `}</style>
 

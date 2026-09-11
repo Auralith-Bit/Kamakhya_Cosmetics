@@ -43,18 +43,18 @@ const Faq = () => {
         /* ---- header ---- */
         .fq-tag{
           position:absolute;top:3.9vw;width:100%;text-align:center;color:#E38F2E;
-          font-family:${sans};font-size:0.8333vw;font-weight:700;
+          font-family:${sans};font-size:0.8333vw;font-weight:600;
           letter-spacing:0.18em;text-transform:uppercase;
         }
         .fq-title{
           position:absolute;top:5.2vw;width:100%;text-align:center;color:#2E3192;
           font-family:${serif};font-size:1.6vw;font-weight:700;
-          line-height:normal;letter-spacing:0.03em;text-transform:capitalize;
+          line-height:normal;letter-spacing:0.02em;text-transform:capitalize;
         }
         .fq-vector{position:absolute;top:7.2917vw;left:50%;transform:translateX(-50%);width:9.25vw;height:auto;}
         .fq-sub{
           position:absolute;top:9.2vw;width:100%;text-align:center;color:#666666;
-          font-family:${sans};font-size:1.05vw;font-weight:500;line-height:1.4583vw;
+          font-family:${sans};font-size:1vw;line-height:1.4583vw;max-width:65vw;margin:0 auto;
         }
 
         /* ---- FAQ accordion (x170 w920 @y274) ---- */
@@ -99,7 +99,7 @@ const Faq = () => {
         margin:0 2.0833vw 1.3021vw 3.125vw;
         color:#666666;
         font-family:${sans};
-        font-size:0.89vw;
+        font-size:0.85vw;
         line-spacing: 0.5em;
         line-height:1.25vw;  /* 24px — keeps 3 lines inside 101px */
         }
@@ -117,22 +117,15 @@ const Faq = () => {
         .fq-art img{display:block;width:100%;height:auto;object-fit:contain;}
 
         .fq-card h3{margin-top:0.7813vw;color:#2E3192;font-family:${serif};
-        font-size:1.4583vw;font-weight:700;}
-        
-        .fq-card .fq-p{
-        margin-top:0.5208vw;
-        color:#666666;
-        font-family:${sans};
-        font-size:0.89vw;
-        line-height:1.4583vw;
-        }
-        
+          font-size:1.4583vw;font-weight:700;}
+        .fq-card .fq-p{margin-top:0.5208vw;color:#666666;font-family:${sans};
+          font-size:0.8333vw;line-height:1.4583vw;}
         .fq-label{margin-top:0.7813vw;text-align:left;color:#333333;
-          font-family:${sans};font-size:0.89vw;font-weight:500;}
+          font-family:${sans};font-size:0.8333vw;font-weight:500;}
         .fq-input{
           margin-top:0.4167vw;width:100%;height:4.6875vw;background:#ffffff;
           border:0.0521vw solid #D7DAE4;border-radius:0.4167vw;padding:0.7813vw;
-          color:#333333;font-family:${sans};font-size:0.89vw;resize:none;outline:none;
+          color:#333333;font-family:${sans};font-size:0.8333vw;resize:none;outline:none;
         }
         .fq-input::placeholder{color:#999999;}
         .fq-input:focus{border-color:#2E3192;}
@@ -152,11 +145,11 @@ const Faq = () => {
           .fq-sec{height:auto;padding:10vw 5vw;}
 
           .fq-tag{position:static;font-size:clamp(12px, 1.4vw, 18px);}
-          .fq-title{position:static;font-size:clamp(20px, 2.3vw, 32px);margin-top:2vw;}
+          .fq-title{position:static;font-size:clamp(20px, 2.3vw, 32px);margin-top:1vw;}
           .fq-vector{position:static;transform:none;display:block;
-            width:clamp(70px, 12vw, 120px);margin:2.5vw auto 0;}
+            width:18%;margin:1vw auto 0;}
           .fq-sub{position:static;font-size:clamp(12px, 1.35vw, 17px);
-            line-height:clamp(18px, 2vw, 26px);margin-top:2.5vw;}
+            line-height:clamp(18px, 2vw, 26px);margin-top:1vw;}
           .fq-sub br{display:none;}
 
           /* accordion: full-width rows, auto heights, natural wrapping */
@@ -190,22 +183,41 @@ const Faq = () => {
           .fq-send svg{width:clamp(14px, 2vw, 18px);height:clamp(9px, 1.4vw, 12px);}
         }
 
-        /* ============ TABLET 640–1023 — same stack, larger fixed type ============ */
+        /* ============ TABLET 640–1023 ============ */
         @media (min-width:640px) and (max-width:1023px){
           .fq-sec{padding:8vw 6vw;}
           .fq-tag{font-size:13px;}
           .fq-title{font-size:28px;}
           .fq-sub{font-size:14px;line-height:1.6;}
-          .fq-qt{font-size:16px;}
+
+          .fq-list{
+            width:min(80vw, 640px);
+            margin:40px auto 0;
+            gap:12px;
+          }
+          .fq-item{border-radius:12px;}
+          .fq-q{padding:16px 20px;gap:14px;}
           .fq-num{font-size:13px;}
-          .fq-a p{font-size:13px;line-height:1.5;}
+          .fq-qt{font-size:16px;}
+          .fq-tgl{flex:0 0 36px;width:36px;height:36px;}
+          .fq-tgl svg{width:12px;height:12px;}
           .fq-item.open .fq-a{max-height:400px;}
-          .fq-card h3{font-size:24px;}
-          .fq-card .fq-p{font-size:13px;}
-          .fq-label{font-size:13px;}
-          .fq-input{height:120px;font-size:14px;}
-          .fq-note{font-size:11px;}
-          .fq-send{height:52px;font-size:15px;}
+          .fq-a p{font-size:13px;line-height:1.5;margin:0 20px 16px 48px;}
+
+          .fq-card{
+            width:min(80vw, 560px);
+            margin:40px auto 0;
+            padding:40px 36px;
+            border-radius:16px;
+          }
+          .fq-art{width:140px;}
+          .fq-card h3{font-size:24px;margin-top:12px;}
+          .fq-card .fq-p{font-size:13px;margin-top:8px;}
+          .fq-label{font-size:13px;margin-top:16px;}
+          .fq-input{margin-top:8px;height:120px;padding:12px;border-radius:10px;font-size:14px;}
+          .fq-note{font-size:11px;margin-top:8px;}
+          .fq-send{margin-top:16px;height:52px;border-radius:10px;font-size:15px;}
+          .fq-send svg{width:16px;height:11px;}
         }
       `}</style>
 
@@ -214,7 +226,6 @@ const Faq = () => {
       <img className="fq-vector" src={vector1} alt="" aria-hidden="true" />
       <p className="fq-sub">
         Explore helpful information about our skincare, makeup, haircare, product safety, delivery,
-        <br />
         and customer support—all in one place.
       </p>
 

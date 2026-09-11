@@ -81,7 +81,7 @@ const ShineHero = () => (
         .sh-copy{
           position:relative;
           left:5.8vw;
-          top:12vw;
+          top:6vw;
           z-index:2;
           width:55%;
           padding:calc(6vw + var(--nav-h)) 4vw 8vw 6vw;

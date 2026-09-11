@@ -153,13 +153,13 @@ const WhyChooseShine = () => (
                      0 6px 16px rgba(43,46,126,0.08);}
         .wc-card:hover{box-shadow:0 4px 10px rgba(0,0,0,0.10),
                                   0 12px 24px rgba(43,46,126,0.18);}
-        .wc-card p br{display:none;}   /* ✅ no forced breaks — copy flows responsively */
+        .wc-card p br{display:none;}
         .wc-l1,.wc-l2,.wc-l3,.wc-r1,.wc-r2,.wc-r3{left:auto;top:auto;}
 
         .wc-tag{order:1;position:static;font-size:clamp(12px, 1.4vw, 18px);}
         .wc-title{order:2;position:static;font-size:clamp(20px, 2.3vw, 32px);margin-top:2vw;}
         .wc-vector{order:3;position:static;transform:none;display:block;
-          width:clamp(70px, 12vw, 120px);margin:2.5vw auto 0;}
+          width:18%;margin:1vw auto -2vw;}
         .wc-sub{order:4;position:static;font-size:clamp(12px, 1.35vw, 17px);
           line-height:clamp(18px, 2vw, 26px);margin-top:2.5vw;}
 
@@ -191,15 +191,30 @@ const WhyChooseShine = () => (
           line-height:clamp(16px, 1.8vw, 22px);}
       }
 
-      /* ============ TABLET 640–1023 — same rows, larger type/bottle ============ */
+      /* ============ TABLET 640–1023 — ✅ 2-UP CARDS + CAPPED BOTTLE ============ */
       @media (min-width:640px) and (max-width:1023px){
-        .wc-sec{padding:8vw 6vw;}
+        /* two columns; header + bottle span both */
+        .wc-sec{padding:8vw 6vw;grid-template-columns:1fr 1fr;column-gap:16px;}
+        .wc-tag,.wc-title,.wc-vector,.wc-sub,.wc-media{grid-column:1 / -1;}
+
         .wc-tag{font-size:13px;}
         .wc-title{font-size:28px;}
         .wc-sub{font-size:14px;line-height:1.6;}
-        .wc-media{width:min(60vw,520px);}
-        .wc-ico{flex:0 0 56px;width:56px;height:56px;}
-        .wc-ico svg{width:26px;height:26px;}
+
+        /* ✅ pairs: (l1,l2) → (l3,r1) → bottle → (r2,r3); equal top margins
+           per row so paired cards stay perfectly aligned */
+        .wc-l1{order:5;margin-top:28px;}
+        .wc-l2{order:6;margin-top:28px;}
+        .wc-l3{order:7;margin-top:16px;}
+        .wc-r1{order:8;margin-top:16px;}
+        .wc-media{order:9;width:min(50vw,420px);margin:24px auto 8px;}
+        .wc-r2{order:10;margin-top:16px;}
+        .wc-r3{order:11;margin-top:16px;}
+
+        /* ✅ card internals sized for the ~330px column */
+        .wc-card{padding:20px 22px;gap:16px;border-radius:16px;}
+        .wc-ico{flex:0 0 48px;width:48px;height:48px;}
+        .wc-ico svg{width:24px;height:24px;}
         .wc-card h3{font-size:16px;}
         .wc-card p{font-size:13px;line-height:1.5;}
       }

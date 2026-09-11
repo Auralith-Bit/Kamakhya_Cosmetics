@@ -73,9 +73,8 @@ const OtherBrands = () => (
         .ob-panel{position:static;left:auto;top:auto;width:auto;height:auto;
           border-radius:2vw;}
 
-        /* image becomes the top banner, keeps 4:3 crop */
         .ob-img{position:static;left:auto;top:auto;width:100%;height:auto;
-          aspect-ratio:4/3;object-fit:cover;}
+          display:block;}
 
         .ob-right{position:static;left:auto;top:auto;width:auto;padding:6vw 5vw 7vw;}
 
@@ -91,15 +90,35 @@ const OtherBrands = () => (
         .ob-btn svg{width:clamp(14px, 2vw, 18px);height:clamp(9px, 1.4vw, 12px);}
       }
 
-      /* ============ TABLET 640–1023 — same stack, larger fixed type ============ */
+      /* ============ TABLET 640–1023 ============ */
       @media (min-width:640px) and (max-width:1023px){
-        .ob-sec{padding:8vw 6vw;}
-        .ob-img{aspect-ratio:16/9;}
-        .ob-right{padding:5vw 6vw 6vw;}
+        .ob-sec{padding:64px 48px;}
+
+        .ob-panel{
+          width:min(100%, 640px);
+          margin:0 auto;
+          border-radius:16px;
+        }
+
+        .ob-right{padding:32px 36px 36px;}
         .ob-tag{font-size:13px;}
-        .ob-title{font-size:30px;}
-        .ob-para{font-size:14px;}
-        .ob-btn{font-size:15px;padding:3vw 4vw;}
+        .ob-rule{width:44px;height:3px;margin-top:10px;border-radius:2px;}
+        .ob-title{font-size:28px;margin-top:14px;}
+        .ob-para{font-size:14px;line-height:1.6;margin-top:12px;}
+
+        .ob-btn{
+          margin:24px auto 0;
+          display:flex;
+          justify-content:center;
+          width:auto;
+          height:52px;
+          padding:0 32px;
+          border:2px solid #2E3192;
+          border-radius:10px;
+          font-size:15px;
+          gap:10px;
+        }
+        .ob-btn svg{width:16px;height:11px;}
       }
     `}</style>
 
