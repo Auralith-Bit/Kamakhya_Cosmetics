@@ -2,49 +2,77 @@ import { ChevronRight, Home } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const serif = "'Playfair Display', Georgia, serif"
+const sans = "'Poppins', 'Segoe UI', sans-serif"
 
 const TopBanner = () => (
     <section id="wishlist-hero" className="wish-banner">
         <style>{`
-            /* ============ DESKTOP ≥1024 — matches Manufacturing banner ============ */
+            /* ============ DESKTOP ≥1024 ============ */
             .wish-banner{
                 position:relative;
                 width:100%;
-                height:23.4375vw;
+                height:10.41665vw;
                 background:#F7F0E7;
                 overflow:hidden;
+                display:flex;
+                align-items:center;
+                justify-content:center;
             }
-            .wish-copy{position:absolute;left:9.1667vw;top:4.1667vw;width:40.625vw;z-index:2;}
-            .wish-crumb{display:flex;align-items:center;gap:0.5208vw;color:#2E3192;
-                font-family:${serif};font-size:1.25vw;font-weight:700;white-space:nowrap;}
-            .wish-crumb a{color:#2E3192;text-decoration:none;font-size:1.4583vw;}
+            .wish-copy{
+                position:relative;
+                z-index:2;
+                text-align:center;
+                width:100%;
+                max-width:80vw;
+            }
+            .wish-crumb{
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                gap:0.5208vw;
+                color:#E38F2E;
+                font-family:${sans};
+                font-size:1.25vw;
+                font-weight:600;
+                white-space:nowrap;
+            }
+            .wish-crumb a{color:#E38F2E;text-decoration:none;font-size:1.25vw;font-weight:600;}
             .wish-crumb a:hover{text-decoration:underline;}
-            .wish-ic-home{width:1.6667vw;height:1.6667vw;}
-            .wish-ic-chev{width:1.5625vw;height:1.5625vw;color:#252775;}
-            .wish-title{margin-top:1.0417vw;color:#2E3192;font-family:${serif};
-                font-size:2.8125vw;font-weight:700;line-height:1.15;}
+            .wish-ic-home{width:1.4vw;height:1.4vw;}
+            .wish-ic-chev{width:1.2vw;height:1.2vw;color:#E38F2E;}
+            .wish-title{
+                margin-top:1.0417vw;
+                color:#2E3192;
+                font-family:${serif};
+                font-size:2.8125vw;
+                font-weight:700;
+                line-height:1.15;
+                text-align:center;
+            }
 
             /* ============ PHONES ≤639 ============ */
             @media (max-width:639px){
-                .wish-banner{height:auto;}
-                .wish-copy{position:relative;z-index:2;left:auto;top:auto;width:auto;
-                    padding:8vw 6vw 24vw;}
-                .wish-crumb{font-size:clamp(13px, 1.6vw, 18px);gap:2vw;}
-                .wish-crumb a{font-size:clamp(16px, 2vw, 22px);}
-                .wish-ic-home{width:clamp(16px, 2vw, 22px);height:clamp(16px, 2vw, 22px);}
-                .wish-ic-chev{width:clamp(14px, 1.8vw, 20px);height:clamp(14px, 1.8vw, 20px);}
-                .wish-title{margin-top:2.5vw;font-size:clamp(28px, 6vw, 44px);}
+                .wish-banner{height:auto;padding:8vw 6vw 12vw;}
+                .wish-crumb{font-size:clamp(13px,1.6vw,18px);gap:2vw;}
+                .wish-crumb a{font-size:clamp(13px,1.6vw,18px);}
+                .wish-ic-home{width:clamp(16px,2vw,22px);height:clamp(16px,2vw,22px);}
+                .wish-ic-chev{width:clamp(14px,1.8vw,20px);height:clamp(14px,1.8vw,20px);}
+                .wish-title{margin-top:2.5vw;font-size:clamp(28px,6vw,44px);}
             }
 
             /* ============ TABLET 640–1023 ============ */
             @media (min-width:640px) and (max-width:1023px){
-                .wish-banner{height:auto;aspect-ratio:16/9;}
-                .wish-copy{position:absolute;left:5.8vw;top:24vw;width:52%;z-index:2;padding:0;}
+                .wish-banner{height:auto;aspect-ratio:21/9;}
                 .wish-crumb{font-size:15px;gap:8px;}
-                .wish-crumb a{font-size:20px;}
+                .wish-crumb a{font-size:15px;}
                 .wish-ic-home{width:20px;height:20px;}
                 .wish-ic-chev{width:18px;height:18px;}
                 .wish-title{margin-top:10px;font-size:34px;}
+            }
+
+            /* ============ NARROW TABLET 830–1023 ============ */
+            @media (min-width:830px) and (max-width:1023px){
+                .wish-banner{aspect-ratio:21/8;}
             }
         `}</style>
 
@@ -56,6 +84,7 @@ const TopBanner = () => (
                 </Link>
                 <ChevronRight className="wish-ic-chev" strokeWidth={3} />
                 <span>Your Wishlist</span>
+                <ChevronRight className="wish-ic-chev" strokeWidth={3} />
             </nav>
             <h1 className="wish-title">Your Saved Items</h1>
         </div>
