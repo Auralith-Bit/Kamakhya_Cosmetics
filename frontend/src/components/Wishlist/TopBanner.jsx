@@ -44,7 +44,7 @@ const TopBanner = () => (
                 margin-top:1.0417vw;
                 color:#2E3192;
                 font-family:${serif};
-                font-size:2.8125vw;
+                font-size:2.7180vw;
                 font-weight:700;
                 line-height:1.15;
                 text-align:center;
