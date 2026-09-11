@@ -1,5 +1,6 @@
 import Distributor from '../../assets/Distributor.svg'
 import { ChevronRight, Home } from 'lucide-react'
+import { Link } from 'react-router'
 
 const serif = "'Playfair Display', Georgia, serif"
 const sans = "'Poppins', 'Segoe UI', sans-serif"
@@ -41,7 +42,7 @@ const HeroBanner = () => (
             @media (max-width:639px){
                 .bq-banner{height:auto;background-position:0% 50%;}
                 .bq-copy{position:relative;z-index:2;left:auto;top:auto;width:auto;
-                    padding:8vw 6vw 24vw;}
+                    padding:8vw 6vw 12vw;}
                 .bq-crumb{font-size:clamp(13px, 1.6vw, 18px);gap:2vw;}
                 .bq-crumb a{font-size:clamp(16px, 2vw, 22px);}
                 .bq-ic-home{width:clamp(16px, 2vw, 22px);height:clamp(16px, 2vw, 22px);}
@@ -50,13 +51,13 @@ const HeroBanner = () => (
                 .bq-rule{width:clamp(80px, 10vw, 135px);height:3px;margin-top:2vw;border-radius:2px;}
                 .bq-title{margin-top:2.5vw;font-size:clamp(28px, 6vw, 44px);}
                 .bq-p{margin-top:3vw;font-size:clamp(14px, 1.7vw, 20px);
-                    letter-spacing:0.01em;line-height:1.2;max-width:80%;}
+                    letter-spacing:0.01em;line-height:1.2;max-width:100%;}
             }
 
             /* ============ TABLET 640–1023 ============ */
             @media (min-width:640px) and (max-width:1023px){
-                .bq-banner{height:auto;aspect-ratio:16/9;background-position:0% 50%;}
-                .bq-copy{position:absolute;left:5.8vw;top:24vw;width:52%;z-index:2;padding:0;}
+                .bq-banner{height:auto;aspect-ratio:21/9;background-position:0% 50%;}
+                .bq-copy{position:absolute;left:5.8vw;top:6vw;width:52%;z-index:2;padding:0;}
                 .bq-crumb{font-size:15px;gap:8px;}
                 .bq-crumb a{font-size:20px;}
                 .bq-ic-home{width:20px;height:20px;}
@@ -65,16 +66,23 @@ const HeroBanner = () => (
                 .bq-rule{width:100px;height:3px;margin-top:10px;border-radius:2px;}
                 .bq-title{margin-top:10px;font-size:34px;}
                 .bq-p{margin-top:12px;font-size:15px;
-                    letter-spacing:0.01em;line-height:1.55;max-width:none;}
+                    letter-spacing:0.01em;line-height:1.55;max-width:100%;}
+            }
+
+            /* ============ NARROW TABLET 830–1023 ============ */
+            @media (min-width:830px) and (max-width:1023px){
+                .bq-banner{height:auto;aspect-ratio:21/8;background-position:0% 50%;}
+                .bq-copy{top:50%;transform:translateY(-50%);}
             }
         `}</style>
 
         <div className="bq-copy">
             <nav className="bq-crumb" aria-label="Breadcrumb">
                 <Home className="bq-ic-home" strokeWidth={2.5} />
-                <span>Home</span>
+                <Link to='/home'>Home</Link>
                 <ChevronRight className="bq-ic-chev" strokeWidth={3} />
                 <span>Request a Bulk Quote</span>
+                <ChevronRight className="bq-ic-chev" strokeWidth={3} />
             </nav>
 
             <p className="bq-tag">Bulk enquiry</p>
