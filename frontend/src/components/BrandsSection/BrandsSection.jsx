@@ -253,7 +253,7 @@ const BrandsSection = () => (
           categoryTag="Everyday home care" brandName="Shine" brandColor="#1e7e34" tagline="Fresh & Clean"
           description="Daily care and household essentials designed for freshness, hygiene, and lasting performance."
           features={shineFeatures}
-          to="/brands/shine"
+          to="/products?brand=Shine"
         />
 
         {/* Center connector */}
@@ -298,7 +298,7 @@ const BrandsSection = () => (
           categoryTag="Premium Beauty care" brandName="Royal Luxury" brandColor="#2e3192" tagline="A Pure Expereicne"
           description="Daily care and household essentials designed for freshness, hygiene, and lasting performance."
           features={royalFeatures}
-          to="/brands/royal-luxury"
+          to="/products?brand=Royal%20Luxury"
         />
       </div>
     </div>

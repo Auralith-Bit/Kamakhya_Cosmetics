@@ -269,8 +269,8 @@ const ProductDetailed = () => {
             </div>
 
             {/* Summary */}
-            <div className="bg-[#2E3192] text-white rounded-xl p-5 mb-5">
-              <div className="flex justify-between mb-3">
+            <div className="bg-[#191B50] text-white rounded-xl p-5 mb-5">
+              <div className="flex justify-between mb-3 bg-[#191850]">
                 <div>
                   <p className="text-orange-300 text-xs mb-1">Order Configuration</p>
                   <p className="font-serif font-semibold">{activePack.size}</p>
@@ -281,7 +281,7 @@ const ProductDetailed = () => {
                 </div>
               </div>
               <hr className="border-white/20 mb-3" />
-              <div className="flex justify-between">
+              <div className="flex justify-between bg-[#191850]">
                 <div>
                   <p className="text-orange-300 text-xs mb-1">Total units</p>
                   <p className="font-bold">{totalUnits}</p>
@@ -419,7 +419,7 @@ const ProductDetailed = () => {
                         key={i}
                         className="flex items-center gap-3 rounded-xl border border-slate-200 bg-[#F5F5FA] px-5 py-2"
                       >
-                        <span className="flex-shrink-0 w-5 h-5 rounded-full border border-orange-300 flex items-center justify-center">
+                        <span className="shrink-0 w-5 h-5 rounded-full border border-orange-300 flex items-center justify-center">
                           <Check className="w-3 h-3 text-orange-400" strokeWidth={3} />
                         </span>
                         <span className="text-slate-800 text-base">{point}</span>

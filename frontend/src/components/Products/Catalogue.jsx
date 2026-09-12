@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react'
-import { Search, Headphones, SlidersHorizontal, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Search, Headphones, SlidersHorizontal, ChevronDown, ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { Link, useSearchParams } from 'react-router'
 import { products } from '../../data/product'
 import ProductCard from './ProductCard'
@@ -392,6 +392,39 @@ const Catalogue = () => {
                         </select>
                     </div>
                 </div>
+
+                {(selectedBrand || selectedCategory || selectedType) && (
+                    <div className="flex flex-wrap items-center gap-2 mb-4">
+                        <span className="text-xs text-gray-500 font-medium mr-1">Active Filters:</span>
+                        {selectedBrand && (
+                            <span className="inline-flex items-center gap-1 bg-white border border-gray-200 text-gray-800 text-xs font-medium rounded-full px-4 py-2 cursor-default">
+                                {selectedBrand}
+                                <button onClick={() => handleBrandSelect(selectedBrand)} className="ml-0.5 hover:bg-gray-100 rounded-full p-0.5 transition cursor-pointer">
+                                    <X className="w-3 h-3" />
+                                </button>
+                            </span>
+                        )}
+                        {selectedCategory && (
+                            <span className="inline-flex items-center gap-1 bg-white border border-gray-200 text-gray-800 text-xs font-medium rounded-full px-4 py-2 cursor-default">
+                                {selectedCategory}
+                                <button onClick={() => handleCategorySelect(selectedCategory)} className="ml-0.5 hover:bg-gray-100 rounded-full p-0.5 transition cursor-pointer">
+                                    <X className="w-3 h-3" />
+                                </button>
+                            </span>
+                        )}
+                        {selectedType && (
+                            <span className="inline-flex items-center gap-1 bg-white border border-gray-200 text-gray-800 text-xs font-medium rounded-full px-4 py-2 cursor-default">
+                                {selectedType}
+                                <button onClick={() => handleTypeSelect(selectedType)} className="ml-0.5 hover:bg-gray-100 rounded-full p-0.5 transition cursor-pointer">
+                                    <X className="w-3 h-3" />
+                                </button>
+                            </span>
+                        )}
+                        <button onClick={clearAll} className="text-xs text-orange-500 font-medium ml-1 hover:underline cursor-pointer">
+                            Clear All
+                        </button>
+                    </div>
+                )}
 
                 {filteredProducts.length === 0 ? (
                     <p className="text-center text-gray-500 py-16">No products match your filters.</p>
