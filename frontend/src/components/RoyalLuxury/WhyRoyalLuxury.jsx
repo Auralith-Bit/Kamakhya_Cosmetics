@@ -221,7 +221,6 @@ const WhyRoyalLuxury = () => (
       care, and confidence to your everyday routine.
     </p>
 
-    {/* ✅ BEHIND: ring (faded bottom) + elbow connectors + dots */}
     <svg className="wc-wires" viewBox="0 0 1920 1089" preserveAspectRatio="none" fill="none">
       <defs>
         <linearGradient id="wc-fade" x1="0" y1="0" x2="0" y2="1">
@@ -233,28 +232,26 @@ const WhyRoyalLuxury = () => (
         </mask>
       </defs>
 
-      <circle cx="960" cy="605" r="315" stroke="#2E3192" strokeWidth="3" mask="url(#wc-ringmask)" />
+      <circle cx="960" cy="605" r="315" stroke="#E38F2E" strokeWidth="3" mask="url(#wc-ringmask)" />
 
-      <path d="M552 405.5 H668.5 L696 433"  stroke="#2E3192" strokeWidth="3" />
-      <path d="M552 604.5 H645"             stroke="#2E3192" strokeWidth="3" />
-      <path d="M552 803.5 H669.5 L696 777"  stroke="#2E3192" strokeWidth="3" />
+      <path d="M552 405.5 H668.5 L696 433"  stroke="#E38F2E" strokeWidth="3" />
+      <path d="M552 604.5 H645"             stroke="#E38F2E" strokeWidth="3" />
+      <path d="M552 803.5 H669.5 L696 777"  stroke="#E38F2E" strokeWidth="3" />
 
-      <path d="M1368 405.5 H1251.5 L1224 433" stroke="#2E3192" strokeWidth="3" />
-      <path d="M1368 604.5 H1275"             stroke="#2E3192" strokeWidth="3" />
-      <path d="M1368 803.5 H1251.5 L1224 777" stroke="#2E3192" strokeWidth="3" />
+      <path d="M1368 405.5 H1251.5 L1224 433" stroke="#E38F2E" strokeWidth="3" />
+      <path d="M1368 604.5 H1275"             stroke="#E38F2E" strokeWidth="3" />
+      <path d="M1368 803.5 H1251.5 L1224 777" stroke="#E38F2E" strokeWidth="3" />
 
-      <circle cx="696"  cy="433"   r="8" fill="#2E3192" />
-      <circle cx="645"  cy="604.5" r="8" fill="#2E3192" />
-      <circle cx="696"  cy="777"   r="8" fill="#2E3192" />
-      <circle cx="1224" cy="433"   r="8" fill="#2E3192" />
-      <circle cx="1275" cy="604.5" r="8" fill="#2E3192" />
-      <circle cx="1224" cy="777"   r="8" fill="#2E3192" />
+      <circle cx="696"  cy="433"   r="8" fill="#E38F2E" />
+      <circle cx="645"  cy="604.5" r="8" fill="#E38F2E" />
+      <circle cx="696"  cy="777"   r="8" fill="#E38F2E" />
+      <circle cx="1224" cy="433"   r="8" fill="#E38F2E" />
+      <circle cx="1275" cy="604.5" r="8" fill="#E38F2E" />
+      <circle cx="1224" cy="777"   r="8" fill="#E38F2E" />
     </svg>
 
-    {/* ✅ artwork (masked: crisp top, transparent side/bottom margins) */}
     <span className="wc-media">
       <img className="wc-img" src={centerImg} alt="Royal Luxury Radiance Serum" />
-      {/* ring behind — sides/bottom */}
       <span className="wc-ring-m" aria-hidden="true">
         <svg viewBox="0 0 630 630" fill="none">
           <defs>
@@ -266,10 +263,9 @@ const WhyRoyalLuxury = () => (
               <rect x="0" y="0" width="630" height="630" fill="url(#wc-fade-m)" />
             </mask>
           </defs>
-          <circle cx="315" cy="315" r="312" stroke="#2E3192" strokeWidth="4" mask="url(#wc-ringmask-m)" />
+          <circle cx="315" cy="315" r="312" stroke="#E38F2E" strokeWidth="4" mask="url(#wc-ringmask-m)" />
         </svg>
       </span>
-      {/* ✅ ring FRONT top half — crisp upper arc (mobile/tablet) */}
       <span className="wc-ring-m-top" aria-hidden="true">
         <svg viewBox="0 0 630 630" fill="none">
           <defs>
@@ -277,19 +273,18 @@ const WhyRoyalLuxury = () => (
               <rect x="0" y="0" width="630" height="300" fill="#fff" />
             </mask>
           </defs>
-          <circle cx="315" cy="315" r="312" stroke="#2E3192" strokeWidth="4" mask="url(#wc-topmask-m)" />
+          <circle cx="315" cy="315" r="312" stroke="#E38F2E" strokeWidth="4" mask="url(#wc-topmask-m)" />
         </svg>
       </span>
     </span>
 
-    {/* ✅ FRONT top arc (desktop) — drawn above the opaque top zone */}
     <svg className="wc-wires-top" viewBox="0 0 1920 1089" preserveAspectRatio="none" fill="none">
       <defs>
         <mask id="wc-topmask">
           <rect x="0" y="245" width="1920" height="375" fill="#fff" />
         </mask>
       </defs>
-      <circle cx="960" cy="605" r="315" stroke="#2E3192" strokeWidth="3" mask="url(#wc-topmask)" />
+      <circle cx="960" cy="605" r="315" stroke="#E38F2E" strokeWidth="3" mask="url(#wc-topmask)" />
     </svg>
 
     {LEFT.map(({ cls, Icon, title, lines }) => (

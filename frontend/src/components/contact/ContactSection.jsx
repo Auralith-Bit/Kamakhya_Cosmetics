@@ -391,9 +391,66 @@ const ContactSections = () => {
           .cx-feat p{font-size:clamp(11px, 1.4vw, 15px);}
         }
 
+        /* ============ TABLET 640–1023 — REFINED LAYOUT ============ */
         @media (min-width:640px) and (max-width:1023px){
-          .cx-feats{grid-template-columns:1fr 1fr;}
-          .cx-info{gap:8vw 6vw;padding:7vw 6vw;}
+          .cx-sec{padding:7vw 5vw 9vw;}
+          
+          /* Info strip: 2x2 with tablet spacing */
+          .cx-info{gap:6vw 5vw;padding:6vw 5vw;}
+          .cx-ico{width:56px;height:56px;}
+          .cx-ico svg{width:24px;height:24px;}
+          .cx-info-title{font-size:18px;}
+          .cx-info-rule{width:90px;height:10px;}
+          .cx-info-rule::before,.cx-info-rule::after{height:5px;}
+          .cx-info-rule span{width:9px;height:9px;}
+          .cx-info-text{font-size:13px;line-height:1.6;}
+
+          /* Main section: side-by-side on tablet */
+          .cx-main{grid-template-columns:3fr 2fr;gap:4vw;margin-top:5vw;}
+          .cx-form{padding:5vw 4vw;border-radius:14px;}
+          .cx-form h3{font-size:20px;}
+          .cx-form-sub{font-size:14px;margin-top:8px;}
+          .cx-label{margin:24px 0 10px;font-size:14px;}
+          .cx-input,.cx-select,.cx-area{padding:14px 16px;font-size:14px;border-radius:10px;}
+          .cx-row{grid-template-columns:1fr 1fr;gap:24px;}
+          .cx-area{height:120px;}
+          .cx-send{height:48px;border-radius:10px;font-size:15px;margin-top:20px;}
+          .cx-send svg{width:16px;height:16px;}
+
+          /* Brands section */
+          .cx-brands{padding:32px;border-radius:14px;}
+          .cx-brands > h4{font-size:18px;margin-bottom:6px;}
+          .cx-brand{padding:20px 0;}
+          .cx-brand-head{gap:14px;}
+          .cx-logo{width:52px;height:52px;border-radius:10px;}
+          .cx-brand-name{font-size:22px;}
+          .cx-brand-sub{font-size:12px;margin-top:4px;}
+          .cx-brand p{font-size:13px;margin-top:12px;line-height:1.6;}
+          .cx-explore{font-size:13px;padding:10px 20px;border-radius:8px;margin-top:16px;}
+          .cx-explore svg{width:14px;height:9px;}
+
+          /* WhatsApp card */
+          .cx-quick{padding:28px 24px;border-radius:14px;}
+          .cx-quick > svg{width:32px;height:32px;}
+          .cx-quick h4{font-size:18px;margin-top:10px;}
+          .cx-quick p{font-size:13px;margin-top:6px;}
+          .cx-wa{font-size:14px;padding:12px 24px;border-radius:8px;margin-top:14px;}
+          .cx-wa svg{width:16px;height:16px;}
+
+          /* Feature cards: 2x2 */
+          .cx-feats{grid-template-columns:1fr 1fr;gap:24px;margin-top:5vw;}
+          .cx-feat{padding:24px 20px;border-radius:14px;}
+          .cx-feat-ico{width:56px;height:56px;}
+          .cx-feat-ico svg{width:26px;height:26px;}
+          .cx-feat h5{font-size:17px;}
+          .cx-feat p{font-size:13px;margin-top:6px;}
+
+          /* Header */
+          .cx-head{margin-top:7vw;padding:0 4vw;}
+          .cx-head-tag{font-size:14px;}
+          .cx-head-title{font-size:28px;margin-top:8px;}
+          .cx-squiggle{width:110px;margin-top:10px;}
+          .cx-head-p{font-size:14px;line-height:1.6;margin-top:12px;max-width:680px;}
         }
       `}</style>
 

@@ -52,9 +52,13 @@ const Faq = () => {
           line-height:normal;letter-spacing:0.02em;text-transform:capitalize;
         }
         .fq-vector{position:absolute;top:7.2917vw;left:50%;transform:translateX(-50%);width:9.25vw;height:auto;}
+
+        /* ✅ CENTERED: left+right pinned so auto margins truly center the capped box */
         .fq-sub{
-          position:absolute;top:9.2vw;width:100%;text-align:center;color:#666666;
-          font-family:${sans};font-size:1vw;line-height:1.4583vw;max-width:65vw;margin:0 auto;
+          position:absolute;top:9.2vw;left:0;right:0;
+          width:auto;max-width:65vw;margin:0 auto;
+          text-align:center;color:#666666;
+          font-family:${sans};font-size:1vw;line-height:1.4583vw;
         }
 
         /* ---- FAQ accordion (x170 w920 @y274) ---- */
@@ -148,9 +152,11 @@ const Faq = () => {
           .fq-title{position:static;font-size:clamp(20px, 2.3vw, 32px);margin-top:1vw;}
           .fq-vector{position:static;transform:none;display:block;
             width:18%;margin:1vw auto 0;}
+
+          /* ✅ centered capped box on small screens too; br kept visible everywhere */
           .fq-sub{position:static;font-size:clamp(12px, 1.35vw, 17px);
-            line-height:clamp(18px, 2vw, 26px);margin-top:1vw;}
-          .fq-sub br{display:none;}
+            line-height:clamp(18px, 2vw, 26px);
+            max-width:720px;margin:1vw auto 0;text-align:center;}
 
           /* accordion: full-width rows, auto heights, natural wrapping */
           .fq-list{position:static;left:auto;top:auto;width:auto;height:auto;
@@ -224,8 +230,10 @@ const Faq = () => {
       <p className="fq-tag">Frequently Asked Questions</p>
       <h2 className="fq-title">Your Beauty Questions, Answered</h2>
       <img className="fq-vector" src={vector1} alt="" aria-hidden="true" />
+      {/* ✅ centered; line breaks right after "delivery," on ALL breakpoints */}
       <p className="fq-sub">
         Explore helpful information about our skincare, makeup, haircare, product safety, delivery,
+        <br />
         and customer support—all in one place.
       </p>
 
