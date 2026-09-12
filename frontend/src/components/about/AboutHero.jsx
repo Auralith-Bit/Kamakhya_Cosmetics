@@ -144,4 +144,185 @@ const AboutHero = () => (
   </section>
 );
 
+<<<<<<< Updated upstream
 export default AboutHero;
+=======
+const AboutHero = () => {
+  return (
+    <section
+      id="about-hero"
+      aria-label="About Hero"
+      style={{
+        position: 'relative',
+        width: '100%',
+        minHeight: '23.4375vw',
+        overflow: 'hidden',
+        backgroundColor: '#f5e6d3',
+      }}
+    >
+      <style>{`
+        @media (max-width:900px){
+          #about-hero{min-height:380px;}
+        }
+        @media (max-width:640px){
+          #about-hero{min-height:300px;}
+        }
+      `}</style>
+      {/* Full-width background image */}
+      <img
+        src={aboutHeroBg}
+        alt=""
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center center',
+          display: 'block',
+          userSelect: 'none',
+          pointerEvents: 'none',
+          
+        }}
+      />
+
+      {/* Left-side gradient overlay for text legibility */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background:
+            'linear-gradient(90deg, rgba(245,230,211,0.95) 0%, rgba(245,230,211,0.85) 35%, rgba(245,230,211,0.18) 58%, rgba(245,230,211,0) 70%)',
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* Content overlay */}
+      <div
+        id="about-hero-inner"
+        style={{
+          position: 'relative',
+          zIndex: 2,
+          display: 'flex',
+          alignItems: 'center',
+          minHeight: '23.4375vw',   
+          width: '100%',
+          boxSizing: 'border-box',
+          padding: '0 clamp(8px, 3vw, 170px)',
+        }}
+      >
+      <style>{`
+        @media (max-width:1023px){
+          #about-hero-inner{padding-top:120px !important;}
+        }
+        @media (max-width:900px){
+          #about-hero{min-height:380px;}
+        }
+        @media (max-width:640px){
+          #about-hero{min-height:300px;}
+        }
+      `}</style>
+        {/* Left Text Panel */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            maxWidth: 'clamp(260px, 38vw, 540px)',
+            padding: 'clamp(8px, 1.5vw, 28px) 0',
+          }}
+        >
+          {/* Breadcrumb */}
+          <nav
+            aria-label="Breadcrumb"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 'clamp(8px, 0.6vw, 12px)',
+              fontFamily: "'Playfair Display', 'Playfair', serif",
+              fontSize: 'clamp(20px, 1.5vw, 28px)',
+              fontWeight: 700,
+              color: '#2e3192',
+              lineHeight: 1,
+              marginBottom: 'clamp(16px, 1.93vw, 37px)',
+            }}
+          >
+            <HomeIcon />
+            <Link
+              to="/"
+              style={{ color: '#2e3192', textDecoration: 'none', transition: 'color 0.2s' }}
+              onMouseEnter={e => (e.currentTarget.style.color = '#E38F2E')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#2e3192')}
+            >
+              Home
+            </Link>
+            <Chev />
+            <span style={{ color: '#2e3192' }}>About</span>
+          </nav>
+
+          {/* Orange tagline */}
+          <p
+            style={{
+              margin: 0,
+              fontFamily: "'Poppins', sans-serif",
+              fontSize: 'clamp(12px, 1vw, 16px)',
+              fontWeight: 500,
+              color: '#E38F2E',
+              lineHeight: 1.2,
+            }}
+          >
+            We Believe in Beauty
+          </p>
+
+{/* Orange underline accent */}
+          <div
+            style={{
+              width: 'clamp(55px, 2.6vw, 74px)',
+              height: '2.5px',
+              borderRadius: '2px',
+              background: '#E38F2E',
+              marginTop: 'clamp(8px, 0.75vw, 14px)',
+              marginBottom: 'clamp(8px, 0.75vw, 14px)',
+            }}
+          />
+
+          {/* Main heading */}
+          <h1
+            style={{
+              margin: 0,
+              fontFamily: "'Playfair Display', 'Playfair', serif",
+              fontWeight: 700,
+              fontSize: 'clamp(28px, 3.6vw, 52px)',
+              lineHeight: 1.12,
+              color: '#2e3192',
+              letterSpacing: '-0.3px',
+            }}
+          >
+            Our Story
+          </h1>
+
+          {/* Description */}
+          <p
+            style={{
+              margin: 0,
+              marginTop: 'clamp(8px, 0.75vw, 14px)',
+              fontFamily: "'Poppins', sans-serif",
+              fontWeight: 400,
+              fontSize: 'clamp(11.5px, 0.88vw, 14px)',
+              lineHeight: 1.75,
+              color: '#70768A',
+              maxWidth: '550px',
+            }}
+          >
+            Discover Kamakhya Cosmetics — where beauty, care, and trust come together
+            to make everyday self-care special.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default AboutHero;
+>>>>>>> Stashed changes
