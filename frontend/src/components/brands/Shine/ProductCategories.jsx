@@ -7,11 +7,11 @@ const serif = "'Playfair Display', Georgia, serif";
 const sans = "'Poppins', 'Segoe UI', sans-serif";
 
 const CATS = [
-  { name: "Body Care",  count: "18+ Products", img: catImg },
-  { name: "Body Care",   count: "18+ Products",  img: catImg },
-  { name: "Body Care", count: "18+ Products", img: catImg },
-  { name: "Body Care",        count: "18+ Products", img: catImg },
-  { name: "Body Care",  count: "18+ Products", img: catImg },
+  { name: "Bathroom Cleaners",          category: "Bathroom Cleaners",          count: "18+ Products", img: catImg },
+  { name: "Floor and Surface Cleaners", category: "Floor and Surface Cleaners", count: "18+ Products", img: catImg },
+  { name: "Glass Cleaners",             category: "Glass Cleaners",             count: "18+ Products", img: catImg },
+  { name: "Kitchen & Dishwashing",      category: "Kitchen & Dishwashing",      count: "18+ Products", img: catImg },
+  { name: "Laundry",                    category: "Laundry",                    count: "18+ Products", img: catImg },
 ];
 const SLOTS = ["pc-c1", "pc-c2", "pc-c3", "pc-c4", "pc-c5"];
 const DOTS = [0, 1, 2, 3];
@@ -159,9 +159,9 @@ const ProductCategories = () => {
       </div>
 
       <div className="pc-row">
-        {items.map((c, i) => (
-          <Link to="/products" className={`pc-card ${SLOTS[i]}`} key={`${c.name}-${i}`}>
-            {c.img && <img className="pc-img" src={c.img} alt={`Royal Luxury ${c.name}`} />}
+{items.map((c, i) => (
+          <Link to={`/products?brand=Shine&category=${c.category}`} className={`pc-card ${SLOTS[i]}`} key={`${c.name}-${i}`}>
+            {c.img && <img className="pc-img" src={c.img} alt={`Shine ${c.name}`} />}
             <p className="pc-name">{c.name}</p>
             <p className="pc-count">{c.count}</p>
             <span className="pc-arrow"><Arrow /></span>

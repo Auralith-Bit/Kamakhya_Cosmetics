@@ -62,18 +62,12 @@ export default function HeroBanner() {
           max-width:100%;
           }
 
-          /* ✅ LEAVES-ONLY CROP: anchored at the left edge AND zoomed 1.8×
-             from that edge, so the visible window shrinks to the leftmost
-             ~25% of the banner — the product/machinery zone can no longer
-             reach into the frame at all. */
           .mh-bg{position:absolute;inset:0;width:100%;height:100%;
             object-fit:cover;object-position:0% center;
             transform:scale(1.8);
             transform-origin:left center;
             z-index:1;}
 
-          /* ✅ VEIL: soft cream shade behind the copy, fading out to the
-             right so the leaves stay visible. */
           .mh-veil{display:block;position:absolute;inset:0;pointer-events:none;z-index:1;
             background:linear-gradient(90deg,
               rgba(247,241,232,1) 0%,
@@ -81,7 +75,7 @@ export default function HeroBanner() {
               rgba(247,241,232,0) 70%);}
         }
 
-        /* ============ TABLET 640–1023 — mini-desktop, shorter stage ============ */
+        /* ============ TABLET 640–1023 — image removed, copy fills the panel ============ */
         @media (min-width:640px) and (max-width:1023px){
           .mh-hero{
           height:auto;
@@ -89,13 +83,17 @@ export default function HeroBanner() {
           overflow:hidden;
           }
 
+          .mh-bg{display:none;}
+          .mh-veil{display:none;}
+
           .mh-copy{
-          position:absolute;
-          left:5.8vw;
-          top:6vw;
-          width:52%;
+          position:relative;
+          left:auto;
+          top:auto;
           z-index:2;
-          padding:0;
+          width:auto;
+          margin:5.8vw 6vw;
+          padding:calc(6vw + var(--nav-h)) 0 8vw;
           }
           
           .mh-crumb{font-size:15px;gap:8px;}
@@ -112,23 +110,12 @@ export default function HeroBanner() {
           .mh-title{margin-top:10px;font-size:34px;}
           
           .mh-p{
-          margin-top:12px;
-          font-size:15px;
+          margin-top:clamp(10px, 1.6vw, 14px);
+          font-size:clamp(13px, 2vw, 16px);
           letter-spacing:0.01em;
-          line-height:1.55;
-          max-width:40vw;
+          line-height:1.6;
+          max-width:820px;
           }
-
-          .mh-bg{
-          position:absolute;
-          left:50%;
-          top:50%;
-          width:72%;
-          height:70%;
-          transform:translate(-50%, -50%) scale(1.4);
-          }
-
-          .mh-veil{display:none;}
         }
       `}</style>
 

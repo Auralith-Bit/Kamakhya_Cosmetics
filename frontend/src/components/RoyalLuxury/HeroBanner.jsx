@@ -81,7 +81,7 @@ const HeroBanner = () => (
         .sh-shade{display:none;}
       }
 
-      /* ============ TABLET 640–1023 — mini-desktop ============ */
+      /* ============ TABLET 640–1023 — image removed, copy fills the panel ============ */
       @media (min-width:640px) and (max-width:1023px){
         .sh-hero{
           height:auto;
@@ -89,13 +89,16 @@ const HeroBanner = () => (
           overflow:hidden;
         }
 
+        .sh-bg{display:none;}
+
         .sh-copy{
-          position:absolute;
-          left:5.8vw;
-          top:6vw;
-          width:52%;
+          position:relative;
+          left:auto;
+          top:auto;
           z-index:2;
-          padding:0;
+          width:auto;
+          margin:5.8vw 6vw;
+          padding:calc(6vw + var(--nav-h)) 0 8vw;
         }
 
         .sh-crumb{font-size:15px;gap:8px;}
@@ -112,21 +115,11 @@ const HeroBanner = () => (
         .sh-title{margin-top:10px;font-size:34px;}
 
         .sh-p{
-          margin-top:12px;
-          font-size:15px;
-          text-align:justify;
+          margin-top:clamp(10px, 1.6vw, 14px);
+          font-size:clamp(13px, 2vw, 16px);
           letter-spacing:0.01em;
-          line-height:1.55;
-          max-width:100%;
-        }
-
-        .sh-bg{
-          position:absolute;
-          left:50%;
-          top:50%;
-          width:100%;
-          height:68%;
-          transform:translate(-50%, -50%) scale(1.4);
+          line-height:1.6;
+          max-width:820px;
         }
 
         .sh-shade{display:none;}

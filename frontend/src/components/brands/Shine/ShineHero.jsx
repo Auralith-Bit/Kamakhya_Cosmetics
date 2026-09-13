@@ -70,7 +70,7 @@ const ShineHero = () => (
         .sh-shade{display:none;}
       }
 
-      /* ============ TABLET 640–1023 — NOTHING CAN BE CLIPPED ============ */
+      /* ============ TABLET 640–1023 — image removed, copy fills the panel ============ */
       @media (min-width:640px) and (max-width:1023px){
         .sh-hero{
           height:auto;
@@ -78,13 +78,16 @@ const ShineHero = () => (
           overflow:hidden;
         }
 
+        .sh-bg{display:none;}
+
         .sh-copy{
           position:relative;
-          left:5.8vw;
-          top:6vw;
+          left:auto;
+          top:auto;
           z-index:2;
-          width:55%;
-          padding:calc(6vw + var(--nav-h)) 4vw 8vw 6vw;
+          width:auto;
+          margin:5.8vw 6vw;
+          padding:calc(6vw + var(--nav-h)) 0 8vw;
         }
 
         .sh-crumb{font-size:clamp(13px, 2vw, 16px);gap:8px;
@@ -95,17 +98,11 @@ const ShineHero = () => (
         .sh-rule{width:clamp(48px, 7vw, 60px);height:3px;
           margin-top:clamp(8px, 1.2vw, 10px);border-radius:2px;}
         .sh-title{margin-top:clamp(8px, 1.2vw, 10px);font-size:clamp(26px, 4.5vw, 36px);}
-        .sh-p{margin-top:clamp(8px, 1.5vw, 12px);font-size:clamp(12px, 1.8vw, 15px);
-          line-height:1.55;max-width:none;}
 
-        .sh-bg{
-          position:absolute;
-          left:50%;
-          top:50%;
-          width:100%;
-          height:68%;
-          transform:translate(-50%, -50%) scale(1.4);
-        }
+        .sh-p{margin-top:clamp(10px, 1.6vw, 14px);
+          font-size:clamp(13px, 2vw, 16px);
+          line-height:1.6;
+          max-width:820px;}
 
         .sh-shade{display:none;}
       }

@@ -72,7 +72,7 @@ const AboutHero = () => (
           rgba(246,231,220,0) 70%);}
       }
 
-      /* ============ TABLET 640–1023 — mini-desktop ============ */
+      /* ============ TABLET 640–1023 — image removed, copy fills the panel ============ */
       @media (min-width:640px) and (max-width:1023px){
         .ah-hero{
           height:auto;
@@ -80,13 +80,17 @@ const AboutHero = () => (
           overflow:hidden;
         }
 
+        .ah-bg{display:none;}
+        .ah-veil{display:none;}
+
         .ah-copy{
-          position:absolute;
-          left:5.8vw;
-          top:6vw;
-          width:52%;
+          position:relative;
+          left:auto;
+          top:auto;
           z-index:2;
-          padding:0;
+          width:auto;
+          margin:5.8vw 6vw;
+          padding:calc(6vw + var(--nav-h)) 0 8vw;
         }
 
         .ah-crumb{font-size:15px;gap:8px;}
@@ -103,20 +107,11 @@ const AboutHero = () => (
         .ah-title{margin-top:10px;font-size:34px;}
 
         .ah-p{
-          margin-top:12px;
-          font-size:15px;
+          margin-top:clamp(10px, 1.6vw, 14px);
+          font-size:clamp(13px, 2vw, 16px);
           letter-spacing:0.01em;
-          line-height:1.55;
-          max-width:none;
-        }
-
-        .ah-bg{
-          position:absolute;
-          left:50%;
-          top:50%;
-          width:72%;
-          height:70%;
-          transform:translate(-50%, -50%) scale(1.4);
+          line-height:1.6;
+          max-width:820px;
         }
       }
     `}</style>

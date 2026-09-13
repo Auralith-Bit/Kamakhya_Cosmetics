@@ -11,6 +11,10 @@ const WHATSAPP_NUMBER = "9779857049884"; // +977 9857049884
 const WHATSAPP_MESSAGE = "Hello! I'd like to know more about your products.";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
+/* ✅ validation rules */
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;          // any valid email format
+const PHONE_RE = /^(97|98)\d{8}$/;                          // 10 digits, must start with 97 or 98
+
 /* ---------------- icons ---------------- */
 const Pin = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -92,8 +96,8 @@ const INFO = [
 ];
 
 const BRANDS = [
-  { img: RLimage,    name: "Royal Luxury", to: "/brands/royal-luxury", desc: "Skincare that defines elegance and delivers royal indulgence every day." },
-  { img: Shineimage, name: "Shine",        to: "/brands/shine",        desc: "Skincare that defines elegance and delivers royal indulgence every day." },
+  { img: RLimage,    name: "Royal Luxury", to: "/products?brand=Royal Luxury", desc: "Skincare that defines elegance and delivers royal indulgence every day." },
+  { img: Shineimage, name: "Shine",        to: "/products?brand=Shine",        desc: "Skincare that defines elegance and delivers royal indulgence every day." },
 ];
 
 const FEATS = [
@@ -103,8 +107,52 @@ const FEATS = [
   { Icon: ShieldI,    title: "Trusted Quality",      text: "Pure quality products made in Nepal." },
 ];
 
+const EMPTY_FORM = { name: "", email: "", phone: "", inquiry: "", message: "" };
+
 const ContactSections = () => {
   const [sent, setSent] = useState(false);
+  const [form, setForm] = useState(EMPTY_FORM);
+  const [errors, setErrors] = useState({});
+
+  /* ✅ empty → "<Field> is required." | wrong format → "Invalid email." / "Invalid phone number." */
+  const validate = (values) => {
+    const errs = {};
+
+    if (!values.name.trim()) errs.name = "Name is required.";
+
+    const email = values.email.trim();
+    if (!email) errs.email = "Email is required.";
+    else if (!EMAIL_RE.test(email)) errs.email = "Invalid email.";
+
+    const digits = values.phone.replace(/\D/g, "");
+    if (!digits) errs.phone = "Phone is required.";
+    else if (!PHONE_RE.test(digits)) errs.phone = "Invalid phone number.";
+
+    if (!values.inquiry) errs.inquiry = "Inquiry type is required.";
+
+    if (!values.message.trim()) errs.message = "Message is required.";
+
+    return errs;
+  };
+
+  /* typing only clears/updates an error that a previous submit already showed */
+  const handleChange = (field) => (e) => {
+    const next = { ...form, [field]: e.target.value };
+    setForm(next);
+    setErrors((prev) => (prev[field] ? { ...prev, [field]: validate(next)[field] } : prev));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const errs = validate(form);
+    setErrors(errs);
+    if (Object.keys(errs).length === 0) {
+      setSent(true);
+      setForm(EMPTY_FORM);
+    } else {
+      setSent(false);
+    }
+  };
 
   return (
     <section id="contact-body" className="cx-sec">
@@ -168,6 +216,13 @@ const ContactSections = () => {
           font-size:0.9vw;outline:none;transition:border-color .2s;}
         .cx-input::placeholder,.cx-area::placeholder{color:#999999;}
         .cx-input:focus,.cx-select:focus,.cx-area:focus{border-color:#2E3192;}
+
+        /* ✅ invalid state + error message */
+        .cx-input.invalid,.cx-select.invalid,.cx-area.invalid{border-color:#D64545;background:#FDF4F4;}
+        .cx-input.invalid:focus,.cx-select.invalid:focus,.cx-area.invalid:focus{border-color:#D64545;}
+        .cx-err{display:block;margin:0.45vw 0 0;color:#D64545;
+          font-family:${sans};font-size:0.8vw;font-weight:500;line-height:1.4;}
+
         .cx-row{display:grid;grid-template-columns:1fr 1fr;gap:2.7vw;}
         .cx-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23333' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
           background-repeat:no-repeat;background-position:right 1vw center;}
@@ -205,7 +260,7 @@ const ContactSections = () => {
           line-height:1.15;text-decoration:none;display:inline-block;letter-spacing:0.01em;}
         .cx-brand-name:hover{color:#E3B877;}
         .cx-brand-sub{color:#fff;font-family:${sans};font-size:0.83vw;font-weight:500;margin-top:0.25vw;}
-        .cx-brand p{margin-top:1.05vw;color:background: #D9D9D9;font-family:${sans};
+        .cx-brand p{margin-top:1.05vw;color:#D9D9D9;font-family:${sans};
           font-size:0.86vw;font-weight:400;line-height:1.6;}
         
         .cx-explore{
@@ -345,6 +400,7 @@ const ContactSections = () => {
           .cx-form-sub{font-size:clamp(12px, 1.5vw, 16px);}
           .cx-label{margin:4vw 0 2vw;font-size:clamp(12px, 1.5vw, 15px);}
           .cx-input,.cx-select,.cx-area{padding:3vw 3.5vw;font-size:clamp(12px, 1.5vw, 16px);border-radius:2vw;}
+          .cx-err{font-size:12px;margin-top:6px;}
           .cx-row{grid-template-columns:1fr;gap:0;}
           .cx-area{height:30vw;}
           .cx-send{height:12vw;border-radius:2vw;font-size:clamp(12px, 1.6vw, 17px);}
@@ -412,6 +468,7 @@ const ContactSections = () => {
           .cx-form-sub{font-size:14px;margin-top:8px;}
           .cx-label{margin:24px 0 10px;font-size:14px;}
           .cx-input,.cx-select,.cx-area{padding:14px 16px;font-size:14px;border-radius:10px;}
+          .cx-err{font-size:12px;margin-top:6px;}
           .cx-row{grid-template-columns:1fr 1fr;gap:24px;}
           .cx-area{height:120px;}
           .cx-send{height:48px;border-radius:10px;font-size:15px;margin-top:20px;}
@@ -470,35 +527,75 @@ const ContactSections = () => {
 
       {/* ---- form + aside ---- */}
       <div className="cx-main">
-        <form className="cx-form" onSubmit={(e) => { e.preventDefault(); setSent(true); }}>
+        <form className="cx-form" noValidate autoComplete="off" onSubmit={handleSubmit}>
           <h3>Send us a Message</h3>
           <p className="cx-form-sub">Fill out the form below and we'll get back to you as soon as possible.</p>
 
-          <label className="cx-label">Name *</label>
-          <input className="cx-input" required placeholder="Your full name" />
+          <label className="cx-label" htmlFor="cx-name">Name *</label>
+          <input
+            id="cx-name"
+            className={`cx-input${errors.name ? " invalid" : ""}`}
+            value={form.name}
+            onChange={handleChange("name")}
+            placeholder="Your full name"
+          />
+          {errors.name && <span className="cx-err">{errors.name}</span>}
 
           <div className="cx-row">
             <div>
-              <label className="cx-label">Email</label>
-              <input className="cx-input" type="email" placeholder="Your full name" />
+              <label className="cx-label" htmlFor="cx-email">Email *</label>
+              <input
+                id="cx-email"
+                className={`cx-input${errors.email ? " invalid" : ""}`}
+                type="email"
+                value={form.email}
+                onChange={handleChange("email")}
+                placeholder="you@example.com"
+              />
+              {/* ✅ empty → "Email is required." | bad format → "Invalid email." */}
+              {errors.email && <span className="cx-err">{errors.email}</span>}
             </div>
             <div>
-              <label className="cx-label">Phone</label>
-              <input className="cx-input" type="tel" placeholder="How can we reach you ?" />
+              <label className="cx-label" htmlFor="cx-phone">Phone *</label>
+              <input
+                id="cx-phone"
+                className={`cx-input${errors.phone ? " invalid" : ""}`}
+                type="tel"
+                inputMode="numeric"
+                maxLength={10}
+                value={form.phone}
+                onChange={handleChange("phone")}
+                placeholder="98XXXXXXXX"
+              />
+              {/* ✅ empty → "Phone is required." | bad format → "Invalid phone number." */}
+              {errors.phone && <span className="cx-err">{errors.phone}</span>}
             </div>
           </div>
 
-          <label className="cx-label">Inquiry Types</label>
-          <select className="cx-select" defaultValue="">
+          <label className="cx-label" htmlFor="cx-inquiry">Inquiry Types *</label>
+          <select
+            id="cx-inquiry"
+            className={`cx-select${errors.inquiry ? " invalid" : ""}`}
+            value={form.inquiry}
+            onChange={handleChange("inquiry")}
+          >
             <option value="">Select an Option</option>
             <option>Product Inquiry</option>
             <option>Wholesale / Distribution</option>
             <option>Private Label</option>
             <option>Other</option>
           </select>
+          {errors.inquiry && <span className="cx-err">{errors.inquiry}</span>}
 
-          <label className="cx-label">Message *</label>
-          <textarea className="cx-area" required placeholder="Write your message here …" />
+          <label className="cx-label" htmlFor="cx-message">Message *</label>
+          <textarea
+            id="cx-message"
+            className={`cx-area${errors.message ? " invalid" : ""}`}
+            value={form.message}
+            onChange={handleChange("message")}
+            placeholder="Write your message here …"
+          />
+          {errors.message && <span className="cx-err">{errors.message}</span>}
 
           <button className="cx-send" type="submit">
             <Send /> {sent ? "Message Sent ✓" : "Send Message"}

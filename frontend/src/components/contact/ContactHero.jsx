@@ -75,7 +75,7 @@ const ContactHero = () => (
         .ct-shade{display:none;}
       }
 
-      /* ============ TABLET 640–1023 ============ */
+      /* ============ TABLET 640–1023 — image removed, copy fills the panel ============ */
       @media (min-width:640px) and (max-width:1023px){
         .ct-hero{
           height:auto;
@@ -85,41 +85,18 @@ const ContactHero = () => (
           padding:40px 0;
         }
 
-        .ct-bg{
-          display:block;
-          position:absolute;
-          inset:0;
-          width:100%;
-          height:100%;
-          object-fit:cover;
-          object-position:35% 50%;
-          z-index:0;
-        }
-
-        .ct-veil{
-          display:block;
-          position:absolute;
-          inset:0;
-          pointer-events:none;
-          z-index:1;
-          background:linear-gradient(90deg,
-            rgba(246,231,220,1) 0%,
-            rgba(246,231,220,0.92) 42%,
-            rgba(246,231,220,0) 72%);
-        }
-
-        .ct-shade{
-          display:none;
-        }
+        .ct-bg{display:none;}
+        .ct-veil{display:none;}
+        .ct-shade{display:none;}
 
         .ct-copy{
           position:relative;
           z-index:2;
           left:auto;
-          top:-4vw;
-          width:52%;
-          max-width:460px;
-          margin:0 0 0 6vw;
+          top:-3vw;
+          width:auto;
+          max-width:none;
+          margin:0 6vw;
           padding:0;
         }
 
@@ -134,9 +111,9 @@ const ContactHero = () => (
         
         .ct-p{
           margin-top:12px;
-          font-size:14px;
-          line-height:1.55;
-          max-width:100%;
+          font-size:clamp(13px, 2vw, 16px);
+          line-height:1.6;
+          max-width:820px;
           color:#4A4E5E;
         }
       }

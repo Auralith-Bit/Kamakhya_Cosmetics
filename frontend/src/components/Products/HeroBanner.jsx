@@ -10,7 +10,6 @@ const HeroBanner = () => (
     <section
         id="products-hero"
         className="prod-banner"
-        style={{ backgroundImage: `url(${BannerImg})` }}
     >
         <style>{`
             /* ============ DESKTOP ≥1024 — matches Manufacturing banner ============ */
@@ -19,6 +18,7 @@ const HeroBanner = () => (
                 width:100%;
                 height:23.4375vw;
                 background-color:#F7F1E8;
+                background-image:url(${BannerImg});
                 background-size:cover;
                 background-position:center top;
                 overflow:hidden;
@@ -55,10 +55,15 @@ const HeroBanner = () => (
                     letter-spacing:0.01em;line-height:1.2;max-width:100%;}
             }
 
-            /* ============ TABLET 640–1023 ============ */
+            /* ============ TABLET 640–1023 — image removed, copy fills the panel ============ */
             @media (min-width:640px) and (max-width:1023px){
-                .prod-banner{height:auto;aspect-ratio:21/9;background-position:0% 50%;}
-                .prod-copy{position:absolute;left:5.8vw;top:6vw;width:52%;z-index:2;padding:0;}
+                .prod-banner{
+                    height:auto;aspect-ratio:21/9;background-position:0% 50%;
+                    background-image:none;   /* ✅ clean solid #F7F1E8 panel */
+                }
+                /* ✅ was width:52% (left half only) — now symmetric 5.8vw margins
+                   so the paragraph lines use the full panel width */
+                .prod-copy{position:absolute;left:5.8vw;top:6vw;width:88.4%;z-index:2;padding:0;}
                 .prod-crumb{font-size:15px;gap:8px;}
                 .prod-crumb a{font-size:20px;}
                 .prod-ic-home{width:20px;height:20px;}
@@ -70,7 +75,7 @@ const HeroBanner = () => (
                     letter-spacing:0.01em;line-height:1.55;max-width:100%;}
             }
 
-            /* ============ NARROW TABLET 830–1023 — shorter stage, less bottom space ============ */
+            /* ============ NARROW TABLET 830–1023 — shorter stage, centered copy ============ */
             @media (min-width:830px) and (max-width:1023px){
                 .prod-banner{height:auto;aspect-ratio:21/8;background-position:0% 50%;}
                 .prod-copy{top:50%;transform:translateY(-50%);}

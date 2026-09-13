@@ -9,7 +9,6 @@ const HeroBanner = () => (
     <section
         id="distributor-hero"
         className="dst-banner"
-        style={{ backgroundImage: `url(${Distributor})` }}
     >
         <style>{`
             /* ============ DESKTOP ≥1024 — matches Manufacturing banner ============ */
@@ -18,6 +17,7 @@ const HeroBanner = () => (
                 width:100%;
                 height:23.4375vw;
                 background-color:#F7F1E8;
+                background-image:url(${Distributor});
                 background-size:cover;
                 background-position:center top;
                 overflow:hidden;
@@ -56,8 +56,24 @@ const HeroBanner = () => (
 
             /* ============ TABLET 640–1023 ============ */
             @media (min-width:640px) and (max-width:1023px){
-                .dst-banner{height:auto;aspect-ratio:21/9;background-position:0% 50%;}
-                .dst-copy{position:absolute;left:5.8vw;top:6vw;width:52%;z-index:2;padding:0;}
+                .dst-banner{
+                    height:auto;
+                    aspect-ratio:21/9;
+                    background-position:0% 50%;
+                    background-image:none;
+                }
+
+                .dst-copy{
+                    position:absolute;
+                    left:6vw;
+                    right:6vw;
+                    top:17vw;
+                    transform:translateY(-50%);
+                    width:auto;
+                    z-index:2;
+                    padding:0;
+                }
+
                 .dst-crumb{font-size:15px;gap:8px;}
                 .dst-crumb a{font-size:20px;}
                 .dst-ic-home{width:20px;height:20px;}
@@ -65,14 +81,14 @@ const HeroBanner = () => (
                 .dst-tag{margin-top:15px;font-size:18px;}
                 .dst-rule{width:100px;height:3px;margin-top:10px;border-radius:2px;}
                 .dst-title{margin-top:10px;font-size:34px;}
-                .dst-p{margin-top:12px;font-size:15px;
-                    letter-spacing:0.01em;line-height:1.55;max-width:100%;}
+
+                .dst-p{margin-top:12px;font-size:clamp(13px, 2vw, 16px);
+                    letter-spacing:0.01em;line-height:1.6;max-width:820px;}
             }
 
-            /* ============ NARROW TABLET 830–1023 — shorter stage, less bottom space ============ */
+            /* ============ NARROW TABLET 830–1023 — shorter stage ============ */
             @media (min-width:830px) and (max-width:1023px){
                 .dst-banner{height:auto;aspect-ratio:21/8;background-position:0% 50%;}
-                .dst-copy{top:50%;transform:translateY(-50%);}
             }
         `}</style>
 
