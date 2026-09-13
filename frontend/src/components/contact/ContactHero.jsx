@@ -75,14 +75,14 @@ const ContactHero = () => (
         .ct-shade{display:none;}
       }
 
-      /* ============ TABLET 640–1023 — refined mini-desktop ============ */
+      /* ============ TABLET 640–1023 ============ */
       @media (min-width:640px) and (max-width:1023px){
         .ct-hero{
           height:auto;
-          min-height:420px;
+          min-height:320px;
           display:flex;
           align-items:center;
-          padding: 8vw 0;
+          padding:40px 0;
         }
 
         .ct-bg{
@@ -92,7 +92,7 @@ const ContactHero = () => (
           width:100%;
           height:100%;
           object-fit:cover;
-          object-position:center right;
+          object-position:35% 50%;
           z-index:0;
         }
 
@@ -104,8 +104,8 @@ const ContactHero = () => (
           z-index:1;
           background:linear-gradient(90deg,
             rgba(246,231,220,1) 0%,
-            rgba(246,231,220,0.92) 40%,
-            rgba(246,231,220,0) 70%);
+            rgba(246,231,220,0.92) 42%,
+            rgba(246,231,220,0) 72%);
         }
 
         .ct-shade{
@@ -116,11 +116,10 @@ const ContactHero = () => (
           position:relative;
           z-index:2;
           left:auto;
-          top:auto;
-          width:55%;
-          max-width:480px;
-          margin-top: -12vw;
-          margin-left:6vw;
+          top:-4vw;
+          width:52%;
+          max-width:460px;
+          margin:0 0 0 6vw;
           padding:0;
         }
 
@@ -129,16 +128,16 @@ const ContactHero = () => (
         .ct-ic-home{width:18px;height:18px;}
         .ct-ic-chev{width:16px;height:16px;}
 
-        .ct-tag{margin-top:14px;font-size:15px;}
-        .ct-rule{width:80px;height:3px;margin-top:10px;border-radius:2px;}
-        .ct-title{margin-top:12px;font-size:clamp(28px, 4vw, 36px);line-height:1.2;}
+        .ct-tag{margin-top:12px;font-size:15px;}
+        .ct-rule{width:80px;height:3px;margin-top:8px;border-radius:2px;}
+        .ct-title{margin-top:10px;font-size:clamp(26px, 3.6vw, 32px);line-height:1.2;}
         
         .ct-p{
-          margin-top:14px;
+          margin-top:12px;
           font-size:14px;
-          line-height:1.6;
+          line-height:1.55;
           max-width:100%;
-          color:#4A4E5E; /* slightly darker for better contrast against the veil */
+          color:#4A4E5E;
         }
       }
     `}</style>

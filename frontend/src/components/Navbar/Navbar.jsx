@@ -114,6 +114,9 @@ const Navbar = () => {
   const navigate = useNavigate();
   const desktopBrandsRef = useRef(null);
   const mobileBrandsRef = useRef(null);
+  /* ✅ refs for click-outside closing of the hamburger menu */
+  const mobileTopbarRef = useRef(null);
+  const mobileMenuRef = useRef(null);
 
   const MENU_ITEMS = [
     { label: "HOME", to: "/", type: "link" },
@@ -122,8 +125,6 @@ const Navbar = () => {
     { label: "MANUFACTURING", to: "/manufacture", type: "link" },
     { label: "ABOUT", to: "/about", type: "link" },
     { label: "CONTACT", to: "/contact", type: "link" },
-    
-
   ];
 
   const handleSearch = (e) => {
@@ -137,6 +138,39 @@ const Navbar = () => {
     setMobileOpen(false);
     setBrandsOpen(false);
   }, [location]);
+
+  /* ✅ close hamburger menu when clicking anywhere outside it */
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const handleOutsideClick = (e) => {
+      const menu = mobileMenuRef.current;
+      const topbar = mobileTopbarRef.current;
+
+      const clickedInsideMenu = menu && menu.contains(e.target);
+      const clickedInsideTopbar = topbar && topbar.contains(e.target);
+
+      if (!clickedInsideMenu && !clickedInsideTopbar) {
+        setMobileOpen(false);
+      }
+    };
+
+    const handleEscape = (e) => {
+      if (e.key === "Escape") {
+        setMobileOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("touchstart", handleOutsideClick, { passive: true });
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("touchstart", handleOutsideClick);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [mobileOpen]);
 
   return (
     <header className="kn-nav">
@@ -217,6 +251,9 @@ const Navbar = () => {
           padding:14px 24px;font-size:15px;font-weight:600;letter-spacing:.3px;cursor:pointer;
           white-space:nowrap;transition:background .2s;text-decoration:none;display:inline-flex;align-items:center;}
         .kn-cta:hover{background:#252775;}
+
+        /* ✅ tablet-only CTA inside the mobile topbar (hidden on phones) */
+        .kn-cta-m{display:none;}
 
         .kn-hamburger{display:none;width:42px;height:42px;border:none;background:transparent;
           cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;
@@ -312,13 +349,47 @@ const Navbar = () => {
           .kn-actions-mobile{display:flex;align-items:center;gap:8px;}
           .kn-actions-mobile .kn-iconbtn{width:36px;height:36px;}
         }
-        @media (min-width:641px){
+        /* ✅ was min-width:641 — now only ≥1024 hides the burger row & slide menu,
+           because tablets (640–1023) use them too */
+        @media (min-width:1024px){
           .kn-mobile-topbar{display:none!important;}
           .kn-mobile-menu{display:none!important;}
         }
         @media (max-width:400px){
           .kn-logo img{height:50px;}
           .kn-logo{padding:8px 12px;}
+        }
+
+        /* ============ TABLET 640–1023 — 3 ROWS:
+           1) logo (unchanged)  2) email + search  3) hamburger + wishlist + cart + CTA ============ */
+        @media (min-width:640px) and (max-width:1023px){
+          /* Row 1 — logo band exactly as it renders today */
+          .kn-diag{display:none;}
+          .kn-logo{position:static;width:100%;height:auto;padding:10px 0;}
+          .kn-logo img{height:80px;}
+
+          /* Row 2 — blue bar: email LEFT + search RIGHT on ONE line */
+          .kn-topbar{display:flex;flex-wrap:nowrap;padding:10px 24px;min-height:56px;gap:16px;}
+          .kn-email{order:1;flex:0 1 auto;font-size:13px;}
+          .kn-search{order:2;flex:1 1 220px;width:auto;max-width:340px;min-width:160px;
+            margin-left:auto;height:38px;}
+
+          /* Row 3 — hamburger + wishlist + cart + Become Distributor */
+          .kn-mainrow{display:none;}
+          .kn-nav .kn-mobile-topbar{display:flex;align-items:center;
+            justify-content:space-between;padding:8px 16px 10px;gap:12px;}
+          .kn-hamburger{display:flex;}
+          .kn-actions-mobile{display:flex;align-items:center;gap:8px;}
+          .kn-actions-mobile .kn-iconbtn{width:38px;height:38px;}
+          .kn-cta-m{display:inline-flex;margin-left:6px;padding:10px 18px;font-size:13px;}
+
+          /* slide-down menu = pages only (search/email/CTA already visible above) */
+          .kn-mobile-menu{display:block;}
+          .kn-mobile-inner{padding:12px 20px 16px;}
+          .kn-mobile-inner .kn-m-search{display:none;}
+          .kn-mobile-email{display:none;}
+          .kn-mobile-cta{display:none;}
+          .kn-mobile-links a, .kn-mobile-links .kn-brands-btn{font-size:14px;padding:12px 0;}
         }
       `}</style>
 
@@ -457,7 +528,8 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="kn-mobile-topbar">
+      {/* ✅ ref attached — counts as "inside" for click-outside logic */}
+      <div className="kn-mobile-topbar" ref={mobileTopbarRef}>
         <button
           className={`kn-hamburger ${mobileOpen ? "open" : ""}`}
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -510,11 +582,15 @@ const Navbar = () => {
               {cartCount > 0 && <span className="kn-badge">{cartCount}</span>}
             </button>
           </Link>
+          {/* ✅ tablet-only CTA (hidden ≤640 via .kn-cta-m base rule) */}
+          <Link to="/distributor" className="kn-cta kn-cta-m">
+            Become Distributor
+          </Link>
         </div>
       </div>
 
-      {/* ── MOBILE: slide-down menu ── */}
-      <div className={`kn-mobile-menu ${mobileOpen ? "open" : ""}`}>
+      {/* ── MOBILE / TABLET: slide-down menu (ref attached for click-outside) ── */}
+      <div className={`kn-mobile-menu ${mobileOpen ? "open" : ""}`} ref={mobileMenuRef}>
         <div className="kn-mobile-inner">
           <form onSubmit={handleSearch} className="kn-m-search">
             <input
