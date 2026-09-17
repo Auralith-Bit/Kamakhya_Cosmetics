@@ -22,22 +22,33 @@ const Arrow = () => (
   </svg>
 );
 const ChevL = () => (
-  <svg viewBox="0 0 9 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M7.5 1.5 2 7l5.5 5.5" />
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{width:'18px',height:'18px'}}>
+    <path d="M15 18l-6-6 6-6" />
   </svg>
 );
 const ChevR = () => (
-  <svg viewBox="0 0 9 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="m1.5 1.5 6 5.5-6 5.5" />
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{width:'18px',height:'18px'}}>
+    <path d="M9 18l6-6-6-6" />
   </svg>
 );
 
 const ProductCategories = () => {
   const [items, setItems] = useState(CATS);
-  const [dot, setDot] = useState(1);
+  const [page, setPage] = useState(1);
 
-  const next = () => { setItems(a => [...a.slice(1), a[0]]); setDot(d => (d + 1) % DOTS.length); };
-  const prev = () => { setItems(a => [a[a.length - 1], ...a.slice(0, -1)]); setDot(d => (d + DOTS.length - 1) % DOTS.length); };
+  const next = () => {
+    if (page >= DOTS.length - 1) return;
+    setItems(a => [...a.slice(1), a[0]]);
+    setPage(p => p + 1);
+  };
+  const prev = () => {
+    if (page <= 0) return;
+    setItems(a => [a[a.length - 1], ...a.slice(0, -1)]);
+    setPage(p => p - 1);
+  };
+
+  const isFirst = page === 0;
+  const isLast = page === DOTS.length - 1;
 
   return (
     <section id="shine-categories" className="pc-sec">
@@ -79,16 +90,16 @@ const ProductCategories = () => {
         .pc-card:hover .pc-arrow{background:#E4E4F0;}
         .pc-card:hover .pc-arrow svg{transform:rotate(-45deg);}
 
-        .pc-ctrl{display:flex;align-items:center;justify-content:center;gap:32px;margin-top:44px;}
-        .pc-nav{width:48px;height:48px;border-radius:50%;background:#F5F5FA;
-          border:1px solid #A1A2CE;color:#2E3192;display:flex;align-items:center;
+        .pc-ctrl{display:flex;align-items:center;justify-content:center;gap:20px;margin-top:36px;}
+        .pc-nav{width:40px;height:40px;border-radius:50%;background:transparent;
+          border:1.5px solid #2E3192;color:#2E3192;display:flex;align-items:center;
           justify-content:center;cursor:pointer;transition:border-color .3s;}
         .pc-nav:hover{border-color:#2E3192;}
-        .pc-nav svg{width:10px;height:auto;}
-        .pc-dots{display:flex;align-items:center;gap:10px;}
-        .pc-dot{width:22px;height:12px;border-radius:6px;background:#CBCCE4;
-          border:1px solid #7779B8;padding:0;cursor:pointer;transition:all .3s;}
-        .pc-dot.active{width:46px;height:14px;border-radius:7px;background:#2E3192;border:none;}
+        .pc-nav svg{width:18px;height:auto;}
+        .pc-dots{display:flex;align-items:center;gap:8px;}
+        .pc-dot{width:10px;height:10px;border-radius:5px;background:#C9CBEC;
+          border:none;padding:0;cursor:pointer;transition:all .3s;}
+        .pc-dot.active{width:32px;height:10px;border-radius:5px;background:#2E3192;border:none;}
 
         /* tighter type for small desktops / laptops */
         @media (min-width:1024px) and (max-width:1280px){
@@ -114,8 +125,8 @@ const ProductCategories = () => {
           .pc-arrow{right:12px;bottom:12px;width:34px;height:34px;}
           .pc-arrow svg{width:14px;}
 
-          .pc-ctrl{margin-top:32px;gap:24px;}
-          .pc-nav{width:44px;height:44px;}
+          .pc-ctrl{margin-top:28px;gap:20px;}
+          .pc-nav{width:40px;height:40px;}
         }
 
         /* ✅ wide tablets get 4 cards */
@@ -142,9 +153,9 @@ const ProductCategories = () => {
           .pc-arrow svg{width:15px;}
 
           .pc-ctrl{margin-top:28px;gap:18px;}
-          .pc-nav{width:44px;height:44px;}
-          .pc-dot{width:18px;height:10px;border-radius:5px;}
-          .pc-dot.active{width:36px;height:12px;border-radius:6px;}
+          .pc-nav{width:40px;height:40px;}
+          .pc-dot{width:10px;height:10px;border-radius:5px;}
+          .pc-dot.active{width:28px;height:10px;border-radius:5px;}
         }
       `}</style>
 
@@ -170,13 +181,21 @@ const ProductCategories = () => {
       </div>
 
       <div className="pc-ctrl">
-        <button className="pc-nav prev" aria-label="Previous" onClick={prev}><ChevL /></button>
+        <button className="pc-nav prev" aria-label="Previous" onClick={prev} disabled={isFirst} style={{ opacity: isFirst ? 0.35 : 1, cursor: isFirst ? 'default' : 'pointer' }}><ChevL /></button>
         <div className="pc-dots">
           {DOTS.map(i => (
-            <button key={i} className={`pc-dot${dot === i ? " active" : ""}`} aria-label={`Page ${i + 1}`} onClick={() => setDot(i)} />
+            <button key={i} className={`pc-dot${page === i ? " active" : ""}`} aria-label={`Page ${i + 1}`} onClick={() => {
+              const diff = i - page;
+              if (diff > 0) {
+                setItems(a => { let arr = [...a]; for (let k = 0; k < diff; k++) arr = [...arr.slice(1), arr[0]]; return arr; });
+              } else if (diff < 0) {
+                setItems(a => { let arr = [...a]; for (let k = 0; k < -diff; k++) arr = [arr[arr.length - 1], ...arr.slice(0, -1)]; return arr; });
+              }
+              setPage(i);
+            }} />
           ))}
         </div>
-        <button className="pc-nav next" aria-label="Next" onClick={next}><ChevR /></button>
+        <button className="pc-nav next" aria-label="Next" onClick={next} disabled={isLast} style={{ opacity: isLast ? 0.35 : 1, cursor: isLast ? 'default' : 'pointer' }}><ChevR /></button>
       </div>
     </section>
   );

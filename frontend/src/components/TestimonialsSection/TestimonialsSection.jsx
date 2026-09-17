@@ -57,6 +57,7 @@ const TestimonialCard = ({ name, role, text, color }) => (
     className="testimonial-card"
     style={{
       flexShrink: 0,
+      scrollSnapAlign: 'start',
       background: '#fff',
       borderRadius: '14px',
       padding: '28px 28px 24px',
@@ -181,6 +182,7 @@ const TestimonialsSection = () => {
               gap: `${GAP}px`,
               overflowX: 'hidden',
               scrollBehavior: 'smooth',
+              scrollSnapType: 'x mandatory',
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
               paddingBottom: '8px',
