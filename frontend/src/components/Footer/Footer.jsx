@@ -232,6 +232,9 @@ const Footer = () => {
       <div className="pt-6 pb-10 px-[125px] max-lg:px-8 max-tab:px-5">
         <div className="flex items-center justify-between text-[13px] text-muted max-tab:flex-col max-tab:items-start max-tab:gap-3">
           <p className="m-0">&copy; {year} Kamakhya Cosmetics Pvt. Ltd. All rights reserved.</p>
+          <p className="m-0 text-[13px] text-muted">Designed & Developed by{' '}
+            <a href="https://auralithbit.com.np/" target="_blank" rel="noopener noreferrer" className="text-[14px] text-muted no-underline underline transition-colors hover:text-footer-gold">Auralith Bit</a>
+          </p>
           <div className="flex gap-6">
             <a href="/" className="text-muted no-underline transition-colors hover:text-footer-gold">Privacy Policy</a>
             <a href="/" className="text-muted no-underline transition-colors hover:text-footer-gold">Terms of Trade</a>
