@@ -69,7 +69,7 @@ const FeaturedCollection = () => {
             alignSelf: 'stretch',
           }}
         >
-          Featured Collection
+          NEW LAUNCH
         </p>
 
         <h2
@@ -85,7 +85,7 @@ const FeaturedCollection = () => {
             margin: '6px 0 0',
           }}
         >
-          Our Most Loved Collections
+          Discover What's New
         </h2>
 
         <svg xmlns="http://www.w3.org/2000/svg" width="172" height="24" viewBox="0 0 172 24" fill="none" style={{ display: 'block', margin: '8px auto 0' }}>
@@ -104,8 +104,7 @@ const FeaturedCollection = () => {
             margin: '12px auto 0',
           }}
         >
-          Discover the skincare and beauty products trusted by thousands for radiant, healthy-looking
-          skin—crafted with premium ingredients and proven results.
+          Explore our latest beauty and skincare launches, thoughtfully crafted with premium ingredients, modern formulations, and quality you can trust.
         </p>
       </div>
 
