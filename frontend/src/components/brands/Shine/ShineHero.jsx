@@ -54,7 +54,7 @@ const ShineHero = () => (
         .sh-hero{height:auto;}
 
         .sh-copy{position:relative;z-index:2;left:auto;top:auto;width:auto;
-          padding:8vw 6vw 24vw;}
+          padding:8vw 6vw 10vw;}
         .sh-crumb{font-size:clamp(13px, 1.6vw, 18px);gap:2vw;}
         .ic-home{width:clamp(14px, 1.8vw, 20px);height:clamp(14px, 1.8vw, 20px);}
         .ic-chev{width:clamp(6px, 0.9vw, 10px);height:clamp(10px, 1.4vw, 15px);}

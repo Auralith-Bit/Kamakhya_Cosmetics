@@ -143,7 +143,7 @@ const ProductCategories = () => {
           .pc-vector{width:120px;margin:12px auto 0;}
           .pc-sub{font-size:14px;margin-top:12px;}
 
-          .pc-row{display:block;margin-top:32px;}
+          .pc-row{display:block;margin:32px 0 0;}
           .pc-card{width:min(85vw, 340px);margin:0 auto;}
           .pc-c2,.pc-c3,.pc-c4,.pc-c5{display:none;}   /* ✅ one card at a time */
 
