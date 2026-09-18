@@ -94,6 +94,7 @@ export const products = [
         desc: 'Create stunning eye looks with our richly pigmented eyeshadow palette featuring 18 versatile shades.',
         notes: ['18 versatile matte and shimmer shades', 'Ultra-blendable formula', 'Vegan and cruelty-free'],
         moq: '200 pcs', lead: '10-12 days',
+        discount: 25,
         packSizes: [
             { size: '15 g', label: 'Compact', desc: 'Travel-friendly size' },
             { size: '30 g', label: 'Full Size', desc: 'Complete palette' },
@@ -220,6 +221,7 @@ export const products = [
         desc: 'Premium fabric softener that leaves clothes irresistibly soft with a lasting fresh fragrance.',
         notes: ['Long-lasting lavender fragrance', 'Reduces static cling on all fabrics', 'Gentle on sensitive skin'],
         moq: '500 pcs', lead: '7-10 days',
+        discount: 20,
         packSizes: [
             { size: '500 ml', label: 'Standard', desc: 'Standard bottle' },
             { size: '1 L', label: 'Family', desc: 'Family-size bottle' },
@@ -263,6 +265,7 @@ export const products = [
         desc: 'Lightweight hair serum that tames frizz and adds brilliant shine without weighing hair down.',
         notes: ['Frizz-control for up to 72 hours', 'Heat protection up to 230°C', 'Suitable for all hair types'],
         moq: '300 pcs', lead: '5-7 days',
+        discount: 25,
         packSizes: [
             { size: '30 ml', label: 'Standard', desc: 'Standard bottle' },
             { size: '50 ml', label: 'Value', desc: 'Value-size bottle' },
@@ -434,6 +437,7 @@ export const products = [
         desc: 'Nourishing hair oil blend that promotes growth, reduces split ends, and adds deep, lasting shine.',
         notes: ['Promotes healthy hair growth', 'Reduces split ends and breakage', '100% natural oil blend'],
         moq: '300 pcs', lead: '5-7 days',
+        discount: 25,
         packSizes: [
             { size: '50 ml', label: 'Standard', desc: 'Standard bottle' },
             { size: '100 ml', label: 'Value', desc: 'Value-size bottle' },
@@ -562,6 +566,7 @@ export const products = [
         desc: 'All-purpose floor cleaner safe for most surfaces. Antibacterial formula with a fresh ocean breeze scent.',
         notes: ['Antibacterial protection for floors', 'Safe on tile, wood, and laminate', 'Fresh ocean breeze fragrance'],
         moq: '300 pcs', lead: '5-7 days',
+        discount: 20,
         packSizes: [
             { size: '1 L', label: 'Standard', desc: 'Standard bottle' },
             { size: '2 L', label: 'Value', desc: 'Value-size bottle' },

@@ -226,11 +226,26 @@ const ProductDetailed = () => {
                     {selectedVolume === i && (
                       <CheckCircle2 className="w-4 h-4 text-orange-400 absolute top-3 right-3" />
                     )}
+                    {product.discount && (
+                      <span className="absolute top-2 right-2 text-xs font-bold text-white"
+                        style={{ background: '#CCA466', padding: '2px 6px', borderRadius: '4px' }}>
+                        -{product.discount}%
+                      </span>
+                    )}
                     <p className="font-serif font-semibold text-[#2E3192]">
                       {tier.custom ? `${tier.units.toLocaleString()}+ units` : `${tier.units} units`}
                     </p>
-                    <p className="text-xs font-poppins text-[#E38F2E] mb-1">
-                      {tier.custom ? tier.label : `NRs ${tier.price.toFixed(2)}/unit`}
+                    <p className="text-xs font-poppins text-[#E38F2E] mb-1" style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+                      {tier.custom ? tier.label : (
+                        <>
+                          <span>NRs {tier.price.toFixed(2)}/unit</span>
+                          {product.discount && (
+                            <span style={{ color: '#999', textDecoration: 'line-through', fontSize: '12px' }}>
+                              NRs {(tier.price / (1 - product.discount / 100)).toFixed(2)}
+                            </span>
+                          )}
+                        </>
+                      )}
                     </p>
                     <p className="text-xs text-gray-500">{tier.custom ? 'Custom pricing' : tier.label}</p>
                   </button>
@@ -281,6 +296,20 @@ const ProductDetailed = () => {
                 </div>
               </div>
               <hr className="border-white/20 mb-3" />
+              {product.discount && volume?.price && (
+                <div className="flex justify-between mb-3 p-3 rounded-lg" style={{ background: 'rgba(204, 164, 102, 0.2)' }}>
+                  <div>
+                    <p className="text-orange-300 text-xs mb-1">You Save</p>
+                    <p className="font-bold text-[#CCA466]">
+                      NRs {((volume.price / (1 - product.discount / 100) - volume.price) * volume.units * batches).toFixed(2)}
+                      {' '}
+                      <span className="text-xs font-normal text-orange-200">
+                        ({product.discount}% off)
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              )}
               <div className="flex justify-between bg-[#191850]">
                 <div>
                   <p className="text-orange-300 text-xs mb-1">Total units</p>
@@ -292,6 +321,11 @@ const ProductDetailed = () => {
                   <p className="font-bold text-orange-300 text-lg">
                     {orderTotal ? `NRs ${Number(orderTotal).toLocaleString()}` : 'Request Quote'}
                   </p>
+                  {product.discount && volume?.price && (
+                    <p className="text-xs text-white/50 line-through mt-1">
+                      NRs {(volume.price / (1 - product.discount / 100) * volume.units * batches).toLocaleString()}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>

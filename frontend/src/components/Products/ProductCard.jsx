@@ -88,6 +88,28 @@ const ProductCard = ({ product }) => {
                 <path d="M371 256.16 C371 259.24 369.4 262.1 366.73 263.82 C318.28 294.53 254.65 314 185 314 C115.83 314 52.64 294.78 4.34 264.48 C1.6 262.76 0 259.87 0 256.79" stroke="#CCA466" strokeWidth="2.5" fill="none" />
             </svg>
 
+            {product.discount && (
+              <span
+                className="absolute flex items-center"
+                style={{
+                  bottom: '14px',
+                  left: '14px',
+                  padding: '4px 10px',
+                  borderRadius: '999px',
+                  fontFamily: FONT_BODY,
+                  fontSize: '11px',
+                  fontWeight: 700,
+                  letterSpacing: '0.5px',
+                  background: '#CCA466',
+                  color: '#fff',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  zIndex: 10,
+                }}
+              >
+                {product.discount}% OFF
+              </span>
+            )}
+
             <span
                 className="absolute flex items-center"
                 style={{
