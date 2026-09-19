@@ -582,7 +582,7 @@ const ContactSections = () => {
             <option value="">Select an Option</option>
             <option>Product Inquiry</option>
             <option>Wholesale / Distribution</option>
-            <option>Private Label</option>
+            
             <option>Other</option>
           </select>
           {errors.inquiry && <span className="cx-err">{errors.inquiry}</span>}
