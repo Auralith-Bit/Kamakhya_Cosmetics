@@ -14,7 +14,7 @@ const PRODUCTS = [
     image: nailPolish1,
     moq: '500 pcs',
     lead: '7-10 days',
-    tag: 'FEATURED',
+    tag: 'New Launch',
   },
   {
     id: 5,
@@ -23,7 +23,7 @@ const PRODUCTS = [
     image: lipstick,
     moq: '500 pcs',
     lead: '10-15 days',
-    tag: 'FEATURED',
+    tag: 'New Launch',
   },
   {
     id: 16,
@@ -32,7 +32,7 @@ const PRODUCTS = [
     image: oil,
     moq: '500 pcs',
     lead: '7-10 days',
-    tag: 'FEATURED',
+    tag: 'New Launch',
   },
   {
     id: 12,
@@ -41,7 +41,7 @@ const PRODUCTS = [
     image: wash,
     moq: '500 pcs',
     lead: '7-10 days',
-    tag: 'FEATURED',
+    tag: 'New Launch',
   },
 ];
 

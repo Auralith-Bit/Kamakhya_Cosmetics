@@ -169,7 +169,7 @@ const Footer = () => {
             <h4 className="heading-footer">Contact &amp; Registered Office</h4>
             <p className="flex items-start gap-2.5 m-0 mb-3.5 text-fog text-sm leading-[1.5]">
               <span className="shrink-0 text-footer-gold mt-0.5"><PinIcon /></span>
-              <span>Kamakhya Cosmetics Pvt. Ltd., manigram, Nepal</span>
+              <span>Kamakhya Cosmetics Industries Pvt. Ltd., manigram, Nepal</span>
             </p>
             <p className="flex items-start gap-2.5 m-0 mb-3.5 text-fog text-sm leading-[1.5]">
               <span className="shrink-0 text-footer-gold mt-0.5"><PhoneIcon /></span>
@@ -230,16 +230,16 @@ const Footer = () => {
 
       {/* ── BOTTOM: copyright + legal links ── */}
       <div className="pt-6 pb-10 px-[125px] max-lg:px-8 max-tab:px-5">
-        <div className="flex items-center justify-between text-[13px] text-muted max-tab:flex-col max-tab:items-start max-tab:gap-3">
-          <p className="m-0">&copy; {year} Kamakhya Cosmetics Pvt. Ltd. All rights reserved.</p>
-          <p className="m-0 text-[13px] text-muted">Designed & Developed by{' '}
-            <a href="https://auralithbit.com.np/" target="_blank" rel="noopener noreferrer" className="text-[14px] text-muted no-underline underline transition-colors hover:text-footer-gold">Auralith Bit</a>
-          </p>
-          <div className="flex gap-6">
+        <div className="flex items-center justify-between text-[13px] text-muted max-tab:flex-col max-tab:items-center max-tab:gap-4">
+          <p className="m-0 max-tab:order-1 max-tab:w-full max-tab:text-center">&copy; {year} Kamakhya Cosmetics Industries Pvt. Ltd. All rights reserved.</p>
+          <div className="flex gap-6 max-tab:order-2 max-tab:w-full max-tab:justify-center max-tab:gap-4 max-tab:flex-wrap">
             <a href="/" className="text-muted no-underline transition-colors hover:text-footer-gold">Privacy Policy</a>
             <a href="/" className="text-muted no-underline transition-colors hover:text-footer-gold">Terms of Trade</a>
             <a href="/" className="text-muted no-underline transition-colors hover:text-footer-gold">Accessibility</a>
           </div>
+          <p className="m-0 text-[13px] text-muted max-tab:order-3 max-tab:w-full max-tab:text-center">Designed & Developed by{' '}
+            <a href="https://auralithbit.com.np/" target="_blank" rel="noopener noreferrer" className="text-[14px] text-muted no-underline underline transition-colors hover:text-footer-gold">Auralith Bit</a>
+          </p>
         </div>
       </div>
     </footer>

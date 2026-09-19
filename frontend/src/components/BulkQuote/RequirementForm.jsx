@@ -143,20 +143,15 @@ const RequirementForm = () => {
                 <label htmlFor="expectedVolume" className={labelClass}>
                   Expected Volume*
                 </label>
-                <select
+                <input
                   id="expectedVolume"
+                  type="text"
+                  placeholder="Enter expected volume (e.g., 1500 units)"
                   value={formData.expectedVolume}
                   onChange={handleChange}
                   required
-                  className={selectClass}
-                >
-                  <option value="" disabled>
-                    Select an Option (kati units chaiyo ? tai anusar)
-                  </option>
-                  <option value="under-500">Under 500 units</option>
-                  <option value="500-2000">500–2,000 units</option>
-                  <option value="2000-plus">2,000+ units</option>
-                </select>
+                  className={fieldClass}
+                />
               </div>
 
               <div>

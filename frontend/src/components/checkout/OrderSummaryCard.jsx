@@ -16,8 +16,7 @@ const OrderSummaryCard = ({ formData = {}, onSubmit }) => {
   const [showEmptyCart, setShowEmptyCart] = useState(false);
 
   const tax = Math.round(subtotal * 0.13 * 100) / 100;
-  const shipping = subtotal > 0 ? 500 : 0;
-  const total = Math.round((subtotal + tax + shipping) * 100) / 100;
+  const total = Math.round((subtotal + tax) * 100) / 100;
 
   const handleClick = () => {
     if (items.length === 0) {
@@ -94,7 +93,7 @@ const OrderSummaryCard = ({ formData = {}, onSubmit }) => {
           </div>
           <div className="flex justify-between text-[14px]">
             <span className="text-gray-500">Shipping</span>
-            <span className="text-gray-800">NRs. {shipping}</span>
+            <span className="text-gray-800">{items.length > 0 ? 'Not included' : 'NRs. 0'}</span>
           </div>
         </div>
 
@@ -105,7 +104,7 @@ const OrderSummaryCard = ({ formData = {}, onSubmit }) => {
           <span className="text-[20px] font-bold text-brand-blue">NRs. {total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
         </div>
 
-        <div className="mt-6">
+<div className="mt-6">
           <button
             type="button"
             onClick={handleClick}
@@ -114,9 +113,14 @@ const OrderSummaryCard = ({ formData = {}, onSubmit }) => {
             <LockIcon />
             Submit Request
           </button>
-          <p className="text-center text-[13px] text-gray-400 mt-4 m-0">
-            Final invoice will be issued after review
-          </p>
+          <div className="flex flex-wrap justify-center items-center gap-1 text-[13px] text-gray-400 mt-4">
+            <p className="m-0">Final invoice will be issued after order review
+              
+              </p>
+<p className="m-0">including the confirmed shipping charges.
+              
+              </p>         
+          </div>
         </div>
       </div>
     </div>
