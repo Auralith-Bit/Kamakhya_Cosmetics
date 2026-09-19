@@ -85,7 +85,7 @@ const DeliveryDetailsCard = ({ formData, onChange, errors = {} }) => {
 
         <div className="flex flex-col gap-[10px]">
           <label className="text-[14px] font-semibold text-gray-800">
-            Order notes <span className="text-red-500">*</span>
+            Order notes 
           </label>
           <textarea
             name="orderNotes"

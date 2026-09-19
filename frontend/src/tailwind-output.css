@@ -1140,6 +1140,9 @@
     --tw-border-style: none;
     border-style: none;
   }
+  .border-\[\#2B2560\]\/20 {
+    border-color: color-mix(in oklab, #2B2560 20%, transparent);
+  }
   .border-\[\#2E3192\] {
     border-color: #2E3192;
   }
