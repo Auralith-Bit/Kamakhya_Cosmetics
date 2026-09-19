@@ -29,7 +29,7 @@ const CTABanner = () => (
       position:relative;
       width:100%;
       height:15.625vw;
-      background:#0A1230;
+      background:#161E3A;
       overflow:hidden;
       }
 
@@ -57,6 +57,7 @@ const CTABanner = () => (
       letter-spacing: 0.02em;
       line-height:2.3vw;
       }
+
       
       .cb-body{
       position:absolute;
