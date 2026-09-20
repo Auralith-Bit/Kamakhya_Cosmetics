@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import vector1 from "../../assets/Vector (1).svg";
 import emoji from "../../assets/emoji.svg";
 
@@ -33,6 +33,24 @@ const Arrow = () => (
 
 const OurProcess = () => {
   const [open, setOpen] = useState(null);
+  const [question, setQuestion] = useState("");
+  const [questionError, setQuestionError] = useState(false);
+  const [questionSent, setQuestionSent] = useState(false);
+  const toastTimer = useRef(null);
+
+  useEffect(() => () => clearTimeout(toastTimer.current), []);
+
+  const handleSendQuestion = () => {
+    if (!question.trim()) {
+      setQuestionError(true);
+      return;
+    }
+    setQuestionError(false);
+    setQuestion("");
+    setQuestionSent(true);
+    clearTimeout(toastTimer.current);
+    toastTimer.current = setTimeout(() => setQuestionSent(false), 2500);
+  };
 
   return (
     <section id="shine-faq" className="fq-sec">
@@ -129,6 +147,9 @@ const OurProcess = () => {
         }
         .fq-input::placeholder{color:#999999;}
         .fq-input:focus{border-color:#2E3192;}
+        .fq-input.invalid{border-color:#D64545;background:#FDF4F4;}
+        .fq-err{display:block;margin-top:0.4167vw;text-align:left;color:#D64545;
+          font-family:${sans};font-size:0.75vw;font-weight:500;}
         .fq-note{margin-top:0.4167vw;color:#666666;font-family:${sans};
           font-size:0.6771vw;letter-spacing:0.06em;}
         .fq-send{
@@ -178,6 +199,7 @@ const OurProcess = () => {
           .fq-input{margin-top:2vw;height:24vw;padding:3vw;border-radius:2vw;
             font-size:clamp(12px, 1.4vw, 16px);}
           .fq-note{margin-top:2vw;font-size:clamp(9px, 1.1vw, 12px);}
+          .fq-err{font-size:clamp(10px, 1.2vw, 13px);margin-top:2vw;}
           .fq-send{margin-top:3vw;height:12vw;border-radius:2vw;
             font-size:clamp(12px, 1.5vw, 17px);}
           .fq-send svg{width:clamp(14px, 2vw, 18px);height:clamp(9px, 1.4vw, 12px);}
@@ -221,6 +243,7 @@ const OurProcess = () => {
           .fq-label{font-size:13px;margin-top:16px;}
           .fq-input{margin-top:8px;height:120px;padding:12px;border-radius:10px;font-size:14px;}
           .fq-note{font-size:11px;margin-top:8px;}
+          .fq-err{font-size:12px;margin-top:8px;}
           .fq-send{margin-top:16px;height:52px;border-radius:10px;font-size:15px;}
           .fq-send svg{width:16px;height:11px;}
         }
@@ -267,10 +290,50 @@ const OurProcess = () => {
           business day.
         </p>
         <p className="fq-label">Let us know</p>
-        <textarea className="fq-input" placeholder="Type your question here…" />
+        <textarea
+          className={`fq-input${questionError ? " invalid" : ""}`}
+          placeholder="Type your question here…"
+          value={question}
+          onChange={(e) => {
+            setQuestion(e.target.value);
+            if (questionError) setQuestionError(false);
+          }}
+        />
+        {questionError && (
+          <span className="fq-err">Please write a question before sending.</span>
+        )}
         <p className="fq-note">No payment is taken here — this simply reaches our trade team.</p>
-        <button className="fq-send">Send Question <Arrow /></button>
+        <button className="fq-send" onClick={handleSendQuestion}>Send Question <Arrow /></button>
       </div>
+
+      {questionSent && (
+        <div
+          role="status"
+          aria-live="polite"
+          className="fq-toast"
+        >
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="#E38F2E" stroke="none" aria-hidden="true">
+            <path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
+          </svg>
+          Question submitted successfully
+        </div>
+      )}
+
+      <style>{`
+        .fq-toast{
+          position:fixed;bottom:24px;right:24px;z-index:9999;
+          display:flex;align-items:center;gap:12px;
+          background:#2E3192;color:#ffffff;
+          font-family:${sans};font-size:14px;font-weight:500;
+          padding:12px 20px;border-radius:10px;
+          box-shadow:0 8px 24px rgba(46,49,146,0.3);
+          animation:kamakhya-toast-in 0.25s ease-out;
+        }
+        @keyframes kamakhya-toast-in {
+          from { opacity: 0; transform: translateY(12px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </section>
   );
 };

@@ -93,7 +93,7 @@ const OrderSummaryCard = ({ formData = {}, onSubmit }) => {
           </div>
           <div className="flex justify-between text-[14px]">
             <span className="text-gray-500">Shipping</span>
-            <span className="text-gray-800">{items.length > 0 ? 'Not included' : 'NRs. 0'}</span>
+            <span className="text-gray-800">Not included</span>
           </div>
         </div>
 

@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useRef } from "react"; 
-import { ArrowRight } from "lucide-react"; 
+import React, { useState } from "react"; 
+import { useNavigate } from "react-router"; 
+import { ArrowRight, ChevronDown } from "lucide-react"; 
 
 const PHONE_RE = /^(97|98)\d{8}$/;
  
 const RequirementForm = () => { 
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({ 
     companyName: "", 
     contact: "", 
@@ -15,12 +17,9 @@ const RequirementForm = () => {
     timeline: "", 
     description: "", 
   }); 
- 
+  
 const [errors, setErrors] = useState({}); 
-  const [sent, setSent] = useState(false); 
-  const toastTimer = useRef(null); 
-
-  useEffect(() => () => clearTimeout(toastTimer.current), []); 
+  const [sent, setSent] = useState(false);
 
   const handleChange = (e) => { 
     const { id, value } = e.target; 
@@ -50,15 +49,15 @@ const [errors, setErrors] = useState({});
         description: "", 
       }); 
       setSent(true); 
-      clearTimeout(toastTimer.current); 
-      toastTimer.current = setTimeout(() => setSent(false), 2500); 
     } 
   };
  
   const fieldClass = 
     "w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-3.5 text-[15px] text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-offset-1"; 
   const selectClass = 
-    "w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-3.5 text-[15px] font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-offset-1 appearance-none cursor-pointer"; 
+    "w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-3.5 text-[15px] font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-offset-1 appearance-none cursor-pointer pr-10"; 
+  const dropdownIcon = 
+    "pointer-events-none absolute top-1/2 right-3.5 -translate-y-1/2 w-4 h-4 text-slate-500"; 
   const labelClass = "block text-[15px] font-bold text-slate-800 mb-2.5"; 
  
   return ( 
@@ -157,22 +156,25 @@ const [errors, setErrors] = useState({});
  
               <div> 
                 <label htmlFor="rangeOfInterest" className={labelClass}> 
-                  Range of intrest* 
+                  Range of interest* 
                 </label> 
-                <select 
-                  id="rangeOfInterest" 
-                  value={formData.rangeOfInterest} 
-                  onChange={handleChange} 
-                  required 
-                  className={selectClass} 
-                > 
-                  <option className="text-xs" value="" disabled> 
-                    Select an Option
-                  </option> 
-                  <option value="shine">Shine</option> 
-                  <option value="royal-luxury">Royal Luxury</option> 
-                  <option value="both">Both</option> 
-                </select> 
+                <div className="relative">
+                  <select 
+                    id="rangeOfInterest" 
+                    value={formData.rangeOfInterest} 
+                    onChange={handleChange} 
+                    required 
+                    className={selectClass} 
+                  > 
+                    <option className="text-xs" value="" disabled> 
+                      Select an Option
+                    </option> 
+                    <option value="shine">Shine</option> 
+                    <option value="royal-luxury">Royal Luxury</option> 
+                    <option value="both">Both</option> 
+                  </select> 
+                  <ChevronDown className={dropdownIcon} />
+                </div> 
               </div> 
  
               <div> 
@@ -195,19 +197,22 @@ const [errors, setErrors] = useState({});
                 <label htmlFor="timeline" className={labelClass}> 
                   Timeline 
                 </label> 
-                <select 
-                  id="timeline" 
-                  value={formData.timeline} 
-                  onChange={handleChange} 
-                  className={selectClass} 
-                > 
-                  <option value="" disabled> 
-                    Select an Option (options-immediately, 3 days, 1 week) 
-                  </option> 
-                  <option value="immediately">Immediately</option> 
-                  <option value="3-days">3 days</option> 
-                  <option value="1-week">1 week</option> 
-                </select> 
+                <div className="relative">
+                  <select 
+                    id="timeline" 
+                    value={formData.timeline} 
+                    onChange={handleChange} 
+                    className={selectClass} 
+                  > 
+                    <option value="" disabled> 
+                      Select an Option (options-immediately, 3 days, 1 week) 
+                    </option> 
+                    <option value="immediately">Immediately</option> 
+                    <option value="3-days">3 days</option> 
+                    <option value="1-week">1 week</option> 
+                  </select> 
+                  <ChevronDown className={dropdownIcon} />
+                </div> 
               </div> 
  
               <div className="sm:col-span-2 mt-1"> 
@@ -234,30 +239,9 @@ const [errors, setErrors] = useState({});
               <ArrowRight className="w-4 h-4" /> 
             </button> 
  
-            {sent ? ( 
-              <div
-                role="status"
-                aria-live="polite"
-                className="fixed bottom-[92px] right-6 z-[9999] flex items-center gap-3 bg-[#2E3192] text-white text-sm font-medium px-5 py-3 rounded-[10px] shadow-[0_8px_24px_rgba(46,49,146,0.3)]"
-                style={{ animation: "kamakhya-toast-in 0.25s ease-out" }}
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  width="18"
-                  height="18"
-                  fill="#E38F2E"
-                  stroke="none"
-                  aria-hidden="true"
-                >
-                  <path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
-                </svg>
-                Bulk quote request submitted successfully!
-              </div> 
-            ) : ( 
-              <p className="text-[14px] text-slate-500 mt-5"> 
-                We use your details only to respond to this enquiry 
-              </p> 
-            )} 
+            <p className="text-[14px] text-slate-500 mt-5"> 
+              We use your details only to respond to this enquiry 
+            </p> 
           </form> 
         </div> 
  
@@ -287,12 +271,27 @@ const [errors, setErrors] = useState({});
           </div> 
         </div> 
       </div> 
-      <style>{`
-        @keyframes kamakhya-toast-in {
-          from { opacity: 0; transform: translateY(12px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
+
+      {sent && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40" onClick={() => setSent(false)}>
+          <div className="bg-white rounded-2xl p-8 max-w-sm w-full mx-4 text-center shadow-xl" onClick={(e) => e.stopPropagation()}>
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-50 flex items-center justify-center">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </div>
+            <h3 className="text-[18px] font-bold text-gray-900 mb-2">Request received</h3>
+            <p className="text-[14px] text-gray-500 mb-5">Bulk quote request submitted successfully!</p>
+            <button
+              type="button"
+              onClick={() => { setSent(false); navigate('/products'); }}
+              className="px-6 py-2.5 bg-[#2E3192] text-white text-[14px] font-semibold rounded-lg cursor-pointer hover:bg-[#252775] transition-colors"
+            >
+              Browse Products
+            </button>
+          </div>
+        </div>
+      )}
     </section> 
   ); 
 }; 

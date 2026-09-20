@@ -19,11 +19,13 @@ const CheckoutBody = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [showFormTopError, setShowFormTopError] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name]) setErrors((prev) => ({ ...prev, [name]: '' }));
+    if (showFormTopError) setShowFormTopError(false);
   };
 
   const validate = () => {
@@ -43,11 +45,23 @@ const CheckoutBody = () => {
   };
 
   const handleSubmit = () => {
-    return validate();
+    const ok = validate();
+    if (!ok) setShowFormTopError(true);
+    return ok;
   };
 
   return (
     <section className="w-full bg-[#FAF6F1] px-[125px] py-[60px] max-lg:px-8 max-lg:py-10 max-sm:px-5 max-sm:py-8">
+      {showFormTopError && (
+        <div className="mx-auto max-w-[1280px] mb-6 sm:hidden flex items-center gap-2 bg-red-50 border border-red-300 text-red-600 text-[14px] font-medium rounded-lg px-4 py-3">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="8" x2="12" y2="12" />
+            <line x1="12" y1="16" x2="12.01" y2="16" />
+          </svg>
+          Please fill out the form first.
+        </div>
+      )}
       <div className="mx-auto max-w-[1280px] grid grid-cols-[3fr_2fr] gap-8 items-start max-lg:grid-cols-1">
         <div className="flex flex-col gap-6">
           <BusinessContactCard formData={formData} onChange={handleChange} errors={errors} />

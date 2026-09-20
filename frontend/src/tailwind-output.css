@@ -19,6 +19,8 @@
     --color-orange-400: oklch(75% 0.183 55.934);
     --color-orange-500: oklch(70.5% 0.213 47.604);
     --color-amber-100: oklch(96.2% 0.059 95.617);
+    --color-green-50: oklch(98.2% 0.018 155.826);
+    --color-green-600: oklch(62.7% 0.194 149.214);
     --color-indigo-700: oklch(45.7% 0.24 277.023);
     --color-indigo-800: oklch(39.8% 0.195 277.366);
     --color-indigo-900: oklch(35.9% 0.144 278.697);
@@ -319,8 +321,8 @@
   .right-3 {
     right: calc(var(--spacing) * 3);
   }
-  .right-6 {
-    right: calc(var(--spacing) * 6);
+  .right-3\.5 {
+    right: calc(var(--spacing) * 3.5);
   }
   .right-\[-30px\] {
     right: -30px;
@@ -342,9 +344,6 @@
   }
   .bottom-\[-40px\] {
     bottom: -40px;
-  }
-  .bottom-\[92px\] {
-    bottom: 92px;
   }
   .-left-40 {
     left: calc(var(--spacing) * -40);
@@ -369,9 +368,6 @@
   }
   .z-\[2\] {
     z-index: 2;
-  }
-  .z-\[9999\] {
-    z-index: 9999;
   }
   .container {
     width: 100%;
@@ -1392,6 +1388,9 @@
   .bg-gray-100 {
     background-color: var(--color-gray-100);
   }
+  .bg-green-50 {
+    background-color: var(--color-green-50);
+  }
   .bg-hero-gold {
     background-color: var(--color-hero-gold);
   }
@@ -1681,6 +1680,9 @@
   }
   .pr-3 {
     padding-right: calc(var(--spacing) * 3);
+  }
+  .pr-10 {
+    padding-right: calc(var(--spacing) * 10);
   }
   .pb-0 {
     padding-bottom: 0px;
@@ -2056,6 +2058,9 @@
   .text-gray-900 {
     color: var(--color-gray-900);
   }
+  .text-green-600 {
+    color: var(--color-green-600);
+  }
   .text-hero-orange {
     color: var(--color-hero-orange);
   }
@@ -2174,10 +2179,6 @@
   }
   .shadow-\[0_2px_12px_rgba\(0\,0\,0\,0\.08\)\] {
     --tw-shadow: 0 2px 12px var(--tw-shadow-color, rgba(0,0,0,0.08));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .shadow-\[0_8px_24px_rgba\(46\,49\,146\,0\.3\)\] {
-    --tw-shadow: 0 8px 24px var(--tw-shadow-color, rgba(46,49,146,0.3));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .shadow-\[0_10px_30px_rgba\(0\,0\,0\,0\.08\)\] {
@@ -2679,6 +2680,9 @@
     }
     .sm\:block {
       display: block;
+    }
+    .sm\:hidden {
+      display: none;
     }
     .sm\:h-8 {
       height: calc(var(--spacing) * 8);

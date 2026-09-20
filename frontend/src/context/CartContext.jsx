@@ -41,7 +41,7 @@ export const CartProvider = ({ children }) => {
     const { packSize, unitsPerPack, batches = 1, price } = options
     const quantity = Math.max(1, Number(batches) || 1)
     const unitCost = price != null ? Number(price) : 0
-    const linePrice = Math.round(unitCost * quantity * 100) / 100
+    const linePrice = Math.round(unitCost * (unitsPerPack || 1) * quantity * 100) / 100
 
     setItems((prev) => {
       // Same product + pack + volume tier → just bump the batch count.
@@ -83,7 +83,7 @@ export const CartProvider = ({ children }) => {
         return {
           ...item,
           quantity: nextQuantity,
-          price: Math.round(item.unitCost * nextQuantity * 100) / 100,
+          price: Math.round(item.unitCost * (item.unitsPerPack || 1) * nextQuantity * 100) / 100,
         }
       })
     )

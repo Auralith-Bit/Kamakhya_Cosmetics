@@ -5,7 +5,6 @@ import { products } from '../../data/product'
 import { useWishlist } from '../../context/WishlistContext'
 import { useCart } from '../../context/CartContext'
 import SampleRequestForm from './RequestQuote'
-import SampleReceived from './SampleReceived'
 import Curve from '../../assets/Curve.svg'
 import ProductCard from '../Products/ProductCard'
 
@@ -178,8 +177,6 @@ const ProductDetailed = () => {
               onBack={() => setSampleStage('config')}
               onSubmitted={() => setSampleStage('received')}
             />
-          ) : sampleStage === 'received' ? (
-            <SampleReceived product={product} onSubmitAnother={() => setSampleStage('form')} />
           ) : (
             <>
             {/* Pack size */}
@@ -649,6 +646,24 @@ const ProductDetailed = () => {
     </div>
   </div>
 
+      {sampleStage === 'received' && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40" onClick={() => setSampleStage('config')}>
+          <div className="bg-white rounded-2xl p-8 max-w-sm w-full mx-4 text-center shadow-xl" onClick={(e) => e.stopPropagation()}>
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-50 flex items-center justify-center">
+              <Check className="w-8 h-8 text-green-600" strokeWidth={3} />
+            </div>
+            <h3 className="text-[18px] font-bold text-gray-900 mb-2">Request received</h3>
+            <p className="text-[14px] text-gray-500 mb-5">We'll verify your business details and follow up within 2 business days.</p>
+            <button
+              type="button"
+              onClick={() => { setSampleStage('config'); navigate('/products'); }}
+              className="px-6 py-2.5 bg-[#2E3192] text-white text-[14px] font-semibold rounded-lg cursor-pointer hover:bg-[#252775] transition-colors"
+            >
+              Browse Products
+            </button>
+          </div>
+        </div>
+      )}
     </div >
   )
 }

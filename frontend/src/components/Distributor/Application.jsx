@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { ArrowRight } from "lucide-react";
 
 const Application = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     companyName: "",
     vat: "",
@@ -17,6 +18,7 @@ const Application = () => {
   });
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
+  const [submitted, setSubmitted] = useState(false);
 
   const validators = {
     companyName: (v) =>
@@ -89,7 +91,21 @@ const Application = () => {
 
     if (Object.keys(newErrors).length > 0) return;
 
-    console.log(formData);
+    setFormData({
+      companyName: "",
+      vat: "",
+      contact: "",
+      email: "",
+      phone: "",
+      country: "",
+      territory: "",
+      brands: "",
+      notes: "",
+      confirm: false,
+    });
+    setTouched({});
+    setErrors({});
+    setSubmitted(true);
   };
 
   const showError = (id) => touched[id] && errors[id];
@@ -415,6 +431,27 @@ const Application = () => {
           </div>
         </div>
       </div>
+
+      {submitted && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40" onClick={() => setSubmitted(false)}>
+          <div className="bg-white rounded-2xl p-8 max-w-sm w-full mx-4 text-center shadow-xl" onClick={(e) => e.stopPropagation()}>
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-50 flex items-center justify-center">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </div>
+            <h3 className="text-[18px] font-bold text-gray-900 mb-2">Application submitted</h3>
+            <p className="text-[14px] text-gray-500 mb-5">Our team will review your application and get back to you within 2 business days.</p>
+            <button
+              type="button"
+              onClick={() => { setSubmitted(false); navigate('/products'); }}
+              className="px-6 py-2.5 bg-[#2E3192] text-white text-[14px] font-semibold rounded-lg cursor-pointer hover:bg-[#252775] transition-colors"
+            >
+              Browse Products
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
