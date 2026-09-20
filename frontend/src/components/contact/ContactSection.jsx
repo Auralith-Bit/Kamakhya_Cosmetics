@@ -11,7 +11,7 @@ const WHATSAPP_NUMBER = "9779857049884"; // +977 9857049884
 const WHATSAPP_MESSAGE = "Hello! I'd like to know more about your products.";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
-/* ✅ validation rules */
+/* validation rules */
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;          // any valid email format
 const PHONE_RE = /^(97|98)\d{8}$/;                          // 10 digits, must start with 97 or 98
 

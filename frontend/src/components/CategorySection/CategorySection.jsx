@@ -30,6 +30,19 @@ const CATEGORIES = [
   { name: 'Face Care', image: imgBodyCare2 },
 ];
 
+/* Maps each home-page category label to the real (brand, category) combo
+   used by the /products page filters. Categories without a real match
+   (e.g. Oral Hygiene) simply open the full catalogue. */
+const CATEGORY_FILTERS = {
+  'Body Care': { brand: 'Royal Luxury', category: 'Body Care' },
+  'Kitchen Care': { brand: 'Shine', category: 'Kitchen & Dishwashing' },
+  'Glass Cleaner': { brand: 'Shine', category: 'Glass Cleaners' },
+  'Face Care': { brand: 'Royal Luxury', category: 'Face Care' },
+  'Ludary Powder': { brand: 'Shine', category: 'Laundry' },
+  'Hair Care': { brand: 'Royal Luxury', category: 'Hair Care' },
+  'Sun Protection': { brand: 'Royal Luxury', category: 'Sun Care' },
+};
+
 const CursiveUnderline = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -137,7 +150,14 @@ const CategorySection = () => {
           <div key={i} className="cat-item" style={{ flexShrink: 0, scrollSnapAlign: 'start' }}>
             <div
               className="cat-card"
-              onClick={() => navigate('/products')}
+              onClick={() => {
+                const f = CATEGORY_FILTERS[cat.name];
+                navigate(
+                  f
+                    ? `/products?brand=${encodeURIComponent(f.brand)}&category=${encodeURIComponent(f.category)}`
+                    : '/products',
+                );
+              }}
               style={{
                 background: '#fff', borderRadius: '16px', padding: '16px',
                 boxShadow: '0 2px 16px rgba(0,0,0,0.06)', cursor: 'pointer',
