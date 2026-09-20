@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import vector1 from "../../assets/Vector (1).svg";
 import emoji from "../../assets/emoji.svg";
 
@@ -33,6 +33,19 @@ const Arrow = () => (
 
 const Faq = () => {
   const [open, setOpen] = useState(null);
+  const [question, setQuestion] = useState("");
+  const [sent, setSent] = useState(false);
+  const toastTimer = useRef(null);
+
+  useEffect(() => () => clearTimeout(toastTimer.current), []);
+
+  const handleSend = () => {
+    if (!question.trim()) return;
+    setQuestion("");
+    setSent(true);
+    clearTimeout(toastTimer.current);
+    toastTimer.current = setTimeout(() => setSent(false), 2500);
+  };
 
   return (
     <section id="shine-faq" className="fq-sec">
@@ -269,10 +282,44 @@ const Faq = () => {
           business day.
         </p>
         <p className="fq-label">Let us know</p>
-        <textarea className="fq-input" placeholder="Type your question here…" />
+        <textarea
+          className="fq-input"
+          placeholder="Type your question here…"
+          value={question}
+          onChange={(e) => setQuestion(e.target.value)}
+        />
         <p className="fq-note">No payment is taken here — this simply reaches our trade team.</p>
-        <button className="fq-send">Send Question <Arrow /></button>
+        <button className="fq-send" onClick={handleSend}>Send Question <Arrow /></button>
       </div>
+
+      {sent && (
+        <div
+          role="status"
+          aria-live="polite"
+          className="fq-toast"
+        >
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="#E38F2E" stroke="none" aria-hidden="true">
+            <path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
+          </svg>
+          Question submitted successfully
+        </div>
+      )}
+
+      <style>{`
+        .fq-toast{
+          position:fixed;bottom:24px;right:24px;z-index:9999;
+          display:flex;align-items:center;gap:12px;
+          background:#2E3192;color:#ffffff;
+          font-family:${sans};font-size:14px;font-weight:500;
+          padding:12px 20px;border-radius:10px;
+          box-shadow:0 8px 24px rgba(46,49,146,0.3);
+          animation:kamakhya-toast-in 0.25s ease-out;
+        }
+        @keyframes kamakhya-toast-in {
+          from { opacity: 0; transform: translateY(12px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </section>
   );
 };

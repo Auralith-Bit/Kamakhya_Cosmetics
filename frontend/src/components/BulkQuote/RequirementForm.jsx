@@ -1,7 +1,7 @@
-import React, { useState } from "react"; 
+import React, { useState, useEffect, useRef } from "react"; 
 import { ArrowRight } from "lucide-react"; 
- 
-const PHONE_RE = /^(\+977)?[98]\d{8}$/; 
+
+const PHONE_RE = /^(97|98)\d{8}$/;
  
 const RequirementForm = () => { 
   const [formData, setFormData] = useState({ 
@@ -16,26 +16,44 @@ const RequirementForm = () => {
     description: "", 
   }); 
  
-  const [errors, setErrors] = useState({}); 
+const [errors, setErrors] = useState({}); 
   const [sent, setSent] = useState(false); 
- 
+  const toastTimer = useRef(null); 
+
+  useEffect(() => () => clearTimeout(toastTimer.current), []); 
+
   const handleChange = (e) => { 
     const { id, value } = e.target; 
     setFormData((prev) => ({ ...prev, [id]: value })); 
     if (id === "phone") setErrors({}); 
   }; 
- 
+
   const handleSubmit = (e) => { 
     e.preventDefault(); 
-    const digits = formData.phone.replace(/\D/g, ""); 
+    const digits = formData.phone.replace(/\D/g, "").replace(/^977/, ""); 
     const newErrors = {}; 
- 
+
     if (!digits) newErrors.phone = "Phone is required."; 
     else if (!PHONE_RE.test(digits)) newErrors.phone = "Phone must be 10 digits starting with 97 or 98."; 
- 
+
     setErrors(newErrors); 
-    if (Object.keys(newErrors).length === 0) setSent(true); 
-  }; 
+    if (Object.keys(newErrors).length === 0) { 
+      setFormData({ 
+        companyName: "", 
+        contact: "", 
+        email: "", 
+        phone: "", 
+        market: "", 
+        rangeOfInterest: "", 
+        expectedVolume: "", 
+        timeline: "", 
+        description: "", 
+      }); 
+      setSent(true); 
+      clearTimeout(toastTimer.current); 
+      toastTimer.current = setTimeout(() => setSent(false), 2500); 
+    } 
+  };
  
   const fieldClass = 
     "w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-3.5 text-[15px] text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-offset-1"; 
@@ -217,10 +235,23 @@ const RequirementForm = () => {
             </button> 
  
             {sent ? ( 
-              <div className="fixed top-4 right-4 bg-indigo-600 text-white px-6 py-4 rounded-lg shadow-lg max-w-md"> 
-                <p className="text-[15px] font-medium"> 
-                  Request submitted successfully! We'll get back to you soon. 
-                </p> 
+              <div
+                role="status"
+                aria-live="polite"
+                className="fixed bottom-[92px] right-6 z-[9999] flex items-center gap-3 bg-[#2E3192] text-white text-sm font-medium px-5 py-3 rounded-[10px] shadow-[0_8px_24px_rgba(46,49,146,0.3)]"
+                style={{ animation: "kamakhya-toast-in 0.25s ease-out" }}
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="18"
+                  height="18"
+                  fill="#E38F2E"
+                  stroke="none"
+                  aria-hidden="true"
+                >
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
+                </svg>
+                Bulk quote request submitted successfully!
               </div> 
             ) : ( 
               <p className="text-[14px] text-slate-500 mt-5"> 
@@ -256,6 +287,12 @@ const RequirementForm = () => {
           </div> 
         </div> 
       </div> 
+      <style>{`
+        @keyframes kamakhya-toast-in {
+          from { opacity: 0; transform: translateY(12px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </section> 
   ); 
 }; 

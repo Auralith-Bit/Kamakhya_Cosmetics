@@ -39,11 +39,11 @@ const OrderReview = () => {
   // (e.g. revisiting the page after a reload).
   const orderedItems = submittedOrder?.items ?? items;
   const sum = submittedOrder
-    ? { subtotal: submittedOrder.subtotal, tax: submittedOrder.tax, shipping: submittedOrder.shipping, total: submittedOrder.total }
+    ? { subtotal: submittedOrder.subtotal, tax: submittedOrder.tax, shipping: submittedOrder.shipping, total: submittedOrder.subtotal + submittedOrder.tax }
     : (() => {
         const tax = Math.round(subtotal * 0.13 * 100) / 100;
         const shipping = subtotal > 0 ? SHIPPING : 0;
-        return { subtotal, tax, shipping, total: Math.round((subtotal + tax + shipping) * 100) / 100 };
+        return { subtotal, tax, shipping, total: Math.round((subtotal + tax) * 100) / 100 };
       })();
 
   const contact = submittedOrder ?? {};
@@ -327,6 +327,7 @@ const OrderReview = () => {
         color:#888;
         font-family:${sans};
         font-size:0.8854vw;
+        text-align:center;
         }
 
         .or-actions{margin-top:1.7vw;display:flex;gap:0.9vw;justify-content:center;}
@@ -475,14 +476,15 @@ const OrderReview = () => {
               <div className="or-sum">
                 <div className="or-sum-row"><span>Sub Total</span><span>NRs. {sum.subtotal.toLocaleString(undefined, { maximumFractionDigits: 2 })}</span></div>
                 <div className="or-sum-row"><span>Tax (13%)</span><span>NRs. {sum.tax.toLocaleString(undefined, { maximumFractionDigits: 2 })}</span></div>
-                <div className="or-sum-row"><span>Shipping</span><span>NRs. {sum.shipping}</span></div>
+                <div className="or-sum-row"><span>Shipping</span><span>Not added</span></div>
               </div>
 
               <div className="or-total">
                 <span className="t">Total</span>
                 <span className="v">NRs. {sum.total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
               </div>
-              <p className="or-total-note">Final invoice issued after review</p>
+              <p className="or-total-note">Final invoice will be issued after review including the confirmed<br />shipping charges</p>
+             
             </div>
 
             <div className="or-actions">
