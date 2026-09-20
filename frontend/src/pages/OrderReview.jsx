@@ -476,7 +476,7 @@ const OrderReview = () => {
               <div className="or-sum">
                 <div className="or-sum-row"><span>Sub Total</span><span>NRs. {sum.subtotal.toLocaleString(undefined, { maximumFractionDigits: 2 })}</span></div>
                 <div className="or-sum-row"><span>Tax (13%)</span><span>NRs. {sum.tax.toLocaleString(undefined, { maximumFractionDigits: 2 })}</span></div>
-                <div className="or-sum-row"><span>Shipping</span><span>Not added</span></div>
+                <div className="or-sum-row"><span>Shipping</span><span>Not included</span></div>
               </div>
 
               <div className="or-total">
