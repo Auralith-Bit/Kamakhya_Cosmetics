@@ -912,6 +912,9 @@
   .resize-y {
     resize: vertical;
   }
+  .\[scrollbar-width\:none\] {
+    scrollbar-width: none;
+  }
   .list-none {
     list-style-type: none;
   }
@@ -962,9 +965,6 @@
   }
   .justify-end {
     justify-content: flex-end;
-  }
-  .justify-evenly {
-    justify-content: space-evenly;
   }
   .justify-start {
     justify-content: flex-start;
@@ -1069,6 +1069,9 @@
   }
   .overflow-visible {
     overflow: visible;
+  }
+  .overflow-x-auto {
+    overflow-x: auto;
   }
   .overflow-x-hidden {
     overflow-x: hidden;
@@ -2264,6 +2267,9 @@
     -webkit-user-select: none;
     user-select: none;
   }
+  .\[-ms-overflow-style\:none\] {
+    -ms-overflow-style: none;
+  }
   .placeholder\:text-slate-400::placeholder {
     color: var(--color-slate-400);
   }
@@ -2729,6 +2735,9 @@
     .sm\:items-center {
       align-items: center;
     }
+    .sm\:justify-evenly {
+      justify-content: space-evenly;
+    }
     .sm\:gap-5 {
       gap: calc(var(--spacing) * 5);
     }
@@ -2969,6 +2978,9 @@
     .md\:text-\[14px\] {
       font-size: 14px;
     }
+  }
+  .\[\&\:\:-webkit-scrollbar\]\:hidden::-webkit-scrollbar {
+    display: none;
   }
 }
 .order-summary-scroll::-webkit-scrollbar {

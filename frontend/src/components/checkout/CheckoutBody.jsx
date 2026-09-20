@@ -59,7 +59,7 @@ const CheckoutBody = () => {
             <line x1="12" y1="8" x2="12" y2="12" />
             <line x1="12" y1="16" x2="12.01" y2="16" />
           </svg>
-          Please fill out the form first.
+          Please fill the form below.
         </div>
       )}
       <div className="mx-auto max-w-[1280px] grid grid-cols-[3fr_2fr] gap-8 items-start max-lg:grid-cols-1">

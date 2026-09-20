@@ -205,7 +205,7 @@ const [errors, setErrors] = useState({});
                     className={selectClass} 
                   > 
                     <option value="" disabled> 
-                      Select an Option (options-immediately, 3 days, 1 week) 
+                      Select an Option 
                     </option> 
                     <option value="immediately">Immediately</option> 
                     <option value="3-days">3 days</option> 

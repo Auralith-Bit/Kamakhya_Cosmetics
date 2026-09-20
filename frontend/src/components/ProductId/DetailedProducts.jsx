@@ -357,7 +357,7 @@ const ProductDetailed = () => {
       {/* Tabs */}
       <div className="w-full bg-white">
         <div className="max-w-6xl mx-auto px-5 sm:px-10 py-14">
-          <div className="flex gap-5 border-b  border-[#D7DAE4] bg-[#F5F5FA] mb-6 justify-evenly items-center pt-3 ">
+          <div className="flex gap-5 border-b border-[#D7DAE4] bg-[#F5F5FA] mb-6 justify-start sm:justify-evenly items-center pt-3 overflow-x-auto whitespace-nowrap [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {Object.keys(tabs).map((tabName) => {
               const Icon = tabIcons[tabName] || Sparkles
               return (
