@@ -445,9 +445,8 @@ const Navbar = () => {
           .kn-cta{padding:12px 20px;font-size:14px;}
         }
 
-        /* ============ ✅ DESKTOP TIER 3 (1023–1279): same design, compact scale —
-           now starts at 1023 so the first desktop pixel already fits on one line ============ */
-        @media (min-width:1023px) and (max-width:1279px){
+        /* ============ DESKTOP TIER 3 (1025–1279): same design, compact scale ============ */
+        @media (min-width:1025px) and (max-width:1279px){
           .kn-diag{width:240px;}
           .kn-logo{width:180px;}
           .kn-logo img{height:84px;}
@@ -462,15 +461,15 @@ const Navbar = () => {
           .kn-cta{padding:10px 16px;font-size:12px;margin-left:4px;}
         }
 
-        /* ✅ burger row & slide menu exist ONLY below desktop (≤1022) */
-        @media (min-width:1023px){
+        /* ✅ burger row & slide menu exist ONLY on desktop (≥1025) */
+        @media (min-width:1025px){
           .kn-mobile-topbar{display:none!important;}
           .kn-mobile-menu{display:none!important;}
         }
 
-        /* ============ ✅ ONE DESIGN FOR ALL ≤1022 (phones + tablets):
+        /* ============ ✅ ONE DESIGN FOR ALL ≤1024 (phones + tablets, incl. 1022/1023):
            Row 1 logo · Row 2 email + search · Row 3 burger + wishlist + cart + CTA ============ */
-        @media (max-width:1022px){
+        @media (max-width:1024px){
           .kn-diag{display:none;}
           .kn-logo{position:static;width:100%;height:auto;padding:10px 0;}
           .kn-logo img{height:clamp(56px, 9vw, 80px);}
@@ -668,7 +667,7 @@ const Navbar = () => {
               {cartCount > 0 && <span className="kn-badge">{cartCount}</span>}
             </button>
           </Link>
-          {/* ✅ sub-desktop CTA (hidden ≥1023) */}
+          {/* ✅ sub-desktop CTA (hidden ≥1025) */}
           <Link to="/distributor" className="kn-cta kn-cta-m">
             Become Distributor
           </Link>

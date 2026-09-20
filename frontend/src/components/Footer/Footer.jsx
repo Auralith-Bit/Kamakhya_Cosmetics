@@ -228,19 +228,32 @@ const Footer = () => {
 {/* divider  */}
       <div className="w-full mb-5 h-px bg-[#D9D9D980]" />
 
-      {/* ── BOTTOM: copyright + legal links ── */}
+      {/* ── BOTTOM: line 1 = copyright left + legal links right · line 2 = credit centered ── */}
       <div className="pt-6 pb-10 px-[125px] max-lg:px-8 max-tab:px-5">
-        <div className="flex items-center justify-between text-[13px] text-muted max-tab:flex-col max-tab:items-center max-tab:gap-4">
-          <p className="m-0 max-tab:order-1 max-tab:w-full max-tab:text-center">&copy; {year} Kamakhya Cosmetics Industries Pvt. Ltd. All rights reserved.</p>
-          <div className="flex gap-6 max-tab:order-2 max-tab:w-full max-tab:justify-center max-tab:gap-4 max-tab:flex-wrap">
+        {/* ✅ LINE 1 — one row, opposite ends */}
+        <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 text-[13px] text-muted max-tab:flex-col max-tab:items-center max-tab:gap-2">
+          <p className="m-0 max-tab:w-full max-tab:text-center">
+            &copy; {year} Kamakhya Cosmetics Industries Pvt. Ltd. All rights reserved.
+          </p>
+          <div className="flex flex-wrap items-center justify-end gap-6 max-tab:w-full max-tab:justify-center max-tab:gap-4">
             <a href="/" className="text-muted no-underline transition-colors hover:text-footer-gold">Privacy Policy</a>
             <a href="/" className="text-muted no-underline transition-colors hover:text-footer-gold">Terms of Trade</a>
             <a href="/" className="text-muted no-underline transition-colors hover:text-footer-gold">Accessibility</a>
           </div>
-          <p className="m-0 text-[13px] text-muted max-tab:order-3 max-tab:w-full max-tab:text-center">Designed & Developed by{' '}
-            <a href="https://auralithbit.com.np/" target="_blank" rel="noopener noreferrer" className="text-[14px] text-muted no-underline underline transition-colors hover:text-footer-gold">Auralith Bit</a>
-          </p>
         </div>
+
+        {/* ✅ LINE 2 — centered below line 1, agency name BOLD, NO underline */}
+        <p className="m-0 mt-3 w-full text-center text-[13px] text-muted">
+          Designed &amp; Developed by{' '}
+          <a
+            href="https://auralithbit.com.np/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold text-muted no-underline transition-colors hover:text-footer-gold"
+          >
+            Auralith Bit
+          </a>
+        </p>
       </div>
     </footer>
   );
