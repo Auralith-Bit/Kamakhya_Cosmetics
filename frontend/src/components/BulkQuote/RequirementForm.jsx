@@ -167,7 +167,7 @@ const [errors, setErrors] = useState({});
                   className={selectClass} 
                 > 
                   <option className="text-xs" value="" disabled> 
-                    Select an Option (options- shine, royal luxury, both) 
+                    Select an Option
                   </option> 
                   <option value="shine">Shine</option> 
                   <option value="royal-luxury">Royal Luxury</option> 

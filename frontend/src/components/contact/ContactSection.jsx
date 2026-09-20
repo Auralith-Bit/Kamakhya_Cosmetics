@@ -130,8 +130,6 @@ const ContactSections = () => {
 
     if (!values.inquiry) errs.inquiry = "Inquiry type is required.";
 
-    if (!values.message.trim()) errs.message = "Message is required.";
-
     return errs;
   };
 
@@ -587,7 +585,7 @@ const ContactSections = () => {
           </select>
           {errors.inquiry && <span className="cx-err">{errors.inquiry}</span>}
 
-          <label className="cx-label" htmlFor="cx-message">Message *</label>
+          <label className="cx-label" htmlFor="cx-message">Message </label>
           <textarea
             id="cx-message"
             className={`cx-area${errors.message ? " invalid" : ""}`}
