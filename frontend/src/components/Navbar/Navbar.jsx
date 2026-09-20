@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef, useMemo } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { createPortal } from "react-dom";
 import { useWishlist } from "../../context/WishlistContext";
 import { useCart } from "../../context/CartContext";
+import { products } from "../../data/product";
 import logo from "../../assets/Group 9.png";
 import RLimage from "../../assets/RLimage.png";
 import Shineimage from "../../assets/Shineimage.png";
@@ -103,15 +104,135 @@ const BrandsDropdown = ({ open, onClose, anchors }) => {
   );
 };
 
+/* ============ product search dropdown (navbar) ============ */
+const ProductSearch = ({ variant, onCloseMobile }) => {
+  const navigate = useNavigate();
+  const [q, setQ] = useState("");
+  const [open, setOpen] = useState(false);
+  const boxRef = useRef(null);
+  const resultsRef = useRef(null);
+  const [pos, setPos] = useState({ top: 0, left: 0, width: 360 });
+
+  const hits = useMemo(() => {
+    const term = q.trim().toLowerCase();
+    if (term.length < 2) return [];
+    return products
+      .filter((p) =>
+        `${p.title} ${p.brand || ""} ${p.category || ""} ${p.type || ""}`
+          .toLowerCase()
+          .includes(term),
+      )
+      .slice(0, 6);
+  }, [q]);
+
+  useLayoutEffect(() => {
+    if (!open || !boxRef.current) return;
+    const r = boxRef.current.getBoundingClientRect();
+    const maxWidth = Math.min(400, window.innerWidth - 16);
+    let left = r.left;
+    left = Math.max(8, Math.min(window.innerWidth - maxWidth - 8, left));
+    setPos({ top: r.bottom + 8, left, width: maxWidth });
+  }, [open, q]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e) => {
+      const inResults = resultsRef.current && resultsRef.current.contains(e.target);
+      const inBox = boxRef.current && boxRef.current.contains(e.target);
+      if (!inResults && !inBox) setOpen(false);
+    };
+    const onKey = (e) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  const go = (to) => {
+    setOpen(false);
+    setQ("");
+    if (onCloseMobile) onCloseMobile();
+    navigate(to);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!hits.length) return;
+    go(`/products/${hits[0].id}`);
+  };
+
+  return (
+    <>
+      <form
+        onSubmit={handleSubmit}
+        className={variant === "mobile" ? "kn-m-search" : "kn-search"}
+        ref={boxRef}
+      >
+        <input
+          type="text"
+          placeholder={variant === "mobile" ? "Search products…" : "search products…"}
+          value={q}
+          onChange={(e) => {
+            setQ(e.target.value);
+            setOpen(true);
+          }}
+          onFocus={() => setOpen(true)}
+        />
+        <button type="submit" aria-label="Search">
+          <svg
+            viewBox="0 0 24 24"
+            width="17"
+            height="17"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          >
+            <circle cx="11" cy="11" r="7" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+        </button>
+      </form>
+
+      {open && q.trim().length >= 2 && hits.length > 0 &&
+        createPortal(
+          <div
+            className="ps-drop"
+            ref={resultsRef}
+            style={{ top: pos.top, left: pos.left, width: pos.width }}
+            role="listbox"
+            aria-label="Product results"
+          >
+            <p className="ps-group">Products</p>
+            {hits.map((p) => (
+              <button key={p.id} className="ps-item" onClick={() => go(`/products/${p.id}`)}>
+                <span className="ps-ico">
+                  <img src={p.image} alt="" />
+                </span>
+                <span className="ps-txt">
+                  <span className="ps-name">{p.title}</span>
+                  <span className="ps-sub">{p.brand || "Kamakhya"}</span>
+                </span>
+              </button>
+            ))}
+          </div>,
+          document.body,
+        )}
+    </>
+  );
+};
+
 /* ================= navbar ================= */
 const Navbar = () => {
   const { wishlistIds } = useWishlist();
   const { cartCount } = useCart();
-  const [searchValue, setSearchValue] = useState("");
   const [brandsOpen, setBrandsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
   const desktopBrandsRef = useRef(null);
   const mobileBrandsRef = useRef(null);
   /* ✅ refs for click-outside closing of the hamburger menu */
@@ -126,11 +247,6 @@ const Navbar = () => {
     { label: "ABOUT", to: "/about", type: "link" },
     { label: "CONTACT", to: "/contact", type: "link" },
   ];
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    console.log("Search:", searchValue);
-  };
 
   const closeMobile = () => setMobileOpen(false);
 
@@ -237,6 +353,28 @@ const Navbar = () => {
         .bc-royal .bc-name{color:#8A6425;}
         .bc-sub{font-size:11.5px;color:#666;}
         .bc-sep{height:1px;background:#EEEFF4;margin:4px 8px;}
+
+        /* ✅ product search results */
+        .ps-drop{position:fixed;background:#fff;border:1px solid #E6E6EE;border-radius:12px;
+          box-shadow:0 18px 44px rgba(0,0,0,.16);padding:8px;z-index:4000;
+          max-height:min(440px, calc(100vh - 120px));overflow-y:auto;
+          animation:psIn .16s ease;font-family:'Poppins','Segoe UI',sans-serif;}
+        @keyframes psIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+        .ps-group{margin:4px 10px 6px;font-size:11px;font-weight:700;letter-spacing:.14em;
+          text-transform:uppercase;color:#9AA0B5;}
+        .ps-item{display:flex;align-items:center;gap:12px;width:100%;padding:9px 10px;border:0;
+          border-radius:9px;background:transparent;cursor:pointer;text-align:left;
+          font-family:inherit;transition:background .15s;}
+        .ps-item:hover{background:#F5F6FB;}
+        .ps-item + .ps-item{margin-top:2px;}
+        .ps-ico{width:38px;height:38px;border-radius:9px;flex-shrink:0;background:#F6EFE3;
+          overflow:hidden;padding:4px;display:grid;place-items:center;}
+        .ps-ico img{width:100%;height:100%;object-fit:contain;display:block;}
+        .ps-txt{display:flex;flex-direction:column;gap:1px;min-width:0;}
+        .ps-name{font-size:14px;font-weight:600;color:#222;white-space:nowrap;overflow:hidden;
+          text-overflow:ellipsis;}
+        .ps-sub{font-size:11.5px;color:#8B8B9E;white-space:nowrap;overflow:hidden;
+          text-overflow:ellipsis;}
 
         .kn-actions{margin-left:auto;display:flex;align-items:center;gap:12px;flex-shrink:0;}
         .kn-vline{width:1px;height:34px;background:#e5e7eb;}
@@ -420,28 +558,7 @@ const Navbar = () => {
           <span>info@kamakhyacosmetics.com.np</span>
         </a>
 
-        <form onSubmit={handleSearch} className="kn-search">
-          <input
-            type="text"
-            placeholder="search .."
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-          />
-          <button type="submit" aria-label="Search">
-            <svg
-              viewBox="0 0 24 24"
-              width="17"
-              height="17"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            >
-              <circle cx="11" cy="11" r="7" />
-              <path d="m21 21-4.35-4.35" />
-            </svg>
-          </button>
-        </form>
+<ProductSearch variant="desktop" onCloseMobile={closeMobile} />
       </div>
 
       <div className="kn-mainrow">
@@ -592,28 +709,7 @@ const Navbar = () => {
       {/* ── MOBILE / TABLET: slide-down menu (ref attached for click-outside) ── */}
       <div className={`kn-mobile-menu ${mobileOpen ? "open" : ""}`} ref={mobileMenuRef}>
         <div className="kn-mobile-inner">
-          <form onSubmit={handleSearch} className="kn-m-search">
-            <input
-              type="text"
-              placeholder="Search products..."
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-            />
-            <button type="submit" aria-label="Search">
-              <svg
-                viewBox="0 0 24 24"
-                width="17"
-                height="17"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              >
-                <circle cx="11" cy="11" r="7" />
-                <path d="m21 21-4.35-4.35" />
-              </svg>
-            </button>
-          </form>
+          <ProductSearch variant="mobile" onCloseMobile={closeMobile} />
 
           <a
             href="mailto:info@kamakhyacosmetics.com.np"
