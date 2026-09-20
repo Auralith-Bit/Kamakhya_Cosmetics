@@ -390,7 +390,7 @@ const Navbar = () => {
           white-space:nowrap;transition:background .2s;text-decoration:none;display:inline-flex;align-items:center;}
         .kn-cta:hover{background:#252775;}
 
-        /* ✅ tablet-only CTA inside the mobile topbar (hidden on phones) */
+        /* ✅ sub-desktop CTA inside the burger row (hidden on desktop) */
         .kn-cta-m{display:none;}
 
         .kn-hamburger{display:none;width:42px;height:42px;border:none;background:transparent;
@@ -432,96 +432,65 @@ const Navbar = () => {
           text-decoration:none;padding:12px 0 4px;}
         .kn-mobile-email svg{flex-shrink:0;}
 
+        /* ============ DESKTOP TIER 2 (1280–1400): same design, scaled ============ */
         @media (max-width:1400px){
-          .kn-topbar{padding-left:300px;}
-          .kn-mainrow{padding-left:250px;}
-          .kn-links{gap:28px;}
-          .kn-search{flex-basis:300px;}
-        }
-        @media (max-width:1200px){
-          .kn-diag{width:300px;}
-          .kn-logo{width:220px;}
-          .kn-logo img{height:100px;}
-          .kn-topbar{padding-left:270px;gap:16px;}
-          .kn-mainrow{padding-left:230px;flex-wrap:wrap;row-gap:6px;}
+          .kn-diag{width:320px;}
+          .kn-logo{width:230px;}
+          .kn-logo img{height:108px;}
+          .kn-topbar{padding-left:330px;gap:20px;}
+          .kn-mainrow{padding-left:280px;flex-wrap:wrap;row-gap:6px;}
           .kn-links{gap:18px;}
           .kn-links a, .kn-brands-btn{font-size:13px;}
-          .kn-search{flex-basis:260px;}
-          .kn-cta{padding:12px 18px;font-size:13px;}
+          .kn-search{flex-basis:300px;}
+          .kn-cta{padding:12px 20px;font-size:14px;}
         }
-        @media (max-width:1024px){
-          .kn-diag{width:260px;}
-          .kn-logo{width:200px;}
-          .kn-logo img{height:90px;}
-          .kn-topbar{padding-left:240px;}
-          .kn-mainrow{padding-left:205px;}
+
+        /* ============ ✅ DESKTOP TIER 3 (1023–1279): same design, compact scale —
+           now starts at 1023 so the first desktop pixel already fits on one line ============ */
+        @media (min-width:1023px) and (max-width:1279px){
+          .kn-diag{width:240px;}
+          .kn-logo{width:180px;}
+          .kn-logo img{height:84px;}
+          .kn-topbar{padding-left:230px;gap:16px;min-height:56px;}
+          .kn-email{font-size:13px;}
+          .kn-search{flex-basis:240px;height:38px;}
+          .kn-mainrow{padding-left:210px;min-height:60px;gap:16px;flex-wrap:wrap;row-gap:4px;}
           .kn-links{gap:14px;}
           .kn-links a, .kn-brands-btn{font-size:12px;}
-          .kn-iconbtn{width:38px;height:38px;}
+          .kn-iconbtn{width:36px;height:36px;}
+          .kn-vline{height:28px;}
+          .kn-cta{padding:10px 16px;font-size:12px;margin-left:4px;}
         }
 
-        @media (max-width:900px){
-          .kn-nav{position:fixed;top:0;left:0;width:100%;}
-          .kn-diag{display:none;}
-          .kn-logo{position:static;width:100%;height:auto;padding:10px 0;}
-          .kn-logo img{height:80px;}
-          .kn-topbar{padding:10px 16px;flex-wrap:wrap;}
-          .kn-email{order:1;}
-          .kn-search{order:2;width:100%;max-width:100%;flex:1 1 100%;}
-          .kn-mainrow{padding:10px 16px;flex-wrap:wrap;justify-content:center;gap:12px;}
-          .kn-links{order:2;width:100%;flex-wrap:wrap;justify-content:center;gap:16px;}
-          .kn-links a, .kn-brands-btn{font-size:13px;}
-          .kn-actions{order:1;margin-left:auto;}
-          .kn-vline{display:none;}
-        }
-
-        @media (max-width:640px){
-          .kn-topbar{display:none;}
-          .kn-mainrow{display:none;}
-          .kn-hamburger{display:flex;}
-          .kn-mobile-menu{display:block;}
-          .kn-logo{position:static;width:100%;height:auto;padding:10px 16px;}
-          .kn-logo img{height:60px;}
-          .kn-nav .kn-mobile-topbar{display:flex;align-items:center;justify-content:space-between;
-            padding:0 16px 8px;}
-          .kn-actions-mobile{display:flex;align-items:center;gap:8px;}
-          .kn-actions-mobile .kn-iconbtn{width:36px;height:36px;}
-        }
-        /* ✅ was min-width:641 — now only ≥1024 hides the burger row & slide menu,
-           because tablets (640–1023) use them too */
-        @media (min-width:1024px){
+        /* ✅ burger row & slide menu exist ONLY below desktop (≤1022) */
+        @media (min-width:1023px){
           .kn-mobile-topbar{display:none!important;}
           .kn-mobile-menu{display:none!important;}
         }
-        @media (max-width:400px){
-          .kn-logo img{height:50px;}
-          .kn-logo{padding:8px 12px;}
-        }
 
-        /* ============ TABLET 640–1023 — 3 ROWS:
-           1) logo (unchanged)  2) email + search  3) hamburger + wishlist + cart + CTA ============ */
-        @media (min-width:640px) and (max-width:1023px){
-          /* Row 1 — logo band exactly as it renders today */
+        /* ============ ✅ ONE DESIGN FOR ALL ≤1022 (phones + tablets):
+           Row 1 logo · Row 2 email + search · Row 3 burger + wishlist + cart + CTA ============ */
+        @media (max-width:1022px){
           .kn-diag{display:none;}
           .kn-logo{position:static;width:100%;height:auto;padding:10px 0;}
-          .kn-logo img{height:80px;}
+          .kn-logo img{height:clamp(56px, 9vw, 80px);}
 
-          /* Row 2 — blue bar: email LEFT + search RIGHT on ONE line */
-          .kn-topbar{display:flex;flex-wrap:nowrap;padding:10px 24px;min-height:56px;gap:16px;}
-          .kn-email{order:1;flex:0 1 auto;font-size:13px;}
-          .kn-search{order:2;flex:1 1 220px;width:auto;max-width:340px;min-width:160px;
-            margin-left:auto;height:38px;}
+          .kn-topbar{display:flex;flex-wrap:nowrap;padding:10px 16px;min-height:52px;gap:12px;}
+          .kn-email{order:1;flex:0 1 auto;font-size:clamp(11px, 1.8vw, 13px);}
+          .kn-search{order:2;flex:1 1 180px;width:auto;max-width:340px;min-width:130px;
+            margin-left:auto;height:36px;}
 
-          /* Row 3 — hamburger + wishlist + cart + Become Distributor */
           .kn-mainrow{display:none;}
           .kn-nav .kn-mobile-topbar{display:flex;align-items:center;
             justify-content:space-between;padding:8px 16px 10px;gap:12px;}
           .kn-hamburger{display:flex;}
-          .kn-actions-mobile{display:flex;align-items:center;gap:8px;}
-          .kn-actions-mobile .kn-iconbtn{width:38px;height:38px;}
-          .kn-cta-m{display:inline-flex;margin-left:6px;padding:10px 18px;font-size:13px;}
+          .kn-actions-mobile{display:flex;align-items:center;gap:6px;}
+          .kn-actions-mobile .kn-iconbtn{width:clamp(34px, 5vw, 38px);height:clamp(34px, 5vw, 38px);}
+          .kn-cta-m{display:inline-flex;margin-left:4px;
+            padding:clamp(8px, 1.4vw, 10px) clamp(12px, 2vw, 18px);
+            font-size:clamp(11px, 1.8vw, 13px);}
 
-          /* slide-down menu = pages only (search/email/CTA already visible above) */
+          /* slide-down menu = pages only (search/email/CTA already in the rows above) */
           .kn-mobile-menu{display:block;}
           .kn-mobile-inner{padding:12px 20px 16px;}
           .kn-mobile-inner .kn-m-search{display:none;}
@@ -558,7 +527,7 @@ const Navbar = () => {
           <span>info@kamakhyacosmetics.com.np</span>
         </a>
 
-<ProductSearch variant="desktop" onCloseMobile={closeMobile} />
+        <ProductSearch variant="desktop" onCloseMobile={closeMobile} />
       </div>
 
       <div className="kn-mainrow">
@@ -699,14 +668,14 @@ const Navbar = () => {
               {cartCount > 0 && <span className="kn-badge">{cartCount}</span>}
             </button>
           </Link>
-          {/* ✅ tablet-only CTA (hidden ≤640 via .kn-cta-m base rule) */}
+          {/* ✅ sub-desktop CTA (hidden ≥1023) */}
           <Link to="/distributor" className="kn-cta kn-cta-m">
             Become Distributor
           </Link>
         </div>
       </div>
 
-      {/* ── MOBILE / TABLET: slide-down menu (ref attached for click-outside) ── */}
+      {/* ── SUB-DESKTOP: slide-down menu (ref attached for click-outside) ── */}
       <div className={`kn-mobile-menu ${mobileOpen ? "open" : ""}`} ref={mobileMenuRef}>
         <div className="kn-mobile-inner">
           <ProductSearch variant="mobile" onCloseMobile={closeMobile} />
