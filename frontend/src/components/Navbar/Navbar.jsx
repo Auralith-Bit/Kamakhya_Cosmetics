@@ -174,7 +174,7 @@ const ProductSearch = ({ variant, onCloseMobile }) => {
       >
         <input
           type="text"
-          placeholder={variant === "mobile" ? "Search products…" : "search products…"}
+          placeholder={variant === "mobile" ? "Search " : "search"}
           value={q}
           onChange={(e) => {
             setQ(e.target.value);

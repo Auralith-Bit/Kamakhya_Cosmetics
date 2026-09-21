@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import catImg from "../../assets/Product.svg";
 import Curve from "../../assets/Curve.svg";
@@ -35,6 +35,9 @@ const ChevR = () => (
 const ProductCategories = () => {
   const [items, setItems] = useState(CATS);
   const [page, setPage] = useState(1);
+  const touchStartX = useRef(0);
+  const touchStartY = useRef(0);
+  const isDragging = useRef(false);
 
   const next = () => {
     if (page >= DOTS.length - 1) return;
@@ -49,6 +52,29 @@ const ProductCategories = () => {
 
   const isFirst = page === 0;
   const isLast = page === DOTS.length - 1;
+
+  /* ✅ touch swipe: slide cards left/right to browse (reuses next/prev) */
+  const onTouchStart = (e) => {
+    isDragging.current = true;
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+  const onTouchMove = (e) => {
+    if (!isDragging.current) return;
+    const dx = e.touches[0].clientX - touchStartX.current;
+    const dy = e.touches[0].clientY - touchStartY.current;
+    if (Math.abs(dx) > Math.abs(dy)) e.preventDefault();
+  };
+  const onTouchEnd = (e) => {
+    if (!isDragging.current) return;
+    isDragging.current = false;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    const dy = e.changedTouches[0].clientY - touchStartY.current;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) next();
+      else prev();
+    }
+  };
 
   return (
     <section id="shine-categories" className="pc-sec">
@@ -169,7 +195,10 @@ const ProductCategories = () => {
         </p>
       </div>
 
-      <div className="pc-row">
+      <div className="pc-row" style={{ touchAction: "pan-y" }}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}>
         {items.map((c, i) => (
           <Link to={`/products?brand=Royal Luxury&category=${c.category}`} className={`pc-card ${SLOTS[i]}`} key={`${c.name}-${i}`}>
             {c.img && <img className="pc-img" src={c.img} alt={`Royal Luxury ${c.name}`} />}

@@ -242,14 +242,14 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* ✅ LINE 2 — centered below line 1, agency name BOLD, NO underline */}
+        {/* ✅ LINE 2 — centered below line 1, agency name BOLD + UNDERLINED */}
         <p className="m-0 mt-3 w-full text-center text-[13px] text-muted">
           Designed &amp; Developed by{' '}
           <a
             href="https://auralithbit.com.np/"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-bold text-muted no-underline transition-colors hover:text-footer-gold"
+            className="font-bold text-muted underline underline-offset-2 transition-colors hover:text-footer-gold"
           >
             Auralith Bit
           </a>

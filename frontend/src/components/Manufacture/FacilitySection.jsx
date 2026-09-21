@@ -201,8 +201,12 @@ const FacilitySection = () => (
         }
         .mf-play svg{width: clamp(22px, 6vw, 30px); height: clamp(22px, 6vw, 30px);}
 
+        /* ✅ FIX: cancel the desktop overlap offset (-7.8vw) so the copy
+           column starts exactly at the 5vw section gutter instead of
+           hanging off the left edge */
         .mf-copy{
         margin-top: 3vw;
+        margin-left: 0;
         max-width: none;
         width: 100%;
         gap: 5vw;
