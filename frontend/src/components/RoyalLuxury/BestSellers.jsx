@@ -27,14 +27,10 @@ export default function BestSellers() {
         .bs-squiggle{display:block;margin-left:34.5vw;margin-right:34.5vw;width:9.25vw;height:auto;}
         .bs-sub{color:#666666;font-family:${sans};font-size:0.97vw;font-weight:500;letter-spacing:0.03em;line-height:1.4583vw;max-width:78vw;margin:0 auto;}
 
-        /* ============ PRODUCT GRID — scoped CSS, no Tailwind variants ============
-           ✅ DESKTOP ≥1024: 4 cards in ONE row
-           ✅ TABLET 640–1023: 2 cards per row (2×2)
-           ✅ MOBILE ≤639: 1 card per row                                    */
         .bs-grid{
           position:relative;z-index:10;
           display:grid;
-          grid-template-columns:repeat(4, 1fr);   /* ✅ 4-up on desktop */
+          grid-template-columns:repeat(4, 1fr);
           gap:24px;
           padding:0 6vw;
           align-items:stretch;
@@ -50,13 +46,10 @@ export default function BestSellers() {
           .bs-grid{gap:16px;}
         }
 
-        /* ✅ TABLET: 2 per row (switch to repeat(3, 1fr) here if you ever
-           carry 6+ products and want 3-up) */
         @media (min-width:640px) and (max-width:1023px){
           .bs-grid{grid-template-columns:repeat(2, 1fr);gap:20px;padding:0 6vw;}
         }
 
-        /* ✅ MOBILE: single column */
         @media (max-width:639px){
           .bs-grid{grid-template-columns:1fr;gap:24px;padding:0 20px;}
         }
@@ -78,8 +71,12 @@ export default function BestSellers() {
         }
 
         @media (max-width:639px){
-          .bs-title{font-size:5vw;} .bs-sub{font-size:3vw;line-height:4.6vw;}
-          .bs-eyebrow{font-size:2.4vw;} .bs-squiggle{width:24vw;}
+          /* ✅ paragraph/header now span the full width (same 20px gutters as the card grid) */
+          .bs-head{max-width:none;padding:0 20px;}
+          .bs-title{font-size:5vw;}
+          .bs-sub{font-size:3vw;line-height:4.6vw;max-width:none;}
+          .bs-eyebrow{font-size:2.4vw;}
+          .bs-squiggle{width:24vw;}
         }
       `}</style>
 
@@ -101,7 +98,6 @@ export default function BestSellers() {
         </p>
       </header>
 
-      {/* ✅ plain class — column counts now controlled by the scoped CSS above */}
       <div className="bs-grid">
         {PRODUCTS.map((p) => (
           <ProductCard

@@ -23,7 +23,9 @@ export default function HeroBanner() {
             rgba(247,241,232,1) 0%,
             rgba(247,241,232,0.7) 45%,
             rgba(247,241,232,0) 65%);}
-        .mh-copy{position:absolute;left:9.1667vw;top:4.1667vw;width:40.625vw;z-index:2;}
+        /* ✅ MARGIN MATCH: copy left gutter = 8vw, same edge as the process
+           timeline cards below (was 9.1667vw) */
+        .mh-copy{position:absolute;left:8vw;top:4.1667vw;width:40.625vw;z-index:2;}
         .mh-crumb{display:flex;align-items:center;gap:0.5208vw;color:#2E3192;
           font-family:${serif};font-size:1.25vw;font-weight:700;white-space:nowrap;}
         .mh-crumb a{color:#2E3192;text-decoration:none;font-size:1.4583vw;}
@@ -43,8 +45,9 @@ export default function HeroBanner() {
         @media (max-width:639px){
           .mh-hero{height:auto;}
 
+          /* ✅ side gutter 5vw — same as the process section on phones */
           .mh-copy{position:relative;z-index:2;left:auto;top:auto;width:auto;
-            padding:8vw 6vw 12vw;}
+            padding:8vw 5vw 12vw;}
           .mh-crumb{font-size:clamp(13px, 1.6vw, 18px);gap:2vw;}
           .mh-crumb a{font-size:clamp(16px, 2vw, 22px);}
           .mh-ic-home{width:clamp(16px, 2vw, 22px);height:clamp(16px, 2vw, 22px);}
@@ -86,6 +89,7 @@ export default function HeroBanner() {
           .mh-bg{display:none;}
           .mh-veil{display:none;}
 
+          /* ✅ side gutter 6vw — same as the process section on tablet */
           .mh-copy{
           position:relative;
           left:auto;

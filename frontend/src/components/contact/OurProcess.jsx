@@ -37,12 +37,16 @@ const OurProcess = () => {
   const [questionError, setQuestionError] = useState(false);
   const [questionSent, setQuestionSent] = useState(false);
   const toastTimer = useRef(null);
+  const inputRef = useRef(null);                 // ✅ focus target on error
 
   useEffect(() => () => clearTimeout(toastTimer.current), []);
 
   const handleSendQuestion = () => {
+    /* ✅ message MUST be typed before sending */
     if (!question.trim()) {
       setQuestionError(true);
+      setQuestionSent(false);                    // ✅ cancel any lingering success toast
+      inputRef.current?.focus();                 // ✅ jump straight into the field
       return;
     }
     setQuestionError(false);
@@ -148,6 +152,7 @@ const OurProcess = () => {
         .fq-input::placeholder{color:#999999;}
         .fq-input:focus{border-color:#2E3192;}
         .fq-input.invalid{border-color:#D64545;background:#FDF4F4;}
+        .fq-input.invalid:focus{border-color:#D64545;}   /* ✅ stay red while focused */
         .fq-err{display:block;margin-top:0.4167vw;text-align:left;color:#D64545;
           font-family:${sans};font-size:0.75vw;font-weight:500;}
         .fq-note{margin-top:0.4167vw;color:#666666;font-family:${sans};
@@ -291,16 +296,18 @@ const OurProcess = () => {
         </p>
         <p className="fq-label">Let us know</p>
         <textarea
+          ref={inputRef}
           className={`fq-input${questionError ? " invalid" : ""}`}
           placeholder="Type your question here…"
           value={question}
           onChange={(e) => {
             setQuestion(e.target.value);
-            if (questionError) setQuestionError(false);
+            /* ✅ error clears only once real text appears */
+            if (questionError && e.target.value.trim()) setQuestionError(false);
           }}
         />
         {questionError && (
-          <span className="fq-err">Please write a question before sending.</span>
+          <span className="fq-err">Please type your question before sending.</span>
         )}
         <p className="fq-note">No payment is taken here — this simply reaches our trade team.</p>
         <button className="fq-send" onClick={handleSendQuestion}>Send Question <Arrow /></button>

@@ -171,7 +171,7 @@ const ProductCategories = () => {
 
       <div className="pc-row">
 {items.map((c, i) => (
-          <Link to={`/products?brand=Shine&category=${c.category}`} className={`pc-card ${SLOTS[i]}`} key={`${c.name}-${i}`}>
+          <Link to={`/products?brand=Shine&category=${encodeURIComponent(c.category)}`} className={`pc-card ${SLOTS[i]}`} key={`${c.name}-${i}`}>
             {c.img && <img className="pc-img" src={c.img} alt={`Shine ${c.name}`} />}
             <p className="pc-name">{c.name}</p>
             <p className="pc-count">{c.count}</p>

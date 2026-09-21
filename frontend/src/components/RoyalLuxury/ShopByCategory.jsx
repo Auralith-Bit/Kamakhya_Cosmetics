@@ -141,7 +141,7 @@ const ProductCategories = () => {
           .pc-tag{font-size:13px;}
           .pc-title{font-size:26px;}
           .pc-vector{width:120px;margin:12px auto 0;}
-          .pc-sub{font-size:14px;margin-top:12px;}
+          .pc-sub{font-size:14px;margin-top:12px;max-width: 100%;}
 
           .pc-row{display:block;margin:32px 0 0;}
           .pc-card{width:min(85vw, 340px);margin:0 auto;}

@@ -183,8 +183,8 @@ const CtaBand = () => (
     {/* ✅ Request Quote → /bulk-quote */}
     <Link to="/bulk-quote" className="cb-gold">{DATA.btnGold} <Arrow /></Link>
 
-    {/* ✅ Explore Collections → /products */}
-    <Link to="/products" className="cb-line">{DATA.btnOutline}</Link>
+    {/* ✅ Explore Collections → /products with Shine filter */}
+    <Link to="/products?brand=Shine" className="cb-line">{DATA.btnOutline}</Link>
   </section>
 );
 

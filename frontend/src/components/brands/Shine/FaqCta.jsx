@@ -35,12 +35,21 @@ const FaqCta = () => {
   const [open, setOpen] = useState(null);
   const [question, setQuestion] = useState("");
   const [sent, setSent] = useState(false);
+  const [err, setErr] = useState(false);          // ✅ empty-message guard flag
   const toastTimer = useRef(null);
+  const inputRef = useRef(null);                 // ✅ focus target on error
 
   useEffect(() => () => clearTimeout(toastTimer.current), []);
 
   const handleSend = () => {
-    if (!question.trim()) return;
+    /* ✅ message MUST be typed before sending */
+    if (!question.trim()) {
+      setErr(true);
+      setSent(false);
+      inputRef.current?.focus();
+      return;
+    }
+    setErr(false);
     setQuestion("");
     setSent(true);
     clearTimeout(toastTimer.current);
@@ -142,6 +151,13 @@ const FaqCta = () => {
         }
         .fq-input::placeholder{color:#999999;}
         .fq-input:focus{border-color:#2E3192;}
+
+        /* ✅ invalid state + inline error for empty message */
+        .fq-input.invalid{border-color:#D64545;background:#FDF4F4;}
+        .fq-input.invalid:focus{border-color:#D64545;}
+        .fq-err{margin:0.4vw 0 0;color:#D64545;font-family:${sans};
+          font-size:0.7vw;font-weight:500;text-align:left;line-height:1.4;}
+
         .fq-note{margin-top:0.4167vw;color:#666666;font-family:${sans};
           font-size:0.6771vw;letter-spacing:0.06em;}
         .fq-send{
@@ -190,6 +206,7 @@ const FaqCta = () => {
           .fq-label{margin-top:3vw;font-size:clamp(11px, 1.3vw, 15px);}
           .fq-input{margin-top:2vw;height:24vw;padding:3vw;border-radius:2vw;
             font-size:clamp(12px, 1.4vw, 16px);}
+          .fq-err{font-size:12px;margin-top:6px;}
           .fq-note{margin-top:2vw;font-size:clamp(9px, 1.1vw, 12px);}
           .fq-send{margin-top:3vw;height:12vw;border-radius:2vw;
             font-size:clamp(12px, 1.5vw, 17px);}
@@ -230,6 +247,7 @@ const FaqCta = () => {
           .fq-card .fq-p{font-size:13px;margin-top:8px;}
           .fq-label{font-size:13px;margin-top:16px;}
           .fq-input{margin-top:8px;height:120px;padding:12px;border-radius:10px;font-size:14px;}
+          .fq-err{font-size:12px;margin-top:6px;}
           .fq-note{font-size:11px;margin-top:8px;}
           .fq-send{margin-top:16px;height:52px;border-radius:10px;font-size:15px;}
           .fq-send svg{width:16px;height:11px;}
@@ -278,11 +296,18 @@ const FaqCta = () => {
         </p>
         <p className="fq-label">Let us know</p>
         <textarea
-          className="fq-input"
+          ref={inputRef}
+          className={`fq-input${err ? " invalid" : ""}`}
           placeholder="Type your question here…"
           value={question}
-          onChange={(e) => setQuestion(e.target.value)}
+          onChange={(e) => {
+            setQuestion(e.target.value);
+            /* ✅ error clears the moment real text appears */
+            if (err && e.target.value.trim()) setErr(false);
+          }}
         />
+        {/* ✅ inline guard message */}
+        {err && <p className="fq-err">Please type your question before sending.</p>}
         <p className="fq-note">No payment is taken here — this simply reaches our trade team.</p>
         <button className="fq-send" onClick={handleSend}>Send Question <Arrow /></button>
       </div>

@@ -2,8 +2,6 @@ import React from "react";
 import processBar from "../../assets/manufactureAssets/processBAR.png";
 import vectorGold from "../../assets/Vector (1).svg";
 
-/* ✅ IMAGES NOW LOCAL — direct imports from src/assets/figmaAssets
-   (filenames contain spaces, which is fine inside import strings) */
 import imgImage37 from "../../assets/figmaAssets/image 37.png";
 import imgImage38 from "../../assets/figmaAssets/image 38.png";
 import imgImage39 from "../../assets/figmaAssets/image 39.png";
@@ -137,9 +135,15 @@ const ProcessSection = () => (
       .ps-intro{margin-top:0.5vw;color:#666;font-family:${sans};font-size:1.0417vw;
         font-weight:500;line-height:1.6;max-width:51.0417vw;}
 
-      /* desktop timeline */
-      .ps-timeline{display:none;position:relative;width:100%;max-width:82.2917vw;
-        margin:0 auto;margin-top:5.7292vw;height:58.125vw;}
+      /* desktop timeline
+         ✅ MARGIN MATCH: canvas inset + viewport-relative left offset so the
+         outer card edges sit at ~8vw (≈154px @1920) each side — same margins
+         as the component below. (Offset is pure vw: the wrap is padded, so a
+         % based calc would resolve against the wrong box.) */
+      .ps-timeline{display:none;position:relative;width:100%;max-width:78.4848vw;
+        margin:5.7292vw auto 0;
+        margin-left:6.8281vw;
+        height:58.125vw;}
       .ps-clip{position:absolute;pointer-events:none;overflow:hidden;
         left:1.7089%;width:126.5823%;top:-52.0833vw;height:208.3333vw;}
       .ps-wave{position:absolute;left:-4.85%;width:91%;top:62.5vw;}

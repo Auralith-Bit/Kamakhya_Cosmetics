@@ -1055,6 +1055,9 @@
   .gap-x-8 {
     column-gap: calc(var(--spacing) * 8);
   }
+  .gap-y-2 {
+    row-gap: calc(var(--spacing) * 2);
+  }
   .gap-y-4 {
     row-gap: calc(var(--spacing) * 4);
   }
@@ -2530,15 +2533,6 @@
     }
   }
   @media (width < 600px) {
-    .max-tab\:order-1 {
-      order: 1;
-    }
-    .max-tab\:order-2 {
-      order: 2;
-    }
-    .max-tab\:order-3 {
-      order: 3;
-    }
     .max-tab\:w-\[calc\(\(100\%-20px\)\/2\)\] {
       width: calc((100% - 20px) / 2);
     }
@@ -2551,14 +2545,14 @@
     .max-tab\:flex-col {
       flex-direction: column;
     }
-    .max-tab\:flex-wrap {
-      flex-wrap: wrap;
-    }
     .max-tab\:items-center {
       align-items: center;
     }
     .max-tab\:justify-center {
       justify-content: center;
+    }
+    .max-tab\:gap-2 {
+      gap: calc(var(--spacing) * 2);
     }
     .max-tab\:gap-4 {
       gap: calc(var(--spacing) * 4);

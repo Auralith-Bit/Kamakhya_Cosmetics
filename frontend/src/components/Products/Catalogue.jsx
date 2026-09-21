@@ -25,7 +25,7 @@ const categoriesByBrand = {
     'Shine': ShineCategories,
 }
 
-const productTypes = ['Featured', 'Best Seller', 'Signatured Products']
+const productTypes = ['Newly Launched', 'Best Seller', 'Signatured Products']
 
 const PRODUCTS_PER_PAGE = 12
 

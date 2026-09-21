@@ -4,7 +4,7 @@ import intersect from '../assets/Intersect.svg'
 
 export const products = [
     {
-        id: 1, tag: 'ROYAL LUXURY', brand: 'Royal Luxury', category: 'Lip Care', type: 'Featured',
+        id: 1, tag: 'ROYAL LUXURY', brand: 'Royal Luxury', category: 'Lip Care', type: 'Newly Launched',
         image: ProductImg, title: 'Lipstick',
         desc: 'Lipstick adds vibrant color and confidence to your smile, enhancing every look with long-lasting comfort.',
         notes: ['Enriched with Vitamin E for lip hydration', 'Smudge-proof all-day wear', 'Available in 12+ shades'],
@@ -132,7 +132,7 @@ export const products = [
         },
     },
     {
-        id: 4, tag: 'ROYAL LUXURY', brand: 'Royal Luxury', category: 'Body Care', type: 'Featured',
+        id: 4, tag: 'ROYAL LUXURY', brand: 'Royal Luxury', category: 'Body Care', type: 'Newly Launched',
         image: ProductImg, title: 'Foundation',
         desc: 'Our foundation offers flawless coverage while nourishing your skin with a lightweight, buildable formula.',
         notes: ['Buildable medium-to-full coverage', 'Infused with hyaluronic acid', 'Oil-free and non-comedogenic'],
@@ -260,7 +260,7 @@ export const products = [
         },
     },
     {
-        id: 7, tag: 'ROYAL LUXURY', brand: 'Royal Luxury', category: 'Hair Care', type: 'Featured',
+        id: 7, tag: 'ROYAL LUXURY', brand: 'Royal Luxury', category: 'Hair Care', type: 'Newly Launched',
         image: ProductImg, title: 'Hair Serum',
         desc: 'Lightweight hair serum that tames frizz and adds brilliant shine without weighing hair down.',
         notes: ['Frizz-control for up to 72 hours', 'Heat protection up to 230°C', 'Suitable for all hair types'],
@@ -304,7 +304,7 @@ export const products = [
         },
     },
     {
-        id: 8, tag: 'ROYAL LUXURY', brand: 'Royal Luxury', category: 'Hair Care', type: 'Featured',
+        id: 8, tag: 'ROYAL LUXURY', brand: 'Royal Luxury', category: 'Hair Care', type: 'Newly Launched',
         image: ProductImg, title: 'Shampoo',
         desc: 'Sulfate-free shampoo that gently cleanses while preserving color vibrancy and natural moisture.',
         notes: ['Sulfate-free gentle cleansing', 'Color-safe formula', 'Paraben-free and vegan'],
@@ -347,7 +347,7 @@ export const products = [
         },
     },
     {
-        id: 9, tag: 'ROYAL LUXURY', brand: 'Royal Luxury', category: 'Face Care', type: 'Featured',
+        id: 9, tag: 'ROYAL LUXURY', brand: 'Royal Luxury', category: 'Face Care', type: 'Newly Launched',
         image: ProductImg, title: 'Moisturizer',
         desc: 'Lightweight daily moisturizer that hydrates and protects skin with a non-greasy, fast-absorbing formula.',
         notes: ['Non-greasy fast-absorbing formula', '24-hour moisture lock', 'SPF 20 daily sun protection'],
@@ -390,7 +390,7 @@ export const products = [
         },
     },
     {
-        id: 10, tag: 'ROYAL LUXURY', brand: 'Royal Luxury', category: 'Sun Care', type: 'Featured',
+        id: 10, tag: 'ROYAL LUXURY', brand: 'Royal Luxury', category: 'Sun Care', type: 'Newly Launched',
         image: ProductImg, title: 'Sunscreen',
         desc: 'Broad-spectrum SPF 50+ sunscreen providing powerful UV protection with a lightweight, non-white-cast finish.',
         notes: ['SPF 50+ broad-spectrum protection', 'Water-resistant up to 80 minutes', 'No white cast on any skin tone'],
@@ -432,7 +432,7 @@ export const products = [
         },
     },
     {
-        id: 11, tag: 'ROYAL LUXURY', brand: 'Royal Luxury', category: 'Hair Care', type: 'Featured',
+        id: 11, tag: 'ROYAL LUXURY', brand: 'Royal Luxury', category: 'Hair Care', type: 'Newly Launched',
         image: ProductImg, title: 'Hair Oil',
         desc: 'Nourishing hair oil blend that promotes growth, reduces split ends, and adds deep, lasting shine.',
         notes: ['Promotes healthy hair growth', 'Reduces split ends and breakage', '100% natural oil blend'],
@@ -476,7 +476,7 @@ export const products = [
         },
     },
     {
-        id: 12, tag: 'SHINE', brand: 'Shine', category: 'Kitchen & Dishwashing', type: 'Featured',
+        id: 12, tag: 'SHINE', brand: 'Shine', category: 'Kitchen & Dishwashing', type: 'Newly Launched',
         image: group56, title: 'Dish Soap',
         desc: 'Cuts through grease fast while staying gentle on hands. Plant-based formula with a fresh lemon scent.',
         notes: ['Plant-based grease-cutting power', 'Gentle on hands with aloe vera', 'Fresh lemon fragrance'],
@@ -519,7 +519,7 @@ export const products = [
         },
     },
     {
-        id: 13, tag: 'SHINE', brand: 'Shine', category: 'Glass Cleaners', type: 'Featured',
+        id: 13, tag: 'SHINE', brand: 'Shine', category: 'Glass Cleaners', type: 'Newly Launched',
         image: intersect, title: 'Glass Cleaner',
         desc: 'Streak-free shine for windows, mirrors, and glass surfaces. Ammonia-free formula with fast evaporation.',
         notes: ['Streak-free professional finish', 'Ammonia-free safe formula', 'Fast-evaporating technology'],
@@ -561,7 +561,7 @@ export const products = [
         },
     },
     {
-        id: 14, tag: 'SHINE', brand: 'Shine', category: 'Floor and Surface Cleaners', type: 'Featured',
+        id: 14, tag: 'SHINE', brand: 'Shine', category: 'Floor and Surface Cleaners', type: 'Newly Launched',
         image: group56, title: 'Floor Cleaner',
         desc: 'All-purpose floor cleaner safe for most surfaces. Antibacterial formula with a fresh ocean breeze scent.',
         notes: ['Antibacterial protection for floors', 'Safe on tile, wood, and laminate', 'Fresh ocean breeze fragrance'],
@@ -605,7 +605,7 @@ export const products = [
         },
     },
     {
-        id: 15, tag: 'SHINE', brand: 'Shine', category: 'Bathroom Cleaners', type: 'Featured',
+        id: 15, tag: 'SHINE', brand: 'Shine', category: 'Bathroom Cleaners', type: 'Newly Launched',
         image: intersect, title: 'Bathroom Cleaner',
         desc: 'Removes soap scum and limescale with ease. Powerful formula that keeps your bathroom sparkling clean.',
         notes: ['Removes soap scum and limescale', 'Powerful foaming action', 'Pleasant fresh scent'],
@@ -647,7 +647,7 @@ export const products = [
         },
     },
     {
-        id: 16, tag: 'SHINE', brand: 'Shine', category: 'Laundry', type: 'Featured',
+        id: 16, tag: 'SHINE', brand: 'Shine', category: 'Laundry', type: 'Newly Launched',
         image: group56, title: 'Laundry Detergent',
         desc: 'Deep-cleans fabrics while keeping colors vibrant. High-efficiency formula that works in all water temperatures.',
         notes: ['Deep-cleaning HE formula', 'Color-safe bright technology', 'Works in cold and hot water'],
@@ -690,7 +690,7 @@ export const products = [
         },
     },
     {
-        id: 17, tag: 'ROYAL LUXURY', brand: 'Royal Luxury', category: 'Hair Care', type: 'Featured',
+        id: 17, tag: 'ROYAL LUXURY', brand: 'Royal Luxury', category: 'Hair Care', type: 'Newly Launched',
         image: ProductImg, title: 'Conditioner',
         desc: 'Deep-conditioning formula that detangles and strengthens hair, leaving it silky smooth and manageable.',
         notes: ['Deep conditioning for all hair types', 'Detangles and reduces breakage', 'Silky smooth finish'],

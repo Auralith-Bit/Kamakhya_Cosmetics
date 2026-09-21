@@ -41,23 +41,38 @@ const ArrowRight = () => (
   </svg>
 );
 
-const TeamCard = ({ member, id }) => (
-  <div className="ot-card" data-index={id}>
-    <div className="ot-card-inner">
-      <svg className="ot-svg" viewBox="0 0 300 360" preserveAspectRatio="none" role="img" aria-label={member.name}>
-        <path d={member.shape === 'A' ? SHAPE_A : SHAPE_B} fill={member.bg} />
-        <image
-          href={member.photo}
-          x="0" y="0" width="300" height="360"
-          preserveAspectRatio="xMidYMax slice"
-          clipPath={`url(#ot-clip-${member.shape.toLowerCase()}-${id})`}
-        />
-      </svg>
+/* ✅ EVEN (B): ORIGINAL framing — untouched.
+   ODD  (A): same top level as B (y=24), but window now extends all the way
+   to the bottom of the viewBox (y+height = 360) so there's no empty shape
+   colour below the odd photo. Head alignment with even cards unchanged. */
+const IMAGE_FRAME = {
+  A: { x: 0, y: 24, width: 300, height: 336, par: 'xMidYMin slice' },
+  B: { x: 0, y: 0,  width: 300, height: 360, par: 'xMidYMax slice' },
+};
+
+const TeamCard = ({ member, id }) => {
+  const frame = IMAGE_FRAME[member.shape];
+  return (
+    <div className="ot-card" data-index={id}>
+      <div className="ot-card-inner">
+        <svg className="ot-svg" viewBox="0 0 300 360" preserveAspectRatio="none" role="img" aria-label={member.name}>
+          <path d={member.shape === 'A' ? SHAPE_A : SHAPE_B} fill={member.bg} />
+          <image
+            href={member.photo}
+            x={frame.x}
+            y={frame.y}
+            width={frame.width}
+            height={frame.height}
+            preserveAspectRatio={frame.par}
+            clipPath={`url(#ot-clip-${member.shape.toLowerCase()}-${id})`}
+          />
+        </svg>
+      </div>
+      <h4 className="ot-name">{member.name}</h4>
+      <p className="ot-role">{member.role}</p>
     </div>
-    <h4 className="ot-name">{member.name}</h4>
-    <p className="ot-role">{member.role}</p>
-  </div>
-);
+  );
+};
 
 const OurTeam = () => {
   const rowRef = useRef(null);

@@ -47,8 +47,11 @@ const FacilitySection = () => (
   <section id="manufacture-facility" className="mf-sec" aria-labelledby="facility-heading">
     <style>{`
       /* ============ DESKTOP ≥1024 — 1920 design, all vw ============ */
+      /* ✅ MARGIN MATCH: symmetric 8vw gutters — media left edge and copy right
+         edge now sit on the same 8vw lines as the hero copy and timeline cards
+         (was 9.2708vw left / 2.6042vw right) */
       .mf-sec{width:100%;background:#f5f7fa;
-        padding:5.2083vw 2.6042vw 5.2083vw 9.2708vw;}
+        padding:5.2083vw 8vw;}
 
       .mf-wrap{display:flex;align-items:center;column-gap:8.3333vw;row-gap:3.125vw;}
 
@@ -167,17 +170,17 @@ const FacilitySection = () => (
         .mf-sec{padding:8vw 5vw;}
         .mf-wrap{flex-direction:column;align-items:flex-start;gap:6vw;}
 
+        /* ✅ gutter = section padding (5vw), no extra inner indent */
         .mf-media{
           width: 100%;
           height: auto;
-          margin-left: 0.9vw;
+          margin-left: 0;
           aspect-ratio: 4/3;
           border-radius: 2vw;
           overflow: hidden;
           position: relative;
         }
 
-        /* ✅ inherit the 2vw radius on all corners */
         .mf-img, .mf-tint{
           position: absolute;
           inset: 0;
@@ -207,17 +210,17 @@ const FacilitySection = () => (
 
         .mf-tag{
           font-size: clamp(12px, 3.2vw, 15px);
-          margin-left: 9vw;
+          margin-left: 0;
         }
 
         .mf-squiggle{
           width: clamp(70px, 20vw, 90px);
-          margin-left: 9vw;
+          margin-left: 0;
         }
 
         .mf-title{
           margin-top: 3vw;
-          margin-left: 9vw;
+          margin-left: 0;
           font-size: clamp(22px, 6vw, 30px);
           text-align: left;
           max-width: 100%;
@@ -228,16 +231,16 @@ const FacilitySection = () => (
           gap: 3.5vw;
           font-size: clamp(13px, 3.6vw, 15px);
           text-align: justify;
-          margin-left: 9vw;
-          width: 90%;
+          margin-left: 0;
+          width: 100%;
           max-width: 100%;
         }
 
         .mf-feats{
           grid-template-columns: repeat(2, 1fr);
           gap: 6vw 3vw;
-          margin-left: 9vw;
-          width: 90%;
+          margin-left: 0;
+          width: 100%;
         }
 
         .mf-circle{width: clamp(56px, 16vw, 74px); height: clamp(56px, 16vw, 74px);}
@@ -273,6 +276,7 @@ const FacilitySection = () => (
         .mf-play svg{width: 28px; height: 28px;}
 
         .mf-copy{
+        margin-top: 0vw;
         margin-left: 0vw;
         max-width:none;
         width:100%;

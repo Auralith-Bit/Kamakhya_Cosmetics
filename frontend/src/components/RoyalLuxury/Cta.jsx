@@ -181,8 +181,8 @@ const Cta = () => (
     {/* ✅ Request Quote → /bulk-quote */}
     <Link to="/bulk-quote" className="cb-gold">{DATA.btnGold} <Arrow /></Link>
 
-    {/* ✅ Explore Collections → /products */}
-    <Link to="/products" className="cb-line">{DATA.btnOutline}</Link>
+    {/* ✅ Explore Collections → /products with Royal Luxury filter */}
+    <Link to="/products?brand=Royal Luxury" className="cb-line">{DATA.btnOutline}</Link>
   </section>
 );
 
