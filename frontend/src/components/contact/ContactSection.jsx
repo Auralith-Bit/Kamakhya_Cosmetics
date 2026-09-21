@@ -619,7 +619,7 @@ const ContactSections = () => {
                   </span>
                 </div>
                 <p>{desc}</p>
-                <Link to={to} className="cx-explore">Explore Colletctions <ArrowR /></Link>
+                <Link to={to} className="cx-explore">Explore Collections <ArrowR /></Link>
               </div>
             ))}
           </div>

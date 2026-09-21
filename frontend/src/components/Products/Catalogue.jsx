@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { Search, Headphones, SlidersHorizontal, ChevronDown, ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { Link, useSearchParams } from 'react-router'
 import { products } from '../../data/product'
@@ -172,6 +172,15 @@ const Catalogue = () => {
     const [sortBy, setSortBy] = useState('newest')
     const [filtersOpen, setFiltersOpen] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
+
+    // ✅ keep filters in sync with the URL whenever it changes (e.g. clicking
+    // footer/nav links while already on /products updates the query string
+    // without remounting the route component)
+    useEffect(() => {
+        setSelectedBrand(searchParams.get('brand') || '')
+        setSelectedCategory(searchParams.get('category') || '')
+        setCurrentPage(1)
+    }, [searchParams])
 
     // Which category list shows in the sidebar depends on the selected brand.
     // No brand selected -> empty list (user picks a brand first).

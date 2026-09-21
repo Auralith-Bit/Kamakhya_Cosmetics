@@ -174,7 +174,7 @@ const ProductSearch = ({ variant, onCloseMobile }) => {
       >
         <input
           type="text"
-          placeholder={variant === "mobile" ? "Search " : "search"}
+          placeholder={variant === "mobile" ? "Search products…" : "search"}
           value={q}
           onChange={(e) => {
             setQ(e.target.value);
@@ -467,8 +467,7 @@ const Navbar = () => {
           .kn-mobile-menu{display:none!important;}
         }
 
-        /* ============ ✅ ONE DESIGN FOR ALL ≤1024 (phones + tablets, incl. 1022/1023):
-           Row 1 logo · Row 2 email + search · Row 3 burger + wishlist + cart + CTA ============ */
+        /* ============ TABLET + PHONES ≤1024 — base sub-desktop layout ============ */
         @media (max-width:1024px){
           .kn-diag{display:none;}
           .kn-logo{position:static;width:100%;height:auto;padding:10px 0;}
@@ -489,13 +488,35 @@ const Navbar = () => {
             padding:clamp(8px, 1.4vw, 10px) clamp(12px, 2vw, 18px);
             font-size:clamp(11px, 1.8vw, 13px);}
 
-          /* slide-down menu = pages only (search/email/CTA already in the rows above) */
+          /* tablet menu = pages only (search/email/CTA live in the rows above) */
           .kn-mobile-menu{display:block;}
           .kn-mobile-inner{padding:12px 20px 16px;}
           .kn-mobile-inner .kn-m-search{display:none;}
           .kn-mobile-email{display:none;}
           .kn-mobile-cta{display:none;}
           .kn-mobile-links a, .kn-mobile-links .kn-brands-btn{font-size:14px;padding:12px 0;}
+        }
+
+        /* ============ ✅ PHONES ≤639 — logo row + [hamburger · wishlist · cart] row;
+           open panel = search → email → links → Become Distributor ============ */
+        @media (max-width:639px){
+          /* ✅ mobile logo: 64px → 72px (slightly larger, still under tablet max) */
+          .kn-logo img{height:72px;}
+
+          /* blue email bar removed on phones — email lives inside the menu */
+          .kn-topbar{display:none;}
+
+          /* closed row: hamburger + wishlist + cart only (CTA moves into the menu) */
+          .kn-cta-m{display:none;}
+          .kn-nav .kn-mobile-topbar{padding:6px 16px 10px;}
+
+          /* open panel content: search → email → links → CTA */
+          .kn-mobile-inner .kn-m-search{display:flex;}
+          .kn-mobile-email{display:flex;}
+          .kn-mobile-cta{display:block;}
+
+          /* panel scrolls if the phone is short instead of clipping */
+          .kn-mobile-menu.open{max-height:calc(100vh - 120px);overflow-y:auto;}
         }
       `}</style>
 
@@ -667,7 +688,7 @@ const Navbar = () => {
               {cartCount > 0 && <span className="kn-badge">{cartCount}</span>}
             </button>
           </Link>
-          {/* ✅ sub-desktop CTA (hidden ≥1025) */}
+          {/* ✅ tablet-only CTA (hidden on phones — CTA lives in the menu there) */}
           <Link to="/distributor" className="kn-cta kn-cta-m">
             Become Distributor
           </Link>
@@ -677,8 +698,10 @@ const Navbar = () => {
       {/* ── SUB-DESKTOP: slide-down menu (ref attached for click-outside) ── */}
       <div className={`kn-mobile-menu ${mobileOpen ? "open" : ""}`} ref={mobileMenuRef}>
         <div className="kn-mobile-inner">
+          {/* phones: search at top of panel · tablet: hidden (search in blue bar) */}
           <ProductSearch variant="mobile" onCloseMobile={closeMobile} />
 
+          {/* phones: email row inside panel · tablet: hidden (email in blue bar) */}
           <a
             href="mailto:info@kamakhyacosmetics.com.np"
             className="kn-mobile-email"
@@ -730,6 +753,7 @@ const Navbar = () => {
             ))}
           </ul>
 
+          {/* phones: CTA at the bottom of the panel · tablet: hidden (CTA in burger row) */}
           <Link
             to={"/distributor"}
             className="kn-mobile-cta"

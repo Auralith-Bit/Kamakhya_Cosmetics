@@ -4,6 +4,13 @@ import logo from "../../assets/Vector.svg";
 import goldRule from "../../assets/Vector (1) Gold.svg";
 import whiteRule from "../../assets/White Rectangle 13.svg";
 
+/* ✅ official social URLs */
+const SOCIAL = {
+  facebook: "https://www.facebook.com/share/1DtHL2DE39/",
+  instagram: "https://www.instagram.com/kamakhyaci?stkn=MWUyeDU5NW53c3JnNw==",
+  tiktok: "#",   // placeholder — replace when the TikTok profile URL is available
+};
+
 const PinIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
@@ -45,9 +52,10 @@ const InstagramIcon = () => (
   </svg>
 );
 
-const TwitterIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M22 4.01c-.9.4-1.8.7-2.8.9a4 4 0 0 0-6.9 3.6A11.4 11.4 0 0 1 3.9 4.7a4 4 0 0 0 1.2 5.4c-.7 0-1.4-.2-2-.6v.1a4 4 0 0 0 3.2 4 4 4 0 0 1-1.8.1 4 4 0 0 0 3.7 2.8A8 8 0 0 1 2 18.6a11.3 11.3 0 0 0 6.1 1.8c7.3 0 11.3-6.1 11.3-11.3v-.5c.8-.6 1.5-1.3 2-2.1-.7.3-1.5.6-2.4.7.9-.5 1.6-1.3 1.9-2.2Z" />
+/* ✅ TikTok glyph (replaces the old Twitter icon) */
+const TikTokIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
   </svg>
 );
 
@@ -68,9 +76,9 @@ const FOOTER_LINKS = {
   ],
   Products: [
     { label: "Trade catalogue", to: "/products" },
-    { label: "Skincare", to: "/products" },
-    { label: "Makeup", to: "/products" },
-    { label: "Home care", to: "/products" },
+    { label: "Skincare", to: "/products?brand=Royal%20Luxury" },
+    { label: "Makeup", to: "/products?brand=Royal%20Luxury" },
+    { label: "Home care", to: "/products?brand=Shine" },
     { label: "Saved Products", to: "/wishlist" },   // ✅ routes to /wishlist
   ],
 };
@@ -215,11 +223,35 @@ const Footer = () => {
                 <SendIcon />
               </button>
             </form>
+
+            {/* ✅ exactly three socials: Facebook · Instagram · TikTok,
+                with the real FB/IG profile URLs opening in a new tab */}
             <div className="flex gap-3">
-              <a href="/" aria-label="Facebook" className="flex h-9 w-9 items-center justify-center rounded-full border border-footer-gold text-footer-gold no-underline transition-colors hover:bg-footer-gold hover:text-navy"><FacebookIcon /></a>
-              <a href="/" aria-label="Instagram" className="flex h-9 w-9 items-center justify-center rounded-full border border-footer-gold text-footer-gold no-underline transition-colors hover:bg-footer-gold hover:text-navy"><InstagramIcon /></a>
-              <a href="/" aria-label="Twitter" className="flex h-9 w-9 items-center justify-center rounded-full border border-footer-gold text-footer-gold no-underline transition-colors hover:bg-footer-gold hover:text-navy"><TwitterIcon /></a>
-              <a href="/" aria-label="Instagram" className="flex h-9 w-9 items-center justify-center rounded-full border border-footer-gold text-footer-gold no-underline transition-colors hover:bg-footer-gold hover:text-navy"><InstagramIcon /></a>
+              <a
+                href={SOCIAL.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-footer-gold text-footer-gold no-underline transition-colors hover:bg-footer-gold hover:text-navy"
+              >
+                <FacebookIcon />
+              </a>
+              <a
+                href={SOCIAL.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-footer-gold text-footer-gold no-underline transition-colors hover:bg-footer-gold hover:text-navy"
+              >
+                <InstagramIcon />
+              </a>
+              <a
+                href={SOCIAL.tiktok}
+                aria-label="TikTok"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-footer-gold text-footer-gold no-underline transition-colors hover:bg-footer-gold hover:text-navy"
+              >
+                <TikTokIcon />
+              </a>
             </div>
           </div>
         </div>

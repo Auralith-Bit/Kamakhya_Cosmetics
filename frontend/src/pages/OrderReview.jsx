@@ -329,7 +329,6 @@ const OrderReview = () => {
         font-size:0.8854vw;
         text-align:center;
         }
-        /* ✅ keeps "confirmed shipping charges" on ONE line at every width */
         .or-total-note .or-nowrap{white-space:nowrap;}
 
         .or-actions{margin-top:1.7vw;display:flex;gap:0.9vw;justify-content:center;}
@@ -396,7 +395,6 @@ const OrderReview = () => {
       `}</style>
 
       <div className="or-wrap">
-        {/* ---- blue banner: height controlled by the 3 numbers at the top ---- */}
         <div
           className="or-banner"
           style={{
@@ -486,7 +484,6 @@ const OrderReview = () => {
                 <span className="v">NRs. {sum.total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
               </div>
 
-              {/* ✅ break moved BEFORE "confirmed" + phrase locked to one line */}
               <p className="or-total-note">
                 Final invoice will be issued after review including the<br />
                 <span className="or-nowrap">confirmed shipping charges</span>

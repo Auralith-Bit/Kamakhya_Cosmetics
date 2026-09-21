@@ -117,6 +117,9 @@ const TestimonialCard = ({ name, role, text, color }) => (
 const TestimonialsSection = () => {
   const scrollRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const touchStartX = useRef(0);
+  const touchStartY = useRef(0);
+  const isDragging = useRef(false);
 
   const scrollTo = (index) => {
     if (!scrollRef.current) return;
@@ -128,6 +131,29 @@ const TestimonialsSection = () => {
 
   const scrollLeft = () => scrollTo(Math.max(0, activeIndex - 1));
   const scrollRight = () => scrollTo(Math.min(TOTAL_PAGES - 1, activeIndex + 1));
+
+  /* ✅ touch swipe: slide testimonials left/right to browse (reuses nav) */
+  const onTouchStart = (e) => {
+    isDragging.current = true;
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+  const onTouchMove = (e) => {
+    if (!isDragging.current) return;
+    const dx = e.touches[0].clientX - touchStartX.current;
+    const dy = e.touches[0].clientY - touchStartY.current;
+    if (Math.abs(dx) > Math.abs(dy)) e.preventDefault();
+  };
+  const onTouchEnd = (e) => {
+    if (!isDragging.current) return;
+    isDragging.current = false;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    const dy = e.changedTouches[0].clientY - touchStartY.current;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) scrollRight();
+      else scrollLeft();
+    }
+  };
 
   useEffect(() => {
     const container = scrollRef.current;
@@ -177,6 +203,9 @@ const TestimonialsSection = () => {
         <div style={{ position: 'relative' }}>
           <div
             ref={scrollRef}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
             style={{
               display: 'flex',
               gap: `${GAP}px`,
@@ -186,6 +215,7 @@ const TestimonialsSection = () => {
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
               paddingBottom: '8px',
+              touchAction: 'pan-y',
             }}
             className="hide-scrollbar"
           >
