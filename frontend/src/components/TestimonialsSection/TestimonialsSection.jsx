@@ -155,44 +155,6 @@ const TestimonialsSection = () => {
     }
   };
 
-  /* ✅ mouse / mousepad drag: same swipe-browse behavior as home Shop by Category */
-  const mouseStartX = useRef(0);
-  const didMouseDrag = useRef(false);
-  const wheelLock = useRef(0);
-
-  const onMouseDown = (e) => {
-    mouseStartX.current = e.clientX;
-    didMouseDrag.current = false;
-    isDragging.current = true;
-  };
-  const onMouseMove = (e) => {
-    if (!isDragging.current) return;
-    if (Math.abs(e.clientX - mouseStartX.current) > 12) didMouseDrag.current = true;
-  };
-  const onMouseUp = (e) => {
-    if (!isDragging.current) return;
-    isDragging.current = false;
-    const dx = e.clientX - mouseStartX.current;
-    if (Math.abs(dx) > 40) {
-      if (dx < 0) scrollRight();
-      else scrollLeft();
-    }
-  };
-  const onMouseLeave = () => { isDragging.current = false; };
-
-  /* ✅ trackpad horizontal scroll (two-finger swipe) advances testimonials */
-  const onWheel = (e) => {
-    const dX = e.deltaX;
-    const dY = e.deltaY;
-    if (Math.abs(dX) <= Math.abs(dY) || Math.abs(dX) < 12) return;
-    const now = Date.now();
-    if (now - wheelLock.current < 300) return;
-    wheelLock.current = now;
-    e.preventDefault();
-    if (dX > 0) scrollRight();
-    else scrollLeft();
-  };
-
   useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
@@ -244,11 +206,6 @@ const TestimonialsSection = () => {
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
-            onMouseDown={onMouseDown}
-            onMouseMove={onMouseMove}
-            onMouseUp={onMouseUp}
-            onMouseLeave={onMouseLeave}
-            onWheel={onWheel}
             style={{
               display: 'flex',
               gap: `${GAP}px`,
@@ -259,7 +216,6 @@ const TestimonialsSection = () => {
               msOverflowStyle: 'none',
               paddingBottom: '8px',
               touchAction: 'pan-y',
-              cursor: 'grab',
             }}
             className="hide-scrollbar"
           >
