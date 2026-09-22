@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import vector1 from "../../assets/Vector (1).svg";
 import img1 from "../../assets/Rectangle 4647.svg";
@@ -105,6 +105,68 @@ const SignatureCollection = () => {
   }, []);
 
   const p = PRODUCTS[idx];
+
+  /* ✅ swipe/drag: slide the signature stage left/right to browse (reuses next/prev) */
+  const touchStartX = useRef(0);
+  const touchStartY = useRef(0);
+  const isDragging = useRef(false);
+  const mouseStartX = useRef(0);
+  const didMouseDrag = useRef(false);
+  const wheelLock = useRef(0);
+
+  const onTouchStart = (e) => {
+    isDragging.current = true;
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+  const onTouchMove = (e) => {
+    if (!isDragging.current) return;
+    const dx = e.touches[0].clientX - touchStartX.current;
+    const dy = e.touches[0].clientY - touchStartY.current;
+    if (Math.abs(dx) > Math.abs(dy)) e.preventDefault();
+  };
+  const onTouchEnd = (e) => {
+    if (!isDragging.current) return;
+    isDragging.current = false;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    const dy = e.changedTouches[0].clientY - touchStartY.current;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) next();
+      else prev();
+    }
+  };
+
+  const onMouseDown = (e) => {
+    mouseStartX.current = e.clientX;
+    didMouseDrag.current = false;
+    isDragging.current = true;
+  };
+  const onMouseMove = (e) => {
+    if (!isDragging.current) return;
+    if (Math.abs(e.clientX - mouseStartX.current) > 12) didMouseDrag.current = true;
+  };
+  const onMouseUp = (e) => {
+    if (!isDragging.current) return;
+    isDragging.current = false;
+    const dx = e.clientX - mouseStartX.current;
+    if (Math.abs(dx) > 40) {
+      if (dx < 0) next();
+      else prev();
+    }
+  };
+  const onMouseLeave = () => { isDragging.current = false; };
+
+  const onWheel = (e) => {
+    const dX = e.deltaX;
+    const dY = e.deltaY;
+    if (Math.abs(dX) <= Math.abs(dY) || Math.abs(dX) < 12) return;
+    const now = Date.now();
+    if (now - wheelLock.current < 300) return;
+    wheelLock.current = now;
+    e.preventDefault();
+    if (dX > 0) next();
+    else prev();
+  };
 
   return (
     <section id="shine-spotlight" className="psx-sec">
@@ -469,7 +531,16 @@ const SignatureCollection = () => {
 
           {/* center stage */}
           <div className="psx-center">
-            <div className="psx-stage">
+            <div className="psx-stage" style={{ touchAction: "pan-y" }}
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+              onMouseDown={onMouseDown}
+              onMouseMove={onMouseMove}
+              onMouseUp={onMouseUp}
+              onMouseLeave={onMouseLeave}
+              onWheel={onWheel}
+              onClickCapture={(e) => { if (didMouseDrag.current) { e.preventDefault(); e.stopPropagation(); } }}>
               <span className="psx-badge"><Spark /> {p.badge}</span>
               <div className="psx-track" style={{ transform: `translateX(-${idx * 100}%)` }}>
                 {PRODUCTS.map((it) => (

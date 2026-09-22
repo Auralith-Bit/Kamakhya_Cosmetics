@@ -184,7 +184,7 @@ const Footer = () => {
               <span>
                 +977 9857049884
                 <br />
-                +977 9869583196
+                +977 9857030243
               </span>
             </p>
             <p className="flex items-start gap-2.5 m-0 mb-3.5 text-fog text-sm leading-[1.5]">
