@@ -39,7 +39,6 @@ const CheckoutBody = () => {
     if (!formData.deliveryAddress.trim()) e.deliveryAddress = 'Delivery address is required';
     if (!formData.city.trim()) e.city = 'City is required';
     if (!formData.country) e.country = 'Country is required';
-    if (!formData.orderNotes.trim()) e.orderNotes = 'Order notes are required';
     setErrors(e);
     return Object.keys(e).length === 0;
   };

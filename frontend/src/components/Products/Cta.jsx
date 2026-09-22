@@ -29,7 +29,7 @@ const Cta = () => (
       position:relative;
       width:100%;
       height:15.625vw;
-      background:#0A1230;
+      background:#161E3A;
       overflow:hidden;
       }
 

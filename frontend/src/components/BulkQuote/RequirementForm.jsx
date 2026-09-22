@@ -217,7 +217,7 @@ const [errors, setErrors] = useState({});
  
               <div className="sm:col-span-2 mt-1"> 
                 <label htmlFor="description" className={labelClass}> 
-                  Describe your requirement* 
+                  Describe your requirement
                 </label> 
                 <textarea 
                   id="description" 
@@ -225,7 +225,6 @@ const [errors, setErrors] = useState({});
                   value={formData.description} 
                   onChange={handleChange} 
                   rows={5} 
-                  required 
                   className={`${fieldClass} resize-y min-h-[150px]`} 
                 /> 
               </div> 
