@@ -8,7 +8,7 @@ import whiteRule from "../../assets/White Rectangle 13.svg";
 const SOCIAL = {
   facebook: "https://www.facebook.com/share/1DtHL2DE39/",
   instagram: "https://www.instagram.com/kamakhyaci?stkn=MWUyeDU5NW53c3JnNw==",
-  tiktok: "#",   // placeholder — replace when the TikTok profile URL is available
+  tiktok: "https://www.tiktok.com/@kamakhaya320?is_from_webapp=1&sender_device=pc",
 };
 
 const PinIcon = () => (
