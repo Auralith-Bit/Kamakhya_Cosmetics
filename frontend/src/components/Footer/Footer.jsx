@@ -177,7 +177,7 @@ const Footer = () => {
             <h4 className="heading-footer">Contact &amp; Registered Office</h4>
             <p className="flex items-start gap-2.5 m-0 mb-3.5 text-fog text-sm leading-[1.5]">
               <span className="shrink-0 text-footer-gold mt-0.5"><PinIcon /></span>
-              <span>Kamakhya Cosmetics Industries Pvt. Ltd., manigram, Nepal</span>
+              <span>Kamakhya Cosmetics Industries Pvt. Ltd., Tilottama-06, Manigram, Rupandehi, Nepal</span>
             </p>
             <p className="flex items-start gap-2.5 m-0 mb-3.5 text-fog text-sm leading-[1.5]">
               <span className="shrink-0 text-footer-gold mt-0.5"><PhoneIcon /></span>
@@ -190,7 +190,8 @@ const Footer = () => {
             <p className="flex items-start gap-2.5 m-0 mb-3.5 text-fog text-sm leading-[1.5]">
               <span className="shrink-0 text-footer-gold mt-0.5"><MailIcon /></span>
               <a href="mailto:info@kamakhya.com.np" className="text-fog no-underline transition-colors hover:text-footer-gold">
-                info@kamakhya.com.np
+                info@kamakhyacosmetics.com.np
+                support@kamakhyacosmetics.com.np
               </a>
             </p>
           </div>
