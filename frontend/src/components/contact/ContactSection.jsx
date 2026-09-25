@@ -89,7 +89,7 @@ const ShieldI = () => (
 
 /* ---------------- data ---------------- */
 const INFO = [
-  { Icon: Pin,    title: "Our Location",  lines: ["Kamakhya Cosmetics Industries Pvt. Ltd.", "Tilottama–06,Rupandehi", "Lumbini Province, Nepal"] },
+  { Icon: Pin,    title: "Our Location",  lines: ["Kamakhya Cosmetics Industries Pvt. Ltd.", "Tilottama–06, Manigram, Rupandehi, Nepal"] },
   { Icon: PhoneI, title: "Phone Number",  lines: ["+977 9857049884", "+977 9857030243", "(10 A.M–6 P.M.)"] },
   { Icon: MailI,  title: "Email Address", lines: ["info@kamakhyacosmetics.com.np", "support@kamakhyacosmetics.com.np", "We reply within 24 hours"] },
   { Icon: ClockI, title: "Working Hours", lines: ["Monday–Friday: 10 A.M–6 P.M.", "Sunday: 10 A.M–3 P.M", "Saturday Closed"] },
